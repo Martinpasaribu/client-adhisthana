@@ -178,8 +178,8 @@ const Offers = () => {
             checkOut={safecheckout || null} 
             isOpen={isModalOpen} 
             closeModal={closeModal}
-            changeIn={Date}
-            changeOut={Date}
+            // changeIn={Date}
+            // changeOut={Date}
           />       
         
         </div>
