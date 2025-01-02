@@ -18,10 +18,10 @@ interface Params {
 interface LayoutProps {
 
     onBack: () => void;
- 
+    // {onBack}: LayoutProps
 }
 
-const Layout = ( {onBack}: LayoutProps ) => {
+const Layout = (  ) => {
     
   const router = useRouter();
   const dispatch = useAppDispatch();
