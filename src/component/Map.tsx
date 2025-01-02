@@ -20,7 +20,7 @@ type MapProps = {
   locations: MapLocation[];
 };
 
-const SelectedLocation = ({ center }: { center: LatLngLiteral }) => {
+const SelectedLocation = ({ center }:MapProps) => {
   const map = useMap(); // Panggil useMap di dalam komponen yang dirender dalam MapContainer
   useEffect(() => {
     map.panTo(center, { animate: true });
