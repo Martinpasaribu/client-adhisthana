@@ -61,7 +61,7 @@ const OurVila = () => {
                 </h1>
             
                 <p className='text-[16px] text-slate-600 text-center'>
-                    Surrounded by the serene beauty of rice paddies and mountains, our villas provide a peaceful escape where modern comfort meets Javanese tradition. Each villa is thoughtfully designed to blend harmoniously with the natural surroundings, offering an intimate retreat that feels like a part of the landscape. Immerse yourself in a tranquil atmosphere, where every detail is crafted for relaxation and rejuvenation. Whether you're unwinding by the private pool or enjoying the peaceful ambiance of your villa, Adhisthana Villas invites you to reconnect with nature, recharge your spirit, and embrace the serenity that surrounds you.
+                    Surrounded by the serene beauty of rice paddies and mountains, our villas provide a peaceful escape where modern comfort meets Javanese tradition. Each villa is thoughtfully designed to blend harmoniously with the natural surroundings, offering an intimate retreat that feels like a part of the landscape. Immerse yourself in a tranquil atmosphere, where every detail is crafted for relaxation and rejuvenation. Whether you&apos;re unwinding by the private pool or enjoying the peaceful ambiance of your villa, Adhisthana Villas invites you to reconnect with nature, recharge your spirit, and embrace the serenity that surrounds you.
                 </p>
 
                 <button onClick={scrollToVila} className="underline decoration-[#C0562F] text-color1 hover:bg-color1 hover:text-white px-4 rounded-md">

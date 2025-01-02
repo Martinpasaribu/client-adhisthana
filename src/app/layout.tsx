@@ -33,7 +33,6 @@ export default function RootLayout({
       <head>
         <link rel="icon" href="/favicon.ico" />
         <title>Adhisthana</title>
-        <script src="https://www.google.com/recaptcha/api.js?render=6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn"></script>
 
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>

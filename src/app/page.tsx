@@ -4,14 +4,17 @@
 // console.log('ENV:', process.env.INSTAGRAM_ACCESS_TOKEN);
 
 import Link from "next/link";
+import Script from 'next/script';
 import Closure from "./clouser/clouser";
 import InstagramProfile from "./instagram/C_Instagram";
 import Image from "next/image";
 import ImageGallery from "./ImageGalerry/ImageGallery";
 import Vila from "./vila/room/Vila";
+import GoogleRecaptcha from "@/utils/GoogleRecaptcha";
 
 export default function Home() {
 
+  <GoogleRecaptcha />
   const videoUrl = "https://drive.google.com/uc?id=1UKD6FirpeHvgQc4gih94m-bTP1Y0TCYt&export=download";
 
 
@@ -79,7 +82,7 @@ export default function Home() {
           <div className="max-width md:h-screen flex-center flex-col gap-8 px-4 text-center text-xs md:text-lg font-[family-name:var(--font-geist-sans)]">
             
               <h1 className=" text-slate-600 w-full max-w-[60rem]">
-                <span className="text-color2 font-semibold">Welcome to Adhisthana Villas</span> —where nature and tranquility converge in perfect harmony. Located near the iconic Borobudur temple, our retreat embodies a seamless blend of Javanese heritage and modern elegance, offering a sanctuary for those seeking solace and renewal. Set amidst lush rice fields and framed by mist-shrouded peaks, every corner of our villas invites you to unwind and reconnect with what truly matters. Whether it's the gentle rustle of leaves, the serene ambiance of your private pool, or the timeless beauty of traditional architecture, Adhisthana Villas promises a journey of balance, serenity, and timeless charm.
+                <span className="text-color2 font-semibold">Welcome to Adhisthana Villas</span> —where nature and tranquility converge in perfect harmony. Located near the iconic Borobudur temple, our retreat embodies a seamless blend of Javanese heritage and modern elegance, offering a sanctuary for those seeking solace and renewal. Set amidst lush rice fields and framed by mist-shrouded peaks, every corner of our villas invites you to unwind and reconnect with what truly matters. Whether it&apos;s the gentle rustle of leaves, the serene ambiance of your private pool, or the timeless beauty of traditional architecture, Adhisthana Villas promises a journey of balance, serenity, and timeless charm.
               </h1>
 
               <Link href="/about" className="">

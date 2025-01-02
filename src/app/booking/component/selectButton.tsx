@@ -38,7 +38,7 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
 
             if( matchingChartItem ){
                 const Room = matchingChartItem.data.find((dataItem: any) => dataItem._id === item); // Cari dataItem
-                let max = Room?.available;
+                const max = Room?.available;
                 
                 if( max === quantity ){
                     setAlert(max? true : false)

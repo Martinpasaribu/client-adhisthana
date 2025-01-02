@@ -12,9 +12,6 @@ import { setAddChart } from '@/lib/slice/bookingSlice';
 import SelectButton from './selectButton';
 import { http } from '@/utils/http';
 
-interface OffersItemsProps {
-      
-}
 
 const OffersItem = () => {
 

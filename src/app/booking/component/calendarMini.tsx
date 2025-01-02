@@ -1,3 +1,5 @@
+"use client"
+
 import React, { useEffect, useState } from "react";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -12,14 +14,11 @@ interface CalendarProps {
   checkOut?: Date | null;
   isOpen: boolean;
   closeModal : () =>  void;
-  changeIn : (In: Date | null)  => {}; 
-  changeOut: (Out: Date | null)  => {}; 
+
 }
 
-const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, changeIn, changeOut}: CalendarProps) => {
+const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps) => {
 
-
-  if (!isOpen) return null ;
 
 
   const dispatch = useAppDispatch();
@@ -54,6 +53,7 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, changeIn, changeO
     }
   }
 
+  if (!isOpen) return null ;
 
   
   return (
