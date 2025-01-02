@@ -31,12 +31,14 @@ interface HamburgerProps {
 
 
       
-    const handleClick = (title: string) => {
+    const handleButtonActive = (title: string) => {
         setActiveButton(title); // Tetapkan tombol yang diklik sebagai aktif
     };
 
  
-    const setIndexImage = (index : any) => setCurrentIndexImage(index);
+    const setIndexImage = (index : any) => { 
+      setCurrentIndexImage(index);
+    }
 
 
     useEffect(() => {
@@ -103,7 +105,8 @@ interface HamburgerProps {
                 <ButtonNav
                 key={title}
                 title={title}
-                handleClick={() => {handleClick(title), setIndexImage(index+1)}}
+                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                handleClick={() => {handleButtonActive(title), setIndexImage(index+1) }}
                 setIndexImage={index}
                 isActive={activeButton === title} 
                 

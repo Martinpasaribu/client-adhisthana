@@ -1,11 +1,10 @@
 import React, { useEffect } from 'react'
-import  { MouseEventHandler } from "react";
+
 
 interface ButtonNavProps {
     title: string ;
     containerStyles ? : string ;
-    handleClick ?:
-    MouseEventHandler<HTMLButtonElement>;
+    handleClick ?: () => void ;
     btnType? : "button" | "submit" ;
     textStyles? : string;
     rightIcon?: string;
