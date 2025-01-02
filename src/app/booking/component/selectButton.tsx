@@ -136,7 +136,7 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
                                 </svg>
                             </button>
 
-                            <span className={` ${alert ? 'text-sm absolute -bottom-[4] text-red-500' : 'hidden'}`}>
+                            <span className={` ${alert ? 'text-sm absolute -bottom-2 text-red-500' : 'hidden'}`}>
                                 <h1>Max Room</h1>
                             </span>
                         </div>
