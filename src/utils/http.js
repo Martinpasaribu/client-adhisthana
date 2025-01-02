@@ -7,8 +7,13 @@ export const axiosClient = axios.create({
 });
 
 // Konfigurasi untuk server HTTP lain
+// export const http = axios.create({
+//   baseURL: 'http://localhost:5001/api/v1',
+//   withCredentials: true,
+// });
+
 export const http = axios.create({
-  baseURL: 'http://localhost:5001/api/v1',
+  baseURL: 'https://adhistahan-serve.vercel.app/api/v1',
   withCredentials: true,
 });
 
