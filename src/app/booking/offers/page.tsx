@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React, { Suspense, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { IoMdArrowDropdown, IoPeople, FaRegCalendarAlt, gift, discount,GrNext } from '@/style/icons';
 import OffersItem from '../component/offersItem';
@@ -129,92 +129,94 @@ const Offers = () => {
 
 
   return (
-    <div className=' flex-center flex-col py-[5rem] hp4:py-[8rem] relative '>
-        
-        {/* IMAGE VIEW */}
-        <figure className='flex flex-col hp4:flex-row justify-center items-center hp4:p-5 w-full  max-h-[30rem] overflow-hidden'>
-            
-            <div className='w-full hp4:w-1/2 h-full max-h-[25rem] p-3'>
-                  <Image alt='image1ffers' src={'/assets/Image/Family.png'} width={600} height={400} className='w-full max-h-[23.5rem] object-cover  rounded-xl'/>
-            </div>
+    <Suspense fallback={<div>Loading...</div>}>
+      <div className=' flex-center flex-col py-[5rem] hp4:py-[8rem] relative '>
+          
+          {/* IMAGE VIEW */}
+          <figure className='flex flex-col hp4:flex-row justify-center items-center hp4:p-5 w-full  max-h-[30rem] overflow-hidden'>
+              
+              <div className='w-full hp4:w-1/2 h-full max-h-[25rem] p-3'>
+                    <Image alt='image1ffers' src={'/assets/Image/Family.png'} width={600} height={400} className='w-full max-h-[23.5rem] object-cover  rounded-xl'/>
+              </div>
 
 
-            <div className='w-full hp4:w-1/2 h-full'>
-                  <div className='grid grid-cols-4 hp4:grid-cols-2 gap-2 hp4:gap-5 place-content-center p-2 h-full'>
+              <div className='w-full hp4:w-1/2 h-full'>
+                    <div className='grid grid-cols-4 hp4:grid-cols-2 gap-2 hp4:gap-5 place-content-center p-2 h-full'>
 
-                    { images.map((item, index) => (
+                      { images.map((item, index) => (
 
-                      <article key={index}  className='w-full h-full max-w-[25rem] hp4:max-h-[11rem] '>
+                        <article key={index}  className='w-full h-full max-w-[25rem] hp4:max-h-[11rem] '>
 
-                        <Image  alt={`ImageOffera ${index+1}`} src={item} width={400} height={400} className='w-full h-full object-cover rounded-xl'/>
+                          <Image  alt={`ImageOffera ${index+1}`} src={item} width={400} height={400} className='w-full h-full object-cover rounded-xl'/>
 
-                      </article>
-                    ))}
+                        </article>
+                      ))}
 
-                  </div>
-            </div>
+                    </div>
+              </div>
 
-        </figure>
+          </figure>
 
-        {/* Button Update */}
-        <ButtonUpdate 
-          checkin={safecheckin || null } 
-          checkout={safecheckout || null } 
-          OpenCalendarMini={openModal} 
-          OpenModalPeople={openModalPeople} 
-          peopleMax={maxPeople || 0}
-          pushUpdate={PushUpdate}
-          updateCheckIn={setSafecheckIn}
-          updateCheckOut={setSafecheckOut}
-        />
-
-
-        {/* Edit Calendar */}
-
-        <div className=''>
-
-          <CalendarMini 
-            checkIn={safecheckin || null } 
-            checkOut={safecheckout || null} 
-            isOpen={isModalOpen} 
-            closeModal={closeModal}
-            // changeIn={Date}
-            // changeOut={Date}
-          />       
-        
-        </div>
+          {/* Button Update */}
+          <ButtonUpdate 
+            checkin={safecheckin || null } 
+            checkout={safecheckout || null } 
+            OpenCalendarMini={openModal} 
+            OpenModalPeople={openModalPeople} 
+            peopleMax={maxPeople || 0}
+            pushUpdate={PushUpdate}
+            updateCheckIn={setSafecheckIn}
+            updateCheckOut={setSafecheckOut}
+          />
 
 
-        <ModalPeople 
-          isOpen={isModalOpenPeople} 
-          closeModal={closeModalPeople} 
-          peopleMax={maxPeople || 0} 
-          setPeoples={setMaxPeople}
-        />        
-        
+          {/* Edit Calendar */}
 
+          <div className=''>
 
-
-        {/* Product Vilas */}
-        <section className='flex '>
-
-          <div>
-
-            <OffersItem /> 
-
+            <CalendarMini 
+              checkIn={safecheckin || null } 
+              checkOut={safecheckout || null} 
+              isOpen={isModalOpen} 
+              closeModal={closeModal}
+              // changeIn={Date}
+              // changeOut={Date}
+            />       
+          
           </div>
 
-          <div className='relative  '>
 
-            <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
+          <ModalPeople 
+            isOpen={isModalOpenPeople} 
+            closeModal={closeModalPeople} 
+            peopleMax={maxPeople || 0} 
+            setPeoples={setMaxPeople}
+          />        
+          
 
-          </div>
 
-        </section>
-                   
-        
 
-    </div>
+          {/* Product Vilas */}
+          <section className='flex '>
+
+            <div>
+
+              <OffersItem /> 
+
+            </div>
+
+            <div className='relative  '>
+
+              <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
+
+            </div>
+
+          </section>
+                    
+          
+
+      </div>
+    </Suspense>
   )
 }
 
