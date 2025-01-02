@@ -29,14 +29,14 @@ const Footer = () => {
 
         <div  className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
             <div className="flex flex-col justify-center items-start gap-6">
-                <Image src="/assets/logo/adhisthanaFooter.png" alt="logo" width={408} height={200} className="object-contain w-[4rem] sm:h-[6rem] sm:w-[15rem] h-[30rem]" />
+                <Image src="/assets/Logo/adhisthanaFooter.png" alt="logo" width={408} height={200} className="object-contain w-[4rem] sm:h-[6rem] sm:w-[15rem] h-[30rem]" />
 
             </div>
 
             <div className="footer__links dark:text-white">
                 {footerLinks.map((item) => (
                 <div key={item.title} className="footer__link">
-                    <h3 className="font-bold">{item.title}</h3>
+                    <h3 className="font-bold text-color1">{item.title}</h3>
                     <div className="flex flex-col gap-5">
                     {item.links.map((link) => (
                         <Link
