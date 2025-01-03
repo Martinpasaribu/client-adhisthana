@@ -5,11 +5,11 @@ import { http } from "@/utils/http";
 export const DeletedCart = async () => {
     try {
 
-        const response = http.put(`/booking/remove-cart`, {
+        const response = await http.put(`/booking/remove-cart`, {
             headers: { 'Content-Type': 'application/json' },
         })
 
-        const result = await response ;
+        const result =  response ;
 
         return { success: true, message: result.data.message };
 

@@ -119,31 +119,6 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 //       }, []);
 
 
-useEffect(() => {
-    const handleBeforeUnload = async (event : any) => {
-        // Menghapus item dari localStorage
-
-        const result = await DeletedCart();
-
-        if (result.success) {
-          toast.success(result.message);
-        } else {
-          toast.error(result.message);
-        }
-
-        localStorage.removeItem('cart_vila');
-        event.preventDefault();
-        event.returnValue = ''; // Beberapa browser membutuhkan ini untuk menampilkan dialog konfirmasi
-    };
-  
-    // Menambahkan event listener sebelum unload
-    window.addEventListener("beforeunload", handleBeforeUnload);
-  
-    return () => {
-      // Membersihkan event listener ketika komponen tidak lagi digunakan
-      window.removeEventListener("beforeunload", handleBeforeUnload);
-    };
-  }, []);
 
   
   return (
