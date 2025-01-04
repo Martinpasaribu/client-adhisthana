@@ -30,8 +30,11 @@ const Layout = () => {
 
   const getTransactionDetail = useCallback(
     async (transactionId: string) => {
+      
       if (!transactionId) {
+
         return alert("Transaction ID harus diisi");
+
       }
 
       try {

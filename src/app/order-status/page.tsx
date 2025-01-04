@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import Layout from './Layout'
 
 const page = () => {
 
   return (
 
-    <main className=''>
+        <Suspense fallback={<div>Loading...</div>}>
 
-        <Layout/>
+          <Layout/>
+
+        </Suspense>
+
         
-    </main>
+  
 
   )
 }

@@ -207,7 +207,7 @@ const Layout = (  ) => {
     
     // onBack={() => router.push('/')} full={snapShow} noHeader={snapShow}
 
-    <div title='Checkout'  >
+    <div title='Checkout'>
         
         {!snapShow && (
             <>
