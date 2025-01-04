@@ -1,13 +1,13 @@
 import React from 'react'
-// import Layout from './Layout'
+import Layout from './Layout'
 
 const page = () => {
 
   return (
 
     <main className=''>
-wkwkwkkw
-        {/* <Layout/> */}
+
+        <Layout/>
         
     </main>
 

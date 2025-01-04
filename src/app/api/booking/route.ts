@@ -61,6 +61,7 @@ export async function POST(req: Request) {
       );
     }
   } catch (error: unknown) {
+    
     console.error('Error in /api/booking handler:', error);
 
     // Cek apakah error adalah AxiosError

@@ -11,7 +11,7 @@ interface InputProps {
 
 export const Input = ({ label , type = 'text', ...rest } : InputProps) => {
     return (
-        <div className="form-group">
+        <div className="form-group space-y-2 font-bold">
             <label>{label}</label>
             <input type={type} {...rest} />
         </div>

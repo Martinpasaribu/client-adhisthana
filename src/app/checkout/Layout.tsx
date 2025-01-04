@@ -10,6 +10,7 @@ import { convertToRupiah } from '@/constants';
 import toast from 'react-hot-toast';
 import useSnap from './hooks/useSnap';
 import { useRouter } from 'next/navigation';
+import { DeletedCart } from '../booking/utils/deletedCart';
 
 interface Params {
     checkin? :  Date | null;
@@ -143,6 +144,9 @@ const Layout = (  ) => {
                     setSnapShow(false);
                 },
             });
+
+            localStorage.removeItem('cart_vila');
+            DeletedCart().catch((error) => console.error('Error during deleted session:', error));
         }
         else {
             throw new Error('Gagal melakukan booking.');

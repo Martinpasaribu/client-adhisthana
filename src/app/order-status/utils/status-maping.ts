@@ -2,7 +2,7 @@
 
 export const statusMapping = (status : any) => {
     switch(status) {
-        case 'PAYMENT_PENDING':
+        case 'PENDING_PAYMENT':
             return 'Menunggu Pembayaran';
         case 'PAID':
             return 'Pembayaran Berhasil';

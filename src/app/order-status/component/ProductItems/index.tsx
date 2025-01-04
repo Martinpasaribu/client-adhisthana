@@ -5,19 +5,20 @@ interface ProductItemprops {
     
     name: string,
     price?: number,
-    totalItem : number
+    totalItem : number,
+    style: string
 
 }
 
 /* eslint-disable react/prop-types */
-export const ProductItem = ({ name, price, totalItem } : ProductItemprops) => {
+export const ProductItem = ({ name, price, totalItem, style } : ProductItemprops) => {
     return (
-        <div className="item-product-status">
+        <div className={`${style}`}>
             <div className="item-content">
-                {totalItem && <p className="item">{totalItem}x</p>}
+                {totalItem > 0 && <p className="item">{totalItem}x</p>}
                 <p className="name">{name}</p>
             </div>
-            <p className="price">{numberToRupiah(price)}</p>
+            <p className="price ">{numberToRupiah(price)}</p>
         </div>
     );
 }

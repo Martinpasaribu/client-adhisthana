@@ -34,6 +34,9 @@ export { GrFormPreviousLink } from "react-icons/gr";
 export { FaInstagram } from "react-icons/fa";
 export { IoPeople } from "react-icons/io5";
 export { FaRegCalendarAlt } from "react-icons/fa";
+export { MdDone } from "react-icons/md";  
+export { GiSandsOfTime } from "react-icons/gi";
+export { RxCross2 } from "react-icons/rx";
 
 
 import TreeIcons from "../../../public/assets/IconImage/tree.png";

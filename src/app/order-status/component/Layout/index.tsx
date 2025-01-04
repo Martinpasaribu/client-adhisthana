@@ -14,7 +14,7 @@ interface LayoutProps {
 
 export const Main_Layout = ({ title, children, onBack, full, noHeader } : LayoutProps) => {
     return (
-        <div className="layout-container">
+        <div className="layout-container pt-[8rem]">
             {!noHeader && (
                 <Header title={title} onBack={onBack} />
             )}
