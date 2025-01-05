@@ -19,6 +19,7 @@ interface BookingState {
   stateCartVila: [];
   stateChartRes: BucketModels []
   stateDateUpdate: string | null;
+  isProcessing: boolean;
   isError: boolean,
   isSuccess: boolean,
   isLoading: boolean,
@@ -36,6 +37,7 @@ const initialState: BookingState = {
   stateDateUpdate: '',
   stateCheckIn:'',
   stateCheckOut:'',
+  isProcessing: false,
   isError: false,
   isSuccess: false,
   isLoading: false,
@@ -223,8 +225,11 @@ const bookingSlice = createSlice({
       const cartVila = JSON.parse(localStorage.getItem('cart_vila') ?? '[]') || []; 
       state.stateChartRes = cartVila
       console.log('hasil chart from local :', state.stateChartRes)
-    }
+    },
   
+    setIsProcessing(state, action) {
+      state.isProcessing = action.payload;
+    },
     
   },
   
@@ -253,6 +258,6 @@ const bookingSlice = createSlice({
   },
 });
 
-export const { setCheckIn, setCheckOut, setAddChart, setAddVila, setRemoveVila, setGetChart } = bookingSlice.actions;
+export const { setCheckIn, setCheckOut, setAddChart, setAddVila, setRemoveVila, setGetChart, setIsProcessing } = bookingSlice.actions;
 
 export default bookingSlice.reducer;

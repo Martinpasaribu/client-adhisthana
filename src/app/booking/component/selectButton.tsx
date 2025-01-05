@@ -4,7 +4,7 @@ import { RoomModels } from '@/models/roomModels'
 import React, { useEffect, useState } from 'react'
 import { BucketModels } from '../models';
 import { useAppDispatch } from '@/lib/hooks/hooks';
-import { setAddChart, setAddVila, setRemoveVila } from '@/lib/slice/bookingSlice';
+import { setAddChart, setAddVila, setRemoveVila, setIsProcessing } from '@/lib/slice/bookingSlice';
 import { http } from '@/utils/http';
 import { DeletedCart } from '../utils/deletedCart';
 import toast from 'react-hot-toast';
@@ -56,12 +56,13 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
 
     }, [item, chart])
 
-
+    // deleted vila to session
     const handleRemoveVila = async() => {
+
+
+        dispatch(setIsProcessing(true));
         dispatch(setRemoveVila(item)); 
 
-
-        // Kirim data ke server
 
         http.post(`/booking/del-to-cart`, { itemId : item }, {
             headers: { 'Content-Type': 'application/json' },
@@ -71,12 +72,18 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
         })
         .catch(error => {
             console.error('Failed to sync cart with server:', error.response?.data || error.message);
-        });
-        
+        })
+        .finally(() => {
+            dispatch(setIsProcessing(false)); 
+          });
 
         // console.log("remove :", item)
     }
+
+    // add vila to session
     const handleAddVila = () => {
+
+        dispatch(setIsProcessing(true));
         dispatch(setAddVila(item)); 
 
         http.post(`/booking/add-to-cart`, 
@@ -91,9 +98,11 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
         })
         .catch(error => {
             console.error('Failed to sync cart with server:', error.response?.data || error.message);
-        });
+        })  
+        .finally(() => {
+            dispatch(setIsProcessing(false)); 
+          });
 
-        // console.log("add :", item)
     }
 
     return (

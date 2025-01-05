@@ -20,13 +20,14 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
   const [ nights, setNight ] = useState<number | 0>();
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
- 
+  
   const dispatch = useAppDispatch();
   const router = useRouter()
-
-//   const [chart, setChart] = useState<BucketModels[]>()
-
+  
+  //   const [chart, setChart] = useState<BucketModels[]>()
+  
   const chart = useAppSelector((state) => state.booking.stateChartRes);
+  const isProcessing = useAppSelector((state) => state.booking.isProcessing);
 
   useEffect(() => {
 
@@ -86,6 +87,8 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
       },[chart])
 
   const handleSetParams = () => {
+
+    if (isProcessing) return;
 
     if(checkin && checkout){
 
@@ -219,10 +222,16 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                     <h1> Chart </h1>
                 </button>
                 
-  
-                    <button onClick={handleSetParams} className='w-full bg-color1 text-white rounded-md'>
-                        <h1> Book Now </h1>
-                    </button>
+            
+                <button
+                    onClick={handleSetParams}
+                    className={`w-full rounded-md ${
+                    isProcessing ? 'bg-gray-400 cursor-not-allowed' : 'bg-color1 text-white'
+                    }`}
+                    disabled={isProcessing}
+                >
+                    <h1> Book Now </h1>
+                </button>
         
 
             </div>
