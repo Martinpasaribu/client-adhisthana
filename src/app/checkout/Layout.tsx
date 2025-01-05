@@ -130,17 +130,17 @@ const Layout = (  ) => {
             snapEmbed(responseServer.snap_token, 'snap-container', {
                 onSuccess: function (result: any) {
                     console.log('Payment Success:', result);
-                    router.push(`/order-status?transaction_id=${responseServer.id}`);
+                    router.replace(`/order-status?transaction_id=${responseServer.id}`);
                     setSnapShow(false);
                 },
                 onPending: function (result: any) {
                     console.log('Payment Pending:', result);
-                    router.push(`/order-status?transaction_id=${responseServer.id}`);
+                    router.replace(`/order-status?transaction_id=${responseServer.id}`);
                     setSnapShow(false);
                 },
                 onClose: function (result: any) {
                     console.log('Payment Closed:', result);
-                    router.push(`/order-status?transaction_id=${responseServer.id}`);
+                    router.replace(`/order-status?transaction_id=${responseServer.id}`);
                     setSnapShow(false);
                 },
             });
