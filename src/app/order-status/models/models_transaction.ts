@@ -8,14 +8,23 @@ export interface TransactionModels {
     isDeleted: boolean;
     createdAt: string;
     updatedAt: string;
-    payment_method?: string;
+    bank: string;
+    card_type: string;
+    payment_type:string; 
     products?: Products[];
     snap_token: string;
     paymentUrl: string;     
+    va_numbers: VaNumber;
 }
 
 interface Products {
+    name: string;
     roomId: string;
     price: number; 
     quantity: number ;
+}
+
+interface VaNumber {
+    va_number : string;
+    bank : string;
 }

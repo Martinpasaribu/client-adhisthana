@@ -109,12 +109,12 @@ const Layout = () => {
 
             <div className="transaction-status">
 
-                <Item label="Transaction ID" value={transaction.bookingId} />
-                <Item label="Customer Name" value={transaction.userId} />
-                <Item label="Customer Email" value={transaction.userId} />
+                <Item label="Transaction ID" value={transaction.bookingId} style="value" />
+                <Item label="Customer Name" value={transaction.userId}  style="value" />
+                <Item label="Customer Email" value={transaction.userId}  style="value"/>
                 <div className="flex justify-between items-center">
                     
-                    <Item label="Status" value={statusMapping(transaction.status)} />
+                    <Item label="Status" value={statusMapping(transaction.status)}  style="value"/>
 
                     {(transaction.status === 'CANCELED' || transaction.status === 'PENDING_PAYMENT') &&  
                         <PaymentUrl url={transaction.paymentUrl} />
@@ -122,9 +122,9 @@ const Layout = () => {
 
 
                 </div>
-                {transaction.payment_method && (
+                {transaction.payment_type && (
 
-                    <Item label="Payment Method" value={transaction.payment_method} />
+                    <Item label="Payment Method" value={transaction.payment_type}  style="text-blue-500"/>
 
                 )}
 
@@ -138,7 +138,7 @@ const Layout = () => {
 
                     style="item-product-status "
                         key={product.roomId}
-                        name={product.roomId}
+                        name={product.name}
                         price={product.price}
                         totalItem={product.quantity}
                 />

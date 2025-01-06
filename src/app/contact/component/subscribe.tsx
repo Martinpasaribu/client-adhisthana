@@ -69,7 +69,7 @@ const Subscribe = () => {
         </div>
 
         {errorMessage && <p className='text-red-500 text-sm'>{errorMessage}</p>}
-        {successMessage && <p className='text-green-500 text-sm'>{successMessage}</p>}
+        {successMessage && <p className='text-color1 text-sm'>{successMessage}</p>}
 
         <div className='w-full flex-center'>
           <button
