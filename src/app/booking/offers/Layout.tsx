@@ -217,15 +217,15 @@ const Layout = () => {
   
   
             {/* Product Vilas */}
-            <section className='flex '>
+            <section className='flex w-full'>
   
-              <div className='w-full max-w-[90rem] '>
+              <div className='w-full max-w-[80rem] '>
   
                 <OffersItem /> 
   
               </div>
   
-              <div className='relative w-full max-w-[30rem] '>
+              <div className='w-full max-w-[30rem] '>
   
                 <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
   

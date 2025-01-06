@@ -37,6 +37,7 @@ export { FaRegCalendarAlt } from "react-icons/fa";
 export { MdDone } from "react-icons/md";  
 export { GiSandsOfTime } from "react-icons/gi";
 export { RxCross2 } from "react-icons/rx";
+export { FaBasketShopping } from "react-icons/fa6";
 
 
 import TreeIcons from "../../../public/assets/IconImage/tree.png";

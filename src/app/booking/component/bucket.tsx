@@ -1,4 +1,4 @@
-import { FaRegCalendarAlt, IoPeople } from '@/style/icons';
+import { FaRegCalendarAlt, IoPeople, FaBasketShopping } from '@/style/icons';
 import React, { useEffect, useState } from 'react'
 import { formatCheckInCheckOut, night } from './formatDate';
 import {  useAppSelector , useAppDispatch} from "@/lib/hooks/hooks";
@@ -131,19 +131,23 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
         
         <div className='flex flex-col h-full max-w-[70rem] mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
             
-            <h1 className='text-xl font-semibold w-full bg-color2 text-white text-center rounded-md py-1'> Bucket </h1>
+            <div className='text-xl font-semibold w-full  flex justify-around  text-center  py-1'> 
+                <div className='max-w-[5rem] p-2  bg-color2 text-white rounded-md'>
+                    <FaBasketShopping size={30}/>
+                </div>
+                <div className='w-full flex flex-row-reverse justify-start items-center gap-4'>
 
-            <div className='w-full flex flex-row-reverse justify-start items-center gap-4'>
-                <FaRegCalendarAlt size={20} />
+                    <FaRegCalendarAlt size={20} />
 
-                <h1 className='text-[16px]'>
-                  {checkin && checkout
-                  ? formatCheckInCheckOut(checkin, checkout, false, night) 
-                  : "Select check-in and check-out dates"}
-                </h1>
+                    <h1 className='text-[16px]'>
+                    {checkin && checkout
+                    ? formatCheckInCheckOut(checkin, checkout, false, night) 
+                    : "Select check-in and check-out dates"}
+                    </h1>
 
 
-                {/* <IoPeople size={20} /> */}
+                    {/* <IoPeople size={20} /> */}
+                </div>
             </div>
 
 

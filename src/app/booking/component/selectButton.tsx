@@ -82,15 +82,15 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
 
     // add vila to session
     const handleAddVila = () => {
-
         dispatch(setIsProcessing(true));
-        dispatch(setAddVila(item)); 
-
-        http.post(`/booking/add-to-cart`, 
-            {   roomId: item,
+        dispatch(setAddVila(item));
+    
+        http.post(`/booking/add-to-cart`,
+            { 
+                roomId: item,
                 quantity: 1,
                 price: 200
-             }, 
+            },
             { headers: { 'Content-Type': 'application/json' } }
         )
         .then(response => {
@@ -98,12 +98,14 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
         })
         .catch(error => {
             console.error('Failed to sync cart with server:', error.response?.data || error.message);
-        })  
+        })
         .finally(() => {
-            dispatch(setIsProcessing(false)); 
-          });
-
-    }
+            setTimeout(() => {
+                dispatch(setIsProcessing(false));
+            }, 1000); // Jeda 1 detik (1000 ms)
+        });
+    };
+    
 
     return (
 

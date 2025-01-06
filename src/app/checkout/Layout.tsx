@@ -218,7 +218,7 @@ const Layout = (  ) => {
 
 
                         <div className='select-none flex flex-col gap-4 space-y-5 w-full max-w-[30rem]'>
-                        <h1> Guest Information </h1>
+                        <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
 
                         <div  className='flex flex-col gap-4 space-y-5 w-full max-w-[30rem]' >
 
@@ -285,7 +285,7 @@ const Layout = (  ) => {
 
 
                                 <div className='bg-color4 p-4 w-full max-w-[30rem]'>
-                                    <h1 className='text-[22px] mb-8'>
+                                    <h1 className='text-[22px] md:text-xl mb-8'>
                                         Your Resevation
                                     </h1>
 
@@ -359,7 +359,7 @@ const Layout = (  ) => {
 
                                     <div className='flex justify-between items-center w-full text-yellow-400 font-semibold'>
                                         <h1>Reservation Total</h1>
-                                        <h1>IDR {convertToRupiah((subtotal && tax) && subtotal ? subtotal+tax : 0)}</h1>
+                                        <h1 className='text-md md:text-lg'>IDR {convertToRupiah((subtotal && tax) && subtotal ? subtotal+tax : 0)}</h1>
                                     </div>
 
                                 </div>

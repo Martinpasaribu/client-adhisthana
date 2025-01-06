@@ -289,6 +289,7 @@ const OffersItem = () => {
           <div className='space-y-10'>
               <SkeletonItemOffers />
               <SkeletonItemOffers />
+              <SkeletonItemOffers />
           </div>
 
         )

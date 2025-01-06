@@ -92,7 +92,7 @@ const ModalPeople = ({isOpen, closeModal, peopleMax, setPeoples }: ModalPeoplePr
                                     </svg>
                                 </button>
 
-                                <span className={` ${warning ? 'text-sm absolute -bottom-[6] text-red-500': 'hidden'}`}>
+                                <span className={` ${warning ? 'text-sm absolute -bottom-2 text-red-500': 'hidden'}`}>
                                     <h1>Max Capacity </h1>
                                 </span>
 
