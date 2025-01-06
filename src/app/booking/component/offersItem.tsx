@@ -87,11 +87,11 @@ const OffersItem = () => {
 
             { vila.map((item, index) => (
 
-              <div key={index} className='flex h-full max-w-[70rem] mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
+              <div key={index} className='flex h-full max-w-[75rem] mx-[.5rem] md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
 
                   {/* Item */}
 
-                  <div className='w-full flex flex-col space-y-6'>
+                  <div className='w-full flex flex-col space-y-6 '>
                   
                     {/* Name Vila */}
                     <div className='text-left'>

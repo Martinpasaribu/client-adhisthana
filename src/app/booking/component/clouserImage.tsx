@@ -34,12 +34,14 @@ const ClouserImage = ( {images}: ImageClosureProps ) => {
       {/* Image container */}
       <div className="relative w-full overflow-hidden rounded-lg  flex justify-center hp4:justify-start">
       
-        <Image
-          src={images[currentIndex].image}
-          alt={`Image ${currentIndex + 1}`}
-          width={400} height={400} 
-         className='w-full h-full max-w-[22rem] max-h-[15rem] object-cover rounded-md'
-        />
+        <div className='max-w-[22rem] max-h-[15rem]'>
+          <Image
+            src={images[currentIndex].image}
+            alt={`Image ${currentIndex + 1}`}
+            width={400} height={400} 
+          className='w-full h-full  object-cover rounded-md'
+          />
+        </div>
 
 
         <div className='absolute inset-0 opacity-0 hover:transition ease-in-out delay-150  hover:opacity-100  hover:scale-20  duration-500'>

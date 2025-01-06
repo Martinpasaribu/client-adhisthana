@@ -131,9 +131,9 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
         
         <div className='flex flex-col h-full max-w-[70rem] mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
             
-            <h1 className='text-xl font-semibold text-left w-full'> Vilas </h1>
+            <h1 className='text-xl font-semibold w-full bg-color2 text-white text-center rounded-md py-1'> Bucket </h1>
 
-            <div className='flex-center gap-4'>
+            <div className='w-full flex flex-row-reverse justify-start items-center gap-4'>
                 <FaRegCalendarAlt size={20} />
 
                 <h1 className='text-[16px]'>
@@ -143,7 +143,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                 </h1>
 
 
-                <IoPeople size={20} />
+                {/* <IoPeople size={20} /> */}
             </div>
 
 
@@ -152,15 +152,15 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                 
              chart.map(( item , index) => (
                
-                <div key={index}>
+                <div key={index} className='w-full'>
                   
-                        <div>  
+                        <div className='w-full'>  
 
                             <h1 className='text-lg font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
 
                             <div className='flex justify-between items-center w-full gap-4'>
 
-                                <div className='flex text-sm w-full gap-1 font-normal'>
+                                <div className='flex text-sm w-full gap-3 font-normal'>
                                     <h1>
                                         {item.quantity} Rooms
                                     </h1>
@@ -199,7 +199,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
             ) : (
             
-            <p>Data tidak ditemukan</p>
+            <p>No choice items</p>
 
             )}
 

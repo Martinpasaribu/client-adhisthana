@@ -171,6 +171,9 @@ const Layout = () => {
   
             </figure>
   
+
+            {/* # Update Header  */}
+
             {/* Button Update */}
             <ButtonUpdate 
               checkin={safecheckin || null } 
@@ -206,20 +209,23 @@ const Layout = () => {
               peopleMax={maxPeople || 0} 
               setPeoples={setMaxPeople}
             />        
-            
+
+             {/* # Update Header  */}
   
+
+
   
   
             {/* Product Vilas */}
             <section className='flex '>
   
-              <div>
+              <div className='w-full max-w-[90rem] '>
   
                 <OffersItem /> 
   
               </div>
   
-              <div className='relative  '>
+              <div className='relative w-full max-w-[30rem] '>
   
                 <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
   

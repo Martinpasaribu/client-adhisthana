@@ -85,7 +85,7 @@ const Layout = () => {
     <Main_Layout title="Status Pesanan" onBack={() => router.replace("/")}>
 
       <Input
-        label="Kode Pesanan"
+        label="Kode Transaksi"
         value={searchTransactionId}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
           setSearchTransactionId(e.target.value)
