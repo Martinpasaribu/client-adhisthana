@@ -101,9 +101,7 @@ const DatePicker = () => {
         <h2 className="h-[8rem] max-h-[6rem] w-full text-center text-2xl font-semibold mb-6 text-gray-700 flex-center">
           Book Your Stay
         </h2>
-        <h2 className="h-[8rem] max-h-[2rem] w-full text-center text-2xl font-semibold mb-6 text-gray-700 flex-center">
-   
-        </h2>
+
 
         <div className="flex-center w-full h-full max-h-[28rem] p-2 rounded-lg  overflow-hidden">
 
