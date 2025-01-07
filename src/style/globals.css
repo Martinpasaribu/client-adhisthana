@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 /* Target elemen scrollbar */
 ::-webkit-scrollbar {
   width: 12px; /* Lebar scrollbar vertikal */
@@ -26,9 +27,7 @@
   background: #555; /* Ubah warna thumb saat hover */
 }
 
-.scrl {
 
-}
 
 .scrl::-webkit-scrollbar {
   display: block; /* Browser berbasis WebKit */
@@ -237,7 +236,21 @@
 }
 
 
+/* In your styles.css in DatePicker React */
+
+/* styles.css */
+
+
+
+
+/* Close  styles.css in DatePicker React */
+
+
+
+
 /* Style Calender */
+
+
 
 
 .react-datepicker {
@@ -267,6 +280,36 @@
 /* Tinggi Lebar Bulan Container */
 .react-datepicker__month-container {
   width: 100%; /* Gunakan lebar penuh */
+}
+
+.react-datepicker__day--selected {
+  border-radius: .5rem !important;
+  background-color: #212636 !important;
+  color: #FFFFFFFF !important;
+}
+
+.react-datepicker__current-month {
+  margin-top: 0;
+  color: #ffffff !important;
+}
+
+.react-datepicker__day-name {
+  color: #ffffff !important;
+}
+
+.react-datepicker__day--keyboard-selected {
+  border-radius: 2rem !important;
+  background-color: #C0562F !important;
+  color: #FFFFFFFF !important;
+}
+.react-datepicker__header {
+  text-align: center  !important;
+  background-color: #212636 !important;
+  border-bottom: 1px solid #FFFFFFFF !important;
+  color: #FFFFFFFF !important;
+  border-top-left-radius: .3rem;
+  padding: 8px 0;
+  position: relative;
 }
 
 /* Tinggi Lebar Bulan */
@@ -342,4 +385,3 @@
     font-size: 1.2rem;
   }
 }
-

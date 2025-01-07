@@ -62,14 +62,14 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps)
 
       <div className="overflow-hidden  bg-white">
       
-        <div className="relative flex h-full w-full pt-[7rem]">
+        <div className="relative flex flex-col h-full w-full pt-[7rem]">
 
 
           <div className="flex flex-col w-full  p-6 rounded-lg shadow-md h-full">
-            <div className="flex flex-col sm:flex-row gap-6">
+            <div className="flex flex-col sm:flex-row gap-6 text-md md:text-2xl text-black">
               {/* Check-In Date */}
               <div className="w-full sm:w-1/2 flex flex-col items-center">
-                <label className="mb-2 text-gray-600 font-medium">Check-In</label>
+                <label className="mb-5 text-gray-600 font-medium ">Check-In</label>
                 <DatePicker
                   selected={checkin}
                   onChange={(date) => {
@@ -92,7 +92,7 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps)
 
               {/* Check-Out Date */}
               <div className="w-full sm:w-1/2 flex flex-col items-center">
-                <label className="mb-2 text-gray-600 font-medium">Check-Out</label>
+                <label className="mb-5 text-gray-600 font-medium">Check-Out</label>
                 <DatePicker
                   selected={checkout}
                   onChange={(date) => {
@@ -115,9 +115,9 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps)
           </div>
 
 
-          <div className="absolute top-[6.2rem] w-full  flex-center p-5 ">
+          <div className=" w-full  flex-center p-5 ">
 
-                <button onClick={() => { handleUpdateDate(); closeModal();}} className="p-1 px-4 bg-color1 rounded-md text-white">CHANGE</button>
+                <button onClick={() => { handleUpdateDate(); closeModal();}} className="w-full py-2 border-color2 border-2 rounded-md">CHANGE</button>
               
           </div>
 

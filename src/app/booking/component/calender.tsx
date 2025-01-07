@@ -96,6 +96,7 @@ const Calendar = ({ checkIn, checkOut }: CalendarProps) => {
             {/* Check-In Date */}
             <div className="w-full sm:w-1/2 flex flex-col items-center">
               <label className="mb-2 text-gray-600 font-medium">Check-In</label>
+
               <DatePicker
                 selected={checkInDate}
                 onChange={(date) => {
@@ -114,6 +115,7 @@ const Calendar = ({ checkIn, checkOut }: CalendarProps) => {
                 className="border rounded-lg focus:outline-none focus:ring focus:border-blue-300 w-full"
                 inline
               />
+              
             </div>
 
             {/* Check-Out Date */}
