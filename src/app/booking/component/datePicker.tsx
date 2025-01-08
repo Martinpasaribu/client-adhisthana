@@ -52,24 +52,24 @@ const DatePicker = () => {
   const handleSetDate = () => {
     if (!checkInDate || !checkOutDate) {
       // Validasi jika salah satu tanggal belum diisi
-      toast.error("Masukkan tanggal Check-In dan Check-Out.", {
+      toast.error("Masukkan tanggal booking.", {
         position: "bottom-right",
         duration: 5000,
         iconTheme: { primary: "#604beb", secondary: "#fff" },
         icon: "🗓",
-        style: { borderRadius: "10px", background: "#a69ce6", color: "#fff" },
+        style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
       });
       return;
     }
   
     if (checkInDate.getTime() === checkOutDate.getTime()) {
       // Validasi jika tanggal Check-In sama dengan Check-Out
-      toast.error("Tanggal Check-In dan Check-Out tidak boleh sama.", {
+      toast.error("Tanggal tidak boleh sama.", {
         position: "bottom-right",
         duration: 5000,
         iconTheme: { primary: "#ff0000", secondary: "#fff" },
         icon: "⚠️",
-        style: { borderRadius: "10px", background: "#f87171", color: "#fff" },
+        style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
       });
       return;
     }
@@ -81,7 +81,7 @@ const DatePicker = () => {
         duration: 5000,
         iconTheme: { primary: "#ff0000", secondary: "#fff" },
         icon: "⚠️",
-        style: { borderRadius: "10px", background: "#f87171", color: "#fff" },
+        style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
       });
       return;
     }
@@ -97,18 +97,19 @@ const DatePicker = () => {
 
   return (
     <div className="overflow-hidden ">
-      <div className="relative flex flex-col justify-center gap-4 items-center h-screen w-full pt-[2rem]">
+      <div className="relative flex flex-col justify-center items-center h-full md3:h-screen w-full pt-[6rem] md3:pt-[2rem]">
+        
         <h2 className="h-[8rem] max-h-[6rem] w-full text-center text-2xl font-semibold mb-6 text-gray-700 flex-center">
           Book Your Stay
         </h2>
 
 
-        <div className="flex-center w-full h-full max-h-[28rem] p-2 rounded-lg  overflow-hidden">
+        <div className="flex-center w-full h-full full md3:max-h-[23rem] p-2 rounded-lg  overflow-hidden">
 
-          <div className="flex-center w-full ">
+          <div className="flex flex-col  w-full md3:flex-row gap-7 md3:gap-0">
 
             {/* Komponen DayPicker */}
-            <div className="w-full flex justify-end ">
+            <div className="w-full flex justify-center md3:justify-end ">
               {/* <label className="mb-2 text-gray-600 font-medium">Select Your Dates</label> */}
 
                 <DayPicker
@@ -117,9 +118,9 @@ const DatePicker = () => {
                     selected={selectedRange}
                     onSelect={setSelectedRange}
                     classNames={{
-                        day: `font-bold text-gray-600 hover:bg-gray-200 rounded-md`, // Setiap hari
-                        selected: `bg-green-500 text-blue-500 font-bold rounded-full`, // Hari yang dipilih
-                        today: `text-[#FF5E00] font-bold border border-orange-500 rounded-full`, // Hari ini
+                        day: `font-bold text-black hover:bg-gray-200 font-semibold rounded-md`, // Setiap hari
+                        selected: `bg-green-500 text-color1 font-semibold rounded-full`, // Hari yang dipilih
+                        today: `text-[#FF5E00] font-bold border border-orange-500  rounded-md`, // Hari ini
                         month: `p-4`,
                     }}
                     style={{
@@ -136,18 +137,18 @@ const DatePicker = () => {
             </div>
 
             {/* Tampilkan Check-In dan Check-Out */}
-            <div className="w-full flex-center gap-4 flex-col">
+            <div className="w-full flex-center gap-4 flex-col  ">
               
-              <div className="w-full flex-center">
+              <div className="w-full h-full flex-center ">
 
                 {/* Check-In */}
-                <div className="w-full h-full max-w-[20rem] max-h-[12rem] flex-col border-black border-2">
+                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 ">
                   <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
                     <h1 className="text-md md:text-xl">Check-In</h1>
                   </div>
-                  <div className="w-full flex-center h-[5rem] max-h-[10rem]">
+                  <div className="w-full flex-center h-full max-h-[10rem]">
                       
-                    <div className="text-md md:text-2xl flex-center flex-col p-2">
+                    <div className="text-md md:text-2xl flex-center gap-2  md3:flex-col p-4 md3:p-2">
                       <div> {checkInDate ? format(checkInDate, "dd ") : ""} </div>
                       <div> {checkInDate ? format(checkInDate, "MMM ") : ""} </div>
                     </div>
@@ -156,12 +157,12 @@ const DatePicker = () => {
                 </div>
 
                 {/* Check-Out */}
-                <div className="w-full h-full max-w-[20rem] max-h-[12rem] flex-col border-black border-2">
+                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2">
                   <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
                     <h1 className="text-md md:text-xl">Check-Out</h1>
                   </div>
-                  <div className="w-full flex-center h-[5rem] max-h-[10rem]">
-                    <div className="text-md md:text-2xl flex-center flex-col p-2">
+                  <div className="w-full flex-center h-full max-h-[10rem]">
+                    <div className="text-md md:text-2xl flex-center gap-2 md3:flex-col p-4 md3:p-2">
                       <div> {checkOutDate ? format(checkOutDate, "dd ") : ""} </div>
                       <div> {checkOutDate ? format(checkOutDate, "MMM ") : ""} </div>
                     </div>

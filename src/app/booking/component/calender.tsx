@@ -75,7 +75,7 @@ const Calendar = ({ checkIn, checkOut }: CalendarProps) => {
       
     }else {
       // alert('inputkan checkIn checkOut nya')
-      toast.error('Masukan Tgl CheckIn and CheckOut.', { position: 'bottom-right', duration: 5000,  iconTheme: { primary: '#604beb',  secondary: '#fff' },  icon: '🗓',  style: {  borderRadius: '10px', background: '#a69ce6', color: '#fff'  },});
+      toast.error('Masukan Tanngal Booking.', { position: 'bottom-right', duration: 5000,  iconTheme: { primary: '#604beb',  secondary: '#fff' },  icon: '🗓',  style: {  borderRadius: '10px', background: '#a69ce6', color: '#fff'  },});
     }
 
 

@@ -271,7 +271,7 @@
 
 /* Gaya border tanggal */
 .react-datepicker__day {
-  color: rgb(65, 65, 65);
+  color: rgb(0, 0, 0) !important;
   border-width: 1px !important;
   border-style: solid !important;
   border-color: #afafaf !important;
@@ -311,6 +311,8 @@
   padding: 8px 0;
   position: relative;
 }
+
+
 
 /* Tinggi Lebar Bulan */
 .react-datepicker__current-month {

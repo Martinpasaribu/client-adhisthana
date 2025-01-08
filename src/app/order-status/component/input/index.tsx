@@ -11,9 +11,9 @@ interface InputProps {
 
 export const Input = ({ label , type = 'text', ...rest } : InputProps) => {
     return (
-        <div className="form-group space-y-2 font-bold">
+        <div className="form-group space-y-2 font-bold text-slate-700">
             <label>{label}</label>
-            <input type={type} {...rest} />
+            <input type={type} {...rest} placeholder='Masukan kode transaksi'/>
         </div>
     );
 }

@@ -1,13 +1,13 @@
 import { FaRegCalendarAlt, IoPeople, FaBasketShopping } from '@/style/icons';
 import React, { useEffect, useState } from 'react'
-import { formatCheckInCheckOut, night } from './formatDate';
+import { formatCheckInCheckOut, night } from '../formatDate';
 import {  useAppSelector , useAppDispatch} from "@/lib/hooks/hooks";
 import { setGetChart } from '@/lib/slice/bookingSlice';
 import { RoomModels } from '@/models/roomModels';
-import { BucketModels } from '../models';
+import { BucketModels } from '../../models';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { DeletedCart } from '../utils/deletedCart';
+import { DeletedCart } from '../../utils/deletedCart';
 import toast from 'react-hot-toast';
 import { http } from '@/utils/http';
 
@@ -126,7 +126,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
   
   return (
 
-    <div className='w-full  mt-4 md1:mt-10 sticky top-28 z-20 py-4'>
+    <div className='w-full mt-4 xl2:mt-10 sticky top-28 z-20 py-4'>
         
         
         <div className='flex flex-col h-full max-w-[70rem] mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>

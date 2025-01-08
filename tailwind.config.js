@@ -120,6 +120,10 @@ module.exports = {
           '0%': { opacity: 0, transform: 'scale(0.5) translateY(-40px)' },
           '100%': { opacity: 1, transform: 'scale(1) translateY(0)' },
         },
+        bucket: {
+          '0%': { opacity: 0, transform: ' translateY(20px)' },
+          '100%': { opacity: 1, transform: ' translateY(0px)' },
+        },
 
         sidebar_in: {
           '-00%': { opacity:0 , transform: 'translateX(-10%)' }, /* Mulai dari di luar layar sebelah kanan */
@@ -146,8 +150,8 @@ module.exports = {
         sidebar_in: 'sidebar_in 1s ease-in-out forwards',
         sidebar_out: 'sidebar_out 1s ease-in-out forwards',
         nav_in: 'nav_in 1s ease-in-out forwards',
-
         muncul: 'muncul 1s ease-in-out forwards',
+        bucket: 'bucket .5s ease-in forwards',
         jump1: 'lompat 2s ease-in-out infinite',
         jump2: 'lompat 2.2s ease-in-out infinite',
         jump3: 'lompat 2.3s ease-in-out infinite',

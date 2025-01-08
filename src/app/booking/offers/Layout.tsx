@@ -6,7 +6,7 @@ import Image from 'next/image'
 import { IoMdArrowDropdown, IoPeople, FaRegCalendarAlt, gift, discount,GrNext } from '@/style/icons';
 import OffersItem from '../component/offersItem';
 import { useRouter, useSearchParams } from "next/navigation";
-import Bucket from '../component/bucket';
+import Bucket from '../component/Bucket/bucket';
 import { formatCheckInCheckOut, night } from '../component/formatDate';
 import ButtonUpdate from '../component/buttonUpdate';
 import CalendarMini from '../component/calendarMini';
@@ -15,6 +15,7 @@ import { useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
 import { DeletedCart } from '../utils/deletedCart';
 import { http } from '@/utils/http';
+import BucketMini from '../component/Bucket/bucketMini';
 
 
 const images = [
@@ -35,10 +36,12 @@ const Layout = () => {
     const people: string | null = searchParams.get("people");
     
     const [validate, setValidate] = useState (true) 
+    const [activeBucket, setActiveBucket] = useState (false) 
   
     const [safecheckin, setSafecheckIn] = useState<Date | null>(
         checkin ? new Date(checkin) : null
         );
+
     const [safecheckout, setSafecheckOut] = useState<Date | null>(
       checkout ? new Date(checkout) : null
     );
@@ -56,7 +59,7 @@ const Layout = () => {
     useEffect(() => {
       // Validasi check-in tidak boleh >= check-out
       if (safecheckin && safecheckout && safecheckin >= safecheckout) {
-        toast.error("Tanggal check-in harus kurang dari tanggal check-out.",{ position: "bottom-right", duration: 5000 });
+        toast.error("Tanggal masuk harus kurang dari tanggal keluar.",{ position: "bottom-right", duration: 5000 });
         setValidate(false); // Reset jika tidak valid
       } else {
         setValidate(true)
@@ -64,7 +67,7 @@ const Layout = () => {
   
       // Validasi check-out tidak boleh <= check-in
       if (safecheckout && safecheckin && safecheckout <= safecheckin) {
-        toast.error("Tanggal check-out harus lebih dari tanggal check-in.",{ position: "bottom-right", duration: 5000 });
+        toast.error("Tanggal keluar harus lebih dari Tanggal masuk.",{ position: "bottom-right", duration: 5000 });
         setValidate(false); // Reset jika tidak valid
       } else {
         setValidate(true)
@@ -85,7 +88,7 @@ const Layout = () => {
         toast.success("Penawaran diperbaharui.",{ position: "top-right", duration: 5000 });
         
       }else {
-        toast.error("Anda salah memasukan tanggal.",{ position: "bottom-right", duration: 5000 });
+        toast.error("Range tanggal booking salah.",{ position: "bottom-right", duration: 5000 });
       }
     
     
@@ -222,7 +225,7 @@ const Layout = () => {
   
   
             {/* Product Vilas */}
-            <section className='flex w-full'>
+            <section className='flex w-full relative'>
   
               <div className='w-full max-w-[80rem] '>
   
@@ -230,9 +233,15 @@ const Layout = () => {
   
               </div>
   
-              <div className='w-full max-w-[30rem] '>
+              <div className='hidden w-full max-w-[30rem] xl2:block'>
   
                 <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
+  
+              </div>
+
+              <div className={`${activeBucket ? 'block w-full xl2:hidden fixed bottom-0 bg-white':'hidden'}`}>
+  
+                <BucketMini checkin={safecheckin || null } checkout={safecheckout || null} activeBucket={setActiveBucket} />
   
               </div>
   
