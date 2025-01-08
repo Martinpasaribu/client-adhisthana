@@ -38,7 +38,7 @@ const Layout = () => {
       }
 
       try {
-        const response = await fetch(`/api/getTransaction?transaction_id=${transactionId}`);
+        const response = await fetch(`/api/getTransaction?order_id=${transactionId}`);
 
         const res = await response.json();
 
@@ -47,7 +47,7 @@ const Layout = () => {
 
           // Update query parameter di URL
           const newParams = new URLSearchParams(searchParams.toString());
-          newParams.set("transaction_id", transactionId);
+          newParams.set("order_id", transactionId);
 
           router.replace(`?${newParams.toString()}`);
           setEmptyMessage("");
@@ -56,7 +56,7 @@ const Layout = () => {
           setTransaction(null);
 
           const newParams = new URLSearchParams(searchParams.toString());
-          newParams.delete("transaction_id");
+          newParams.delete("order_id");
 
           router.replace(`?${newParams.toString()}`);
         }
@@ -69,7 +69,7 @@ const Layout = () => {
   );
 
   useEffect(() => {
-    const transactionId = searchParams.get("transaction_id");
+    const transactionId = searchParams.get("order_id");
     console.log("Transaction ID dari URL:", transactionId);
 
     if (transactionId) {

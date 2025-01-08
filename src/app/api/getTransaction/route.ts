@@ -5,11 +5,11 @@ import { http } from '@/utils/http';
 
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
-  const transactionId = searchParams.get("transaction_id");
+  const transactionId = searchParams.get("order_id");
 
   if (!transactionId) {
     return NextResponse.json(
-      { error: "transaction_id tidak ditemukan di query parameter" },
+      { error: "transaction ID tidak ditemukan di query parameter" },
       { status: 400 }
     );
   }
