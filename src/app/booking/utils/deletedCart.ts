@@ -5,7 +5,7 @@ import { http } from "@/utils/http";
 export const DeletedCart = async () => {
     try {
 
-        const response = await http.put(`/booking/remove-cart`, {
+        const response = await http.post(`/booking/remove-cart`, {
             headers: { 'Content-Type': 'application/json' },
         })
 

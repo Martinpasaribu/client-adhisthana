@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import { MdDarkMode, MdLightMode } from "@/style/icons";
 import Hamburger from "@/component/modal/Hamburger";
+import { DeletedCart } from "@/app/booking/utils/deletedCart";
 
 
 
@@ -28,6 +29,12 @@ const Navbar = () => {
 
   // })
 
+  const handleBooking = () => {
+
+    DeletedCart().catch((error) => console.error('Error during unload:', error));
+    localStorage.removeItem('cart_vila');
+
+  }
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
@@ -99,7 +106,7 @@ const Navbar = () => {
             </ul>
 
 
-            <Link href="/booking" className="flex justify-end sm:justify-center items-center w-full max-w-[10rem] ">
+            <Link onClick={handleBooking} href="/booking" className="flex justify-end sm:justify-center items-center w-full max-w-[10rem] ">
               <CustomButton 
                   title="Book Now"
                   btnType="button"

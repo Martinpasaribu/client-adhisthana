@@ -14,6 +14,7 @@ import ModalPeople from '../component/modalPeople';
 import { useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
 import { DeletedCart } from '../utils/deletedCart';
+import { http } from '@/utils/http';
 
 
 const images = [
@@ -124,20 +125,24 @@ const Layout = () => {
       }, [checkin, checkout]);
   
 
-      
       useEffect(() => {
-        const handleUnload = () => {
-          // Operasi sinkron yang cepat
-          DeletedCart().catch((error) => console.error('Error during unload:', error));
-          localStorage.removeItem('cart_vila');
-        };
-      
-        window.addEventListener("unload", handleUnload);
-      
-        return () => {
-          window.removeEventListener("unload", handleUnload);
-        };
+          const handleUnload = () => {
+              // Kirim data ke server menggunakan navigator.sendBeacon
+              const url = 'https://adhistahan-serve.vercel.app/api/v1/booking/remove-cart';
+              navigator.sendBeacon(url);
+
+              // Hapus localStorage
+              localStorage.removeItem('cart_vila');
+          };
+
+          window.addEventListener("unload", handleUnload);
+
+          return () => {
+              window.removeEventListener("unload", handleUnload);
+          };
       }, []);
+
+    
       
   
   

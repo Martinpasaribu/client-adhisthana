@@ -8,6 +8,10 @@ import { setAddChart, setAddVila, setRemoveVila, setIsProcessing } from '@/lib/s
 import { http } from '@/utils/http';
 import { DeletedCart } from '../utils/deletedCart';
 import toast from 'react-hot-toast';
+import debounce from 'lodash-es/debounce';
+
+
+
 
 interface SelectProps {
     item : string;
@@ -57,8 +61,7 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
     }, [item, chart])
 
     // deleted vila to session
-    const handleRemoveVila = async() => {
-
+    const handleRemoveVila =  debounce( async () => {
 
         dispatch(setIsProcessing(true));
         dispatch(setRemoveVila(item)); 
@@ -75,16 +78,23 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
         })
         .finally(() => {
             dispatch(setIsProcessing(false)); 
+
           });
 
         // console.log("remove :", item)
-    }
+    }, 600)
 
     // add vila to session
-    const handleAddVila = () => {
+    const handleAddVila =  debounce( async () => {
         dispatch(setIsProcessing(true));
         dispatch(setAddVila(item));
-    
+        toast.success("Add Item", {
+            position: "bottom-right",
+            duration: 1000,
+            iconTheme: { primary: "#C0562F", secondary: "#fff" },
+            icon: "🛒",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
         http.post(`/booking/add-to-cart`,
             { 
                 roomId: item,
@@ -95,16 +105,17 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
         )
         .then(response => {
             console.log('Cart added to server successfully:', response.data);
+
         })
         .catch(error => {
             console.error('Failed to sync cart with server:', error.response?.data || error.message);
         })
         .finally(() => {
-            setTimeout(() => {
-                dispatch(setIsProcessing(false));
-            }, 1000); // Jeda 1 detik (1000 ms)
+            dispatch(setIsProcessing(false)); 
+
+
         });
-    };
+    }, 700);
     
 
     return (
