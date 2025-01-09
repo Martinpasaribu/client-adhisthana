@@ -212,7 +212,7 @@ const Layout = (  ) => {
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[8rem] relative gap-2 overflow-hidden p-2'>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-2'>
                     
                     <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
 
@@ -234,7 +234,7 @@ const Layout = (  ) => {
                                         checked={formData.title === title}
                                         onChange={() => setFormData((prev) => ({ ...prev, title }))}
                                         required
-                                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                                        className="w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
                                         />
                                         <label className="ms-2 text-sm font-medium text-gray-900">{title}</label>
                                     </div>
@@ -248,7 +248,7 @@ const Layout = (  ) => {
                                         id="name"
                                         value={formData.name}
                                         onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full p-2 md:p-3"
                                         placeholder="Name"
                                         required
                                     />
@@ -259,7 +259,7 @@ const Layout = (  ) => {
                                         id="email"
                                         value={formData.email}
                                         onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
                                         placeholder="Email Address"
                                         required
                                     />
@@ -270,7 +270,7 @@ const Layout = (  ) => {
                                         id="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
                                         placeholder="Phone Number"
                                         required
                                     />
@@ -285,12 +285,13 @@ const Layout = (  ) => {
 
 
 
-                                <div className='bg-color4 p-4 w-full xl:max-w-[30rem]'>
-                                    <h1 className='text-[22px] md:text-xl mb-8'>
+                                <div className='bg-color4 p-4 w-full xl:max-w-[30rem] space-y-2'>
+
+                                    <h1 className='text-[18px] sm:text-[22px] md:text-xl mb-8 text-black font-bold'>
                                         Your Resevation
                                     </h1>
 
-                                    <h1 className='text-[16px]'>
+                                    <h1 className='text-[13px] sm:text-[16px]'>
                                     {checkin && checkout
                                     ? formatCheckInCheckOut(checkin ,checkout , false, night) 
                                     : "Select check-in and check-out dates"}
@@ -300,14 +301,17 @@ const Layout = (  ) => {
 
                                         chart.map(( item , index) => (
 
-                                        <div key={index} className='flex justify-between items-center w-full gap-4'>
+                                        <div key={index} className='flex justify-between items-center w-full gap-5'>
 
-                                            <h1 className='text-lg font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
+                                            <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
                                             
                                             <div className='flex text-sm w-full gap-1 font-normal'>
-                                                <h1>
-                                                    {item.quantity} Rooms
-                                                </h1>
+                                                <div className='flex gap-1'>
+                                                    <h1>
+                                                        {item.quantity} 
+                                                    </h1>
+                                                    <p className='hidden sm:block' >Rooms</p>
+                                                </div>
                                                 <h1>
                                                     X
                                                 </h1>
@@ -328,7 +332,7 @@ const Layout = (  ) => {
                                                 
                                             </div>
 
-                                            <div className='flex gap-2 text-[17px] font-semibold'>
+                                            <div className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>
                                                 <h1>IDR</h1>
                                                 <h1>{convertToRupiah(item.data[0]?.price) || "No price"}</h1>
                                             </div>
@@ -345,13 +349,13 @@ const Layout = (  ) => {
 
                                     )}
 
-                                    <div className='flex justify-between items-center'>
-                                        <h1>Reservation Subtotal</h1>
-                                        <h1>{convertToRupiah(subtotal && subtotal ? subtotal : 0)}</h1>
+                                    <div className='text-[14px] sm:text-[20px] flex justify-between items-center'>
+                                        <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold'>Reservation Subtotal</h1>
+                                        <h1 className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>{convertToRupiah(subtotal && subtotal ? subtotal : 0)}</h1>
                                     </div>
-                                    <div className='flex justify-between items-center'>
-                                        <h1>Tax</h1>
-                                        <h1>{convertToRupiah(tax && tax ? tax : 0) }</h1>
+                                    <div className='text-[14px] sm:text-[20px] flex justify-between items-center'>
+                                        <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold'>Tax</h1>
+                                        <h1 className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>{convertToRupiah(tax && tax ? tax : 0) }</h1>
                                     </div>
 
                                 </div>
