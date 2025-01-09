@@ -81,9 +81,9 @@ const ButtonUpdate = ( { checkin, checkout, OpenCalendarMini, OpenModalPeople, p
 
         {/* Update */}
 
-        <div onClick={pushUpdate} className='px-5 py-2 bg-color1 text-white rounded-xl'>
+        <button onClick={pushUpdate} className='px-5 py-2 bg-color1 text-white rounded-xl'>
             <h1>Update</h1>
-        </div>
+        </button>
 
         </div>
 

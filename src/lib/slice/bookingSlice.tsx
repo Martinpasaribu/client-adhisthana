@@ -107,7 +107,7 @@ const bookingSlice = createSlice({
     },
     setCheckOut(state, action) {
       state.stateCheckOut = action.payload
-      console.log("checkIn redux",state.stateCheckOut)
+      console.log("checkOut redux",state.stateCheckOut)
     },
     
     setAddChart(state, action) {

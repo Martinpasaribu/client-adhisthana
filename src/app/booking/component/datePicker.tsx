@@ -7,6 +7,7 @@ import { useAppDispatch } from "@/lib/hooks/hooks";
 import { setCheckIn, setCheckOut } from "@/lib/slice/bookingSlice";
 import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
+import { formatLocalISOIn, formatLocalISOOut } from "./constant";
 
 
 const DatePicker = () => {
@@ -34,21 +35,25 @@ const DatePicker = () => {
   // Fungsi untuk menambahkan waktu default pada tanggal
   const setDefaultTime = (date: Date, hours: number, minutes: number) => {
     const newDate = new Date(date);
-    newDate.setHours(hours, minutes, 0, 0); // Set jam dan menit sesuai
+    newDate.setUTCHours(hours, minutes, 0, 0); // Gunakan UTC untuk menghindari zona waktu
     return newDate;
   };
+  
 
+  
   useEffect(() => {
     if (checkInDate) {
-      const formattedCheckIn = formatDate(checkInDate);
-      dispatch(setCheckIn(formattedCheckIn)); // Kirim tanggal check-in ke Redux
+      const formattedCheckIn = formatDate(checkInDate); // Tetap waktu asli
+      dispatch(setCheckIn(formattedCheckIn));
+      console.log("CheckIn redux:", formattedCheckIn);
     }
     if (checkOutDate) {
-      const formattedCheckOut = formatDate(checkOutDate);
-      dispatch(setCheckOut(formattedCheckOut)); // Kirim tanggal check-out ke Redux
+      const formattedCheckOut = formatDate(checkOutDate); // Tetap waktu asli
+      dispatch(setCheckOut(formattedCheckOut));
+      console.log("CheckOut redux:", formattedCheckOut);
     }
   }, [checkInDate, checkOutDate, dispatch]);
-
+  
   const handleSetDate = () => {
     if (!checkInDate || !checkOutDate) {
       // Validasi jika salah satu tanggal belum diisi
@@ -86,10 +91,11 @@ const DatePicker = () => {
       return;
     }
   
-    // Jika semua validasi lolos
-    router.push(
-      `/booking/offers?checkin=${checkInDate.toISOString()}&checkout=${checkOutDate.toISOString()}&people=4`
-    );
+	    // Jika semua validasi lolos
+      router.push(
+        `/booking/offers?checkin=${formatLocalISOIn(checkInDate)}&checkout=${formatLocalISOOut(checkOutDate)}&people=4`
+      );
+    
   };
   
 

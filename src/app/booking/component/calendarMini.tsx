@@ -8,6 +8,7 @@ import { setCheckIn, setCheckOut } from "@/lib/slice/bookingSlice";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
 import { formatDate, setDefaultTime } from "./formatDate";
+import { formatLocalISOIn, formatLocalISOOut } from "./constant";
 
 interface CalendarProps {
   checkIn?: Date | null;
@@ -42,12 +43,12 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps)
     // console.log("new", checkOutDate)
 
     if (checkInDate) {
-      dispatch(setCheckIn( checkInDate ? checkInDate.toISOString() : null));
+      dispatch(setCheckIn( checkInDate ? formatLocalISOIn(checkInDate) : null));
 
     }
 
     if (checkOutDate) {
-      dispatch(setCheckOut( checkOutDate ? checkOutDate.toISOString() : null));
+      dispatch(setCheckOut( checkOutDate ? formatLocalISOOut(checkOutDate) : null));
 
     
     }

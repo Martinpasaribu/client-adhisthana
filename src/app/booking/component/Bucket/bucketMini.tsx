@@ -237,8 +237,6 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
 
         </div>
     
-
-
     </div>
 
   )

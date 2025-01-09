@@ -4,8 +4,7 @@
 import React, { Suspense, useEffect, useState } from 'react'
 import Image from 'next/image'
 import { IoMdArrowDropdown, IoPeople, FaRegCalendarAlt, gift, discount,GrNext } from '@/style/icons';
-import OffersItem from '../component/offersItem';
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Bucket from '../component/Bucket/bucket';
 import { formatCheckInCheckOut, night } from '../component/formatDate';
 import ButtonUpdate from '../component/buttonUpdate';
@@ -16,6 +15,8 @@ import toast from 'react-hot-toast';
 import { DeletedCart } from '../utils/deletedCart';
 import { http } from '@/utils/http';
 import BucketMini from '../component/Bucket/bucketMini';
+import OffersItem from '../component/Offers/offersItem';
+import { formatLocalISOIn, formatLocalISOOut } from '../component/constant';
 
 
 const images = [
@@ -29,15 +30,16 @@ const Layout = () => {
 
     const router = useRouter();
     const searchParams = useSearchParams();
-  
+    const pathname = usePathname();
+    const [shouldReload, setShouldReload] = useState(false);
     // Ambil parameter checkin dan checkout
+    const [activeBucket, setActiveBucket] = useState (false) 
+    
+    const [validate, setValidate] = useState (true) 
     const checkin = searchParams.get("checkin");
     const checkout = searchParams.get("checkout");
     const people: string | null = searchParams.get("people");
     
-    const [validate, setValidate] = useState (true) 
-    const [activeBucket, setActiveBucket] = useState (false) 
-  
     const [safecheckin, setSafecheckIn] = useState<Date | null>(
         checkin ? new Date(checkin) : null
         );
@@ -55,6 +57,18 @@ const Layout = () => {
       }
       return 4;
     });
+    
+    useEffect(() => {
+      if (shouldReload) {
+        // Cek apakah parameter sudah cocok sebelum reload
+        if (searchParams.get("checkin") === formatLocalISOIn(safecheckin) &&
+            searchParams.get("checkout") === formatLocalISOOut(safecheckout) &&
+            searchParams.get("people") === "4") {
+          window.location.reload();
+        }
+      }
+    }, [shouldReload, searchParams, safecheckin, safecheckout]);
+
     
     useEffect(() => {
       // Validasi check-in tidak boleh >= check-out
@@ -76,25 +90,43 @@ const Layout = () => {
     }, [safecheckin, safecheckout]);
     
     
-    const PushUpdate = () => {
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    // const datePar = JSON.parse(localStorage.getItem('Params') ?? '{}') || {};
+    
+    // useEffect(() => {
       
-  
-      if(safecheckin && safecheckout && validate === true ) {
-  
-      
-        router.push(
-          `/booking/offers?checkin=${safecheckin?.toISOString()}&checkout=${safecheckout?.toISOString()}&people=${maxPeople}`
-        );
-        toast.success("Penawaran diperbaharui.",{ position: "top-right", duration: 5000 });
+    //   if(datePar){
         
-      }else {
-        toast.error("Range tanggal booking salah.",{ position: "bottom-right", duration: 5000 });
-      }
+    //   }
+    //   const setCheckin = datePar.checkin ? new Date(datePar.checkin).toISOString() : null;
+    //   const setCheckout = datePar.checkout ? new Date(datePar.checkout).toISOString() : null;
+    
+    // },[datePar])
+
+      const PushUpdate = () => {
+        if (safecheckin && safecheckout && validate) { 
+          
+
+          const newUrl =`/booking/offers?checkin=${formatLocalISOIn(safecheckin)}&checkout=${formatLocalISOOut(safecheckout)}&people=4`
+          router.push(newUrl);
+
+          setShouldReload(true);
+         
+
+          toast.success("Penawaran diperbaharui.", {
+            position: "top-right",
+            duration: 5000,
+          });
+        } else {
+          toast.error("Range tanggal booking salah.", {
+            position: "bottom-right",
+            duration: 5000,
+          });
+        }
+      };
     
     
-    }
-  
-  
+
     // function Modal calendar mini
     const [isModalOpen, setModalOpen] = useState(false);
     const closeModal = () => setModalOpen(false);
@@ -225,9 +257,9 @@ const Layout = () => {
   
   
             {/* Product Vilas */}
-            <section className='flex w-full relative'>
+            <section className='flex justify-between w-full relative'>
   
-              <div className='w-full max-w-[80rem] '>
+              <div className='w-full'>
   
                 <OffersItem /> 
   

@@ -2,42 +2,71 @@
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation';
+import { useRouter, useSearchParams } from 'next/navigation';
 import { Size, bad, people } from '@/style/icons'
-import ClouserImage from './clouserImage'
+
 import { RoomModels } from '@/models/roomModels'
-import SkeletonItemOffers from './skeletonItemOffers';
+
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import { setAddChart } from '@/lib/slice/bookingSlice';
-import SelectButton from './selectButton';
-import { http } from '@/utils/http';
 
+import { http } from '@/utils/http';
+import ClouserImage from '../clouserImage';
+import SelectButton from './selectButton';
+import SkeletonItemOffers from './skeletonItemOffers';
+
+interface Params {
+  checkin? :  Date | null;
+  checkout? : Date | null;
+}
 
 const OffersItem = () => {
 
     const router = useRouter();
+    const searchParams = useSearchParams();
+      
     const dispatch = useAppDispatch();
 
-
-     const [vila, setVila] = useState<RoomModels[]>([]);
+    const [vila, setVila] = useState<RoomModels[]>([]);
      
     const chart = useAppSelector((state) => state.booking.stateChartRes);
 
+    useEffect(() => {
+      
+      const datePar = JSON.parse(localStorage.getItem('Params') ?? '{}') || {};
+    
+      // const setCheckin = datePar.checkin ? new Date(datePar.checkin).toISOString() : null;
+      // const setCheckout = datePar.checkout ? new Date(datePar.checkout).toISOString() : null;
+    
+      const setCheckin = searchParams.get("checkin");
+      const setCheckout = searchParams.get("checkout");
 
-     useEffect(() => {
       const fetchVila = async () => {
         try {
-          const response = await fetch("/api/vila");
+          const response = await fetch("/api/updateVila", {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              checkIn: setCheckin,
+              checkOut: setCheckout,
+            }),
+          });
+    
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+    
           const data = await response.json();
           setVila(data.data);
           console.log("Data fetched:", data.data);
         } catch (error) {
-          console.error("Error fetching posts:", error);
+          console.error("Error fetching vila:", error);
         }
       };
-  
+    
       fetchVila();
     }, []);
+    
 
     const convertToRupiah = (number:any) => {
       return number.toLocaleString('id-ID', {
@@ -87,7 +116,7 @@ const OffersItem = () => {
 
             { vila.map((item, index) => (
 
-              <div key={index} className='flex h-full max-w-[75rem] mx-[.5rem] md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
+              <div key={index} className='flex h-full mx-[.5rem] md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
 
                   {/* Item */}
 

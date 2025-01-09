@@ -33,6 +33,7 @@ const Navbar = () => {
 
     DeletedCart().catch((error) => console.error('Error during unload:', error));
     localStorage.removeItem('cart_vila');
+    localStorage.removeItem('Params');
 
   }
   useEffect(() => {
