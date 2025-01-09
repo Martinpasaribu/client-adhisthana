@@ -212,79 +212,80 @@ const Layout = (  ) => {
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[8rem] relative gap-2'>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[8rem] relative gap-2 overflow-hidden p-2'>
                     
-                    <div className='flex-center w-full h-full max-w-[70rem]'>
+                    <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
 
 
-                        <div className='select-none flex flex-col gap-4 space-y-5 w-full max-w-[30rem]'>
-                        <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
+                        <div className='select-none flex flex-col gap-4 space-y-5 w-full xl:max-w-[30rem]'>
 
-                        <div  className='flex flex-col gap-4 space-y-5 w-full max-w-[30rem]' >
+                            <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
 
-                            <div className=' flex justify-around items-center gap-4 w-full'>
-                                {['Mr.', 'Mrs.', 'Ms.'].map((title) => (
-                                <div key={title} className="flex items-center">
+                            <div  className='flex flex-col gap-4 space-y-5 w-full xl:max-w-[30rem]' >
+
+                                <div className=' flex justify-around items-center gap-4 w-full'>
+                                    {['Mr.', 'Mrs.', 'Ms.'].map((title) => (
+                                    <div key={title} className="flex items-center">
+                                        <input
+                                        id="title"
+                                        type="radio"
+                                        name="title"
+                                        value={title}
+                                        checked={formData.title === title}
+                                        onChange={() => setFormData((prev) => ({ ...prev, title }))}
+                                        required
+                                        className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                                        />
+                                        <label className="ms-2 text-sm font-medium text-gray-900">{title}</label>
+                                    </div>
+                                    ))}
+                                </div>
+
+                                <div className="grid gap-6 mb-6 md:grid-rows-4 ">
+                                    <div>
                                     <input
-                                    id="title"
-                                    type="radio"
-                                    name="title"
-                                    value={title}
-                                    checked={formData.title === title}
-                                    onChange={() => setFormData((prev) => ({ ...prev, title }))}
-                                    required
-                                    className="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                                        type="text"
+                                        id="name"
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full"
+                                        placeholder="Name"
+                                        required
                                     />
-                                    <label className="ms-2 text-sm font-medium text-gray-900">{title}</label>
+                                    </div>
+                                    <div>
+                                    <input
+                                        type="email"
+                                        id="email"
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
+                                        placeholder="Email Address"
+                                        required
+                                    />
+                                    </div>
+                                    <div>
+                                    <input
+                                        type="tel"
+                                        id="phone"
+                                        value={formData.phone}
+                                        onChange={handleChange}
+                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
+                                        placeholder="Phone Number"
+                                        required
+                                    />
+                                    </div>
                                 </div>
-                                ))}
-                            </div>
 
-                            <div className="grid gap-6 mb-6 md:grid-rows-4 ">
-                                <div>
-                                <input
-                                    type="text"
-                                    id="name"
-                                    value={formData.name}
-                                    onChange={handleChange}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full"
-                                    placeholder="Name"
-                                    required
-                                />
-                                </div>
-                                <div>
-                                <input
-                                    type="email"
-                                    id="email"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
-                                    placeholder="Email Address"
-                                    required
-                                />
-                                </div>
-                                <div>
-                                <input
-                                    type="tel"
-                                    id="phone"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full"
-                                    placeholder="Phone Number"
-                                    required
-                                />
-                                </div>
                             </div>
-
-                        </div>
-                        
+                            
                         </div>
 
-                        <div className='flex justify-end items-end  flex-col h-full w-full max-w-[40rem]'>
+                        <div className='flex justify-end items-end  flex-col h-full w-full xl:max-w-[40rem]'>
 
 
 
-                                <div className='bg-color4 p-4 w-full max-w-[30rem]'>
+                                <div className='bg-color4 p-4 w-full xl:max-w-[30rem]'>
                                     <h1 className='text-[22px] md:text-xl mb-8'>
                                         Your Resevation
                                     </h1>
@@ -355,7 +356,7 @@ const Layout = (  ) => {
 
                                 </div>
 
-                                <div className='p-4 w-full max-w-[30rem] flex-center bg-color2'>
+                                <div className='p-4 w-full xl:max-w-[30rem] flex-center bg-color2'>
 
                                     <div className='flex justify-between items-center w-full text-yellow-400 font-semibold'>
                                         <h1>Reservation Total</h1>
@@ -367,9 +368,9 @@ const Layout = (  ) => {
 
                     </div>
 
-                    <hr className=" top-0 left-0 z-30 h-0 w-full max-w-[74rem] border-b border-solid border-color1"/>
+                    <hr className=" top-0 left-0 z-30 h-0 w-full max-w-[74rem] border-b border-solid border-color1 mt-5"/>
 
-                    <div className='flex justify-end items-center w-full h-full max-w-[70rem] p-2'>
+                    <div className='flex justify-end items-center w-full h-full max-w-[70rem] p-2 mt-5'>
 
                         <button type="submit" className='px-3 py-2 bg-color1 text-white'>
                             <h1> Create Transaction </h1>
