@@ -65,7 +65,7 @@ const OffersItem = () => {
       };
     
       fetchVila();
-    }, []);
+    }, [searchParams]);
     
 
     const convertToRupiah = (number:any) => {

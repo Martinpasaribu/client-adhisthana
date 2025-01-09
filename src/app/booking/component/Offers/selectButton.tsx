@@ -2,13 +2,14 @@
 
 import { RoomModels } from '@/models/roomModels'
 import React, { useEffect, useState } from 'react'
-import { BucketModels } from '../models';
+
 import { useAppDispatch } from '@/lib/hooks/hooks';
 import { setAddChart, setAddVila, setRemoveVila, setIsProcessing } from '@/lib/slice/bookingSlice';
 import { http } from '@/utils/http';
-import { DeletedCart } from '../utils/deletedCart';
+
 import toast from 'react-hot-toast';
 import debounce from 'lodash-es/debounce';
+import { BucketModels } from '../../models';
 
 
 

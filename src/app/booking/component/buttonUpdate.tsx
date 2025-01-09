@@ -50,6 +50,7 @@ const ButtonUpdate = ( { checkin, checkout, OpenCalendarMini, OpenModalPeople, p
       setCheckOutDay(new Date(dateOut));
       updateCheckOut(new Date(dateOut));
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dateIn, dateOut]);
 
     return (
