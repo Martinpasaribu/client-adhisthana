@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { formatCheckInCheckOut, night } from './formatDate'
 import { useAppSelector } from '@/lib/hooks/hooks';
+import SkeletonItemDate from './Offers/skeletonItemDate';
 
 interface ButtonProps {
 
@@ -58,20 +59,35 @@ const ButtonUpdate = ( { checkin, checkout, OpenCalendarMini, OpenModalPeople, p
           
         <div className='flex h-full w-full   mx-[0.5rem] md1:mx-[1.8rem] justify-around items-center text-[10px] hp4:text-[14px]  md1:text-[16px] gap-2 md1:gap-5 m-1 p-3 border-[1px] shadow-md rounded-xl'>
 
-        {/* Date */}
-        <div onClick={OpenCalendarMini} className='cursor-pointer flex-center gap-3'>
 
-            <FaRegCalendarAlt size={20} />
-            <h1>
-                {checkIn && checkOut
-                ?  formatCheckInCheckOut(checkIn, checkOut, true, night)
+        { checkIn && checkOut  ? (
 
-                : "Select check-in and check-out dates"}
-            </h1>
+          // Date
+          <div onClick={OpenCalendarMini} className='cursor-pointer flex-center gap-3'>
+          
+              <FaRegCalendarAlt size={20} />
+              <h1>
+                  {checkIn && checkOut
+                  ?  formatCheckInCheckOut(checkIn, checkOut, true, night)
 
-            <IoMdArrowDropdown size={20} className='hidden hp4:flex'/>
+                  : "Select check-in and check-out dates"}
+              </h1>
 
-        </div>
+              <IoMdArrowDropdown size={20} className='hidden hp4:flex'/>
+
+          </div>
+
+          ) :  (
+
+            <div className='space-y-10'>
+
+                <SkeletonItemDate/>
+
+            </div>
+
+          )
+        }
+      
 
         {/* People */}
         <div onClick={OpenModalPeople} className='flex-center gap-3 cursor-pointer'>

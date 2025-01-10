@@ -113,6 +113,12 @@ const Layout = (  ) => {
           return;
       }
 
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(formData.email)) {
+        toast.error('Invalid email format!', { position: 'bottom-right', duration: 5000 });
+        return;
+      }
+
         try {
           const response = await fetch('/api/booking', {
             method: 'POST',
@@ -234,7 +240,7 @@ const Layout = (  ) => {
                                         checked={formData.title === title}
                                         onChange={() => setFormData((prev) => ({ ...prev, title }))}
                                         required
-                                        className="w-4 h-4  text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500"
+                                        className="w-4 h-4 appearance-none rounded-full border border-color2 checked:bg-color1 checked:border-color1 focus:ring-2 focus:ring-white"
                                         />
                                         <label className="ms-2 text-sm font-medium text-gray-900">{title}</label>
                                     </div>
@@ -250,7 +256,6 @@ const Layout = (  ) => {
                                         onChange={handleChange}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full p-2 md:p-3"
                                         placeholder="Name"
-                                        required
                                     />
                                     </div>
                                     <div>
@@ -261,18 +266,16 @@ const Layout = (  ) => {
                                         onChange={handleChange}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
                                         placeholder="Email Address"
-                                        required
                                     />
                                     </div>
                                     <div>
                                     <input
-                                        type="tel"
+                                        type="number"
                                         id="phone"
                                         value={formData.phone}
                                         onChange={handleChange}
                                         className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
                                         placeholder="Phone Number"
-                                        required
                                     />
                                     </div>
                                 </div>

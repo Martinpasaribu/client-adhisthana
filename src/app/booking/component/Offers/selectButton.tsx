@@ -16,6 +16,7 @@ import { BucketModels } from '../../models';
 
 interface SelectProps {
     item : string;
+    name : string;
     chart : BucketModels[];
     handleAddChart : (id: string) =>  void ;
 
@@ -24,7 +25,7 @@ interface SelectProps {
 
 
 
-const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
+const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) => {
     
     const [active , setActive] = useState (false)
     const [ pty, setPty] = useState<number >(0)
@@ -64,6 +65,15 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
     // deleted vila to session
     const handleRemoveVila =  debounce( async () => {
 
+
+        toast.success(`Deleted ${name}`, {
+            position: "bottom-right",
+            duration: 1000,
+            iconTheme: { primary: "#C0562F", secondary: "#fff" },
+            icon: "🛒",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
         dispatch(setIsProcessing(true));
         dispatch(setRemoveVila(item)); 
 
@@ -87,15 +97,18 @@ const SelectButton = ( { item, chart , handleAddChart } : SelectProps ) => {
 
     // add vila to session
     const handleAddVila =  debounce( async () => {
-        dispatch(setIsProcessing(true));
-        dispatch(setAddVila(item));
-        toast.success("Add Item", {
+        
+        toast.success(`Add ${name}`, {
             position: "bottom-right",
             duration: 1000,
             iconTheme: { primary: "#C0562F", secondary: "#fff" },
             icon: "🛒",
             style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
           });
+        
+        dispatch(setIsProcessing(true));
+        dispatch(setAddVila(item));
+
         http.post(`/booking/add-to-cart`,
             { 
                 roomId: item,

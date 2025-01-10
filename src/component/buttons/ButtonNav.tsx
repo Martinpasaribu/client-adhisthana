@@ -32,7 +32,7 @@ const ButtonNav = (
         if(setIndexImage){
             setImage?.(setIndexImage)
         }
-    },[setIndexImage] )
+    },[setImage, setIndexImage] )
 
   return (
     

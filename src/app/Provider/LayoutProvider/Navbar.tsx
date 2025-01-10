@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link"
 import Image from "next/image"
 import CustomButton from "@/component/buttons/CustomButton"
@@ -6,13 +8,15 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import { MdDarkMode, MdLightMode } from "@/style/icons";
 import Hamburger from "@/component/modal/Hamburger";
 import { DeletedCart } from "@/app/booking/utils/deletedCart";
-
+import { useRouter, useSearchParams, usePathname } from "next/navigation";
 
 
 const Navbar = () => {
 
   const [scrolled, setScrolled] = useState(false);
   const [hamburger, setHamburger] = useState(false);
+  const router = useRouter(); 
+  const pathname = usePathname();
 
 
   const openModal = () => {
@@ -25,9 +29,9 @@ const Navbar = () => {
     console.log("Hamburger animation finished!");
   };
 
-  // useEffect(() => {
-
-  // })
+  const handleCloseHam = () => {
+    setHamburger(false)
+  }
 
   const handleBooking = () => {
 
@@ -47,13 +51,27 @@ const Navbar = () => {
     };
   }, []);
 
-  return (
-    <header 
-        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 ${
-          scrolled ? "bg-white/100" : "bg-black/5"
-        }`}>
 
-        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-1 sm:px-3 md:px-5 py-1 md:py-4">
+  const getBackgroundColor = () => {
+    if (pathname === "/contact") return "bg-gray-400"; // Contact
+    if (pathname === "/faq") return "bg-gray-400"; // Contact
+    return "backdrop-blur-sm";
+  };
+
+  const getBackgroundColorUl = () => {
+    if (pathname === "/ourVila") return "text-color2"; 
+    return "text-white";
+  };
+  
+
+  return (
+      <header
+        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 ${
+            scrolled ? "bg-white/100" : getBackgroundColor()
+          }`}
+        >
+
+        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-3 sm:px-3 md:px-5 py-1 md:py-4">
             
         <label className="hamburger w-full max-w-[28rem] h-[1.5rem] z-50 ">
           <input
@@ -78,7 +96,7 @@ const Navbar = () => {
 
           <div className="flex justify-end md2:justify-center items-center w-full max-w-[30rem]">
 
-            <ul className={`hidden  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':'text-slate-100'} `}>
+            <ul className={`hidden  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':getBackgroundColorUl()} `}>
 
               <Link href="/">
                 <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} `}>
@@ -119,7 +137,7 @@ const Navbar = () => {
 
         </nav>
 
-        <Hamburger isOpen={hamburger} onAnimationEnd={handleAnimationEnd}/>
+        <Hamburger isOpen={hamburger} onAnimationEnd={handleAnimationEnd} closeHamburger={handleCloseHam}/>
 
     </header>
   )

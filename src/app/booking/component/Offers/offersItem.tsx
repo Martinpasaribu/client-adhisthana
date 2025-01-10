@@ -8,12 +8,13 @@ import { Size, bad, people } from '@/style/icons'
 import { RoomModels } from '@/models/roomModels'
 
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
-import { setAddChart } from '@/lib/slice/bookingSlice';
-
+import { setAddChart, setIsProcessing } from '@/lib/slice/bookingSlice';
+import debounce from 'lodash-es/debounce';
 import { http } from '@/utils/http';
 import ClouserImage from '../clouserImage';
 import SelectButton from './selectButton';
 import SkeletonItemOffers from './skeletonItemOffers';
+import toast from 'react-hot-toast';
 
 interface Params {
   checkin? :  Date | null;
@@ -82,11 +83,24 @@ const OffersItem = () => {
   
     }
 
-    const handleAddChart = (id:any) => {
+    const handleAddChart = debounce( async (id:any) => {
+
+      toast.success("Add Rooms", {
+        position: "bottom-right",
+        duration: 1000,
+        iconTheme: { primary: "#C0562F", secondary: "#fff" },
+        icon: "🛒",
+        style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+      });
 
       const cart_vila = vila.filter( index => ( index._id === id ))
+      
+
+      dispatch(setIsProcessing(true));
       dispatch(setAddChart(cart_vila)); 
 
+
+      
       // Kirim data ke server
       http.post(`/booking/add-to-cart`, 
           {   roomId: id,
@@ -99,11 +113,14 @@ const OffersItem = () => {
       })
       .catch(error => {
           console.error('Failed to sync cart with server:', error.response?.data || error.message);
+      }).finally(() => {
+        dispatch(setIsProcessing(false)); 
+
       });
     
       // console.log('data vila :', cart_vila)
 
-    }
+    }, 700)
 
  
     
@@ -243,7 +260,7 @@ const OffersItem = () => {
 
                   { vila.length > 0 && chart && chart.length > 0 ? (
                         
-                    <SelectButton item={ item._id || ''} handleAddChart={handleAddChart} chart={chart} />
+                    <SelectButton item={ item._id || ''} handleAddChart={handleAddChart} chart={chart} name={item.name}/>
                    
                     ) : (
                       

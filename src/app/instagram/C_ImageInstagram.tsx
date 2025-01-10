@@ -79,7 +79,7 @@ const ImageCarousel = ({ content }: ImageCarouselProps) => {
             >
               <Image
                 src={item.media_url || "/placeholder-image.png"}
-                alt={item.caption || `Image number ${index + 1}`}
+                alt={`Image number ${index + 1}`}
                 width={800}
                 height={800}
                 className="w-full h-full object-cover rounded-md"

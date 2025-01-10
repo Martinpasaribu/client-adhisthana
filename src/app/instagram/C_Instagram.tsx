@@ -45,8 +45,8 @@ export default function InstagramProfile( { act, id } : InstagramProps) {
     
       const contentData = posts[0].content?.[0]?.data;
       setContent(contentData); // Tidak akan ada kesalahan
-      console.log('data Profile: ', profileData || 'Data tidak ditemukan');
-      console.log('data Content: ', contentData || 'Data tidak ditemukan');
+      // console.log('data Profile: ', profileData || 'Data tidak ditemukan');
+      // console.log('data Content: ', contentData || 'Data tidak ditemukan');
     }
     
     
@@ -69,7 +69,7 @@ export default function InstagramProfile( { act, id } : InstagramProps) {
             <div>
             <Image
               src={profile?.profile_picture_url || '/placeholder-image.png'} // Nilai default
-              alt={profile?.profile_picture_url || 'imageProfile'}
+              alt={'imageProfile'}
               width={100}
               height={100}
               className="w-30 h-30 sm:w-50 sm:h-50 object-contain rounded-full"

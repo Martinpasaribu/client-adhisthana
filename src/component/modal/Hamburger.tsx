@@ -3,14 +3,16 @@ import React, { useEffect, useState } from 'react'
 import CustomButton from '../buttons/CustomButton'
 import ButtonNav from '../buttons/ButtonNav';
 import Image from 'next/image';
+import ButtonNavLink from '../buttons/ButtonViewNav';
 
 
 interface HamburgerProps {
     isOpen: boolean;
     onAnimationEnd?: () => void;
+    closeHamburger: () => void;
   }
   
-  const Hamburger = ({ isOpen, onAnimationEnd }: HamburgerProps) => {
+  const Hamburger = ({ isOpen, onAnimationEnd, closeHamburger }: HamburgerProps) => {
     const [animationClass, setAnimationClass] = useState<string>("");
     const [animationClassImage, setAnimationClassImage] = useState("animate-sidebar_in");
     const [visible, setVisible] = useState<boolean>(false);
@@ -28,7 +30,6 @@ interface HamburgerProps {
         "/assets/ImageNav/image6.png",
         "/assets/ImageNav/image7.png",
       ];
-
 
       
     const handleButtonActive = (title: string) => {
@@ -88,34 +89,40 @@ interface HamburgerProps {
         className={`z-30 fixed inset-0 bg-white h-screen ${animationClass}  transition-transform `}
         onAnimationEnd={handleAnimationEnd} // Callback setelah animasi selesai
       >
-         <div className='flex  h-full justify-center items-start'>
+         <div className='flex md:gap-4 w-full h-full justify-center items-center'>
 
-            <ul className='flex w-full flex-col h-full justify-center items-start p-20 gap-4'>
+            <div className='w-full justify-center p-2'>
+              <ul className='flex w-full  flex-col h-full  justify-center items-start md:items-end p-8 md:p-20 gap-4'>
 
-            {[
-                "Home",
-                "Explore Our Villas",
-                "Book Your Stay",
-                "Contact & Location",
-                "Frequently Asked Questions",
-                "Privacy Policy",
-                "Terms & Conditions",
+              {[
+                  "Home",
+                  "Explore Our Villas",
+                  "Book Your Stay",
+                  "Contact & Location",
+                  "Frequently Asked Questions",
+                  "Privacy Policy",
+                  "Terms & Conditions",
 
-            ].map((title, index) => (
-                <ButtonNav
-                key={title}
-                title={title}
-                // eslint-disable-next-line @typescript-eslint/no-unused-expressions
-                handleClick={() => {handleButtonActive(title), setIndexImage(index+1) }}
-                setIndexImage={index}
-                isActive={activeButton === title} 
-                
-                />
-            ))}
+              ].map((title, index) => (
+                  <ButtonNav
+                  key={title}
+                  title={title}
+                  // eslint-disable-next-line @typescript-eslint/no-unused-expressions
+                  handleClick={() => {handleButtonActive(title), setIndexImage(index) }}
+                  setIndexImage={index}
+                  isActive={activeButton === title} 
+                  
+                  />
+              ))}
 
-            </ul>
+              </ul>
 
-            <div className='w-full h-full flex flex-col justify-center items-center'>
+              <div className='block sm:hidden w-full flex-center'>
+                <ButtonNavLink index={currentIndexImage} setClose={closeHamburger}/>
+              </div>
+            </div>
+
+            <div className='hidden w-full h-full sm:flex flex-col justify-start items-center'>
 
                 <div className='flex justify-end items-center p-8 w-full'>
                     <Link href="/auth" className="flex-center w-full max-w-[10rem]">
@@ -127,18 +134,27 @@ interface HamburgerProps {
                     </Link>
                 </div>
 
-                <div className='w-full h-full flex justify-center items-center  '>
+                <div className='w-full h-full flex justify-center md:justify-start items-center  '>
                     
-                        <Image
+                  <div className='w-full max-w-[22rem] h-full max-h-[27rem] md:max-h-[30rem] hpDesktop:max-w-[32rem] justify-start items-center flex flex-col gap-5'>
+
+
+                    <Image
                             src={images[currentIndexImage]}
                             alt={`Image ${currentIndexImage + 1}`}
                             width={500} // Sesuaikan ukuran gambar
                             height={300}
                             key={currentIndexImage}
-                            className={`${animationClassImage} rounded-lg`}
+                            className={`${animationClassImage} rounded-lg w-[18rem] h-[15rem] md:w-[22rem] md:h-[18rem] md3:w-[32rem] md3:h-[25rem] `}
                         />
 
 
+                        <ButtonNavLink index={currentIndexImage} setClose={closeHamburger}/>
+
+
+
+
+                  </div>
                    
                 </div>
             </div>

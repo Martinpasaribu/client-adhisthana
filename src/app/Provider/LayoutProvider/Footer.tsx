@@ -28,8 +28,8 @@ const Footer = () => {
     <footer className="flex flex-col text-black-100  border-gray-100 bg-color2 dark:bg-slate-900 pt-10">
 
         <div  className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-16 px-6 py-10">
-            <div className="flex flex-col justify-center items-start gap-6">
-                <Image src="/assets/Logo/adhisthanaFooter.png" alt="logo" width={408} height={200} className="object-contain w-[4rem] sm:h-[6rem] sm:w-[15rem] h-[30rem]" />
+            <div className="flex flex-col justify-center items-center  sm:items-start gap-6">
+                <Image src="/assets/Logo/adhisthanaFooter.png" alt="logo" width={908} height={800} className="object-contain  h-[10rem] w-[10rem] sm:h-[6rem] sm:w-[15rem]" />
 
             </div>
 
@@ -54,9 +54,12 @@ const Footer = () => {
         </div>
 
         <div className='flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10 text-white'>
-            <p>@2023 Adhisthana. All rights reserved</p>
+            <p>@2025 Adhisthana. All rights reserved</p>
 
-            <div className="footer__copyrights-link text-white">
+            <div className="footer__copyrights-link text-white flex-col hp2:flex-row w-full">
+                <Link href="/faq" className="">
+                FAQ
+                </Link>
                 <Link href="/" className="">
                 Privacy & Policy
                 </Link>

@@ -13,6 +13,7 @@ import { FaInstagram } from 'react-icons/fa6';
 import dynamic from 'next/dynamic'
 import Message from './component/Message';
 import Subscribe from './component/subscribe';
+import MapEmbed from './component/MapEmbed';
 
 // const Map = dynamic(
 //     () => import("@/component/Map").then((component) => component.Map),
@@ -150,8 +151,9 @@ export const Layout = () => {
             </div>
 
             {/* Maps */}
-            <div>
-
+            <div className='mt-4'>
+                
+                <MapEmbed/>
                 {/* <Maps /> */}
                 {/* <Map center={{ lng: -0.1278, lat: 51.5074 }} locations={locations} /> */}
 
