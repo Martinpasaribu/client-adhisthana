@@ -11,13 +11,21 @@ import Image from "next/image";
 import ImageGallery from "./ImageGalerry/ImageGallery";
 import Vila from "./vila/room/Vila";
 import GoogleRecaptcha from "@/utils/GoogleRecaptcha";
+import EnableCookies from "@/utils/CookiesSet";
+import { useState } from "react";
 
 export default function Home() {
 
   <GoogleRecaptcha />
+
   const videoUrl = "https://drive.google.com/uc?id=1UKD6FirpeHvgQc4gih94m-bTP1Y0TCYt&export=download";
 
+  const [cookie, setCookie] = useState(true);
 
+  const handleOffModalCookie = () => {
+    setCookie(false)
+  }
+  
   const images = [
     "/assets/ImageNav/image1.png",
     "/assets/ImageNav/image2.png",
@@ -36,6 +44,8 @@ export default function Home() {
     
     <main className='flex flex-col font-sans bg-white  dark:bg-black'>
         
+        <EnableCookies active={cookie} closeModal={handleOffModalCookie}/>
+
 
         <section className="relative w-full h-screen sm:h-full ">
 

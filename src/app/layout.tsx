@@ -7,6 +7,7 @@ import ClientProvider from "./Provider/ClientProvider/page";
 
 
 
+
 const geistSans = localFont({
   src: "../style/fonts/GeistVF.woff",
   variable: "--font-geist-sans",
@@ -43,6 +44,7 @@ export default function RootLayout({
         </ClientProvider>
 
         
+
       </body>
     </html>
   );

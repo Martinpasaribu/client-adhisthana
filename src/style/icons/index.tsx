@@ -41,6 +41,7 @@ export { FaBasketShopping } from "react-icons/fa6";
 
 
 import TreeIcons from "../../../public/assets/IconImage/tree.png";
+import Cookies from "../../../public/assets/IconImage/cookie.png";
 import AirIcons from "../../../public/assets/IconImage/air.png";
 import WayangIcons from "../../../public/assets/IconImage/wayang.png";
 import Size from "../../../public/assets/IconImage/Size.png";
@@ -51,6 +52,7 @@ import discount from "../../../public/assets/IconImage/discount.png";
 
 
 export { TreeIcons };
+export { Cookies };
 export { AirIcons };
 export { WayangIcons };
 export { Size };

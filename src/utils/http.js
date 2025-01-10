@@ -6,7 +6,7 @@ export const axiosClient = axios.create({
   withCredentials: true,
 });
 
-// Konfigurasi untuk server HTTP lain
+// Konfigurasi untuk server HTTP lain 
 // export const http = axios.create({
 //   baseURL: 'http://localhost:5001/api/v1',
 //   withCredentials: true,

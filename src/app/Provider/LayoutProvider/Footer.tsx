@@ -53,17 +53,17 @@ const Footer = () => {
             </div>
         </div>
 
-        <div className='flex justify-between items-center flex-wrap mt-10 border-t border-gray-100 sm:px-16 px-6 py-10 text-white'>
+        <div className='flex justify-between items-center flex-wrap mt-10 gap-5 border-t border-gray-100 sm:px-16 px-6 py-10 text-white'>
             <p>@2025 Adhisthana. All rights reserved</p>
 
-            <div className="footer__copyrights-link text-white flex-col hp2:flex-row w-full">
+            <div className="flex sm:justify-end justify-center max-sm:mt-4 gap-10 text-white flex-col hp2:flex-row w-full">
                 <Link href="/faq" className="">
                 FAQ
                 </Link>
-                <Link href="/" className="">
+                <Link href="/" className="w-full max-w-[10rem]">
                 Privacy & Policy
                 </Link>
-                <Link href="/" className="">
+                <Link href="/" className="w-full max-w-[10rem]">
                 Terms & Condition
                 </Link>
             </div>

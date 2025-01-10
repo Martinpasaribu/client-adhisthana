@@ -218,7 +218,7 @@ const Layout = (  ) => {
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-2'>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 hp2:p-6'>
                     
                     <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
 
