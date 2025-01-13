@@ -59,7 +59,7 @@ export default function Register() {
       try {
         // Dapatkan token reCAPTCHA
         const token = await (window as any).grecaptcha.execute("6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn", {
-          action: "confirm_reset",
+          action: "register",
         });
 
         // Kirim permintaan ke server dengan token reCAPTCHA
