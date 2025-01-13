@@ -14,7 +14,7 @@ const axiosClient = axios.create({
 
 export async function refreshToken() {
   try {
-    const response = await axiosClient.get('token');
+    const response = await axiosClient.get('/auth/token');
     const token = response.data.accessToken;
 
     const decoded = jwtDecode(token);
