@@ -23,7 +23,7 @@ export default function ResetPassword() {
     if (typeof window !== "undefined" && (window as any).grecaptcha) {
       try {
         // Dapatkan token reCAPTCHA
-        const token = await (window as any).grecaptcha.execute("6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn", {
+        const token = await (window as any).grecaptcha.execute("6Ld_cKYqAAAAAIXEwnAbGVqWehzWD9HuJ2XKBAh4", {
           action: "confirm_reset",
         });
 
