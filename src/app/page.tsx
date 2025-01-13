@@ -23,6 +23,8 @@ export default function Home() {
 //   strategy="lazyOnload" 
 // />
 
+<Script src="https://www.google.com/recaptcha/api.js?render=6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn" />
+
 
 
   const videoUrl = "https://drive.google.com/uc?id=1UKD6FirpeHvgQc4gih94m-bTP1Y0TCYt&export=download";

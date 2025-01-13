@@ -42,7 +42,7 @@ export default function Login() {
     if (typeof window !== "undefined" && (window as any).grecaptcha) {
       try {
         // Dapatkan token reCAPTCHA
-        const token = await (window as any).grecaptcha.execute("6Ld_cKYqAAAAAIXEwnAbGVqWehzWD9HuJ2XKBAh4", {
+        const token = await (window as any).grecaptcha.execute("6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn", {
           action: "confirm_reset",
         });
 
