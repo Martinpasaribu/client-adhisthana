@@ -6,17 +6,18 @@ import Image from 'next/image'
 import { IoMdArrowDropdown, IoPeople, FaRegCalendarAlt, gift, discount,GrNext } from '@/style/icons';
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import Bucket from '../component/Bucket/bucket';
-import { formatCheckInCheckOut, night } from '../component/formatDate';
-import ButtonUpdate from '../component/buttonUpdate';
-import CalendarMini from '../component/calendarMini';
-import ModalPeople from '../component/modalPeople';
+import { formatCheckInCheckOut, night } from '../component/constant/formatDate';
+import ButtonUpdate from '../component/Update/buttonUpdate';
+import CalendarMini from '../component/Calender/calendarMini';
+import ModalPeople from '../component/Update/modalPeople';
 import { useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
 import { DeletedCart } from '../utils/deletedCart';
-import { http } from '@/utils/http';
+import { http, UrlMain } from '@/utils/http';
 import BucketMini from '../component/Bucket/bucketMini';
 import OffersItem from '../component/Offers/offersItem';
 import { formatLocalISOIn, formatLocalISOOut } from '../component/constant';
+import DatePickerUpdate from '../component/Calender/datePickerUpdate';
 
 
 const images = [
@@ -57,6 +58,14 @@ const Layout = () => {
       }
       return 4;
     });
+    
+
+    useEffect(() => {
+      if (!checkin || !checkout) {
+        router.push('/booking'); 
+      }
+    }, [checkin, checkout, router]);
+
     
     useEffect(() => {
       if (shouldReload) {
@@ -107,6 +116,9 @@ const Layout = () => {
         if (safecheckin && safecheckout && validate) { 
           
 
+          DeletedCart().catch((error) => console.error('Error during unload:', error));
+          localStorage.removeItem('cart_vila');
+
           const newUrl =`/booking/offers?checkin=${formatLocalISOIn(safecheckin)}&checkout=${formatLocalISOOut(safecheckout)}&people=4`
           router.push(newUrl);
 
@@ -114,8 +126,8 @@ const Layout = () => {
          
 
           toast.success("Penawaran diperbaharui.", {
-            position: "top-right",
-            duration: 5000,
+            position: "bottom-left",
+            duration: 6000,
           });
         } else {
           toast.error("Range tanggal booking salah.", {
@@ -150,20 +162,20 @@ const Layout = () => {
   
         
   
-      useEffect(() => {
+      // useEffect(() => {
   
-        if (checkin && checkout) {
-          // const formattedDates = formatCheckInCheckOut(safecheckin, safecheckout);
-          console.log('hasil sementara',checkin);
-        }
+      //   if (checkin && checkout) {
+      //     // const formattedDates = formatCheckInCheckOut(safecheckin, safecheckout);
+      //     console.log('hasil sementara',checkin);
+      //   }
   
-      }, [checkin, checkout]);
+      // }, [checkin, checkout]);
   
 
       useEffect(() => {
           const handleUnload = () => {
               // Kirim data ke server menggunakan navigator.sendBeacon
-              const url = 'https://adhistahan-serve.vercel.app/api/v1/booking/remove-cart';
+              const url = `${UrlMain}/api/v1/booking/remove-cart`;
               navigator.sendBeacon(url);
 
               // Hapus localStorage
@@ -231,7 +243,16 @@ const Layout = () => {
   
             <div className=''>
   
-              <CalendarMini 
+              {/* <CalendarMini 
+                checkIn={safecheckin || null } 
+                checkOut={safecheckout || null} 
+                isOpen={isModalOpen} 
+                closeModal={closeModal}
+                // changeIn={Date}
+                // changeOut={Date}
+              />   */}
+
+              <DatePickerUpdate 
                 checkIn={safecheckin || null } 
                 checkOut={safecheckout || null} 
                 isOpen={isModalOpen} 

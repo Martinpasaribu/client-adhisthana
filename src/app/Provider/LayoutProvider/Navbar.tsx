@@ -9,12 +9,16 @@ import { MdDarkMode, MdLightMode } from "@/style/icons";
 import Hamburger from "@/component/modal/Hamburger";
 import { DeletedCart } from "@/app/booking/utils/deletedCart";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { http } from "@/utils/http";
+import toast from "react-hot-toast";
+import { UserModels } from "@/models/userModels";
 
 
 const Navbar = () => {
 
   const [scrolled, setScrolled] = useState(false);
   const [hamburger, setHamburger] = useState(false);
+  const [dataMe, setDataMe] = useState<UserModels>();
   const router = useRouter(); 
   const pathname = usePathname();
 
@@ -40,6 +44,14 @@ const Navbar = () => {
     localStorage.removeItem('Params');
 
   }
+
+  const handleBookingNonDeletedSession = () => {
+
+    localStorage.removeItem('cart_vila');
+    localStorage.removeItem('Params');
+
+  }
+
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
@@ -60,9 +72,44 @@ const Navbar = () => {
 
   const getBackgroundColorUl = () => {
     if (pathname === "/ourVila") return "text-color2"; 
+    if (pathname === "/booking/offers") return "text-color2"; 
+    if (pathname === "/booking") return "text-color2"; 
+    if (pathname === "/auth/login") return "text-color2"; 
+    if (pathname === "/auth/register") return "text-color2"; 
     return "text-white";
   };
   
+  // Memeriksa Me
+
+  useEffect (() => {
+    
+      const handleMe = async () => {
+        try {
+          const response = await http.get('/auth/me');
+          setDataMe(response.data.data)
+          toast.success(response.data.message || 'Success login', {
+            position: "bottom-right",
+            duration: 1000,
+            iconTheme: { primary: "#C0562F", secondary: "#fff" },
+            icon: "🛒",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
+        } catch (error : any) {
+          toast.error(error.response.data.message || error.message || 'server error', {
+            position: "bottom-right",
+            duration: 5000,
+            iconTheme: { primary: "#ff0000", secondary: "#fff" },
+            icon: "⚠️",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+        }
+      } 
+
+      handleMe();
+  },[])
+
+
 
   return (
       <header
@@ -125,13 +172,81 @@ const Navbar = () => {
             </ul>
 
 
-            <Link onClick={handleBooking} href="/booking" className="flex justify-end sm:justify-center items-center w-full max-w-[10rem] ">
-              <CustomButton 
-                  title="Book Now"
-                  btnType="button"
-                  containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 "
-              />
-            </Link>
+
+
+            {/* Me Auth */}
+            { !dataMe ? (
+
+                <>
+
+                  {/* Tombol  { Booking dan Login } */}
+
+                    { pathname === "/booking/offers"  || pathname === "/auth/register" ? (
+
+                      <Link onClick={handleBooking} href="/auth/login" className={` flex justify-end sm:justify-center items-center w-full max-w-[10rem]`}>
+                        <CustomButton 
+                            title="Login"
+                            btnType="button"
+                            containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 rounded-md"
+                        />
+                      </Link>
+
+                      ): (
+
+                      <>
+                      { pathname === "/booking" ? (
+
+                          <div>
+
+                          </div>
+
+                        ) : (
+
+                            <Link onClick={handleBooking} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                              <CustomButton 
+                                  title="Book Now"
+                                  btnType="button"
+                                  containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 "
+                              />
+                            </Link>
+                        )
+                      }
+                </>
+
+              )}
+                </>
+
+              ) : (
+
+                <>
+                  { pathname === "/booking" || pathname === "/booking/offers" || pathname === "/checkout"  || pathname === "/order-status"  ? (
+
+                    <Link  href="/auth/member" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                    <CustomButton 
+                      title={`${dataMe.name.length > 8 ? dataMe.name.slice(0, 8) + '...' : dataMe.name}`}
+                      btnType="button"
+                      containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3"
+                    />
+
+                    </Link>
+
+                    ) : (
+
+                      <Link onClick={handleBookingNonDeletedSession} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                        <CustomButton 
+                            title="Book Now"
+                            btnType="button"
+                            containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 "
+                        />
+                      </Link>
+                    )
+                  }
+                </>
+      
+              )
+            }
+
+
           </div>
 
 

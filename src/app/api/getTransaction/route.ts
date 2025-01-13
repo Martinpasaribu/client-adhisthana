@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const response = await http.get(`/booking/get-transaction/${transactionId}`);
+    const response = await http.get(`/transaction/get-transaction/${transactionId}`);
     return NextResponse.json(response.data.data); 
   } catch (error: any) {
     console.error('Error fetching data transaction:', error.response?.data || error.message);

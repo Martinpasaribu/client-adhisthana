@@ -43,7 +43,7 @@ module.exports = {
       'md2': '1160px',
 
       // Layar Tablet ukuran maximum   (Landscape)
-      'md3': '1440px',
+      'md3': '1441px',
 
 
       // Layar Laptop ukuran Minumum

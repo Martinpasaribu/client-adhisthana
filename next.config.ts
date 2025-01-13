@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
         hostname: 'scontent-iad3-1.cdninstagram.com',
 
       },
+      {
+        protocol: 'https',
+        hostname: 'scontent.cdninstagram.com',
+
+      },
 
       {
         protocol: 'https',

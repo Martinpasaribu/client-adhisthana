@@ -3,7 +3,7 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { GrNext, GrPrevious } from '@/style/icons';
-import { ImageModels } from '../models';
+import { ImageModels } from '../../models';
 
 // const images = [
 //   "/assets/ImageNav/image1.png",

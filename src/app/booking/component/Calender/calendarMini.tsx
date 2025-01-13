@@ -7,8 +7,8 @@ import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import { setCheckIn, setCheckOut } from "@/lib/slice/bookingSlice";
 import { useRouter } from 'next/navigation';
 import Link from "next/link";
-import { formatDate, setDefaultTime } from "./formatDate";
-import { formatLocalISOIn, formatLocalISOOut } from "./constant";
+import { formatDate, setDefaultTime } from "../constant/formatDate";
+import { formatLocalISOIn, formatLocalISOOut } from "../constant";
 
 interface CalendarProps {
   checkIn?: Date | null;
@@ -59,7 +59,7 @@ const CalendarMini = ({ checkIn, isOpen, closeModal, checkOut, }: CalendarProps)
   
   return (
 
-    <div className="bg-white fixed inset-0 z-30 flex-center">
+    <div className=" bg-white fixed inset-0 z-30 flex-center">
 
       <div className="overflow-hidden  bg-white">
       

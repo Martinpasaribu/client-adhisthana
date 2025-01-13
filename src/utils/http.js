@@ -6,6 +6,14 @@ export const axiosClient = axios.create({
   withCredentials: true,
 });
 
+
+// URL Main
+
+// export const UrlMain = 'http://localhost:5001'
+export const UrlMain = 'https://adhistahan-serve.vercel.app'
+
+
+
 // Konfigurasi untuk server HTTP lain 
 // export const http = axios.create({
 //   baseURL: 'http://localhost:5001/api/v1',

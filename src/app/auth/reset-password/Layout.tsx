@@ -41,7 +41,7 @@ const Layout = () => {
 
       setSuccess(response.data.message);
       setTimeout(() => {
-        router.push("/login"); // Arahkan ke halaman login setelah sukses
+        router.push("/auth/login"); // Arahkan ke halaman login setelah sukses
       }, 3000);
     } catch (err : any) {
       setError(err.response?.data?.message || "An error occurred. Please try again.");

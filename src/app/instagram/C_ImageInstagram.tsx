@@ -83,6 +83,7 @@ const ImageCarousel = ({ content }: ImageCarouselProps) => {
                 width={800}
                 height={800}
                 className="w-full h-full object-cover rounded-md"
+                unoptimized
               />
 
               <FaInstagram size={25} className="absolute right-2 bottom-2 text-white"/>

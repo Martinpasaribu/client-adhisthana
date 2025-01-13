@@ -110,8 +110,8 @@ const Layout = () => {
             <div className="transaction-status">
 
                 <Item label="Transaction ID" value={transaction.bookingId} style="value" />
-                <Item label="Customer Name" value={transaction.userId}  style="value" />
-                <Item label="Customer Email" value={transaction.userId}  style="value"/>
+                <Item label="Customer Name" value={transaction.name}  style="value" />
+                <Item label="Customer Email" value={transaction.email}  style="value"/>
                 <div className="flex justify-between items-center">
                     
                     <Item label="Status" value={statusMapping(transaction.status)}  style="value"/>

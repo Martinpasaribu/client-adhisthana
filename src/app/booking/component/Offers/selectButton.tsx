@@ -66,14 +66,6 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
     const handleRemoveVila =  debounce( async () => {
 
 
-        toast.success(`Deleted ${name}`, {
-            position: "bottom-right",
-            duration: 1000,
-            iconTheme: { primary: "#C0562F", secondary: "#fff" },
-            icon: "🛒",
-            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-          });
-
         dispatch(setIsProcessing(true));
         dispatch(setRemoveVila(item)); 
 
@@ -82,10 +74,27 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
             headers: { 'Content-Type': 'application/json' },
         })
         .then(response => {
-            console.log('Cart synced successfully:', response.data);
+            // console.log('Cart synced successfully:', response.data);
+            
+        toast.success(`Deleted ${name}`, {
+            position: "bottom-right",
+            duration: 1000,
+            iconTheme: { primary: "#C0562F", secondary: "#fff" },
+            icon: "🛒",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
         })
         .catch(error => {
-            console.error('Failed to sync cart with server:', error.response?.data || error.message);
+            // console.error('Failed to sync cart with server:', error.response?.data || error.message);
+
+            toast.error(error.response.data.message || error.message || 'server error', {
+                position: "bottom-right",
+                duration: 5000,
+                iconTheme: { primary: "#ff0000", secondary: "#fff" },
+                icon: "⚠️",
+                style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+              });
         })
         .finally(() => {
             dispatch(setIsProcessing(false)); 
@@ -98,13 +107,7 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
     // add vila to session
     const handleAddVila =  debounce( async () => {
         
-        toast.success(`Add ${name}`, {
-            position: "bottom-right",
-            duration: 1000,
-            iconTheme: { primary: "#C0562F", secondary: "#fff" },
-            icon: "🛒",
-            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-          });
+
         
         dispatch(setIsProcessing(true));
         dispatch(setAddVila(item));
@@ -119,10 +122,24 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
         )
         .then(response => {
             console.log('Cart added to server successfully:', response.data);
+            
+            toast.success(`Add ${name}`, {
+                position: "bottom-right",
+                duration: 1000,
+                iconTheme: { primary: "#C0562F", secondary: "#fff" },
+                icon: "🛒",
+                style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+              });
 
         })
         .catch(error => {
-            console.error('Failed to sync cart with server:', error.response?.data || error.message);
+            toast.error(error.response.data.message || error.message || 'server error', {
+                position: "bottom-right",
+                duration: 5000,
+                iconTheme: { primary: "#ff0000", secondary: "#fff" },
+                icon: "⚠️",
+                style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+              });
         })
         .finally(() => {
             dispatch(setIsProcessing(false)); 

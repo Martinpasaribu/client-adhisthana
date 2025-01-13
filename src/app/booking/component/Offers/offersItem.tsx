@@ -11,10 +11,11 @@ import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import { setAddChart, setIsProcessing } from '@/lib/slice/bookingSlice';
 import debounce from 'lodash-es/debounce';
 import { http } from '@/utils/http';
-import ClouserImage from '../clouserImage';
+import ClouserImage from '../constant/clouserImage';
 import SelectButton from './selectButton';
-import SkeletonItemOffers from './skeletonItemOffers';
+import SkeletonItemOffers from '../Skeleton/skeletonItemOffers';
 import toast from 'react-hot-toast';
+import SkeletonRoomsFull from '../Skeleton/skeletonItemRoomFull';
 
 interface Params {
   checkin? :  Date | null;
@@ -25,7 +26,7 @@ const OffersItem = () => {
 
     const router = useRouter();
     const searchParams = useSearchParams();
-      
+    const [isRoomsFull, setIsRoomsFull] = useState(false);
     const dispatch = useAppDispatch();
 
     const [vila, setVila] = useState<RoomModels[]>([]);
@@ -58,7 +59,26 @@ const OffersItem = () => {
           }
     
           const data = await response.json();
-          setVila(data.data);
+
+              if(data.data.length > 0){
+                setVila(data.data);
+                setIsRoomsFull(false); 
+
+              }else {
+                setVila([]);
+                setIsRoomsFull(true); 
+                toast.success("Rooms Full", {
+                  position: "bottom-right",
+                  duration: 4000,
+                  iconTheme: { primary: "#C0562F", secondary: "#fff" },
+                  icon: "🛒",
+                  style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+                });
+
+               
+              }
+
+        
           console.log("Data fetched:", data.data);
         } catch (error) {
           console.error("Error fetching vila:", error);
@@ -85,13 +105,6 @@ const OffersItem = () => {
 
     const handleAddChart = debounce( async (id:any) => {
 
-      toast.success("Add Rooms", {
-        position: "bottom-right",
-        duration: 1000,
-        iconTheme: { primary: "#C0562F", secondary: "#fff" },
-        icon: "🛒",
-        style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-      });
 
       const cart_vila = vila.filter( index => ( index._id === id ))
       
@@ -109,11 +122,31 @@ const OffersItem = () => {
           { headers: { 'Content-Type': 'application/json' } }
       )
       .then(response => {
-          console.log('Cart added to server successfully:', response.data);
-      })
+          // console.log('Cart added to server successfully:', response.data);
+          
+          toast.success("Add Rooms", {
+            position: "bottom-right",
+            duration: 1000,
+            iconTheme: { primary: "#C0562F", secondary: "#fff" },
+            icon: "🛒",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
+          
+        })
+
       .catch(error => {
           console.error('Failed to sync cart with server:', error.response?.data || error.message);
-      }).finally(() => {
+          
+          toast.error(error.response.data.message || error.message || 'server error', {
+            position: "bottom-right",
+            duration: 5000,
+            iconTheme: { primary: "#ff0000", secondary: "#fff" },
+            icon: "⚠️",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
+        }).finally(() => {
         dispatch(setIsProcessing(false)); 
 
       });
@@ -122,7 +155,9 @@ const OffersItem = () => {
 
     }, 700)
 
- 
+    if (isRoomsFull) {
+      return <SkeletonRoomsFull />;
+    }
     
   return (
     <section className='w-full mt-4 md1:mt-10'>

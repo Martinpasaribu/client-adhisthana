@@ -1,9 +1,9 @@
 import { discount, FaRegCalendarAlt, gift, GrNext, IoMdArrowDropdown, IoPeople } from '@/style/icons'
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
-import { formatCheckInCheckOut, night } from './formatDate'
+import { formatCheckInCheckOut, night } from '../constant/formatDate'
 import { useAppSelector } from '@/lib/hooks/hooks';
-import SkeletonItemDate from './Offers/skeletonItemDate';
+import SkeletonItemDate from '../Skeleton/skeletonItemDate';
 
 interface ButtonProps {
 
@@ -27,9 +27,7 @@ const ButtonUpdate = ( { checkin, checkout, OpenCalendarMini, OpenModalPeople, p
     const dateIn = useAppSelector((state) => state.booking.stateCheckIn);
     const dateOut = useAppSelector((state) => state.booking.stateCheckOut);
 
-    const handleOpenCalendarMini = () => {
 
-    } 
 
   // Sinkronisasi props ke local state
   useEffect(() => {

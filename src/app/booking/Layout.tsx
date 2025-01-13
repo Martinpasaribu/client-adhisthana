@@ -1,8 +1,8 @@
 "use client";
 
-import Calendar from "./component/calender";
+import Calendar from "./component/Calender/calender";
 import Link from "next/link";
-import DatePicker from "./component/datePicker";
+import DatePicker from "./component/Calender/datePicker";
 
 
 const HandleDate= () => {

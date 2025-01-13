@@ -16,7 +16,14 @@ import { useState } from "react";
 
 export default function Home() {
 
-  <GoogleRecaptcha />
+  // <GoogleRecaptcha />
+
+//   <Script 
+//   src="https://www.google.com/recaptcha/api.js?render=6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn" 
+//   strategy="lazyOnload" 
+// />
+
+
 
   const videoUrl = "https://drive.google.com/uc?id=1UKD6FirpeHvgQc4gih94m-bTP1Y0TCYt&export=download";
 
@@ -152,6 +159,8 @@ export default function Home() {
 
           </div>
 
+
+          {/* Instagram */}
           <div className="mt-[8rem] mb-[8rem]  max-width flex flex-col justify-center items-center gap-8 font-[family-name:var(--font-geist-sans)] p-2">
         
             <InstagramProfile act={process.env.INSTAGRAM_ACCESS_TOKEN || ''} id={ Number(process.env.INSTAGRAM_USER_ID) || 0}/>

@@ -35,7 +35,7 @@ export default function ResetPassword() {
 
         setSuccess(response.data.message);
         setTimeout(() => {
-          router.push("/login");
+          router.push("/auth/login");
         }, 3000);
       } catch (err: any) {
         setError(err.response?.data?.message || "An error occurred. Please try again.");
@@ -48,7 +48,7 @@ export default function ResetPassword() {
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
-        <h2 className="text-2xl font-semibold text-center">Confirm Reset Password</h2>
+        <h2 className="text-xl font-semibold text-center">Confirm Reset Password</h2>
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
         {success && <p className="mt-4 text-sm text-green-600">{success}</p>}
         <form className="mt-6" onSubmit={handleSubmit}>
@@ -69,7 +69,7 @@ export default function ResetPassword() {
             type="submit"
             className="w-full px-4 py-2 font-semibold text-white bg-blue-500 rounded hover:bg-blue-600 focus:outline-none"
           >
-            Send Confirm Reset
+            Send
           </button>
         </form>
       </div>

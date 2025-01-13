@@ -1,6 +1,8 @@
 
 export interface TransactionModels {
     _id: string;
+    name:string;
+    email:string;
     bookingId: string;
     userId: string;
     status: string;

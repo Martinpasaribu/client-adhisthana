@@ -8,7 +8,8 @@ export async function POST(req: Request) {
     const body = await req.json();
 
     const {
-      
+      name,
+      email,
       bookingId,
       status,
       userId,
@@ -36,6 +37,8 @@ export async function POST(req: Request) {
 
     // Kirim data ke API eksternal
     const response = await http.post('/booking/addBooking', {
+      name,
+      email,
       bookingId,
       status,
       checkIn,

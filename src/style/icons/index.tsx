@@ -38,6 +38,10 @@ export { MdDone } from "react-icons/md";
 export { GiSandsOfTime } from "react-icons/gi";
 export { RxCross2 } from "react-icons/rx";
 export { FaBasketShopping } from "react-icons/fa6";
+export { FaPhone } from "react-icons/fa6";
+export { IoIosMail } from "react-icons/io";
+export { FaRegEdit } from "react-icons/fa";
+
 
 
 import TreeIcons from "../../../public/assets/IconImage/tree.png";
@@ -49,9 +53,15 @@ import bad from "../../../public/assets/IconImage/bad.png";
 import people from "../../../public/assets/IconImage/people.png";
 import gift from "../../../public/assets/IconImage/gift.png";
 import discount from "../../../public/assets/IconImage/discount.png";
+import borobudur from "../../../public/assets/IconImage/borobudur.png";
+import homeFull from "../../../public/assets/IconImage/homefull.png";
+import profile from "../../../public/assets/IconImage/profile-user.png";
 
 
 export { TreeIcons };
+export { profile };
+export { homeFull };
+export { borobudur };
 export { Cookies };
 export { AirIcons };
 export { WayangIcons };

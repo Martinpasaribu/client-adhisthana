@@ -1,6 +1,6 @@
 import { FaRegCalendarAlt, IoPeople, FaBasketShopping } from '@/style/icons';
 import React, { useEffect, useState } from 'react'
-import { formatCheckInCheckOut, night } from '../formatDate';
+import { formatCheckInCheckOut, night } from '../constant/formatDate';
 import {  useAppSelector , useAppDispatch} from "@/lib/hooks/hooks";
 import { setGetChart } from '@/lib/slice/bookingSlice';
 import { RoomModels } from '@/models/roomModels';
@@ -79,27 +79,35 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
             console.log('no active')
         }
 
-      },[chart])
+      },[activeBucket, chart])
 
-  const handleSetParams = () => {
-
-    if (isProcessing) return;
-
-    if(checkin && checkout){
-
-        const param = {
-            checkin : checkin,
-            checkout : checkout
+      const handleSetParams = () => {
+        if (isProcessing) return;
+    
+        // Cek apakah localStorage berisi cart_villa
+        const cartVilla = localStorage.getItem('cart_vila');
+        if (!cartVilla) {
+            // Tampilkan toast jika cart_villa belum diset
+            toast.error("There is no room to choose yet.", {
+                position: "bottom-right",
+                duration: 5000,
+                iconTheme: { primary: "#ff0000", secondary: "#fff" },
+                icon: "⚠️",
+                style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+              });
+            return;
         }
-
-        if(param){
-            router.push('/checkout')
+    
+        if (checkin && checkout) {
+            const param = {
+                checkin: checkin,
+                checkout: checkout,
+            };
+    
+            localStorage.setItem('Params', JSON.stringify(param));
+            router.push('/checkout');
         }
-
-        localStorage.setItem('Params', JSON.stringify(param));
-    }
-
-  }
+    };
   
 
 

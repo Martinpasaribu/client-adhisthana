@@ -39,7 +39,7 @@ export const formatCheckInCheckOut = (
   };
   
   export const night = (nightDuration: number) => {
-    console.log(`Night duration from callback: ${nightDuration}`);
+    // console.log(`Night duration from callback: ${nightDuration}`);
   };
 
   export const formatDate = (date: Date) => {

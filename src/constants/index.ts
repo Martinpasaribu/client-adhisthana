@@ -36,3 +36,14 @@ export const footerLinks = [
       maximumFractionDigits: 0,
     });
   };
+
+
+  export const checkField = (fields: Record<string, any>): string | null => {
+    for (const [key, value] of Object.entries(fields)) {
+      if (!value) {
+        return `${key} field cannot be empty.`;
+      }
+    }
+    return null;
+  };
+  
