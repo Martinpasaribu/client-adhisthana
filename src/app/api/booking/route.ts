@@ -13,6 +13,7 @@ export async function POST(req: Request) {
       bookingId,
       status,
       userId,
+      night,
       checkIn,
       checkOut,
       grossAmount,
@@ -23,6 +24,7 @@ export async function POST(req: Request) {
     // Validasi data
     if (
       !userId ||
+      !night ||
       !checkIn ||
       !checkOut ||
       !grossAmount ||
@@ -39,6 +41,7 @@ export async function POST(req: Request) {
     const response = await http.post('/booking/addBooking', {
       name,
       email,
+      night,
       bookingId,
       status,
       checkIn,

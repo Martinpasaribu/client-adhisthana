@@ -57,6 +57,7 @@ const Layout = (  ) => {
 
       setDate(datePar )
       setAmountNight(AmountNights)
+      setFormData((prev) => ({ ...prev, night: AmountNights }));
 
   },[dispatch])
 
@@ -150,6 +151,7 @@ const Layout = (  ) => {
         userId: 'ID Martin',
         checkIn: '',
         checkOut: '',
+        night:0,
         grossAmount: 0,
         paymentUrl: '',
         room:[]

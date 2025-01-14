@@ -39,6 +39,7 @@ export interface ReservationModel {
     email: string,
     phone: number | string,
     status: string,
+    night: number,
     userId : string,
     checkIn : string | Date ,
     checkOut : string | Date,
