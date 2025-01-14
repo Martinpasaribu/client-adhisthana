@@ -215,7 +215,7 @@ const Layout = (  ) => {
           localStorage.removeItem("cart_vila");
           localStorage.removeItem('Params');
           localStorage.removeItem('Night');
-          await DeletedCart();
+          // await DeletedCart();
 
         } else {
           const errorMessage = (await response.json()).message || "Gagal melakukan booking.";
