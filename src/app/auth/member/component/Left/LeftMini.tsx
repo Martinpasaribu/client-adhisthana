@@ -1,5 +1,6 @@
 import React from 'react'
-
+import Image from 'next/image'
+import { appointment, locked, logout, profile, profiles } from '@/style/icons'
 interface LeftProps {
 
     setView : ( view : string ) => void
@@ -16,18 +17,48 @@ const LeftMini = ( { setView } : LeftProps) => {
   return (
 
         
-        <ul className='flex-center  gap-5  text-[14px] hp1:text-[16px] font-bold w-full max-w-[25rem] bg-color2  rounded-md h-full max-h-[3rem]'>
-            <li onClick={() => handleView('Booking')} className='cursor-pointer'>
-                <h1>Booking </h1>
+        <ul className='flex justify-center items-center  gap-7  text-[14px] hp1:text-[16px] font-bold w-full max-w-[17rem] hp2:max-w-[20rem] bg-color2  rounded-3xl h-full max-h-[3.2rem] hp2:max-h-[3.6rem] border-2 border-white'>
+            
+            <li onClick={() => handleView('Booking')} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+                {/* <h1>Booking </h1> */}
+                <Image
+                    src={appointment}
+                    alt='image appointment'
+                    width={200}
+                    height={200}
+                    className="w-[1.4rem] h-[1.4rem]  hp2:w-[1.9rem] hp2:h-[1.9rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "
+                />
             </li>
-            <li onClick={() => handleView('Profile')} className='cursor-pointer'>
-                <h1>Profile </h1>
+
+            <li onClick={() => handleView('Profile')} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+                {/* <h1>Profile </h1> */}
+                <Image
+                    src={profiles}
+                    alt='image profiles'
+                    width={200}
+                    height={200}
+                    className=" w-[1.4rem] h-[1.4rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "
+                />
             </li>
-            <li onClick={() => handleView('Password')} className='cursor-pointer'>
-                <h1>Password </h1>
+            <li onClick={() => handleView('Password')} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+                {/* <h1>Password </h1> */}
+                <Image
+                    src={locked}
+                    alt='image locked'
+                    width={200}
+                    height={200}
+                    className=" w-[1.5rem] h-[1.5rem] hp2:w-[1.9rem] hp2:h-[1.9rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "
+                />
             </li>
-            <li className='cursor-pointer'>
-                <h1> Logout </h1>
+            <li className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+                {/* <h1> Logout </h1> */}
+                <Image
+                    src={logout}
+                    alt='image logout'
+                    width={200}
+                    height={200}
+                     className="w-[1.6rem] h-[1.6rem] hp2:w-[2rem] hp2:h-[2rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "  
+                />
             </li>
         </ul>
 

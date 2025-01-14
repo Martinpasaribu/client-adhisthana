@@ -1,29 +1,26 @@
 import axios from 'axios';
 
-// Konfigurasi untuk server lokal
-export const axiosClient = axios.create({
-  baseURL: 'http://localhost:3002',
-  withCredentials: true,
-});
-
-
 // URL Main
 
 // export const UrlMain = 'http://localhost:5001/api/v1'
+
 export const UrlMain = 'https://adhistahan-serve.vercel.app/api/v1'
 
 
-
-// Konfigurasi untuk server HTTP lain 
-// export const http = axios.create({
-//   baseURL: 'http://localhost:5001/api/v1',
-//   withCredentials: true,
-// });
-
+// Konfigurasi untuk server
 export const http = axios.create({
-  baseURL: 'https://adhistahan-serve.vercel.app/api/v1',
+  baseURL: `${UrlMain}`,
   withCredentials: true,
 });
+
+// Konfigurasi untuk Client 
+export const axiosClient = axios.create({
+  baseURL: 'http://localhost:3002',
+  withCredentials: true,
+});  
+
+
+
 
 // Konfigurasi untuk RapidAPI IMDB
 const options = {

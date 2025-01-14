@@ -75,13 +75,11 @@ const OffersItem = () => {
                   style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
                 });
 
-               
               }
 
-        
           console.log("Data fetched:", data.data);
-        } catch (error) {
-          console.error("Error fetching vila:", error);
+        } catch (error : any) {
+          toast.error( error.message || "server does not respond", { position: "bottom-right", duration: 5000 });
         }
       };
     

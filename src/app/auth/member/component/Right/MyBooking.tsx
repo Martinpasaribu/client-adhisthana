@@ -99,7 +99,7 @@ const MyBooking = () => {
                 </div>
                 <hr className="top-0 left-0 z-30 h-0 w-full border-b border-solid border-orange-200" />
                 <div className='text-slate-700'>
-                  <ul className='w-full grid grid-cols-5'>
+                  <ul className='w-full grid grid-cols-2 md:grid-cols-5 gap-4'>
                     <li>
                       <h1 className='text-[14px]'>Number Transaction</h1>
                       <h1 className='font-semibold text-[13px]'>{item?.bookingId}</h1>
@@ -116,11 +116,13 @@ const MyBooking = () => {
                         {convertToRupiah(item?.grossAmount || '')}
                       </h1>
                     </li>
+
                     <li>
                       <h1 className='text-[14px]'>Status</h1>
                       <h1 className='font-semibold text-[12px]'>{item?.status}</h1>
                     </li>
-                    <button onClick={() => handleStatusOrder(item.bookingId)} className='text-white w-full flex-center'>
+
+                    <button onClick={() => handleStatusOrder(item.bookingId)} className='text-white w-full flex md:justify-center justify-end md:items-center col-span-2 md:col-span-1'>
                       <h1 className='max-w-20 bg-blue-600 rounded-md py-1 px-2'>Detail</h1>
                     </button>
                   </ul>

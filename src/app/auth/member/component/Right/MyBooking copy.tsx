@@ -32,9 +32,9 @@ const MyBooking = () => {
           setTransaction(res);
         }
       } catch (error: any) {
-        // Debug error handling
-        console.error("Error fetching transaction details:", error); // Cetak seluruh objek error
-        console.log("Detail error:", error.message || "No message available");
+
+        // console.error("Error fetching transaction details:", error); // Cetak seluruh objek error
+        // console.log("Detail error:", error.message || "No message available");
 
         toast.error(error.message || "Something went wrong in server", {
           position: "bottom-right",
@@ -42,6 +42,7 @@ const MyBooking = () => {
           iconTheme: { primary: "#C0562F", secondary: "#fff" },
           style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
         });
+        
       } finally {
         setLoading(false); // Pastikan loading dihentikan di akhir
       }

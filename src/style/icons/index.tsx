@@ -56,8 +56,20 @@ import discount from "../../../public/assets/IconImage/discount.png";
 import borobudur from "../../../public/assets/IconImage/borobudur.png";
 import homeFull from "../../../public/assets/IconImage/homefull.png";
 import profile from "../../../public/assets/IconImage/profile-user.png";
+import profiles from "../../../public/assets/IconImage/users.png";
+import locked from "../../../public/assets/IconImage/locked.png";
+import appointment from "../../../public/assets/IconImage/appointment.png";
+import logout from "../../../public/assets/IconImage/logout.png";
+import shopBag from "../../../public/assets/IconImage/shopbag.png";
+import mainLoading from "../../../public/assets/Logo/loading.png";
 
 
+export { profiles };
+export { shopBag };
+export { mainLoading };
+export { appointment };
+export { logout };
+export { locked };
 export { TreeIcons };
 export { profile };
 export { homeFull };

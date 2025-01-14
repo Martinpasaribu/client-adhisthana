@@ -2,6 +2,7 @@
 
 import { ReservationModel } from '@/models/bookingModels';
 import { http } from '@/utils/http';
+import Image from 'next/image';
 import React, { useEffect, useState, useRef  } from 'react'
 import {  useAppSelector , useAppDispatch} from "@/lib/hooks/hooks";
 import { setGetChart } from '@/lib/slice/bookingSlice';
@@ -14,6 +15,8 @@ import { DeletedCart } from '../booking/utils/deletedCart';
 import { authCheckout, authLogin, checkUser } from '../auth/authCeckout/authCheckout';
 import { NextResponse } from 'next/server';
 import { handleMe } from '@/utils/getMe';
+import MainLoading from '@/component/mainLoading/loading';
+import { shopBag } from '@/style/icons';
 
 interface Params {
     checkin? :  Date | null;
@@ -39,6 +42,7 @@ const Layout = (  ) => {
   const [ checkout, setcheckout  ] = useState< Date | null>();
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
   const [ snapShow, setSnapShow] = useState(false)
+  const [ load, setLoad] = useState(false)
 
   const isInitialRender = useRef(true); 
 
@@ -82,39 +86,50 @@ const Layout = (  ) => {
         // }
   
         if (!snapShow && chart) {
+
+          setLoad(true);
+
           try {
             const response = await http.get('/booking/get-total-price', {
               headers: { 'Content-Type': 'application/json' },
+
             });
             console.log('Price total successfully:', response.data);
   
-          
+    
+            setTimeout(() => {
+              setLoad(false);
+            }, 2000);
+
             setFormData((prev) => ({
               ...prev,
               grossAmount: response.data.totalPrice,
               room: response.data.data,
             }));
 
+  
+
           } catch (error: any) {
 
-            const mail = error.response?.data?.message || 'An error occurred';
+            const mail = error.response?.data?.message || 'server does not respond';
             console.error('Failed to fetch price total:', error.response?.data || error.message);
   
             // Tampilkan toast error
             toast.error(mail, { position: 'bottom-right', duration: 5000 });
-  
-            const auth = await handleMe()
-            
-            if( auth === false ){
+    
+              const auth = await handleMe()
+              console.log('hasil debuging me:', auth)
+              if( auth === false ){
 
-                setTimeout(() => {
-                  router.push('/booking');
-                }, 3000);
+                  setTimeout(() => {
+                    router.push('/booking');
+                  }, 2000);
+              }
+                else {
+
+                router.push('/auth/member');
             }
-              else {
-
-               router.push('/auth/member');
-          }
+            setLoad(false);
           }
         }
       };
@@ -145,92 +160,90 @@ const Layout = (  ) => {
         setFormData((prev) => ({ ...prev, [id]: value }));
       };
     
+
     //   Submit Semua data untuk diCheckOut
-      const handleSubmit = async () => {
+    const handleSubmit = async () => {
+      try {
+        // Validasi awal
         if (!formData.title || !formData.name || !formData.email || !formData.phone) {
           toast.error("Semua field wajib diisi!", { position: "bottom-right", duration: 5000 });
           return;
         }
-      
+    
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         if (!emailRegex.test(formData.email)) {
           toast.error("Invalid email format!", { position: "bottom-right", duration: 5000 });
           return;
         }
-      
-        try {
-          const response = await fetch("/api/booking", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(formData),
+    
+        // Set loading sebelum memulai proses
+        setLoad(true);
+    
+        // Proses booking
+        const response = await fetch("/api/booking", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(formData),
+        });
+    
+        if (response.ok) {
+          const responseData = await response.json();
+          const responseServer = responseData.data.data;
+    
+          toast.success(responseData.message || "Successful Booking", { position: "bottom-left", duration: 5000 });
+    
+          setSnapShow(true);
+          snapEmbed(responseServer.snap_token, "snap-container", {
+            onSuccess: function (result :any) {
+              console.log("Payment Success:", result);
+              router.replace(`/order-status?order_id=${responseServer.id}`);
+              setSnapShow(false);
+            },
+            onPending: function (result : any) {
+              console.log("Payment Pending:", result);
+              router.replace(`/order-status?order_id=${responseServer.id}`);
+              setSnapShow(false);
+            },
+            onClose: function () {
+              console.log("Payment Closed");
+              setSnapShow(false);
+            },
           });
-      
-          if (response.ok) {
-            const responseData = await response.json();
-            const responseServer = responseData.data.data;
-            toast.success("Berhasil Booking.", { position: "top-right", duration: 5000 });
-      
-            setSnapShow(true);
-            snapEmbed(responseServer.snap_token, "snap-container", {
-              onSuccess: function (result: any) {
-                console.log("Payment Success:", result);
-                router.replace(`/order-status?order_id=${responseServer.id}`);
-                setSnapShow(false);
-              },
-              onPending: function (result: any) {
-                console.log("Payment Pending:", result);
-                router.replace(`/order-status?order_id=${responseServer.id}`);
-                setSnapShow(false);
-              },
-              onClose: function (result: any) {
-                console.log("Payment Closed:", result);
-                router.replace(`/order-status?order_id=${responseServer.id}`);
-                setSnapShow(false);
-              },
-            });
-      
-            localStorage.removeItem("cart_vila");
-            DeletedCart().catch((error) => console.error("Error during deleted session:", error));
-          } else {
-            throw new Error("Gagal melakukan booking.");
-          }
-      
-          // Panggil authCheckout setelah booking berhasil
-
-          const result = await checkUser(formData.email);
-          
-          if( result === true ) {
-
-            await authLogin({
-              email: formData.email,
-            });
-            
-            return NextResponse.next();
-
-          } else {
-            
-            await authCheckout({
-              title: formData.title,
-              name: formData.name,
-              phone: formData.phone,
-              email: formData.email,
-            });
-  
-
-            await authLogin({
-              email: formData.email,
-            });
-            
-
-          }
-
-
-
-        } catch (error: any) {
-          console.error("Error during handleSubmit:", error.message);
-          toast.error(error.message || "Gagal Melakukan checkout.", { position: "bottom-right", duration: 5000 });
+    
+          // Bersihkan cart_vila di localStorage
+          localStorage.removeItem("cart_vila");
+          await DeletedCart();
+        } else {
+          const errorMessage = (await response.json()).message || "Gagal melakukan booking.";
+          throw new Error(errorMessage);
         }
-      };
+    
+        // Proses auth setelah booking berhasil
+        const userExists = await checkUser(formData.email);
+        if (userExists) {
+          await authLogin({ email: formData.email });
+          return;
+        } else {
+          await authCheckout({
+            title: formData.title,
+            name: formData.name,
+            phone: formData.phone,
+            email: formData.email,
+          });
+    
+          await authLogin({ email: formData.email });
+        }
+      } catch (error:any) {
+        console.error("Error during handleSubmit:", error.message);
+        toast.error(error.message || "Failed to checkout.", { position: "bottom-right", duration: 5000 });
+      } finally {
+        // Pastikan loading dihentikan di akhir proses
+        setTimeout(() => {
+          setLoad(false)
+        }, 3000);
+      }
+    };
+    
       
 
     // Kirimkan Tanggal CheckIn dan CheckOut
@@ -278,16 +291,22 @@ const Layout = (  ) => {
       },[chart])
 
 
+  
+
+
   return (
     
     // onBack={() => router.push('/')} full={snapShow} noHeader={snapShow}
 
+
     <div title='Checkout'>
         
+        { load && (<MainLoading/>)}
+
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col py-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 hp2:p-6'>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[6rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 '>
                     
                     <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
 
@@ -446,13 +465,41 @@ const Layout = (  ) => {
 
                     <hr className=" top-0 left-0 z-30 h-0 w-full max-w-[74rem] border-b border-solid border-color1 mt-5"/>
 
-                    <div className='flex justify-end items-center w-full h-full max-w-[70rem] p-2 mt-5'>
+                    <div className='hidden sm:flex justify-end items-center w-full h-full max-w-[70rem] p-2 mt-5'>
 
-                        <button type="submit" className='px-3 py-2 bg-color1 text-white'>
-                            <h1> Create Transaction </h1>
+                        <button type="submit" className='px-3 py-2 bg-color1 text-white flex-center gap-2'>
+                            
+                            <h1> Checkout </h1>
+
+                            <Image
+                                src={shopBag}
+                                alt='image appointment'
+                                width={200}
+                                height={200}
+                                className="w-[1.6rem] h-[1.6rem]  hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover "
+                            />
                         </button>
 
                     </div>
+
+                    <div className='relative h-32 w-32 sm:hidden justify-end items-center max-w-[30rem] p-2 mt-5 z-40'>
+
+                      <button type="submit" className=' flex-center gap-2 px-3 py-2 bg-color1 text-white fixed bottom-10 h-12 rounded-md'>
+                          
+                          <h1> Checkout </h1>
+
+                            <Image
+                                src={shopBag}
+                                alt='image appointment'
+                                width={200}
+                                height={200}
+                                className="w-[1.6rem] h-[1.6rem]  hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover "
+                            />
+
+                      </button>
+
+                    </div>
+
 
                 </form>
             

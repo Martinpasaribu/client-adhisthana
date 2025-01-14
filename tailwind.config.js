@@ -145,7 +145,7 @@ module.exports = {
         modal: 'bag 1s ease-in-out forwards',
         source: 'source 1s ease-in-out ', 
         falls: 'fall 3s linear infinite',
-        spin_slow: 'spin_slow 5s linear infinite',
+        spin_slow: 'spin_slow 3s linear infinite',
         jumps:'lompat 2s ease-in-out infinite',
         sidebar_in: 'sidebar_in 1s ease-in-out forwards',
         sidebar_out: 'sidebar_out 1s ease-in-out forwards',

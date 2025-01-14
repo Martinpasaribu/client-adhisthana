@@ -13,6 +13,7 @@ import Vila from "./vila/room/Vila";
 import GoogleRecaptcha from "@/utils/GoogleRecaptcha";
 import EnableCookies from "@/utils/CookiesSet";
 import { useState } from "react";
+import MainLoading from "@/component/mainLoading/loading";
 
 export default function Home() {
 
@@ -55,6 +56,7 @@ export default function Home() {
         
         <EnableCookies active={cookie} closeModal={handleOffModalCookie}/>
 
+        {/* <MainLoading /> */}
 
         <section className="relative w-full h-screen sm:h-full ">
 
