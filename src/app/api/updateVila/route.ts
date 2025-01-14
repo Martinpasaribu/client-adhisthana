@@ -25,9 +25,15 @@ export async function POST(req: Request) {
     return NextResponse.json(response.data);
   } catch (error: any) {
     console.error('Error fetching vila data:', error.response?.data || error.message);
-    return NextResponse.json(
-      { error: 'Failed to fetch vila data' },
-      { status: 500 }
-    );
+    
+    // return NextResponse.json(
+    //   { error: 'Failed to fetch vila data' },
+    //   { status: 500 }
+    // );
+
+    return NextResponse.json({
+      message: error.response?.data?.message || 'server no responded.',
+    }, { status: 500 });
+
   }
 }

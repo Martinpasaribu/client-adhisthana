@@ -79,7 +79,7 @@ const OffersItem = () => {
 
           console.log("Data fetched:", data.data);
         } catch (error : any) {
-          toast.error( error.message || "server does not respond", { position: "bottom-right", duration: 5000 });
+          toast.error( error.response?.data?.message|| error.message || "server does not respond", { position: "bottom-right", duration: 5000 });
         }
       };
     

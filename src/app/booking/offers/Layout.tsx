@@ -118,6 +118,8 @@ const Layout = () => {
 
           DeletedCart().catch((error) => console.error('Error during unload:', error));
           localStorage.removeItem('cart_vila');
+          localStorage.removeItem('Params');
+          localStorage.removeItem('Night');
 
           const newUrl =`/booking/offers?checkin=${formatLocalISOIn(safecheckin)}&checkout=${formatLocalISOOut(safecheckout)}&people=4`
           router.push(newUrl);
@@ -175,11 +177,13 @@ const Layout = () => {
       useEffect(() => {
           const handleUnload = () => {
               // Kirim data ke server menggunakan navigator.sendBeacon
-              const url = `${UrlMain}/api/v1/booking/remove-cart`;
+              const url = `${UrlMain}/booking/remove-cart`;
               navigator.sendBeacon(url);
 
               // Hapus localStorage
               localStorage.removeItem('cart_vila');
+              localStorage.removeItem('Params');
+              localStorage.removeItem('Night');
           };
 
           window.addEventListener("unload", handleUnload);

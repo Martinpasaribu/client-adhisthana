@@ -42,6 +42,7 @@ const Navbar = () => {
     DeletedCart().catch((error) => console.error('Error during unload:', error));
     localStorage.removeItem('cart_vila');
     localStorage.removeItem('Params');
+    localStorage.removeItem('Night');
 
   }
 
@@ -49,6 +50,7 @@ const Navbar = () => {
 
     localStorage.removeItem('cart_vila');
     localStorage.removeItem('Params');
+    localStorage.removeItem('Night');
 
   }
 
@@ -87,22 +89,23 @@ const Navbar = () => {
         try {
           const response = await http.get('/auth/me');
           setDataMe(response.data.data)
-          toast.success(response.data.message || 'Success login', {
-            position: "bottom-right",
-            duration: 1000,
-            iconTheme: { primary: "#C0562F", secondary: "#fff" },
-            icon: "🛒",
-            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-          });
+
+          // toast.success(response.data.message || 'Success login', {
+          //   position: "bottom-right",
+          //   duration: 1000,
+          //   iconTheme: { primary: "#C0562F", secondary: "#fff" },
+          //   icon: "🛒",
+          //   style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          // });
 
         } catch (error : any) {
-          toast.error(error.response.data.message || error.message || 'server error', {
-            position: "bottom-right",
-            duration: 5000,
-            iconTheme: { primary: "#ff0000", secondary: "#fff" },
-            icon: "⚠️",
-            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-          });
+          // toast.error(error.response.data.message || error.message || 'server error', {
+          //   position: "bottom-right",
+          //   duration: 5000,
+          //   iconTheme: { primary: "#ff0000", secondary: "#fff" },
+          //   icon: "⚠️",
+          //   style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          // });
         }
       } 
 

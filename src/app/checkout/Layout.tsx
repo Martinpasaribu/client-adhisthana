@@ -43,6 +43,7 @@ const Layout = (  ) => {
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
   const [ snapShow, setSnapShow] = useState(false)
   const [ load, setLoad] = useState(false)
+  const [ amountNight, setAmountNight] = useState<number | 0>();
 
   const isInitialRender = useRef(true); 
 
@@ -51,11 +52,11 @@ const Layout = (  ) => {
       dispatch(setGetChart()) 
       
 
-
-
       const datePar  = JSON.parse(localStorage.getItem('Params') ?? '[]') || [];
+      const AmountNights  = JSON.parse(localStorage.getItem('Night') ?? '[]') || [];
 
       setDate(datePar )
+      setAmountNight(AmountNights)
 
   },[dispatch])
 
@@ -212,7 +213,10 @@ const Layout = (  ) => {
     
           // Bersihkan cart_vila di localStorage
           localStorage.removeItem("cart_vila");
+          localStorage.removeItem('Params');
+          localStorage.removeItem('Night');
           await DeletedCart();
+
         } else {
           const errorMessage = (await response.json()).message || "Gagal melakukan booking.";
           throw new Error(errorMessage);
@@ -237,11 +241,12 @@ const Layout = (  ) => {
         console.error("Error during handleSubmit:", error.message);
         toast.error(error.message || "Failed to checkout.", { position: "bottom-right", duration: 5000 });
       } finally {
-        // Pastikan loading dihentikan di akhir proses
+
         setTimeout(() => {
           setLoad(false)
-        }, 3000);
+        }, 2000);
       }
+
     };
     
       
@@ -264,9 +269,18 @@ const Layout = (  ) => {
       useEffect(() => {
         // Hitung durasi malam hanya jika checkin dan checkout valid
         if (checkin && checkout) {
-          const nightDuration = Math.ceil(
-            (checkout.getTime() - checkin.getTime()) / (1000 * 3600 * 24)
+
+          const checkInDate = new Date(checkin);
+          const checkOutDate = new Date(checkout);
+
+          checkInDate.setHours(0, 0, 0, 0);
+          checkOutDate.setHours(0, 0, 0, 0);
+
+          const nightDuration = Math.max(
+              0,
+              (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
           );
+
       
           setNight(nightDuration);
       
@@ -279,16 +293,19 @@ const Layout = (  ) => {
 
       useEffect(() => {
 
-        if(chart){
+
+        if(chart && amountNight){
+            
 
             const totalPrice = chart.reduce((total, item) => {
-                return total + item?.data[0]?.price * item.quantity;
+                return total + item?.data[0]?.price * item.quantity * amountNight;
             }, 0);
+
             setSubtotal(totalPrice)
             setTax(totalPrice * 0.12 )
         }
 
-      },[chart])
+      },[chart, amountNight])
 
 
   
@@ -425,7 +442,11 @@ const Layout = (  ) => {
 
                                             <div className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>
                                                 <h1>IDR</h1>
-                                                <h1>{convertToRupiah(item.data[0]?.price) || "No price"}</h1>
+                                                { nights && nights && (
+
+                                                <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+
+                                                )}
                                             </div>
 
                                         </div>

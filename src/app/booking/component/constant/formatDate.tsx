@@ -11,8 +11,20 @@ export const formatCheckInCheckOut = (
     const formattedCheckIn = checkin.toLocaleDateString('en-GB', options);
     const formattedCheckOut = checkout.toLocaleDateString('en-GB', options);
   
-    const nightDuration = Math.ceil(
-      (checkout.getTime() - checkin.getTime()) / (1000 * 3600 * 24)
+    const checkInDate = new Date(checkin);
+    const checkOutDate = new Date(checkout);
+
+   
+    checkInDate.setHours(0, 0, 0, 0);
+    checkOutDate.setHours(0, 0, 0, 0);
+
+    // console.log(`Processed Check-In: ${checkInDate}`);
+    // console.log(`Processed Check-Out: ${checkOutDate}`);
+
+    // Hitung durasi malam dengan mengurangi tanggal check-out dari check-in
+    const nightDuration = Math.max(
+        0,
+        (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
     );
   
     // Panggil callback dengan nightDuration

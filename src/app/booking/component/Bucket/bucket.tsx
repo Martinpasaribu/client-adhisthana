@@ -10,6 +10,8 @@ import { useRouter } from 'next/navigation';
 import { DeletedCart } from '../../utils/deletedCart';
 import toast from 'react-hot-toast';
 import { http } from '@/utils/http';
+import { AddNightToSession } from '../api/AddNightToSession';
+import { convertToRupiah } from '@/constants';
 
 interface BucketProps {
     checkin? :  Date | null;
@@ -33,11 +35,16 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
     if(checkin && checkout){
 
-        const nightDuration = Math.ceil(
+        const checkInDate = new Date(checkin);
+        const checkOutDate = new Date(checkout);
 
-            (checkout.getTime() - checkin.getTime()) / (1000 * 3600 * 24)
-            
-          );
+        checkInDate.setHours(0, 0, 0, 0);
+        checkOutDate.setHours(0, 0, 0, 0);
+
+        const nightDuration = Math.max(
+            0,
+            (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
+        );
 
           setNight(nightDuration);
     }
@@ -57,18 +64,21 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
       useEffect(() => {
 
-        if(chart){
+        if(chart.length > 0 && nights){
 
             const totalPrice = chart.reduce((total, item) => {
-                return total + item?.data[0]?.price * item.quantity;
+                return total + item?.data[0]?.price * item.quantity * nights;
             }, 0);
             setPriceTotal(totalPrice)
+        } else {
+            setPriceTotal(0)
         }
 
-      },[chart])
+      },[chart, nights])
 
 
-      const handleSetParams = () => {
+      const handleSetParams = async () => {
+
         if (isProcessing) return;
     
         // Cek apakah localStorage berisi cart_villa
@@ -87,11 +97,17 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
         }
     
         if (checkin && checkout) {
+            
             const param = {
                 checkin: checkin,
                 checkout: checkout,
             };
-    
+
+            await AddNightToSession({ 
+                checkIn: new Date(checkin), 
+                checkOut: new Date(checkout) 
+            });
+            
             localStorage.setItem('Params', JSON.stringify(param));
             router.push('/checkout');
         }
@@ -117,6 +133,8 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
                     <h1 className='text-[16px]'>
                     {checkin && checkout
+
+                    
                     ? formatCheckInCheckOut(checkin, checkout, false, night) 
                     : "Select check-in and check-out dates"}
                     </h1>
@@ -148,7 +166,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                                         X
                                     </h1>
                                     <div>
-                                        { nights && nights > 0 ? (
+                                        { nights && nights > 1 ? (
 
                                             <h1> {nights} </h1>
                                             ) : (
@@ -166,7 +184,11 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
                                 <div className='flex gap-2 text-[17px] font-semibold'>
                                     <h1>IDR</h1>
-                                    <h1>{item.data[0]?.price || "No price"}</h1>
+                                    { nights && nights && ( 
+
+                                        <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+
+                                    )}
                                 </div>
 
                             </div>
@@ -192,7 +214,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                 <div className='flex gap-2 text-[20px] '>
                     <h1>IDR</h1>
                     {/* <h1>{ priceTotal && priceTotal ? priceTotal : 0  }</h1> */}
-                    <h1>{priceTotal ?? 0}</h1>
+                    <h1>{convertToRupiah(priceTotal ?? 0)}</h1>
 
                 </div>
             </div>
