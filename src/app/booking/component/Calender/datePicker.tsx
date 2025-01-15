@@ -112,9 +112,9 @@ const DatePicker = () => {
         </h2>
 
 
-        <div className="flex-center w-full h-full full md3:max-h-[26rem] p-2 rounded-lg  overflow-hidden">
+        <div className="flex-center w-full h-full full md3:max-h-[23rem] p-2 rounded-lg  overflow-hidden">
 
-          <div className="flex flex-col  w-full md3:flex-row gap-2 sm:gap-7 md3:gap-0">
+          <div className="flex flex-col  w-full md3:flex-row gap-2 sm:gap-7 md3:gap-0 px-2">
 
 
             {/* Untuk Ukuran Layar Kecil */}
@@ -161,7 +161,7 @@ const DatePicker = () => {
 
 
             {/* Komponen DayPicker */}
-            <div className="w-full flex justify-center md3:justify-end ">
+            <div className="w-full flex justify-center md3:justify-end my-6 sm:my-2 ">
               {/* <label className="mb-2 text-gray-600 font-medium">Select Your Dates</label> */}
 
                 <DayPicker
@@ -236,7 +236,7 @@ const DatePicker = () => {
                 </div>
 
                 {/* Check-Out */}
-                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2">
+                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 ">
                   <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
                     <h1 className="text-md md:text-xl">Check-Out</h1>
                   </div>
@@ -250,7 +250,7 @@ const DatePicker = () => {
 
               </div>
 
-              <div className="w-full flex justify-center items-center p-2 sm:p-5 ">
+              <div className="w-full flex justify-center items-center sm:p-5 mb-5 sm:mb-1 ">
                 <button
                   className="p-2 border-color2 border-2 w-full max-w-[30rem] md3:max-w-[40rem]"
                   onClick={() => {
