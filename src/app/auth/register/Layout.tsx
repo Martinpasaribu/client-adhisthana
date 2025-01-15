@@ -101,7 +101,7 @@ export default function Register() {
   };
 
   return (
-    <div className="flex-center gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden pt-[5rem] sm:pt-[6rem] px-4">
+    <div className="flex-center gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden  pt-[1rem] sm:pt-[2rem] px-4">
 
     { load && (<MainLoading/>)}
 
