@@ -67,15 +67,21 @@ const Navbar = () => {
 
 
   const getBackgroundColor = () => {
-    if (pathname === "/contact") return "bg-gray-400"; // Contact
     if (pathname === "/faq") return "bg-gray-400"; // Contact
+    return "backdrop-blur-sm";
+  };
+
+  const getHoverColor = () => {
+    if (pathname === "/contact") return "hover:text-color2"; // Contact
     return "backdrop-blur-sm";
   };
 
   const getBackgroundColorUl = () => {
     if (pathname === "/ourVila") return "text-color2"; 
     if (pathname === "/booking/offers") return "text-color2"; 
+    if (pathname === "/auth/member") return "text-color2"; 
     if (pathname === "/booking") return "text-color2"; 
+    if (pathname === "/contact") return "text-color2"; 
     if (pathname === "/auth/login") return "text-color2"; 
     if (pathname === "/auth/register") return "text-color2"; 
     return "text-white";
@@ -138,7 +144,7 @@ const Navbar = () => {
 
             
           <div className="">
-            <Link href="/" className="flex justify-center items-center w-[4rem]  h-[4rem] sm:h-[5rem] sm:w-[8rem]">
+            <Link href="/" className="flex justify-center items-center w-[4.8rem]  h-[4rem] sm:h-[5rem] sm:w-[8rem]">
                 <Image src="/assets/Logo/adhisthana.png" alt="logo mari belajar" width={400} height={100} className="object-contain  rounded-md"/>
             </Link>
           </div>
@@ -149,25 +155,25 @@ const Navbar = () => {
             <ul className={`hidden  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':getBackgroundColorUl()} `}>
 
               <Link href="/">
-                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} `}>
+                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
                   <h1 className="">Home</h1>
                 </li>
               </Link>
 
               <Link href="/about">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} `}>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
                 <h1>About Us</h1>
               </li>
               </Link>
 
               <Link href="/ourVila">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} `}/>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}/>
                 <h1>villas</h1>
               </Link>
               
 
               <Link href="/contact">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} `}/>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}/>
                   <h1>Contacts</h1>
                 
               </Link>
@@ -190,7 +196,7 @@ const Navbar = () => {
                         <CustomButton 
                             title="Login"
                             btnType="button"
-                            containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 rounded-md"
+                            containerStyles="text-white bg-color1 px-4 sm:px-3 md:px-4 lg:px-8 py-1.5 lg:py-3 rounded-md"
                         />
                       </Link>
 
@@ -209,7 +215,7 @@ const Navbar = () => {
                               <CustomButton 
                                   title="Book Now"
                                   btnType="button"
-                                  containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 "
+                                  containerStyles="text-white bg-color1 px-2 sm:px-2 md:px-4 lg:px-8 py-1.5 lg:py-3 "
                               />
                             </Link>
                         )
@@ -228,7 +234,7 @@ const Navbar = () => {
                     <CustomButton 
                       title={`${dataMe.name.length > 8 ? dataMe.name.slice(0, 8) + '...' : dataMe.name}`}
                       btnType="button"
-                      containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3"
+                      containerStyles="text-white bg-color1 px-4 sm:px-4 md:px-5 lg:px-8 py-2 lg:py-3 rounded-md"
                     />
 
                     </Link>

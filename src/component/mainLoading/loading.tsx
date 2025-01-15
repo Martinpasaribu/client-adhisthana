@@ -7,7 +7,7 @@ const MainLoading = () => {
 
   return (
 
-    <div className='fixed inset-0 z-40 w-screen overflow-y-auto  bg-opacity-60 bg-slate-100'>
+    <div className='fixed inset-0 z-40 w-screen overflow-y-auto  bg-opacity-90 bg-white'>
         
         <div className="flex flex-col gap-5 min-h-full items-center justify-center p-4 text-center sm:items-center sm:p-0">
 

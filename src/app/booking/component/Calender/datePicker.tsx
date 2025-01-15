@@ -20,6 +20,10 @@ const DatePicker = () => {
   const checkOutDate = selectedRange?.to;
   const defaultClassNames = getDefaultClassNames();
 
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+
     // Fungsi untuk memformat tanggal menjadi format ISO
     const formatDate = (date: Date) => {
       return date.toLocaleString("en-GB", {
@@ -36,14 +40,14 @@ const DatePicker = () => {
   
   useEffect(() => {
     if (checkInDate) {
-      const formattedCheckIn = formatDate(checkInDate); // Tetap waktu asli
+      const formattedCheckIn = formatDate(checkInDate); 
       dispatch(setCheckIn(formattedCheckIn));
-      console.log("CheckIn redux:", formattedCheckIn);
+      // console.log("CheckIn redux:", formattedCheckIn);
     }
     if (checkOutDate) {
-      const formattedCheckOut = formatDate(checkOutDate); // Tetap waktu asli
+      const formattedCheckOut = formatDate(checkOutDate); 
       dispatch(setCheckOut(formattedCheckOut));
-      console.log("CheckOut redux:", formattedCheckOut);
+      // console.log("CheckOut redux:", formattedCheckOut);
     }
   }, [checkInDate, checkOutDate, dispatch]);
   
@@ -165,6 +169,7 @@ const DatePicker = () => {
                     numberOfMonths={2}
                     selected={selectedRange}
                     onSelect={setSelectedRange}
+                    disabled={{ before: today }} 
                     className="hidden hp4:block"
                     classNames={{
                         day: `font-bold text-black hover:bg-gray-200 font-semibold rounded-md`, // Setiap hari
@@ -187,6 +192,7 @@ const DatePicker = () => {
                     numberOfMonths={1}
                     selected={selectedRange}
                     onSelect={setSelectedRange}
+                    disabled={{ before: today }} 
                     className="block hp4:hidden"
                     classNames={{
                         day: `font-bold text-black hover:bg-gray-200 font-semibold rounded-md`, // Setiap hari

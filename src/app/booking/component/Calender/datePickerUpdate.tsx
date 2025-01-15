@@ -9,6 +9,9 @@ import { setCheckIn, setCheckOut } from "@/lib/slice/bookingSlice";
 import { formatBookingDate, formatLocalISOIn, formatLocalISOOut } from "../constant";
 import toast from "react-hot-toast";
 
+const today = new Date();
+today.setHours(0, 0, 0, 0);
+
 interface CalendarProps {
   checkIn?: Date | null;
   checkOut?: Date | null;
@@ -77,6 +80,7 @@ const DatePickerUpdate = ({ checkIn, checkOut, isOpen, closeModal }: CalendarPro
                 numberOfMonths={1}
                 selected={selectedRange}
                 onSelect={setSelectedRange}
+                disabled={{ before: today }} 
                 required // Tambahkan properti required
                 classNames={{
                   day: `font-bold text-black hover:bg-gray-200 font-semibold rounded-md`,

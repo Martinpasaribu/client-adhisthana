@@ -17,10 +17,12 @@ import { Item } from "./component/Item";
 import PaymentUrl from "./component/Payment_URL";
 import Transaction from "./component/skeleton/transaction";
 import TransactionSkeleton from "./component/skeleton/transaction";
+import MainLoading from "@/component/mainLoading/loading";
 
 const Layout = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const [ load, setLoad] = useState(false)
 
   const [transaction, setTransaction] = useState<TransactionModels | null>(
     null
@@ -38,6 +40,9 @@ const Layout = () => {
       }
 
       try {
+
+        setLoad(true);
+
         const response = await fetch(`/api/getTransaction?order_id=${transactionId}`);
 
         const res = await response.json();
@@ -60,9 +65,15 @@ const Layout = () => {
 
           router.replace(`?${newParams.toString()}`);
         }
+
+        setLoad(false);
+
       } catch (error) {
         console.error("Error fetching transaction:", error);
         setEmptyMessage("Terjadi kesalahan saat mengambil data transaksi");
+
+      }finally {
+        setLoad(false); 
       }
     },
     [searchParams, router]
@@ -82,7 +93,10 @@ const Layout = () => {
   }, [getTransactionDetail, searchParams]);
 
   return (
+
     <Main_Layout title="Status Pesanan" onBack={() => router.replace("/")}>
+
+      { load && (<MainLoading/>)}
 
       <Input
         label="Kode Transaksi"

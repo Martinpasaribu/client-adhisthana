@@ -129,6 +129,14 @@ module.exports = {
           '-00%': { opacity:0 , transform: 'translateX(-10%)' }, /* Mulai dari di luar layar sebelah kanan */
           '100%': { opacity:1 , transform: 'translateX(0%)' }, /* Akhir di luar layar sebelah kiri */
         },
+        sidebar_checkOut: {
+          '-00%': { opacity:0 ,transform: 'translateX(-10%)' }, /* Mulai dari di luar layar sebelah kanan */
+          '100%': {  opacity:1 ,transform: 'translateX(0%)' }, /* Akhir di luar layar sebelah kiri */
+        },
+        checkout: {
+          '0%': {  transform: 'translateX(0%)' }, /* Mulai dari di luar layar sebelah kanan */
+          '100%': {  transform: 'translateX(180%)' }, /* Akhir di luar layar sebelah kiri */
+        },
         sidebar_out: {
           ' 0%': { opacity:1 , transform: 'translateX(0)' }, /* Mulai dari di luar layar sebelah kanan */
           '100%': { opacity:0 , transform: 'translateX(-100%)' }, /* Akhir di luar layar sebelah kiri */
@@ -148,6 +156,8 @@ module.exports = {
         spin_slow: 'spin_slow 3s linear infinite',
         jumps:'lompat 2s ease-in-out infinite',
         sidebar_in: 'sidebar_in 1s ease-in-out forwards',
+        sidebar_checkOut: 'sidebar_checkOut 0.8s ease-in-out forwards',
+        checkout: 'checkout 0.5s ease-in-out forwards',
         sidebar_out: 'sidebar_out 1s ease-in-out forwards',
         nav_in: 'nav_in 1s ease-in-out forwards',
         muncul: 'muncul 1s ease-in-out forwards',

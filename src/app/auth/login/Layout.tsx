@@ -1,7 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { http } from "@/utils/http";
 import { borobudur } from '@/style/icons'
 
@@ -17,6 +17,17 @@ export default function Login() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+
+  useEffect(() => {
+    const shouldRedirect = localStorage.getItem("me");
+    if (shouldRedirect) {
+      localStorage.removeItem("me");
+
+      router.push("/booking");
+    }
+  }, [router]);
+
 
   const handleSubmit = async (e: any) => {
 
@@ -62,8 +73,17 @@ export default function Login() {
         });
 
         setTimeout(() => {
-          router.push("/booking");
-        }, 3000);
+          try {
+            
+            localStorage.setItem("me", "true");
+    
+            window.location.reload();
+          } catch (error) {
+            console.error("Error to direct:", error);
+          }
+        }, 2000);
+
+
         
       } catch (err: any) {
         // setError(err.response?.data?.message || "An error occurred. Please try again.");

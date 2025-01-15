@@ -82,11 +82,28 @@ const MyBooking = () => {
       <div className='flex flex-col gap-2'>
         {loading ? (
           
-          <TransactionSkeletonSecond />
+
+          <div className='space-y-5'>
+
+            <TransactionSkeletonSecond />
+            <TransactionSkeletonSecond />
+            <TransactionSkeletonSecond />
+
+
+          </div>
+
+          
           
         ) :  !transaction ? (
 
-          <TransactionSkeletonSecond />
+          <div className='space-y-5'>
+
+            <TransactionSkeletonSecond />
+            <TransactionSkeletonSecond />
+            <TransactionSkeletonSecond />
+
+
+          </div>
 
         ) : (
 

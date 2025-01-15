@@ -71,7 +71,7 @@ export default function Home() {
             loop 
             preload="none" 
             className="w-full h-screen md2:h-full">
-            <source src="/AdhisthanaHD.mp4" type="video/mp4" />
+            <source src="/video/AdhisthanaHD.mp4" type="video/mp4" />
             <track
               src="/Adhisthana.mp4"
               kind="subtitles"

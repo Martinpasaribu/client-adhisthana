@@ -10,7 +10,7 @@ interface HeaderProps {
 
 export const Header = ({ title, onBack } : HeaderProps) => {
   return (
-    <div className="header-container">
+    <div className="header-container p-2 sm:p-5">
       <Image 
         src={icBack} 
         alt="ic-back" 

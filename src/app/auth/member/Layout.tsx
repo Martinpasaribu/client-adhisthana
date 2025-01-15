@@ -17,9 +17,9 @@ export default function Login() {
   };
 
   return (
-    <div className="flex flex-col gap-8 items-center pt-[4rem] sm:pt-[7rem] min-h-screen overflow-hidden">
+    <div className="flex flex-col gap-2 items-center pt-[3rem] sm:pt-[7rem] min-h-screen overflow-hidden">
       {/* Head */}
-      <div className="w-full max-w-[80rem] p-10 text-center  hp3:text-left">
+      <div className="w-full max-w-[80rem] p-8 text-center  hp3:text-left">
         <h1 className="text-2xl font-bold text-color1 "> Member </h1>
       </div>
 

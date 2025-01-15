@@ -82,7 +82,7 @@ const Layout = () => {
     useEffect(() => {
       // Validasi check-in tidak boleh >= check-out
       if (safecheckin && safecheckout && safecheckin >= safecheckout) {
-        toast.error("Tanggal masuk harus kurang dari tanggal keluar.",{ position: "bottom-right", duration: 5000 });
+        toast.error("Check-out  must be after check-in .",{ position: "bottom-right", duration: 5000 });
         setValidate(false); // Reset jika tidak valid
       } else {
         setValidate(true)
@@ -90,11 +90,30 @@ const Layout = () => {
   
       // Validasi check-out tidak boleh <= check-in
       if (safecheckout && safecheckin && safecheckout <= safecheckin) {
-        toast.error("Tanggal keluar harus lebih dari Tanggal masuk.",{ position: "bottom-right", duration: 5000 });
+        toast.error("Check-In  must be before check-in .",{ position: "bottom-right", duration: 5000 });
         setValidate(false); // Reset jika tidak valid
       } else {
         setValidate(true)
       }
+
+      // Validasi check-out tidak boleh === check-in
+
+        const today1 = safecheckin ? new Date(safecheckin) : null;
+        const today2 = safecheckout ? new Date(safecheckout) : null;
+        
+        today1?.setHours(0, 0, 0, 0);
+        today2?.setHours(0, 0, 0, 0);
+
+        console.log("date range1 :", safecheckin, safecheckout)
+        console.log("date range2 :", today1, today2)
+
+        if (today1?.getTime() === today2?.getTime()) {
+          toast.error("Dates cannot be the same.", { position: "bottom-right", duration: 5000 });
+            console.log("date range3 :", today1?.getTime(), today2?.getTime())
+            setValidate(false); 
+        } else {
+          setValidate(true);
+        }
   
     }, [safecheckin, safecheckout]);
     
@@ -127,12 +146,12 @@ const Layout = () => {
           setShouldReload(true);
          
 
-          toast.success("Penawaran diperbaharui.", {
+          toast.success("Offer updated", {
             position: "bottom-left",
             duration: 6000,
           });
         } else {
-          toast.error("Range tanggal booking salah.", {
+          toast.error("Order date range is incorrect", {
             position: "bottom-right",
             duration: 5000,
           });

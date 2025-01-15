@@ -43,6 +43,7 @@ const Layout = (  ) => {
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
   const [ snapShow, setSnapShow] = useState(false)
   const [ load, setLoad] = useState(false)
+  const [ animate, setAnimate] = useState(false)
   const [ amountNight, setAmountNight] = useState<number | 0>();
 
   const isInitialRender = useRef(true); 
@@ -62,13 +63,9 @@ const Layout = (  ) => {
   },[dispatch])
 
 
-    // useEffect(() => {
-
-    //   if (snapShow) {
-       
-    //     router.push('/auth/member');
-    //   }
-    // }, [router]);
+  const handleAnimateButton = () => {
+    setAnimate(true);
+  }
 
 
 
@@ -325,12 +322,12 @@ const Layout = (  ) => {
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[6rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 '>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 '>
                     
                     <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
 
 
-                        <div className='select-none flex flex-col gap-4 space-y-5 w-full xl:max-w-[30rem]'>
+                        <div className='select-none flex flex-col gap-4 space-y-2 sm:space-y-5 w-full xl:max-w-[30rem]'>
 
                             <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
 
@@ -488,6 +485,7 @@ const Layout = (  ) => {
 
                     <hr className=" top-0 left-0 z-30 h-0 w-full max-w-[74rem] border-b border-solid border-color1 mt-5"/>
 
+                    {/* CheckOut            */}
                     <div className='hidden sm:flex justify-end items-center w-full h-full max-w-[70rem] p-2 mt-5'>
 
                         <button type="submit" className='px-3 py-2 bg-color1 text-white flex-center gap-2'>
@@ -505,21 +503,51 @@ const Layout = (  ) => {
 
                     </div>
 
-                    <div className='relative h-32 w-32 sm:hidden justify-end items-center max-w-[30rem] p-2 mt-5 z-40'>
+                    {/* Mini CheckOut                     */}
+                    <div className='relative h-32 w-32 sm:hidden justify-end items-center max-w-[30rem] p-2 mt-5 z-30'>
 
-                      <button type="submit" className=' flex-center gap-2 px-3 py-2 bg-color1 text-white fixed bottom-10 h-12 rounded-md'>
-                          
-                          <h1> Checkout </h1>
+                      <button
+                        onClick={handleAnimateButton}
+                        type="submit"
+                        className={` ${animate 
+                          ? " flex-center gap-2 px-3 py-2 bg-color1 text-white fixed bottom-10 h-10 rounded-md  animate-sidebar_checkOut" 
+                          : " "
+                        }` }
+                      >
+                        <h1 className={`${animate ? "flex " : "hidden"}`}>Checkout</h1>
 
-                            <Image
-                                src={shopBag}
-                                alt='image appointment'
-                                width={200}
-                                height={200}
-                                className="w-[1.6rem] h-[1.6rem]  hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover "
-                            />
-
+      
                       </button>
+
+                      <div
+                        onClick={handleAnimateButton}
+                        className={` ${animate 
+                          ? "flex-center gap-2 px-2.5 py-2 bg-color1 text-white animate-checkout fixed bottom-10 h-10 rounded-md "
+                          : "flex-center gap-2 px-10 pr-4 py-2  text-white  fixed bottom-10 h-10 rounded-md "}`}
+                      >
+
+                        <Image
+                          src={shopBag}
+                          alt="image appointment"
+                          width={200}
+                          height={200}
+                          className={` ${animate 
+                            ? "w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover"
+                            : "hidden" } `}
+                        />
+
+                        <div className={`${animate ? " hidden " : "bg-color1 p-2 px-3 rounded-md"}`}>
+                          <Image
+                            src={shopBag}
+                            alt="image appointment"
+                            width={200}
+                            height={200}
+                            className={`w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover  `}
+                          />
+                        </div>
+
+
+                      </div>
 
                     </div>
 
