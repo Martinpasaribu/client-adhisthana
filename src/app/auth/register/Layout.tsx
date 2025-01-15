@@ -8,6 +8,7 @@ import { borobudur } from '@/style/icons'
 import Image from 'next/image'
 import { checkField } from "@/constants";
 import toast from "react-hot-toast";
+import MainLoading from "@/component/mainLoading/loading";
 
 
 export default function Register() {
@@ -19,6 +20,7 @@ export default function Register() {
   const [title, setTitle] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [load, setLoad] = useState(false);
 
   const handleSubmit = async (e: any) => {
 
@@ -37,6 +39,8 @@ export default function Register() {
         });
         return 
     }
+
+    setLoad(true)
 
     const fields = { email, password, name,title,phone, };
     const errorMessage = checkField(fields);
@@ -76,23 +80,34 @@ export default function Register() {
             style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
           });
 
+        setLoad(false)
+
         setTimeout(() => {
           router.push("/booking");
         }, 3000);
+
       } catch (err: any) {
+
         setError(err.response?.data?.message || "An error occurred. Please try again.");
+      
+      } finally  {
+        setLoad(false)
       }
+
     } else {
+      setLoad(false)
       setError("reCAPTCHA is not loaded. Please try again later.");
     }
   };
 
   return (
-    <div className="flex-center gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden">
+    <div className="flex-center gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden pt-[5rem] sm:pt-[6rem] px-4">
 
-        <div className="w-full max-w-[50rem] flex flex-row h-full">
+    { load && (<MainLoading/>)}
 
-          <div className='hidden w-full  md:flex flex-center gap-2 bg-white'>
+        <div className="w-full max-w-[50rem] flex flex-row justify-center h-full">
+
+          <div className='hidden w-full  sm:flex justify-center items-center gap-2 bg-white'>
 
             <div className="flex h-full flex-col justify-around ">
 
@@ -118,9 +133,13 @@ export default function Register() {
 
           </div>
 
-          <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
+          <div className="w-full max-w-md max-auto p-6 bg-white rounded shadow-md">
             
   
+            <div className="text-xl sm:hidden font-semibold text-color1 flex-center h-full max-h-[1rem] mb-[3rem]"> 
+              <h1> Register </h1>  
+            </div>
+
             {/* {error && <p className="mt-4 text-sm text-red-600">{error}</p>} */}
             {/* {success && <p className="mt-4 text-sm text-green-600">{success}</p>} */}
             

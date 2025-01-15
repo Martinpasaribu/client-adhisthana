@@ -1,3 +1,4 @@
+import { Logout } from '@/app/auth/logout/Logout'
 import React from 'react'
 
 interface LeftProps {
@@ -27,7 +28,7 @@ const Left = ( { setView } : LeftProps) => {
             <li onClick={() => handleView('Password')} className='cursor-pointer'>
                 <h1> Change Password </h1>
             </li>
-            <li className='cursor-pointer'>
+            <li onClick={() => { Logout() }} className='cursor-pointer'>
                 <h1> Logout </h1>
             </li>
         </ul>

@@ -1,6 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { appointment, locked, logout, profile, profiles } from '@/style/icons'
+import { Logout } from '@/app/auth/logout/Logout'
 interface LeftProps {
 
     setView : ( view : string ) => void
@@ -50,7 +51,7 @@ const LeftMini = ( { setView } : LeftProps) => {
                     className=" w-[1.5rem] h-[1.5rem] hp2:w-[1.9rem] hp2:h-[1.9rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "
                 />
             </li>
-            <li className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+            <li onClick={() => { Logout() }} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
                 {/* <h1> Logout </h1> */}
                 <Image
                     src={logout}

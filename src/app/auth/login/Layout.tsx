@@ -9,6 +9,7 @@ import Image from 'next/image'
 import Link from "next/link";
 import { checkField } from "@/constants";
 import toast from "react-hot-toast";
+import MainLoading from "@/component/mainLoading/loading";
 
 
 export default function Login() {
@@ -16,6 +17,7 @@ export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [load, setLoad] = useState(false);
   const [success, setSuccess] = useState("");
 
 
@@ -50,8 +52,13 @@ export default function Login() {
       return;
     }
 
+    setLoad(true)
+
     if (typeof window !== "undefined" && (window as any).grecaptcha) {
       try {
+
+        
+
         // Dapatkan token reCAPTCHA
         const token = await (window as any).grecaptcha.execute("6LcEgaYqAAAAAJYATqo66A4IbJlgh6JyGwK2q2Vn", {
           action: "login",
@@ -65,13 +72,12 @@ export default function Login() {
 
         // setSuccess(response.data.message);
 
-        toast.success(response.data.message, {
-          position: "bottom-right",
+        toast.success(response.data.data.message || "Success login", {
+          position: "top-left",
           duration: 1000,
-          iconTheme: { primary: "#C0562F", secondary: "#fff" },
-          style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
         });
 
+        setLoad(false)
         setTimeout(() => {
           try {
             
@@ -87,7 +93,7 @@ export default function Login() {
         
       } catch (err: any) {
         // setError(err.response?.data?.message || "An error occurred. Please try again.");
-
+        setLoad(false)
         toast.error(err.response?.data?.message || 'server error', {
           position: "bottom-right",
           duration: 5000,
@@ -99,15 +105,19 @@ export default function Login() {
       }
     } else {
       setError("reCAPTCHA is not loaded. Please try again later.");
+      setLoad(false)
     }
   };
 
   return (
-    <div className="flex flex-col gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden">
+    <div className="flex flex-col gap-8 items-center justify-center min-h-screen bg-gray-100 overflow-hidden px-4">
 
-      <div className='w-full max-w-[50rem] flex flex-row h-full'>
+    { load && (<MainLoading/>)}
 
-          <div className='hidden hp4:flex flex-center w-full gap-2 bg-white'>
+      <div className='w-full max-w-[50rem] flex flex-col sm:flex-row justify-center   h-full'>
+
+
+          <div className='hidden sm:flex justify-center items-center w-full gap-2 bg-white'>
 
             <div className="flex h-full flex-col justify-around ">
 
@@ -133,13 +143,42 @@ export default function Login() {
 
           </div>
 
-          <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
+          {/* <div className='flex sm:hidden justify-center items-center w-full gap-2 '>
+
+            <div className="flex h-full flex-col justify-around ">
+
+              <div className="text-2xl font-semibold text-color1 flex-center h-full max-h-[8rem]"> 
+                <h1> Login </h1>  
+              </div>
+              
+              <div className="h-full flex gap-4 items-center flex-col">
+                
+                <Image
+                      src={borobudur}
+                      alt='image cookies'
+                      width={200}
+                      height={200}
+                      className="w-[8rem] h-[8rem] max-w-[6rem] max-h-[5rem] object-cover "
+                  />
+
+                  <h1 className="text-xl "> Adhisthana Villas</h1>
+
+
+              </div>
+            </div>
+
+          </div> */}
+
+          <div className="w-full max-w-md mx-auto p-6 bg-white rounded shadow-md  ">
             
-            
+             <div className="text-2xl sm:hidden font-semibold text-color1 flex-center h-full max-h-[6rem]"> 
+                <h1> Login </h1>  
+              </div>
+
             {/* {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
             {success && <p className="mt-4 text-sm text-green-600">{success}</p>}
              */}
-            <form className="mt-6" onSubmit={handleSubmit}>
+            <form className="mt-6 flex flex-col  gap-5" onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="email" className="block text-sm font-medium text-gray-700">
                   Email
@@ -192,6 +231,7 @@ export default function Login() {
             </div>
 
           </div>
+
 
       </div>
 

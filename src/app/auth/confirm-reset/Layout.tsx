@@ -46,15 +46,15 @@ export default function ResetPassword() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
       <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
-        <h2 className="text-xl font-semibold text-center">Confirm Reset Password</h2>
+        <h2 className="text-xl font-semibold text-center">Reset Password</h2>
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}
         {success && <p className="mt-4 text-sm text-green-600">{success}</p>}
         <form className="mt-6" onSubmit={handleSubmit}>
           <div className="mb-4">
             <label htmlFor="email" className="block text-sm font-medium text-gray-700">
-              Email to Confirm Reset
+              Email confirm
             </label>
             <input
               type="email"
