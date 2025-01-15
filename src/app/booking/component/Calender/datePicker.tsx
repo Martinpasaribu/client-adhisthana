@@ -112,7 +112,7 @@ const DatePicker = () => {
         </h2>
 
 
-        <div className="flex-center w-full h-full full md3:max-h-[23rem] p-2 rounded-lg  overflow-hidden">
+        <div className="flex-center w-full h-full full md3:max-h-[26rem] p-2 rounded-lg  overflow-hidden">
 
           <div className="flex flex-col  w-full md3:flex-row gap-2 sm:gap-7 md3:gap-0">
 

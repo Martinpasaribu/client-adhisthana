@@ -65,15 +65,15 @@ export default function InstagramProfile( { act, id } : InstagramProps) {
         {/* Profile */}
         <section className="flex flex-col sm:flex-row justify-around items-center w-full gap-4 p-2 xs:p-8 bg-white">
 
-          <div className="flex gap-5">
+          <div className="flex-center px-1 gap-4">
             <div>
-            <Image
-              src={profile?.profile_picture_url || '/placeholder-image.png'} // Nilai default
-              alt={'imageProfile'}
-              width={100}
-              height={100}
-              className="w-30 h-30 sm:w-50 sm:h-50 object-contain rounded-full"
-            />
+              <Image
+                src={profile?.profile_picture_url || '/placeholder-image.png'} // Nilai default
+                alt={'imageProfile'}
+                width={100}
+                height={100}
+                className="w-30 h-30 sm:w-50 sm:h-50 object-contain rounded-full"
+              />
 
             </div>
 

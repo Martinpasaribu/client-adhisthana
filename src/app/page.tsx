@@ -124,20 +124,21 @@ export default function Home() {
 
 
 
-          <div className="md:h-screen flex-center flex-row gap-8 px-4 text-center text-xs md:text-lg font-[family-name:var(--font-geist-sans)]">
+          <div className="h-full md:h-screen flex justify-center items-center flex-col md:flex-row  gap-2 md:gap-8 md:px-4 text-center text-xs md:text-lg my-5 md:my-1 font-[family-name:var(--font-geist-sans)]">
                  
               
-                <div className=" h-full p-8 w-1/2 max-w-[50rem] flex flex-col justify-center ">
+                <div className=" h-full p-2 md:p-8 md:w-1/2 max-w-[40rem] md:max-w-[50rem] flex flex-col justify-center ">
                   
                   <ImageGallery images={images} />
+                  
                 </div>
            
 
-              <div className=" text-slate-600 w-1/2 max-w-[30rem] flex flex-col justify-center items-center  gap-10 text-right">
+              <div className=" text-slate-600 md:w-1/2 max-w-[30rem] flex flex-col justify-center items-center  gap-10 text-center hp2:text-right">
                 
-                <div className="flex flex-col gap-8 w-full max-w-[30rem] ">
+                <div className="flex flex-col px-2 gap-2 md:gap-8 w-full max-w-[35rem]  md:max-w-[30rem] mb-8 md:mb-2">
 
-                  <h1 className="text-color2 ">Moments of Serenity: A Visual Journey</h1>
+                  <h1 className="text-color2">Moments of Serenity: A Visual Journey</h1>
                   <h2 className="text-slate-500 "> Explore the beauty of Central Java through our curated photo gallery, showcasing the tranquil rice paddies, winding rivers, and serene countryside paths that surround Adhisthana Villas. Capture the charm of local life as you immerse yourself in nature’s embrace. </h2>
                   
                 </div>

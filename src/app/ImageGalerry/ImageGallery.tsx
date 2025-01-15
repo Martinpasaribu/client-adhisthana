@@ -19,14 +19,14 @@ const ImageGallery = ({ images } : ImageGalleryProps) => {
   };
 
   return (
-    <div className="flex gap-4 ">
+    <div className="flex gap-2 md:gap-4 ">
       {images.map((image : any, index : any) => (
         <div
           key={index}
           className={`relative cursor-pointer transition-all duration-500 ${
             activeImage === index
-              ? "w-[80rem] h-[30rem]"
-              : "w-full h-[30rem]"
+              ? "max-w-[80rem] md:w-[80rem] max-h-[30rem] md:h-[30rem]"
+              : "w-full h-[20rem] md:h-[30rem]"
           }`}
           onClick={() => handleImageClick(index)}
         >
