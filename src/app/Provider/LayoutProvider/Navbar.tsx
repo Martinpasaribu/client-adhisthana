@@ -215,9 +215,13 @@ const Navbar = () => {
                       <>
                       { pathname === "/booking" ? (
 
-                          <div>
-
-                          </div>
+                        <Link onClick={handleBooking} href="/auth/login" className={` flex justify-end sm:justify-center items-center w-full max-w-[10rem]`}>
+                          <CustomButton 
+                              title="Login"
+                              btnType="button"
+                              containerStyles="text-white bg-color1 px-4 sm:px-3 md:px-4 lg:px-8 py-1.5 lg:py-3 rounded-md"
+                          />
+                        </Link>
 
                         ) : (
 
