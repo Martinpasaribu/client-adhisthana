@@ -16,6 +16,7 @@ import SelectButton from './selectButton';
 import SkeletonItemOffers from '../Skeleton/skeletonItemOffers';
 import toast from 'react-hot-toast';
 import SkeletonRoomsFull from '../Skeleton/skeletonItemRoomFull';
+import MainLoading from '@/component/mainLoading/loading';
 
 interface Params {
   checkin? :  Date | null;
@@ -27,6 +28,7 @@ const OffersItem = () => {
     const router = useRouter();
     const searchParams = useSearchParams();
     const [isRoomsFull, setIsRoomsFull] = useState(false);
+    const [load, setLoad] = useState(false);
     const dispatch = useAppDispatch();
 
     const [vila, setVila] = useState<RoomModels[]>([]);
@@ -44,7 +46,11 @@ const OffersItem = () => {
       const setCheckout = searchParams.get("checkout");
 
       const fetchVila = async () => {
+
+        setLoad(true);
+
         try {
+
           const response = await fetch("/api/updateVila", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -78,9 +84,16 @@ const OffersItem = () => {
               }
 
           console.log("Data fetched:", data.data);
+          
+
         } catch (error : any) {
+
           toast.error( error.response?.data?.message|| error.message || "server does not respond", { position: "bottom-right", duration: 5000 });
+          
+        } finally {
+          setLoad(false);
         }
+        
       };
     
       fetchVila();
@@ -159,6 +172,9 @@ const OffersItem = () => {
     
   return (
     <section className='w-full mt-4 md1:mt-10'>
+    
+    { load && (<MainLoading/>)}
+
 
     { vila && vila.length > 0 ? (
 

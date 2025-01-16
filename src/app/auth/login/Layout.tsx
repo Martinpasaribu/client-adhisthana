@@ -94,6 +94,23 @@ export default function Login() {
       } catch (err: any) {
         // setError(err.response?.data?.message || "An error occurred. Please try again.");
         setLoad(false)
+
+        if(err.response?.data.status === false) {
+
+          toast.error(err.response?.data?.message || 'server do not responded', {
+            position: "bottom-right",
+            duration: 5000,
+            iconTheme: { primary: "#604beb", secondary: "#fff" },
+            icon: "⚠️",
+            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+          });
+
+          setTimeout(() => {
+            router.push('/auth/reset-password')
+          },1000)
+
+        }
+
         toast.error(err.response?.data?.message || 'server error', {
           position: "bottom-right",
           duration: 5000,

@@ -6,17 +6,17 @@ import Image from 'next/image';
 import React, { useEffect, useState, useRef  } from 'react'
 import {  useAppSelector , useAppDispatch} from "@/lib/hooks/hooks";
 import { setGetChart } from '@/lib/slice/bookingSlice';
-import { formatCheckInCheckOut, night } from '../booking/component/constant/formatDate';
 import { convertToRupiah } from '@/constants';
 import toast from 'react-hot-toast';
-import useSnap from './hooks/useSnap';
 import { useRouter } from 'next/navigation';
-import { DeletedCart } from '../booking/utils/deletedCart';
-import { authCheckout, authLogin, checkUser } from '../auth/authCeckout/authCheckout';
 import { NextResponse } from 'next/server';
 import { handleMe } from '@/utils/me/getMe';
 import MainLoading from '@/component/mainLoading/loading';
 import { shopBag } from '@/style/icons';
+import { authCheckout, authLogin, checkUser } from '@/app/auth/authCeckout/authCheckout';
+import useSnap from '../../hooks/useSnap';
+import { formatCheckInCheckOut, night } from '@/app/booking/component/constant/formatDate';
+import { MeData } from '@/utils/me/getData';
 
 interface Params {
     checkin? :  Date | null;
@@ -28,7 +28,7 @@ interface LayoutProps {
     // {onBack}: LayoutProps
 }
 
-const Layout = (  ) => {
+const AuthCheckout = (  ) => {
     
   const router = useRouter();
   const dispatch = useAppDispatch();
@@ -68,21 +68,29 @@ const Layout = (  ) => {
   }
 
 
+    useEffect(() => {
+
+       const DataMe = async() => {
+
+       const data = await MeData()
+
+        if( data ){
+          console.log(data);
+          setFormData((prev) => ({ ...prev, name: data.name }));
+          setFormData((prev) => ({ ...prev, email: data.email }));
+          setFormData((prev) => ({ ...prev, phone: data.phone }));
+        }
+      }
+
+      DataMe()
+
+    },[])
+
 
      // Kirimkan Harga Total
      useEffect(() => {
       const handleRedirectOrFetch = async () => {
         
-        
-        // if (isInitialRender.current) {
-        //   isInitialRender.current = false; 
-
-        //   if (snapShow === true) {
-          
-        //     router.push('/auth/member');
-        //     return;
-        //   }
-        // }
   
         if (!snapShow && chart) {
 
@@ -165,7 +173,7 @@ const Layout = (  ) => {
     const handleSubmit = async () => {
       try {
         // Validasi awal
-        if (!formData.title || !formData.name || !formData.email || !formData.phone) {
+        if ( !formData.name || !formData.email || !formData.phone) {
           toast.error("Semua field wajib diisi!", { position: "bottom-right", duration: 5000 });
           return;
         }
@@ -315,86 +323,23 @@ const Layout = (  ) => {
     // onBack={() => router.push('/')} full={snapShow} noHeader={snapShow}
 
 
-    <div title='Checkout'>
+    <div title='Checkout '>
         
         { load && (<MainLoading/>)}
 
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[5rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 '>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[4rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 h-screen  '>
                     
-                    <div className='flex flex-col xl:flex-row w-full h-full max-w-[70rem] gap-5'>
+                    <div className='flex-center w-full h-full max-w-[70rem] gap-5  '>
 
 
-                        <div className='select-none flex flex-col gap-4 space-y-2 sm:space-y-5 w-full xl:max-w-[30rem]'>
-
-                            <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
-
-                            <div  className='flex flex-col gap-4 space-y-5 w-full xl:max-w-[30rem]' >
-
-                                <div className=' flex justify-around items-center gap-4 w-full'>
-                                    {['Mr.', 'Mrs.', 'Ms.'].map((title) => (
-                                    <div key={title} className="flex items-center">
-                                        <input
-                                        id="title"
-                                        type="radio"
-                                        name="title"
-                                        value={title}
-                                        checked={formData.title === title}
-                                        onChange={() => setFormData((prev) => ({ ...prev, title }))}
-                                        required
-                                        className="w-4 h-4 appearance-none rounded-full border border-color2 checked:bg-color1 checked:border-color1 focus:ring-2 focus:ring-white"
-                                        />
-                                        <label className="ms-2 text-sm font-medium text-gray-900">{title}</label>
-                                    </div>
-                                    ))}
-                                </div>
-
-                                <div className="grid gap-6 mb-6 md:grid-rows-4 ">
-                                    <div>
-                                    <input
-                                        type="text"
-                                        id="name"
-                                        value={formData.name}
-                                        onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg  w-full p-2 md:p-3"
-                                        placeholder="Name"
-                                    />
-                                    </div>
-                                    <div>
-                                    <input
-                                        type="email"
-                                        id="email"
-                                        value={formData.email}
-                                        onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
-                                        placeholder="Email Address"
-                                    />
-                                    </div>
-                                    <div>
-                                    <input
-                                        type="number"
-                                        id="phone"
-                                        value={formData.phone}
-                                        onChange={handleChange}
-                                        className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg w-full p-2 md:p-3"
-                                        placeholder="Phone Number"
-                                    />
-                                    </div>
-                                </div>
-
-                            </div>
-                            
-                        </div>
-
-                        <hr className="block xl:hidden top-0 left-0 z-30 h-0 w-full max-w-[74rem] border-b border-solid border-color1 mt-5"/>
-
-                        <div className='flex-center flex-col  w-full xl:max-w-[40rem]'>
+                        <div className='flex-center flex-col  w-full h-full max-h-screen'>
 
 
 
-                                <div className='bg-color4 p-4 w-full xl:max-w-[30rem] space-y-2'>
+                                <div className='bg-color4 p-4 w-full space-y-5'>
 
                                     <h1 className='text-[18px] sm:text-[22px] md:text-xl mb-8 text-black font-bold'>
                                         Your Resevation
@@ -473,7 +418,7 @@ const Layout = (  ) => {
 
                                 </div>
 
-                                <div className='p-4 w-full xl:max-w-[30rem] flex-center bg-color2'>
+                                <div className='p-4 w-full  flex-center bg-color2'>
 
                                     <div className='flex justify-between items-center w-full text-yellow-400 font-semibold'>
                                         <h1>Reservation Total</h1>
@@ -559,7 +504,7 @@ const Layout = (  ) => {
             </>
         )}
 
-        <div id="snap-container" className="w-full h-auto pt-[5.5rem] sm:pt-[8rem] mx-auto p-4">
+        <div id="snap-container" className={` ${snapShow ? "w-full h-auto pt-[5rem] sm:pt-[7rem] mx-auto p-2":"w-full h-auto mx-auto p-4"} `} >
 
 
         </div>
@@ -570,4 +515,4 @@ const Layout = (  ) => {
   )
 }
 
-export default Layout
+export default AuthCheckout

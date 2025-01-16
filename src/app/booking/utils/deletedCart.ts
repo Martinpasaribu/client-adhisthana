@@ -17,6 +17,22 @@ export const DeletedCart = async () => {
       return { success: false, message: 'Terjadi kesalahan saat menghapus cart.' };
     }
   };
+
+export const DeletedCartInSession = async () => {
+    try {
+
+        const response = await http.post(`/booking/remove-cart-in-session`, {
+            headers: { 'Content-Type': 'application/json' },
+        })
+
+        const result =  response ;
+
+        return { success: true, message: result.data.message };
+
+    } catch (error : any) {
+      return { success: false, message: error.response?.data?.message || 'Terjadi kesalahan saat menghapus cart.' };
+    }
+  };
   
 
 

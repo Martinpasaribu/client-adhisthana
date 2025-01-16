@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { appointment, locked, logout, profile, profiles } from '@/style/icons'
 import { Logout } from '@/app/auth/logout/Logout'
+import MainLoading from '@/component/mainLoading/loading'
 interface LeftProps {
 
     setView : ( view : string ) => void
@@ -9,16 +10,31 @@ interface LeftProps {
 
 
 const LeftMini = ( { setView } : LeftProps) => {
-
+const [load, setLoad] = useState (false)
 
   const handleView =  (views : string) => {
     setView(views ? views : '')
   }  
 
+    const handleExit =  async () => {
+       const Load = await Logout()
+  
+       if(Load === true){
+  
+          setLoad(true)
+  
+          setTimeout(() => {
+              setLoad(false)
+          }, 1500 )
+       }
+    }  
+  
   return (
 
         
         <ul className='flex justify-center items-center  gap-7  text-[14px] hp1:text-[16px] font-bold w-full max-w-[17rem] hp2:max-w-[20rem] bg-color2  rounded-3xl h-full max-h-[3.2rem] hp2:max-h-[3.6rem] border-2 border-white'>
+            
+            { load && (<MainLoading/>)}
             
             <li onClick={() => handleView('Booking')} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
                 {/* <h1>Booking </h1> */}
@@ -51,7 +67,7 @@ const LeftMini = ( { setView } : LeftProps) => {
                     className=" w-[1.5rem] h-[1.5rem] hp2:w-[1.9rem] hp2:h-[1.9rem] max-w-[3.6rem] max-h-[3.6rem] object-cover "
                 />
             </li>
-            <li onClick={() => { Logout() }} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
+            <li onClick={() => { handleExit() }} className='cursor-pointer hover:bg-color1 rounded-full p-2'>
                 {/* <h1> Logout </h1> */}
                 <Image
                     src={logout}

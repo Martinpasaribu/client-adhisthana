@@ -13,10 +13,12 @@ export const Logout = async () => {
     setTimeout(() => {
       window.location.replace('/auth/login'); 
     }, 2000);
+    return true ;
   } catch (error: any) {
     toast.error(
       error.response?.data.message || "Server does not respond",
       { position: "bottom-right", duration: 5000 }
     );
+    return true ;
   }
 };

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation";
+import { DeletedCart } from '@/app/booking/utils/deletedCart';
 
 interface ButtonNavProps {
     index: number ;
@@ -21,13 +22,28 @@ const ButtonNavLink = ({ index, setClose }: ButtonNavProps) => {
     
     const router = useRouter()
 
-    const handleLink = () => {
+    const handleLink = async() => {
 
-          router.push(
-            `${url[index]}`
-          );
+      if ( index === 2 ) {
 
-          setClose()
+        await DeletedCart().catch((error) => console.error('Error during unload:', error));
+        localStorage.removeItem('cart_vila');
+        localStorage.removeItem('Params');
+        localStorage.removeItem('Night');
+        setClose()
+
+        router.push(
+          `${url[index]}`
+        );
+      } else {
+
+        router.push(
+          `${url[index]}`
+        );
+
+        setClose()
+
+      }
 
     }
 

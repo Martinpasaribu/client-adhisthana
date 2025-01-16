@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import { MdDarkMode, MdLightMode } from "@/style/icons";
 import Hamburger from "@/component/modal/Hamburger";
-import { DeletedCart } from "@/app/booking/utils/deletedCart";
+import { DeletedCart, DeletedCartInSession } from "@/app/booking/utils/deletedCart";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { http } from "@/utils/http";
 import toast from "react-hot-toast";
@@ -48,6 +48,15 @@ const Navbar = () => {
 
   const handleBookingNonDeletedSession = () => {
 
+    localStorage.removeItem('cart_vila');
+    localStorage.removeItem('Params');
+    localStorage.removeItem('Night');
+
+  }
+
+  const handleBookingDeletedChartInSession = () => {
+
+    DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
     localStorage.removeItem('cart_vila');
     localStorage.removeItem('Params');
     localStorage.removeItem('Night');
@@ -167,15 +176,16 @@ const Navbar = () => {
               </Link>
 
               <Link href="/ourVila">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}/>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
                 <h1>villas</h1>
+                </li>
               </Link>
               
 
               <Link href="/contact">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}/>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
                   <h1>Contacts</h1>
-                
+                </li>
               </Link>
 
             </ul>
@@ -230,7 +240,7 @@ const Navbar = () => {
                 <>
                   { pathname === "/booking" || pathname === "/booking/offers" || pathname === "/checkout"  || pathname === "/order-status"  ? (
 
-                    <Link  href="/auth/member" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                    <Link onClick={handleBookingNonDeletedSession} href="/auth/member" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
                     <CustomButton 
                       title={`${dataMe.name.length > 8 ? dataMe.name.slice(0, 8) + '...' : dataMe.name}`}
                       btnType="button"
@@ -241,7 +251,7 @@ const Navbar = () => {
 
                     ) : (
 
-                      <Link onClick={handleBookingNonDeletedSession} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                      <Link onClick={handleBookingDeletedChartInSession} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
                         <CustomButton 
                             title="Book Now"
                             btnType="button"
