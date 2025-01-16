@@ -94,7 +94,7 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
 
         // Cek apakah localStorage berisi cart_villa
         const cartVilla = localStorage.getItem('cart_vila');
-        if (!cartVilla) {
+        if (!cartVilla || JSON.parse(cartVilla).length === 0) {
             // Tampilkan toast jika cart_villa belum diset
             toast.error("There is no room to choose yet.", {
                 position: "bottom-right",

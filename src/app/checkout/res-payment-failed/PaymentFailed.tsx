@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+"use client"
+
 import React from 'react'
 import { useRouter } from "next/navigation";
 
@@ -11,7 +13,7 @@ const PaymentFailed = () => {
       router.push("/auth/member");
   
     }
-    
+
   return (
 
     <div className='py-[9rem]  flex-center flex-col gap-4'>
