@@ -109,6 +109,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
             });
             
             localStorage.setItem('Params', JSON.stringify(param));
+            localStorage.setItem('Night', JSON.stringify(nights));
             router.push('/checkout');
         }
     };
