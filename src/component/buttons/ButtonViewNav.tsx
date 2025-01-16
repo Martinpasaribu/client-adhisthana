@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation";
-import { DeletedCart } from '@/app/booking/utils/deletedCart';
+import { DeletedCart, DeletedCartInSession } from '@/app/booking/utils/deletedCart';
 
 interface ButtonNavProps {
     index: number ;
@@ -26,7 +26,7 @@ const ButtonNavLink = ({ index, setClose }: ButtonNavProps) => {
 
       if ( index === 2 ) {
 
-        await DeletedCart().catch((error) => console.error('Error during unload:', error));
+        await DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
         localStorage.removeItem('cart_vila');
         localStorage.removeItem('Params');
         localStorage.removeItem('Night');

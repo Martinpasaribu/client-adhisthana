@@ -18,7 +18,7 @@ const PaymentFailed = () => {
 
     <div className='py-[9rem]  flex-center flex-col gap-4'>
           <img src="/assets/Gif/payment-yes.gif" alt="Timeout Response" className='w-full h-full max-w-[20rem] max-h-[20rem]' />
-          <h1 className='text-color1 text-md sm:text-2xl sm:font-semibold'> Payment  </h1>
+          <h1 className='text-color1 text-md sm:text-2xl sm:font-semibold'> Payment Canceled </h1>
          
          <button className='w-full max-w-[20rem] flex-center'>
 

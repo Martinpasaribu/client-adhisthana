@@ -4,7 +4,7 @@ import CustomButton from '../buttons/CustomButton'
 import ButtonNav from '../buttons/ButtonNav';
 import Image from 'next/image';
 import ButtonNavLink from '../buttons/ButtonViewNav';
-import { DeletedCart } from '@/app/booking/utils/deletedCart';
+import { DeletedCart, DeletedCartInSession } from '@/app/booking/utils/deletedCart';
 
 
 interface HamburgerProps {
@@ -45,7 +45,17 @@ interface HamburgerProps {
         localStorage.removeItem('Night');
         closeHamburger()
       }
+
  
+      const handleBookingDeletedChartInSession = () => {
+    
+        DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
+        localStorage.removeItem('cart_vila');
+        localStorage.removeItem('Params');
+        localStorage.removeItem('Night');
+    
+      }
+
     const setIndexImage = (index : any) => { 
       setCurrentIndexImage(index);
     }
@@ -134,7 +144,7 @@ interface HamburgerProps {
 
             <div className='flex absolute top-0 right-0 sm:w-full sm:h-full sm:hidden flex-col justify-start items-center'>
                 <div className='flex justify-end items-center px-2 py-5 w-full'>
-                    <Link onClick={handleBooking} href="/booking" className="flex-center w-full max-w-[10rem]">
+                    <Link onClick={handleBookingDeletedChartInSession} href="/booking" className="flex-center w-full max-w-[10rem]">
                         <CustomButton 
                             title="Book Now"
                             btnType="button"
@@ -147,7 +157,7 @@ interface HamburgerProps {
             <div className='hidden w-full h-full sm:flex flex-col justify-start items-center'>
 
                 <div className='flex justify-end items-center p-8 w-full'>
-                    <Link onClick={handleBooking} href="/booking" className="flex-center w-full max-w-[10rem]">
+                    <Link onClick={handleBookingDeletedChartInSession} href="/booking" className="flex-center w-full max-w-[10rem]">
                         <CustomButton 
                             title="Book Now"
                             btnType="button"
