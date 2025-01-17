@@ -84,7 +84,8 @@ export default function InstagramProfile( { act, id } : InstagramProps) {
             </div>
           </div>
 
-          <div className="flex-center gap-6">
+          <div className="flex justify-end items-center w-full hp2:max-w-[10rem]">
+
                 <div className="w-full gap-4 hidden">
                   <h1>{profile?.followers_count} followers</h1>
                   <h1>{profile?.follows_count} following</h1>

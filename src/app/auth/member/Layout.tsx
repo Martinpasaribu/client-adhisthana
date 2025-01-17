@@ -20,7 +20,7 @@ export default function Login() {
     <div className="flex flex-col gap-2 items-center pt-[3rem] sm:pt-[7rem] min-h-screen overflow-hidden">
        
       {/* Head */}
-      <div className="w-full max-w-[80rem] p-8 text-center  hp3:text-left">
+      <div className="w-full max-w-[80rem] p-2 mt-4 hp2:p-8 text-center  hp3:text-left">
         <h1 className="text-2xl font-bold text-color1 "> Member </h1>
       </div>
 
@@ -39,7 +39,7 @@ export default function Login() {
         </div>
 
         {/* Right */}
-        <div className="flex flex-col gap-3 w-full max-w-[90rem] p-3 ">
+        <div className="flex flex-col gap-3 w-full max-w-[90rem] p-2 hp2:p-3 ">
             
             <div className=" text-slate-700 text-[13px] px-4 xl:px-0">
               <h1> Member &#62;	  {filter} </h1>

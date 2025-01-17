@@ -51,7 +51,7 @@ const Vila = ({ InitialsVila }: VilaProps) => {
   };
 
   return (
-    <div className="sm:my-2 my-8">
+    <div className="sm:my-10 my-8">
       <div className="relative flex items-center overflow-hidden gap-2">
         {/* Tombol Previous */}
         <button
@@ -74,7 +74,7 @@ const Vila = ({ InitialsVila }: VilaProps) => {
                   <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
                     {vila[startIndex].name}
                   </h1>
-                  <h2 className="text-slate-500 animate-modal">{vila[startIndex].describe}</h2>
+                  <h2 className="text-slate-500 animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
                 </div>
 
                 <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4 animate-muncul">
@@ -92,8 +92,8 @@ const Vila = ({ InitialsVila }: VilaProps) => {
                   src={ vila[startIndex].image[0].image || "/assets/Image/imagenf.jpg"}// Ganti dengan vila[startIndex].image jika memiliki URL gambar
                   alt="image sementara"
                   width={800}
-                  height={800}
-                  className="w-full h-full object-cover rounded-md"
+                  height={400}
+                  className="w-full h-full max-h-[15rem] md:max-h-full object-cover rounded-md"
                 />
               </div>
             </div>

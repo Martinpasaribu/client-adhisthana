@@ -7,6 +7,8 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx,mdx}",
     "./node_modules/flowbite/**/*.js",
     "./node_modules/react-tailwindcss-datepicker/dist/index.esm.{js,ts}",
+    
+    
   ],
   // mode: "jit",
 
@@ -228,6 +230,7 @@ module.exports = {
     },
   },
   plugins: [
-
+    // eslint-disable-next-line @typescript-eslint/no-require-imports
+    require('flowbite/plugin'),
   ],
 };

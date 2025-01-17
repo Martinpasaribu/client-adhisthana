@@ -8,7 +8,9 @@ export const statusMapping = (status : any) => {
             return 'Pembayaran Berhasil';
         case 'CANCELED':
             return 'Pesanan Dibatalkan';
+        case 'EXPIRE':
+            return 'Pesanan kedaluwarsa';
         default:
-            return 'Menunggu Pembayaran';
+            return 'Pesanan Error';
     }
 };

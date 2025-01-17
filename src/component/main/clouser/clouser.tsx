@@ -14,7 +14,7 @@ const Closure = ( {images,title,describe}:ClosureProps ) => {
         <div className="w-full  ">
             <Image
                 src={images}
-                alt='image sementara'
+                alt='image ig'
                 width={800}
                 height={800}
                 className="w-full h-full object-cover rounded-md"
