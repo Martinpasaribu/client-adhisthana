@@ -53,7 +53,7 @@ interface HamburgerProps {
         localStorage.removeItem('cart_vila');
         localStorage.removeItem('Params');
         localStorage.removeItem('Night');
-    
+        closeHamburger()
       }
 
     const setIndexImage = (index : any) => { 
@@ -148,7 +148,7 @@ interface HamburgerProps {
                         <CustomButton 
                             title="Book Now"
                             btnType="button"
-                            containerStyles="text-white bg-color1 px-1 sm:px-2 md:px-4 lg:px-8 py-1 lg:py-3 rounded-md "
+                            containerStyles="text-white bg-color1 px-3 sm:px-2 md:px-4 lg:px-8 py-2 lg:py-3 rounded-md "
                         />
                     </Link>
                 </div>

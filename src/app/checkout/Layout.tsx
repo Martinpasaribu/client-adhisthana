@@ -17,6 +17,7 @@ import { NextResponse } from 'next/server';
 import { handleMe } from '@/utils/me/getMe';
 import MainLoading from '@/component/mainLoading/loading';
 import { shopBag } from '@/style/icons';
+import MiniCheckoutBottom from './component/MiniCheckoutBottom/MiniCheckoutBottom';
 
 interface Params {
     checkin? :  Date | null;
@@ -400,7 +401,7 @@ const Layout = (  ) => {
                                         Your Resevation
                                     </h1>
 
-                                    <h1 className='text-[13px] sm:text-[16px]'>
+                                    <h1 className='text-[13px] sm:text-[16px] text-color1'>
                                     {checkin && checkout
                                     ? formatCheckInCheckOut(checkin ,checkout , false, night) 
                                     : "Select check-in and check-out dates"}
@@ -412,9 +413,10 @@ const Layout = (  ) => {
 
                                         <div key={index} className='flex justify-between items-center w-full gap-5'>
 
-                                            <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
-                                            
-                                            <div className='flex text-sm w-full gap-1 font-normal'>
+                                        <div className='flex gap-2 sm:gap-4 w-full'>
+                                            <h1 className='text-[12px] font-bold hp2:text-[13px] sm:text-[18px] sm:font-semibold min-w-[6rem]'>  {item.data[0]?.name || "No Name"} </h1>
+                                                                                      
+                                            <div className='flex-center gap-1 font-semibold text-[10px] sm:text-[14px] text-slate-600'>
                                                 <div className='flex gap-1'>
                                                     <h1>
                                                         {item.quantity} 
@@ -440,6 +442,7 @@ const Layout = (  ) => {
                                                 </div>
                                                 
                                             </div>
+                                        </div>
 
                                             <div className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>
                                                 <h1>IDR</h1>
@@ -505,53 +508,9 @@ const Layout = (  ) => {
 
                     </div>
 
-                    {/* Mini CheckOut                     */}
-                    <div className='relative h-2 w-32 sm:hidden justify-end items-center max-w-[30rem] p-2 mt-5 z-30'>
+                    {/* Mini CheckOut */}
 
-                      <button
-                        onClick={handleAnimateButton}
-                        type="submit"
-                        className={` ${animate 
-                          ? " flex-center gap-2 px-3 py-2 bg-color1 text-white fixed bottom-10 h-10 rounded-md  animate-sidebar_checkOut" 
-                          : " "
-                        }` }
-                      >
-                        <h1 className={`${animate ? "flex  hp2:px-2" : "hidden"}`}>Checkout</h1>
-
-      
-                      </button>
-
-                      <div
-                        onClick={handleAnimateButton}
-                        className={` ${animate 
-                          ? "flex-center gap-2 px-2.5 py-2 bg-color1 text-white animate-checkout fixed bottom-10 h-10 rounded-md "
-                          : "flex-center gap-2 px-10 pr-4 py-2  text-white  fixed bottom-10 h-10 rounded-md "}`}
-                      >
-
-                        <Image
-                          src={shopBag}
-                          alt="image appointment"
-                          width={200}
-                          height={200}
-                          className={` ${animate 
-                            ? "w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover"
-                            : "hidden" } `}
-                        />
-
-                        <div className={`${animate ? " hidden " : "bg-color1 p-2 px-3 rounded-md"}`}>
-                          <Image
-                            src={shopBag}
-                            alt="image appointment"
-                            width={200}
-                            height={200}
-                            className={`w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover  `}
-                          />
-                        </div>
-
-
-                      </div>
-
-                    </div>
+                    <MiniCheckoutBottom animate={animate} handleAnimateButton={handleAnimateButton}/>
 
 
                 </form>

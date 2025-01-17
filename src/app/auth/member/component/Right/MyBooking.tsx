@@ -107,7 +107,7 @@ const MyBooking = () => {
 
         ) : (
 
-          <div className='flex flex-col gap-4 space-y-5'>
+          <div className='flex flex-col gap-4 space-y-5 h-full max-h-[32rem] overflow-auto'>
             { transaction.map((item, index) => (
           
               <div key={index} className='flex flex-col gap-3 rounded-md p-2 shadow-md'>

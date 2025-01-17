@@ -12,7 +12,7 @@ import CalendarMini from '../component/Calender/calendarMini';
 import ModalPeople from '../component/Update/modalPeople';
 import { useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
-import { DeletedCart } from '../utils/deletedCart';
+import { DeletedCart, DeletedCartInSession } from '../utils/deletedCart';
 import { http, UrlMain } from '@/utils/http';
 import BucketMini from '../component/Bucket/bucketMini';
 import OffersItem from '../component/Offers/offersItem';
@@ -135,7 +135,7 @@ const Layout = () => {
         if (safecheckin && safecheckout && validate) { 
           
 
-          DeletedCart().catch((error) => console.error('Error during unload:', error));
+          DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
           localStorage.removeItem('cart_vila');
           localStorage.removeItem('Params');
           localStorage.removeItem('Night');

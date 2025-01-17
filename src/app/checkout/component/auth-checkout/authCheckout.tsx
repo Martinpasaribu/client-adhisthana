@@ -17,6 +17,7 @@ import { authCheckout, authLogin, checkUser } from '@/app/auth/authCeckout/authC
 import useSnap from '../../hooks/useSnap';
 import { formatCheckInCheckOut, night } from '@/app/booking/component/constant/formatDate';
 import { MeData } from '@/utils/me/getData';
+import MiniCheckoutBottom from '../MiniCheckoutBottom/MiniCheckoutBottom';
 
 interface Params {
     checkin? :  Date | null;
@@ -335,17 +336,32 @@ const AuthCheckout = (  ) => {
                     <div className='flex-center w-full h-full max-w-[70rem] gap-5  '>
 
 
-                        <div className='flex-center flex-col  w-full h-full max-h-screen'>
+                        <div className='flex-center flex-col w-full  '>
 
+                                <div className='w-full px-4 sm:px-8 shadow-md my-5 mt-10 h-full max-h-[20rem]'>
 
+                                  <ul className='flex flex-col gap-2 w-full mb-2'>
+                                      <h1 className=' text-center sm:text-xl font-bold mb-4'> Guest Information</h1>
+                                    <li className='uppercase text-[14px] sm:text-[17px] font-bold text-color1'>
+                                      <h1> {formData.name}</h1>
+                                    </li>
+                                    <li className='text-[15px] sm:text-[17px] font- text-slate-600'>
+                                      <h1>{formData.email}</h1>
+                                    </li>
+                                    <li className='text-[15px] sm:text-[17px] font- text-slate-500'>
+                                      <h1>62+{formData.phone}</h1>
+                                    </li>
+                                  </ul>
 
-                                <div className='bg-color4 p-4 w-full space-y-5'>
+                                </div>
+
+                                <div className='bg-color4 p-4 sm:px-8 sm:py-5 w-full space-y-2'>
 
                                     <h1 className='text-[18px] sm:text-[22px] md:text-xl mb-8 text-black font-bold'>
                                         Your Resevation
                                     </h1>
 
-                                    <h1 className='text-[13px] sm:text-[16px]'>
+                                    <h1 className='text-[13px] sm:text-[16px] text-color1'>
                                     {checkin && checkout
                                     ? formatCheckInCheckOut(checkin ,checkout , false, night) 
                                     : "Select check-in and check-out dates"}
@@ -357,34 +373,36 @@ const AuthCheckout = (  ) => {
 
                                         <div key={index} className='flex justify-between items-center w-full gap-5'>
 
-                                            <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
-                                            
-                                            <div className='flex text-sm w-full gap-1 font-normal'>
-                                                <div className='flex gap-1'>
-                                                    <h1>
-                                                        {item.quantity} 
-                                                    </h1>
-                                                    <p className='hidden sm:block' >Rooms</p>
-                                                </div>
-                                                <h1>
-                                                    X
-                                                </h1>
-                                                <div>
-                                                    { nights && nights > 0 ? (
+                                          <div className='flex gap-2 sm:gap-4 w-full'>
+                                              <h1 className='text-[12px] font-bold hp2:text-[13px] sm:text-[18px] sm:font-semibold min-w-[6rem]'>  {item.data[0]?.name || "No Name"} </h1>
+                                                                                        
+                                              <div className='flex-center gap-1 font-semibold text-[10px] sm:text-[14px] text-slate-600'>
+                                                  <div className='flex gap-1'>
+                                                      <h1>
+                                                          {item.quantity} 
+                                                      </h1>
+                                                      <p className='hidden sm:block' >Rooms</p>
+                                                  </div>
+                                                  <h1>
+                                                      X
+                                                  </h1>
+                                                  <div>
+                                                      { nights && nights > 0 ? (
 
-                                                        <h1> {nights} </h1>
-                                                        ) : (
-                                                        <h1> {nights} </h1>
-                                                        )
+                                                          <h1> {nights} </h1>
+                                                          ) : (
+                                                          <h1> {nights} </h1>
+                                                          )
 
-                                                    }
-                                                </div>
+                                                      }
+                                                  </div>
 
-                                                <div>
-                                                    Nights
-                                                </div>
-                                                
-                                            </div>
+                                                  <div>
+                                                      Nights
+                                                  </div>
+                                                  
+                                              </div>
+                                          </div>
 
                                             <div className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>
                                                 <h1>IDR</h1>
@@ -449,54 +467,9 @@ const AuthCheckout = (  ) => {
                         </button>
 
                     </div>
-
-                    {/* Mini CheckOut                     */}
-                    <div className='relative h-2 w-32 sm:hidden justify-end items-center max-w-[30rem] p-2 mt-5 z-30'>
-
-                      <button
-                        onClick={handleAnimateButton}
-                        type="submit"
-                        className={` ${animate 
-                          ? " flex-center gap-2 px-3 py-2 bg-color1 text-white fixed bottom-10 h-10 rounded-md  animate-sidebar_checkOut" 
-                          : " "
-                        }` }
-                      >
-                        <h1 className={`${animate ? "flex  hp2:px-2" : "hidden"}`}>Checkout</h1>
-
-      
-                      </button>
-
-                      <div
-                        onClick={handleAnimateButton}
-                        className={` ${animate 
-                          ? "flex-center gap-2 px-2.5 py-2 bg-color1 text-white animate-checkout fixed bottom-10 h-10 rounded-md "
-                          : "flex-center gap-2 px-10 pr-4 py-2  text-white  fixed bottom-10 h-10 rounded-md "}`}
-                      >
-
-                        <Image
-                          src={shopBag}
-                          alt="image appointment"
-                          width={200}
-                          height={200}
-                          className={` ${animate 
-                            ? "w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover"
-                            : "hidden" } `}
-                        />
-
-                        <div className={`${animate ? " hidden " : "bg-color1 p-2 px-3 rounded-md"}`}>
-                          <Image
-                            src={shopBag}
-                            alt="image appointment"
-                            width={200}
-                            height={200}
-                            className={`w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover  `}
-                          />
-                        </div>
-
-
-                      </div>
-
-                    </div>
+                                
+                    <MiniCheckoutBottom animate={animate} handleAnimateButton={handleAnimateButton}/>
+                    
 
 
                 </form>
