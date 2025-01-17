@@ -1,12 +1,14 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import PaymentFailed from './PaymentFailed'
 
 
 const page = () => {
   return (
     <div>
-        
-        <PaymentFailed/>
+          <Suspense fallback={<div>Loading...</div>}>
+            <PaymentFailed/>
+          </Suspense>
+
 
     </div>
   )
