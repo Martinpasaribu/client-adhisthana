@@ -98,7 +98,7 @@ const AuthCheckout = (  ) => {
           setLoad(true);
 
           try {
-            const response = await http.get('/booking/get-total-price', {
+            const response = await http.get('/session/get-total-price', {
               headers: { 'Content-Type': 'application/json' },
 
             });
@@ -408,7 +408,8 @@ const AuthCheckout = (  ) => {
                                                 <h1>IDR</h1>
                                                 { nights && nights && (
 
-                                                <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                                // <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                                <h1>{convertToRupiah(item.data[0]?.priceDateList) || "No price"}</h1>
 
                                                 )}
                                             </div>

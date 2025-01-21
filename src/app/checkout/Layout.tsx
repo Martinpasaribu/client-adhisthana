@@ -90,7 +90,7 @@ const Layout = (  ) => {
           setLoad(true);
 
           try {
-            const response = await http.get('/booking/get-total-price', {
+            const response = await http.get('/session/get-total-price', {
               headers: { 'Content-Type': 'application/json' },
 
             });

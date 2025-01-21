@@ -11,7 +11,7 @@ export async function PUT(req: Request, res:Response) {
   
     try {
         
-        const response = await http.put('/booking/remove-cart')
+        const response = await http.put('/session/remove-cart')
 
         
     if (response && response.data) {

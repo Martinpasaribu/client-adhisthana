@@ -54,7 +54,7 @@ const Message = () => {
 
   return (
 
-        <div className='w-full h-screen flex-center p-2'>
+        <div className='w-full h-full max-h-[30rem] flex-center p-2'>
 
             <form onSubmit={handleSubmit} className=" w-full max-w-[60rem] h-full max-h-[30rem]  p-5 flex flex-col gap-10 ">
 

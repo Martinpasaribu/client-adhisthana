@@ -29,7 +29,7 @@ export const formatLocalISOIn = (date:any) => {
 
   export const formatBookingDate = (date: Date, type: "checkIn" | "checkOut") => {
     // Tentukan jam berdasarkan tipe (checkIn atau checkOut)
-    const hours = type === "checkIn" ? 12 : 15; // 12 siang untuk checkIn, 3 sore untuk checkOut
+    const hours = type === "checkIn" ? 15 : 12; // 12 siang untuk checkIn, 3 sore untuk checkOut
     date.setHours(hours, 0, 0, 0); // Atur jam, menit, detik, milidetik
   
     // Konversi ke format ISO sesuai zona waktu lokal

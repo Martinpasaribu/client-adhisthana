@@ -21,10 +21,12 @@ export  interface RoomModels {
     imageShort: string;
     maxCapacity: number;
     price:number;
+    priceDateList:number;
     size: number;
     quantity:0;
     bedType: string;
     available: number;
+    availableCount : number;
     used: number;
     describe:string;
     shortDesc:string;

@@ -76,17 +76,23 @@ const Navbar = () => {
 
 
   const getBackgroundColor = () => {
-    if (pathname === "/faq") return "bg-gray-400"; // Contact
+    if (pathname === "/faq") return "bg"; // Contact
     return "backdrop-blur-sm";
   };
 
   const getHoverColor = () => {
     if (pathname === "/contact") return "hover:text-color2"; // Contact
+    if (pathname === "/terms-conditions") return "hover:text-color2"; // Contact
+    if (pathname === "/privacy-policy") return "hover:text-color2"; // Contact
+    if (pathname === "/faq") return "hover:text-color2"; // Contact
     return "backdrop-blur-sm";
   };
 
   const getBackgroundColorUl = () => {
     if (pathname === "/ourVila") return "text-color2"; 
+    if (pathname === "/privacy-policy") return "text-color2"; 
+    if (pathname === "/terms-conditions") return "text-color2"; 
+    if (pathname === "/faq") return "text-color2"; 
     if (pathname === "/booking/offers") return "text-color2"; 
     if (pathname === "/auth/member") return "text-color2"; 
     if (pathname === "/booking") return "text-color2"; 
@@ -164,26 +170,26 @@ const Navbar = () => {
             <ul className={`hidden  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':getBackgroundColorUl()} `}>
 
               <Link href="/">
-                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
+                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `}`}>
                   <h1 className="">Home</h1>
                 </li>
               </Link>
 
               <Link href="/about">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
                 <h1>About Us</h1>
               </li>
               </Link>
 
               <Link href="/ourVila">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
                 <h1>villas</h1>
                 </li>
               </Link>
               
 
               <Link href="/contact">
-               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':'hover:text-white'} ${getHoverColor()} `}>
+               <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
                   <h1>Contacts</h1>
                 </li>
               </Link>

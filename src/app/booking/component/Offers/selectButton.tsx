@@ -44,7 +44,11 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
 
             if( matchingChartItem ){
                 const Room = matchingChartItem.data.find((dataItem: any) => dataItem._id === item); // Cari dataItem
-                const max = Room?.available;
+                
+                // Perubahan karena menggunakan short room Availiable
+                // const max = Room?.available;
+
+                const max = Room?.availableCount;
                 
                 if( max === quantity ){
                     setAlert(max? true : false)
@@ -70,7 +74,7 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
         dispatch(setRemoveVila(item)); 
 
 
-        http.post(`/booking/del-to-cart`, { itemId : item }, {
+        http.post(`/session/del-to-cart`, { itemId : item }, {
             headers: { 'Content-Type': 'application/json' },
         })
         .then(response => {
@@ -112,7 +116,7 @@ const SelectButton = ( { item, name, chart , handleAddChart } : SelectProps ) =>
         dispatch(setIsProcessing(true));
         dispatch(setAddVila(item));
 
-        http.post(`/booking/add-to-cart`,
+        http.post(`/session/add-to-cart`,
             { 
                 roomId: item,
                 quantity: 1,

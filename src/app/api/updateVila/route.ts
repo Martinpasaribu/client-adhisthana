@@ -42,24 +42,28 @@ export async function POST(req: Request) {
     }
 
     // Lakukan permintaan ke API lain atau database dengan parameter
-    const response = await http.post(`/short/get-short-available`, {
+    const response = await http.post(`/short/get-available-set-minder`, {
       checkIn: checkIn,
-      checkOut,
+      checkOut: checkOut,
     });
+
 
     // Kirimkan data hasil ke frontend
     return NextResponse.json(response.data);
-  } catch (error: any) {
-    console.error('Error fetching vila data:', error.response?.data || error.message);
-    
-    // return NextResponse.json(
-    //   { error: 'Failed to fetch vila data' },
-    //   { status: 500 }
-    // );
 
-    return NextResponse.json({
-      message: error.response?.data?.message || 'server no responded.',
-    }, { status: 500 });
+  } catch (error: any) {
+
+
+  const errorMessage =  'The server is not responding';
+  console.log('Error fetching vila data:', errorMessage);
+  
+
+  return NextResponse.json(
+    
+    { error: errorMessage },
+    { status: error.response?.status || 500 }
+    
+  );
 
   }
 }

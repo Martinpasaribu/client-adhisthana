@@ -85,7 +85,7 @@ export const Layout = () => {
                 Get in Touch
             </h2>
     
-            <p className='text-center max-w-[50rem] text-slate-600'>
+            <p className='text-center max-w-[50rem] text-slate-600 px-4 md:px-0 text-[13px] md:text-[17px]'>
                 We invite you to connect with us and begin your journey to tranquility at Adhisthana Villas. Whether you have inquiries, need assistance with your booking, or simply want more information about our offerings, we’re here to help. Set within the tranquil landscapes of Central Java, our villas offer a peaceful retreat enriched by the region’s cultural heritage.
             </p>
         </div>
@@ -93,15 +93,15 @@ export const Layout = () => {
 
         {/* Message */}
 
-        <div>
+        <div className='w-full h-screen md:max-h-[35rem]'>
             <Message />
         </div>
 
         {/* location */}
-        <section>
+        <section className='w-full h-full'>
 
             {/* Intro */}
-            <div className='grid grid-cols-2 h-[20rem] w-full p-4 gap-5'>
+            <div className='grid grid-cols-1 hp3:grid-cols-2 h-[30rem] hp:h-[25rem] w-full p-4 gap-5'>
 
                 <div className='w-full flex-center'>
 
@@ -124,7 +124,7 @@ export const Layout = () => {
 
                     <div className='w-full max-w-[30rem] flex flex-col gap-5 ' >
 
-                        <div className='space-y-2'>
+                        <div className='space-y-2 text-center hp3:text-left'>
                             <h1 className=' text-md md:text-lg font-normal text-color1'>
                                 Location
                             </h1>
@@ -133,7 +133,7 @@ export const Layout = () => {
                             </p>
                         </div>
 
-                        <div className='space-y-2'>
+                        <div className='space-y-2  text-center hp3:text-left'>
                             <h1 className=' text-md md:text-lg font-normal text-color1'>
                                 Contact
                             </h1>

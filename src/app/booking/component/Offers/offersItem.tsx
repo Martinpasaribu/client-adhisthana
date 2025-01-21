@@ -17,6 +17,7 @@ import SkeletonItemOffers from '../Skeleton/skeletonItemOffers';
 import toast from 'react-hot-toast';
 import SkeletonRoomsFull from '../Skeleton/skeletonItemRoomFull';
 import MainLoading from '@/component/mainLoading/loading';
+import { formatCheckInCheckOut, FormatNight, night } from '../constant/formatDate';
 
 interface Params {
   checkin? :  Date | null;
@@ -31,6 +32,11 @@ const OffersItem = () => {
     const [load, setLoad] = useState(false);
     const dispatch = useAppDispatch();
 
+    const [safecheckin, setSafecheckIn] = useState<Date | null>( );
+
+    const [safecheckout, setSafecheckOut] = useState<Date | null>(
+
+     );
     const [vila, setVila] = useState<RoomModels[]>([]);
      
     const chart = useAppSelector((state) => state.booking.stateChartRes);
@@ -44,7 +50,9 @@ const OffersItem = () => {
     
       const setCheckin = searchParams.get("checkin");
       const setCheckout = searchParams.get("checkout");
-
+      setSafecheckIn(setCheckin ? new Date(setCheckin) : null)
+      setSafecheckOut(setCheckout ? new Date(setCheckout) : null)
+      
       const fetchVila = async () => {
 
         setLoad(true);
@@ -61,16 +69,19 @@ const OffersItem = () => {
           });
     
           if (!response.ok) {
-            throw new Error(`HTTP error! Status: ${response.status}`);
+            const errorResponse = await response.json();
+            const setError = errorResponse.error
+
+            throw new Error(setError || "Server returned an error");
           }
-    
+
           const data = await response.json();
 
               if(data.data.length > 0){
                 setVila(data.data);
                 setIsRoomsFull(false); 
 
-              }else {
+              } else {
                 setVila([]);
                 setIsRoomsFull(true); 
                 toast.success("Rooms Full", {
@@ -87,8 +98,13 @@ const OffersItem = () => {
           
 
         } catch (error : any) {
+          
 
-          toast.error( error.response?.data?.message|| error.message || "server does not respond", { position: "bottom-right", duration: 5000 });
+
+          console.log("error update available room : ", error.message);
+
+
+          toast.error( error.message , { position: "bottom-right", duration: 5000 });
           
         } finally {
           setLoad(false);
@@ -126,7 +142,7 @@ const OffersItem = () => {
 
       
       // Kirim data ke server
-      http.post(`/booking/add-to-cart`, 
+      http.post(`/session/add-to-cart`, 
           {   roomId: id,
               quantity: 1
             }, 
@@ -285,12 +301,21 @@ const OffersItem = () => {
                           </div>
 
                           <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
-                            <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Total price for 1 night</h1>
+                            <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Total price for                   
+                              <span className='mx-2'>
+                                {safecheckin && safecheckout
+                                
+                                ?  FormatNight(safecheckin, safecheckout)
+              
+                                : " 0 "} 
+                              </span>
+                                              
+                                              night</h1>
                             <div className='flex justify-end hp1:justify-center items-end flex-col-reverse hp1:flex-row gap-2 p-1'>
                               <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
                               <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
                             </div>
-                            <h1 className='font-bold text-[18px] hp4:text-[21px]'>IDR {convertToRupiah(item.price)}</h1>
+                            <h1 className='font-bold text-[18px] hp4:text-[21px]'>IDR {convertToRupiah(item.priceDateList)}</h1>
                             <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
 
                           </div>

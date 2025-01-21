@@ -26,6 +26,7 @@ const MyBooking = () => {
           // console.error("Server error:", setError);
           throw new Error(setError || "Server returned an error");
         }
+        
         const res = await response.json();
 
         if (res) {

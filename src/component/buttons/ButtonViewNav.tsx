@@ -13,8 +13,8 @@ const url = [
     "/booking",
     "/contact",
     "/faq",
-    "/privacy",
-    "/terms",
+    "/privacy-policy",
+    "/terms-conditions",
   ];
 
 

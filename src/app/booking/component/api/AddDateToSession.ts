@@ -6,7 +6,7 @@ interface NightProps {
     checkOut: Date | null;
 }
 
-export const AddNightToSession = async ({ checkIn, checkOut }: NightProps) => {
+export const AddDateToSession = async ({ checkIn, checkOut }: NightProps) => {
     try {
         // Hitung durasi malam hanya jika check-in dan check-out valid
         if (checkIn && checkOut) {
@@ -27,18 +27,12 @@ export const AddNightToSession = async ({ checkIn, checkOut }: NightProps) => {
                 (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
             );
 
-
-            const params = {
-                checkin: checkIn,
-                checkout: checkOut,
-            };
-
             console.log("Night Duration:", nightDuration);
 
             // Kirim durasi malam ke server
             await http.post(
                 `/session/add-to-night`,
-                { night: nightDuration , date : params },
+                { night: nightDuration },
                 { headers: { "Content-Type": "application/json" } }
             );
         }

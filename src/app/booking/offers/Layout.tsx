@@ -197,7 +197,7 @@ const Layout = () => {
       useEffect(() => {
           const handleUnload = () => {
               // Kirim data ke server menggunakan navigator.sendBeacon
-              const url = `${UrlMain}/booking/remove-cart-in-session`;
+              const url = `${UrlMain}/session/remove-cart-in-session`;
               navigator.sendBeacon(url);
 
               // Hapus localStorage

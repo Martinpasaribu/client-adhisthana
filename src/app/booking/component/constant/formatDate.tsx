@@ -1,3 +1,21 @@
+export const FormatNight = (In : any, Out : any) => {
+
+  const checkInDate = new Date(In);
+  const checkOutDate = new Date(Out);
+
+  checkInDate.setHours(0, 0, 0, 0);
+  checkOutDate.setHours(0, 0, 0, 0);
+
+  const nightDuration = Math.max(
+      0,
+      (checkOutDate.getTime() - checkInDate.getTime()) / (1000 * 3600 * 24)
+  );
+
+  return nightDuration;
+
+}
+
+
 export const formatCheckInCheckOut = (
     checkin: Date,
     checkout: Date,
@@ -71,3 +89,5 @@ export const formatCheckInCheckOut = (
     newDate.setHours(hours, minutes, 0, 0); // Set jam dan menit sesuai
     return newDate;
   };
+
+
