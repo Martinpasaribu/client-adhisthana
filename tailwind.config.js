@@ -22,7 +22,7 @@ module.exports = {
       'hp': '370px',
       
       // Layar Hp ukuran Umum          (Potrait)
-      'hp1': '390px',
+      'hp1': '388px',
       
       // Layar Hp ukuran maximum       (Potrait)
       'hp2': '425px',
@@ -73,6 +73,45 @@ module.exports = {
 
       '2xl': '1536px',
       // => @media (min-width: 1536px) { ... }
+
+      // Tinggi layar minimum (Potrait)
+      'h-hp': { raw: '(min-height: 350px)' }, 
+      'h-hp1': { raw: '(min-height: 370px)' }, 
+      'h-hp2': { raw: '(min-height: 390px)' }, 
+      'h-hp4': { raw: '(min-height: 410px)' }, 
+      'h-hp5': { raw: '(min-height: 430px)' }, 
+      'h-hp6': { raw: '(min-height: 450px)' }, 
+
+      'h-sm': { raw: '(min-height: 600px)' }, 
+      
+      'h-md': { raw: '(min-height: 768px)' },
+      'h-md1': { raw: '(min-height: 798px)' },
+      'h-md2': { raw: '(min-height: 820px)' },
+
+      'h-lg': { raw: '(min-height: 900px)' },
+      'h-xl': { raw: '(min-height: 1080px)' },
+
+
+
+      // Tinggi layar maksimum
+      'h-max-sm': { raw: '(max-height: 600px)' },
+      'h-max-md': { raw: '(max-height: 768px)' },
+      'h-max-lg': { raw: '(max-height: 900px)' },
+      'h-max-xl': { raw: '(max-height: 1080px)' },
+
+      'h-max-hp': { raw: '(min-height: 350px)' }, 
+      'h-max-hp1': { raw: '(min-height: 370px)' }, 
+      'h-max-hp2': { raw: '(min-height: 390px)' }, 
+      'h-max-hp4': { raw: '(min-height: 410px)' }, 
+      'h-max-hp5': { raw: '(min-height: 430px)' }, 
+      'h-max-hp6': { raw: '(min-height: 450px)' }, 
+
+
+      // Breakpoint untuk global css
+      'max-sm': { raw: '(max-width: 640px)' },
+      'max-md': { raw: '(max-width: 768px)' },
+      'max-md': { raw: '(max-width: 768px)' },
+      'max-md': { raw: '(max-width: 768px)' },
     },
 
     extend: {

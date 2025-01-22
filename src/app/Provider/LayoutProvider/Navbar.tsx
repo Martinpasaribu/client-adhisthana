@@ -148,12 +148,12 @@ const Navbar = () => {
 
   return (
       <header
-        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 ${
+        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[6rem]  ${
             scrolled ? "bg-white/100" : getBackgroundColor()
           }`}
         >
 
-        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-3 sm:px-3 md:px-5 py-1 md:py-4">
+        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-3 sm:px-3 md:px-5 py-1 md1:py-4">
             
         <label className="hamburger w-full max-w-[28rem] h-[1.5rem] z-50 ">
           <input
@@ -171,8 +171,8 @@ const Navbar = () => {
 
             
           <div className="">
-            <Link href="/" className="flex justify-center items-center w-[4.8rem]  h-[4rem] sm:h-[5rem] sm:w-[8rem]">
-                <Image src="/assets/Logo/adhisthana.png" alt="logo mari belajar" width={400} height={100} className="object-contain  rounded-md"/>
+            <Link href="/" className="flex justify-center items-center w-[4.8rem] h-[3.5rem]  md1:w-[8rem]  h-hp4:w-[8rem] ">
+                <Image src="/assets/Logo/adhisthana.png" alt="logo adhisthana" width={400} height={100} className="object-contain  rounded-md"/>
             </Link>
           </div>
     

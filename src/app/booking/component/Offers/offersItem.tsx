@@ -311,7 +311,7 @@ const OffersItem = () => {
                               </span>
                                               
                                               night</h1>
-                            <div className='flex justify-end hp1:justify-center items-end flex-col-reverse hp1:flex-row gap-2 p-1'>
+                            <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
                               <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
                               <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
                             </div>
