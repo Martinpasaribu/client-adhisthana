@@ -111,8 +111,8 @@ const DatePicker = () => {
 
 
   return (
-    <div className="">
-      <div className="relative flex flex-col justify-center items-center h-full md3:h-screen h-md1:h-screen w-full pt-[5rem] md3:pt-[2rem]">
+    <div className="overflow-hidden">
+      <div className="relative flex flex-col justify-center items-center h-full md3:h-screen  w-full pt-[6rem] md3:pt-[2rem]">
         
         <h2 className="h-[8rem] max-h-[2rem] sm:max-h-[6rem] w-full text-center text-lg hp4:text-2xl font-semibold sm:mb-6 text-gray-700 flex-center">
           Book Your Stay

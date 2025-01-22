@@ -81,9 +81,10 @@ module.exports = {
       'h-hp4': { raw: '(min-height: 410px)' }, 
       'h-hp5': { raw: '(min-height: 430px)' }, 
       'h-hp6': { raw: '(min-height: 450px)' }, 
+      'h-hp7': { raw: '(min-height: 470px)' }, 
 
       'h-sm': { raw: '(min-height: 600px)' }, 
-      
+
       'h-md': { raw: '(min-height: 768px)' },
       'h-md1': { raw: '(min-height: 798px)' },
       'h-md2': { raw: '(min-height: 820px)' },
@@ -99,12 +100,12 @@ module.exports = {
       'h-max-lg': { raw: '(max-height: 900px)' },
       'h-max-xl': { raw: '(max-height: 1080px)' },
 
-      'h-max-hp': { raw: '(min-height: 350px)' }, 
-      'h-max-hp1': { raw: '(min-height: 370px)' }, 
-      'h-max-hp2': { raw: '(min-height: 390px)' }, 
-      'h-max-hp4': { raw: '(min-height: 410px)' }, 
-      'h-max-hp5': { raw: '(min-height: 430px)' }, 
-      'h-max-hp6': { raw: '(min-height: 450px)' }, 
+      'h-max-hp': { raw: '(max-height: 350px)' }, 
+      'h-max-hp1': { raw: '(max-height: 370px)' }, 
+      'h-max-hp2': { raw: '(max-height: 390px)' }, 
+      'h-max-hp4': { raw: '(max-height: 410px)' }, 
+      'h-max-hp5': { raw: '(max-height: 430px)' }, 
+      'h-max-hp6': { raw: '(max-height: 450px)' }, 
 
 
       // Breakpoint untuk global css
