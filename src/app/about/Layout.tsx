@@ -14,9 +14,9 @@ const Layout = () => {
 
         <div className="relative w-full h-screen bg-about_bg  bg-no-repeat bg-cover   ">
              
-             <div className="absolute w-full h-full p-10 z-30 text-slate-600 flex justify-end  items-end   text-right">
+             <div className="absolute w-full h-full py-8 px-4 sm:p-10 z-30 text-slate-600 flex justify-end  items-end   text-right">
                 
-                <div className="flex flex-col gap-8 w-full max-w-[60rem] p-10 ">
+                <div className="flex flex-col gap-8 w-full max-w-[60rem] p-1 sm:p-10 ">
     
                   <h1 className="text-white text-md md:text-2xl tracking-wide">A Serene Escape in the Heart of Nature</h1>
                   <h2 className="text-slate-200 text-md">Where Javanese heritage meets modern tranquility, offering an unparalleled retreat near Borobudur.</h2>

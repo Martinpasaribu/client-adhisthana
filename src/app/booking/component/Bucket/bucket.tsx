@@ -62,12 +62,27 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
   
 
 
+    //   useEffect(() => {
+
+    //     if(chart.length > 0 && nights){
+
+    //         const totalPrice = chart.reduce((total, item) => {
+    //             return total + item?.data[0]?.price * item.quantity * nights;
+    //         }, 0);
+    //         setPriceTotal(totalPrice)
+    //     } else {
+    //         setPriceTotal(0)
+    //     }
+
+    //   },[chart, nights])
+
+      // With Site Minder  
       useEffect(() => {
 
         if(chart.length > 0 && nights){
 
             const totalPrice = chart.reduce((total, item) => {
-                return total + item?.data[0]?.price * item.quantity * nights;
+                return total + item?.data[0]?.priceDateList * item.quantity;
             }, 0);
             setPriceTotal(totalPrice)
         } else {
@@ -187,7 +202,8 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                                     <h1>IDR</h1>
                                     { nights && nights && ( 
 
-                                        <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                        // <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                        <h1>{convertToRupiah(item.data[0]?.priceDateList * item.quantity) || "No price"}</h1>
 
                                     )}
                                 </div>

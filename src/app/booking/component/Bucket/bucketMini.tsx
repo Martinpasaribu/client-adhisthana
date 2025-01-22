@@ -71,12 +71,32 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
 
   
 
+    //   useEffect(() => {
+
+    //     if(chart.length > 0 && nights){
+
+    //         const totalPrice = chart.reduce((total, item) => {
+    //             return total + item?.data[0]?.price * item.quantity * nights;
+    //         }, 0);
+    //         setPriceTotal(totalPrice)
+    //         activeBucket(true)
+    //         console.log('active')
+    //     }else {
+    //         activeBucket(false)
+    //         setPriceTotal(0)
+    //         console.log('no active')
+    //     }
+
+    //   },[activeBucket, chart, nights])
+      
+
+    // With Site Minder  
       useEffect(() => {
 
         if(chart.length > 0 && nights){
 
             const totalPrice = chart.reduce((total, item) => {
-                return total + item?.data[0]?.price * item.quantity * nights;
+                return total + item?.data[0]?.priceDateList * item.quantity;
             }, 0);
             setPriceTotal(totalPrice)
             activeBucket(true)
@@ -88,6 +108,8 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
         }
 
       },[activeBucket, chart, nights])
+
+
 
       const handleSetParams = async () => {
         if (isProcessing) return;
@@ -203,7 +225,8 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
                                         <h1>IDR</h1>
                                         { nights && nights && ( 
 
-                                        <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                        // <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
+                                        <h1>{convertToRupiah(item.data[0]?.priceDateList * item.quantity) || "No price"}</h1>
 
                                         )}
 

@@ -11,14 +11,16 @@ interface HamburgerProps {
     isOpen: boolean;
     onAnimationEnd?: () => void;
     closeHamburger: () => void;
+    onIndexChange: () => void;
+    updateIndexs: number;
   }
   
-  const Hamburger = ({ isOpen, onAnimationEnd, closeHamburger }: HamburgerProps) => {
+  const Hamburger = ({ isOpen, onAnimationEnd, closeHamburger, updateIndexs, onIndexChange}: HamburgerProps) => {
     const [animationClass, setAnimationClass] = useState<string>("");
     const [animationClassImage, setAnimationClassImage] = useState("animate-sidebar_in");
     const [visible, setVisible] = useState<boolean>(false);
     const [activeButton, setActiveButton] = useState<string | null>(null); // State untuk tombol aktif
-    const [currentIndexImage, setCurrentIndexImage] = useState<any>(0); // State untuk tombol aktif
+    const [currentIndexImage, setCurrentIndexImage] = useState<any>(updateIndexs); // State untuk tombol aktif
 
     const [isImageChanging, setIsImageChanging] = useState(false);
 
@@ -33,28 +35,44 @@ interface HamburgerProps {
       ];
 
       
+
+
+      useEffect(() => {
+        if (isOpen) {
+          onIndexChange();
+          setCurrentIndexImage(updateIndexs); // Sinkronkan nilai
+        }
+      }, [isOpen, updateIndexs, onIndexChange]);
+
+      
     const handleButtonActive = (title: string) => {
         setActiveButton(title); // Tetapkan tombol yang diklik sebagai aktif
     };
 
-      const handleBooking = async() => {
-    
-        await DeletedCart().catch((error) => console.error('Error during unload:', error));
-        localStorage.removeItem('cart_vila');
-        localStorage.removeItem('Params');
-        localStorage.removeItem('Night');
-        closeHamburger()
-      }
+    const handleBooking = async() => {
+  
+      await DeletedCart().catch((error) => console.error('Error during unload:', error));
+      localStorage.removeItem('cart_vila');
+      localStorage.removeItem('Params');
+      localStorage.removeItem('Night');
+      closeHamburger()
+    }
 
- 
-      const handleBookingDeletedChartInSession = () => {
-    
-        DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
-        localStorage.removeItem('cart_vila');
-        localStorage.removeItem('Params');
-        localStorage.removeItem('Night');
-        closeHamburger()
-      }
+
+    const handleBookingDeletedChartInSession = () => {
+  
+      DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
+      localStorage.removeItem('cart_vila');
+      localStorage.removeItem('Params');
+      localStorage.removeItem('Night');
+      closeHamburger();
+      setCurrentIndexImage(0);
+    }
+
+    const closeHamburgers = () => {
+      closeHamburger();
+      setCurrentIndexImage(0);
+    }
 
     const setIndexImage = (index : any) => { 
       setCurrentIndexImage(index);
@@ -102,7 +120,8 @@ interface HamburgerProps {
     };
   
     if (!visible) return ( <div className='hidden'></div>); // Hapus elemen dari DOM jika tidak terlihat
-  
+
+    
     return (
       <div
         className={`z-30 fixed inset-0 bg-white h-screen ${animationClass}  transition-transform `}
@@ -136,8 +155,8 @@ interface HamburgerProps {
 
               </ul>
 
-              <div className='block sm:hidden w-full flex-center'>
-                <ButtonNavLink index={currentIndexImage} setClose={closeHamburger}/>
+              <div className={` ${currentIndexImage > 0 ? "block sm:hidden w-full flex-center":"hidden"}`}>
+                <ButtonNavLink index={currentIndexImage} setClose={closeHamburgers}/>
               </div>
             </div>
 
@@ -181,7 +200,11 @@ interface HamburgerProps {
                         />
 
 
-                        <ButtonNavLink index={currentIndexImage} setClose={closeHamburger}/>
+                    <div className={` ${currentIndexImage > 0 ? "hidden sm:block  w-full max-w-[20rem] ":"hidden"}`}>
+                        
+                        <ButtonNavLink index={currentIndexImage} setClose={closeHamburgers}/>
+
+                    </div>
 
 
 

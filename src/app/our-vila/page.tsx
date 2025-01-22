@@ -60,7 +60,7 @@ const OurVila = () => {
                     Immerse Yourself in Serenity
                 </h1>
             
-                <p className='text-[16px] text-slate-600 text-center'>
+                <p className='text-[12px] md:text-[16px] text-slate-600 text-justify px-4'>
                     Surrounded by the serene beauty of rice paddies and mountains, our villas provide a peaceful escape where modern comfort meets Javanese tradition. Each villa is thoughtfully designed to blend harmoniously with the natural surroundings, offering an intimate retreat that feels like a part of the landscape. Immerse yourself in a tranquil atmosphere, where every detail is crafted for relaxation and rejuvenation. Whether you&apos;re unwinding by the private pool or enjoying the peaceful ambiance of your villa, Adhisthana Villas invites you to reconnect with nature, recharge your spirit, and embrace the serenity that surrounds you.
                 </p>
 
@@ -76,56 +76,56 @@ const OurVila = () => {
         <section className=''>
 
                 {/* ELement 1 */}
-                <figure id='section-vila'  className='flex p-5 py-10'>
+                <figure id='section-vila'  className='flex sm:flex sm:flex-row flex-col md:p-5 py-10 gap-8 md:gap-1'>
 
-                    <div className='w-full flex-center flex-col text-left'>
-                        <div className='w-full max-w-[34rem] flex flex-col gap-10'>
+                    <div className='w-full flex-center flex-col text-center hp3:text-left px-4 md:px-1 '>
+                        <div className='w-full max-w-[34rem] flex flex-col gap-5 md:gap-10'>
                             <h1 className='text-[20px]'>Our Villas</h1>
-                            <p className='text-slate-600'>Experience the art of relaxation in our thoughtfully designed villas, where Javanese charm meets modern comfort to create a tranquil retreat for every traveler.</p>
+                            <p className='text-slate-600 text-[13px] md:text-[17px]'>Experience the art of relaxation in our thoughtfully designed villas, where Javanese charm meets modern comfort to create a tranquil retreat for every traveler.</p>
                         </div>
                     </div>
 
                     
                        
-                       { vila && vila.length > 0 ? (
+                    { vila && vila.length > 0 ? (
 
-                        <div  className='w-full '>
+                    <div  className='w-full h-full'>
 
-                            <div className=' w-full  h-full max-h-[30rem] p-4'>
-                                <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={400} className='w-full h-full object-contain'/>
-                            </div>
-                            
-                            <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-10">
-                                <div className='w-full max-w-[30rem] flex flex-col gap-4'>
+                        <div className=' w-full  h-full max-h-[30rem] p-4'>
+                            <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={400} className='w-full h-full object-contain'/>
+                        </div>
+                        
+                        <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-10">
+                            <div className='w-full max-w-[30rem] flex flex-col gap-4'>
 
-                                    <div className="flex flex-col gap-8">
-                                        <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                                            {vila && vila.length > 0 ? vila[0].name : '/assets/Image/imagenf.jpg'}
-                                        </h1>
-                                        <h2 className="text-slate-500 animate-modal"> {vila && vila.length > 0 ? vila[0].shortDesc : ''}</h2>
-                                    </div>
+                                <div className="flex flex-col gap-8">
+                                    <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
+                                        {vila && vila.length > 0 ? vila[0].name : '/assets/Image/imagenf.jpg'}
+                                    </h1>
+                                    <h2 className="text-slate-500 animate-modal text-[12px] md:text-[16px]"> {vila && vila.length > 0 ? vila[0].shortDesc : ''}</h2>
+                                </div>
 
-                                    <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4">
-                                        <button onClick={() => { handleDetailRoom(vila[0]._id) }} className="underline decoration-[#C0562F] text-color1">
-                                            <h1>Vila Details</h1>
-                                        </button>
-                                        <button className=" text-white bg-color1 px-5">
-                                            <h1>Book</h1>
-                                        </button>
-                                    </div>
+                                <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4">
+                                    <button onClick={() => { handleDetailRoom(vila[0]._id) }} className="underline decoration-[#C0562F] text-color1">
+                                        <h1>Vila Details</h1>
+                                    </button>
+                                    <button className=" text-white bg-color1 px-5">
+                                        <h1>Book</h1>
+                                    </button>
                                 </div>
                             </div>
-                        
-
                         </div>
+                    
 
-                       ) : (
+                    </div>
 
-                        <div className='w-full flex-center'>
-                            <Skelton />
-                        </div>
+                    ) : (
 
-                       )}
+                    <div className='w-full flex-center'>
+                        <Skelton />
+                    </div>
+
+                    )}
 
                     
 
@@ -136,7 +136,7 @@ const OurVila = () => {
 
                 { vila && vila.length > 0 ? (
                     
-                    <figure className='grid grid-cols-2 gap-2 place-items-center p-5 py-10 bg-color4'>
+                    <figure className='grid grid-cols-1 hp3:grid-cols-2 gap-8 hp3:gap-2 place-items-center p-5 py-10 bg-color4'>
                     
                         {vila && vila.slice(1).map((item) => (
 
@@ -161,7 +161,7 @@ const OurVila = () => {
                                         <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
                                             {item.name}
                                         </h1>
-                                        <h2 className="text-slate-500 animate-modal h-full  max-h-[10rem]">
+                                        <h2 className="text-slate-500 animate-modal h-full  max-h-[10rem] text-[12px] md:text-[16px]">
                                             {item.shortDesc}
                                         </h2>
                                     </div>

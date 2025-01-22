@@ -42,7 +42,7 @@ const ButtonNav = (
         onClick={handleClick}
         className={`select-none relative py-4 flex gap-2 justify-center items-center w-full max-w-[20rem] ${containerStyles}`}
         >
-        <hr className="absolute top-0 left-0 z-40 h-0 w-full max-w-[5rem] border-b border-solid border-color2" />
+        <hr className="absolute top-0 left-0 z-40 h-0 w-full max-w-[5rem] border-b border-solid border-color1" />
 
         <h1
             className={`absolute flex justify-start -top-3 left-0 z-50 w-full bg-white ${

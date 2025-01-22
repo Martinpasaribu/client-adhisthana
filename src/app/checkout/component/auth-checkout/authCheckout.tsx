@@ -299,6 +299,22 @@ const AuthCheckout = (  ) => {
       }, [checkin, checkout]);
       
 
+      // useEffect(() => {
+
+
+      //   if(chart && amountNight){
+            
+
+      //       const totalPrice = chart.reduce((total, item) => {
+      //           return total + item?.data[0]?.price * item.quantity * amountNight;
+      //       }, 0);
+
+      //       setSubtotal(totalPrice)
+      //       setTax(totalPrice * 0.12 )
+      //   }
+
+      // },[chart, amountNight])
+
       useEffect(() => {
 
 
@@ -306,7 +322,7 @@ const AuthCheckout = (  ) => {
             
 
             const totalPrice = chart.reduce((total, item) => {
-                return total + item?.data[0]?.price * item.quantity * amountNight;
+                return total + item?.data[0]?.priceDateList * item.quantity;
             }, 0);
 
             setSubtotal(totalPrice)
@@ -409,7 +425,7 @@ const AuthCheckout = (  ) => {
                                                 { nights && nights && (
 
                                                 // <h1>{convertToRupiah(item.data[0]?.price * nights) || "No price"}</h1>
-                                                <h1>{convertToRupiah(item.data[0]?.priceDateList) || "No price"}</h1>
+                                                <h1>{convertToRupiah(item.data[0]?.priceDateList * item.quantity) || "No price"}</h1>
 
                                                 )}
                                             </div>

@@ -18,15 +18,25 @@ const Navbar = () => {
 
   const [scrolled, setScrolled] = useState(false);
   const [hamburger, setHamburger] = useState(false);
+  const [updateIndex, setUpdateIndex] = useState(0);
   const [dataMe, setDataMe] = useState<UserModels>();
   const router = useRouter(); 
   const pathname = usePathname();
 
 
+
   const openModal = () => {
     setHamburger((prev) => !prev); // Gunakan callback untuk memastikan nilai sebelumnya digunakan
-    console.log("button active:", !hamburger); // Cetak nilai baru (hasil toggle)
+    setUpdateIndex(0)
+    console.log("button in active:", !hamburger); // Cetak nilai baru (hasil toggle)
+    console.log("index in active:", updateIndex); // Cetak nilai baru (hasil toggle)
   };
+
+  useEffect(() => {
+    console.log("Updated index in navbar:", updateIndex);
+}, [updateIndex]);
+
+
 
   const handleAnimationEnd = () => {
     // Fungsi ini akan dipanggil setelah animasi selesai
@@ -35,6 +45,7 @@ const Navbar = () => {
 
   const handleCloseHam = () => {
     setHamburger(false)
+    setUpdateIndex(1)
   }
 
   const handleBooking = () => {
@@ -89,7 +100,7 @@ const Navbar = () => {
   };
 
   const getBackgroundColorUl = () => {
-    if (pathname === "/ourVila") return "text-color2"; 
+    if (pathname === "/our-vila") return "text-color2"; 
     if (pathname === "/privacy-policy") return "text-color2"; 
     if (pathname === "/terms-conditions") return "text-color2"; 
     if (pathname === "/faq") return "text-color2"; 
@@ -150,6 +161,7 @@ const Navbar = () => {
             type="checkbox"
             checked={hamburger}
             onChange={openModal} 
+            
           />
           <span className={`hamburger__line w-[1.8rem] md:w-[2.2rem] xl:w-[2.8rem] ${scrolled ? 'bg-color2':'bg-slate-800'}  `}></span>
           <span className={`hamburger__line w-[1.8rem] md:w-[2.2rem] xl:w-[2.8rem] ${scrolled ? 'bg-color2':'bg-slate-800'}  `}></span>
@@ -181,7 +193,7 @@ const Navbar = () => {
               </li>
               </Link>
 
-              <Link href="/ourVila">
+              <Link href="/our-vila">
                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
                 <h1>villas</h1>
                 </li>
@@ -281,7 +293,7 @@ const Navbar = () => {
 
         </nav>
 
-        <Hamburger isOpen={hamburger} onAnimationEnd={handleAnimationEnd} closeHamburger={handleCloseHam}/>
+        <Hamburger isOpen={hamburger} onAnimationEnd={handleAnimationEnd} closeHamburger={handleCloseHam} updateIndexs={updateIndex}  onIndexChange={() => setUpdateIndex(0)} />
 
     </header>
   )

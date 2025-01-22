@@ -9,7 +9,7 @@ interface ButtonNavProps {
 
 const url = [
     "/",
-    "/ourVila",
+    "/our-vila",
     "/booking",
     "/contact",
     "/faq",
