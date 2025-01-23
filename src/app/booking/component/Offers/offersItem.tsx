@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation';
 import { Size, bad, people } from '@/style/icons'
 
-import { RoomModels } from '@/models/roomModels'
+import { RoomModels, UnAvailableRoomModels } from '@/models/roomModels'
 
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import { setAddChart, setIsProcessing } from '@/lib/slice/bookingSlice';
@@ -38,6 +38,7 @@ const OffersItem = () => {
 
      );
     const [vila, setVila] = useState<RoomModels[]>([]);
+    const [unVila, setUnVila] = useState<RoomModels[]>([]);
      
     const chart = useAppSelector((state) => state.booking.stateChartRes);
 
@@ -78,8 +79,10 @@ const OffersItem = () => {
           const data = await response.json();
 
               if(data.data.length > 0){
+
                 setVila(data.data);
                 setIsRoomsFull(false); 
+                setUnVila(data.dataUnAvailable)
 
               } else {
                 setVila([]);
@@ -190,6 +193,180 @@ const OffersItem = () => {
     <section className='w-full mt-4 md1:mt-10'>
     
     { load && (<MainLoading/>)}
+
+    { unVila && unVila.length > 0 ? ( 
+
+        <div>
+
+          { unVila.map((item, index) => (
+
+            <div key={index} className=' flex h-full mx-[.5rem] md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
+
+                {/* Item */}
+
+                <div className=' w-full flex flex-col space-y-6 '>
+                
+
+                  {/* Name Vila */}
+                  <div className='relative text-left '>
+
+                    <div className='corner-ribbon absolute top-1 -right-6 bg-slate-800 rounded-md text-white'>FULL</div>
+
+                      <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
+                        {item.name}
+                      </h1>
+                  </div>
+
+                  <div className='flex flex-col hp4:flex-row gap-5'> 
+
+                    {/* Left */}
+
+                    <div className='flex flex-col gap-4 w-full h-full hp4:max-w-[18rem] md1:max-w-[22rem]'>
+                    
+                        <div className='w-full h-full'>
+                            <ClouserImage images={ item.image } />
+                          </div>
+
+                        <figure className='w-full flex justify-center hp4:justify-start'>
+
+                          <ul className='flex gap-4 text-[15px] text-slate-600 font-semibold'>
+                            <li className='flex-center gap-3'>
+                           
+                              <p></p>
+                            </li>
+                            <li className='flex-center gap-3'>
+                              <p></p>
+
+                            </li>
+                            <li className='flex-center gap-3'>
+                              <p> </p>
+
+                            </li>
+                          </ul>
+
+                        </figure>
+
+                        <button onClick={ () => { handleDetailRoom(item._id) }} className='text-slate-600 m-4'>
+                          <h1 className='text-[14px] hp1:text-[17px] font-semibold'> Rooms Detail </h1>
+                        </button>
+                    </div>
+
+                    {/* Right */}   
+
+                    <div className=' w-full flex flex-col justify-between text-slate-600'>
+
+
+                      <div className='w-full flex justify-between items-start p-2 md1:p-4'>
+                        
+                        <div className='w-1/2 h-full flex flex-col  items-start space-y-2 hp2:space-y-4'>
+
+                          <div className='space-y-2'>
+                            <h1 className=' text-[14px] hp4:text-[17px] font-semibold'> Basic Deal </h1>
+                            <ul className='flex flex-wrap text-[11px] hp4:text-sm gap-2 hp2:gap-4'>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>                    
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>
+                            </ul>
+                          </div>
+
+
+                          <div className='space-y-2'>
+                            <h1 className='text-[12px] hp4:text-[17px] font-semibold'> Payment Option </h1>
+                            <ul className='flex flex-wrap text-[11px] hp4:text-sm gap-4'>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Pay now
+                                </h1>
+                              </li>
+                            </ul>
+                          </div>
+
+                        </div>
+
+                        <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
+                          <div className='h-10 '>
+
+                          </div>
+                          <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
+                            <p className='bg-red-100 text-slate-600 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
+                            <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR </p>
+                          </div>
+                          <h1 className='font-bold text-[18px] hp4:text-[21px] '>IDR {convertToRupiah(item.price)}</h1>
+                          <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
+
+                        </div>
+
+                      </div>
+
+
+                    {/*               
+                          <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
+                              <button onClick={()=> { handleAddChart (item._id)}} className='px-4 hp3:px-6 py-1 bg-color1 text-white font-semibold'>
+                                <h1>Select</h1>
+                              </button>
+                            </div>
+                  */}
+
+
+
+                    
+                    <div className='select-none'>
+                      <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
+                          <button  className='px-4 hp3:px-6 py-1 bg-gray-300 text-white font-semibold'>
+                          <h1>Select</h1>
+                          </button>
+                      </div>
+                    </div>
+       
+
+
+                    
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+            </div>
+
+          ))}
+
+        </div>
+
+
+        ) : ( 
+
+        <div className='space-y-10'>
+
+        </div>
+        )
+    }
 
 
     { vila && vila.length > 0 ? (
@@ -350,47 +527,7 @@ const OffersItem = () => {
                      }
 
 
-                      {/* { chart && chart.map(( chart , index) => (
-
-                          <div key={index}>
-                            
-                            { item._id != chart.data[0]._id ? (
-
-
-                            <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
-                              <button onClick={()=> { handleAddChart (item._id)}} className='px-4 hp3:px-6 py-1 bg-color1 text-white font-semibold'>
-                                <h1>Select</h1>
-                              </button>
-                            </div>
-
-                            ) : (
-
-                              
-                            <div className="max-w-xs mx-auto">
-                              
-                              <div className="relative flex items-center">
-                                  <button type="button" id="decrement-button" data-input-counter-decrement="counter-input" className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                      <svg className="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 2">
-                                          <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h16"/>
-                                      </svg>
-                                  </button>
-                                  <button type="button" id="increment-button" data-input-counter-increment="counter-input" className="flex-shrink-0 bg-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:border-gray-600 hover:bg-gray-200 inline-flex items-center justify-center border border-gray-300 rounded-md h-5 w-5 focus:ring-gray-100 dark:focus:ring-gray-700 focus:ring-2 focus:outline-none">
-                                      <svg className="w-2.5 h-2.5 text-gray-900 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                                          <path stroke="currentColor" strokeLinejoin="round" strokeLinecap="round" strokeWidth="2" d="M9 1v16M1 9h16"/>
-                                      </svg>
-                                  </button>
-                              </div>
-                            </div>
-
-                          )
-                            
-                          
-                          } 
-                          </div>
-
-                        ))
-
-                      } */}
+                      
 
                       </div>
 
@@ -414,6 +551,9 @@ const OffersItem = () => {
 
         )
     }
+
+
+
 
     </section>
   )

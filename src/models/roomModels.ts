@@ -7,6 +7,13 @@ interface Review {
     comment: string;
 }
 
+interface Room {
+    roomId: string;
+    quantity: number;
+    price: number;
+    name: string;
+}
+
 
 interface Image {
     row:number;
@@ -35,6 +42,17 @@ export  interface RoomModels {
     createAt: number;
     creatorId: string;
     rating: number;
+
+}
+
+export  interface UnAvailableRoomModels {
+    _id: string;
+    transactionId: string;
+    userId: string;  
+    status: string;
+    checkIn: string;
+    checkOut: string;
+    products: Room[];
 
 }
 

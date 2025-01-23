@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 
 import "@style/globals.css";
+import "@style/style.css";
+
 import { Toaster } from "react-hot-toast";
 import ClientProvider from "./Provider/ClientProvider/page";
 

@@ -11,3 +11,4 @@ export interface BucketModels {
     data : RoomModels[] ;
     quantity: number
 }
+

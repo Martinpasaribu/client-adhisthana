@@ -347,7 +347,7 @@ const AuthCheckout = (  ) => {
         {!snapShow && (
             <>
 
-                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[4rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3 h-screen  '>
+                <form  onSubmit={(e) => { e.preventDefault();  handleSubmit();  }} className='flex-center flex-col pt-[4rem] hp4:py-[9rem] relative gap-2 overflow-hidden p-3   '>
                     
                     <div className='flex-center w-full h-full max-w-[70rem] gap-5  '>
 
