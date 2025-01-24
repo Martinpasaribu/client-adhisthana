@@ -16,6 +16,7 @@ import { UserModels } from "@/models/userModels";
 
 const Navbar = () => {
 
+  
   const [scrolled, setScrolled] = useState(false);
   const [hamburger, setHamburger] = useState(false);
   const [updateIndex, setUpdateIndex] = useState(0);
@@ -148,7 +149,7 @@ const Navbar = () => {
 
   return (
       <header
-        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[5rem] md1:max-h-[5rem]  ${
+        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[6rem] md1:max-h-[6rem]  ${
             scrolled ? "bg-white/100" : getBackgroundColor()
           }`}
         >
