@@ -20,7 +20,33 @@ const PaymentFailed = () => {
       console.log("Transaction ID dari URL:", transactionId);
   
       if (transactionId) {
-        postUpdateStatus(transactionId);
+
+        const postUpdateStatus = async (id:any) => {
+
+          try {
+            
+          await fetch(`/api/update-status-failed?order_id=${id}`,  {
+              
+              method: 'GET',
+              headers: { 'Content-Type': 'application/json' },
+  
+            });
+  
+  
+  
+          } catch (error : any) {
+            
+            toast.error(error || "server do not responded", {
+              position: "bottom-right",
+              duration: 5000,
+              iconTheme: { primary: "#604beb", secondary: "#fff" },
+              icon: "⚠️",
+              style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
+            });
+  
+          }
+          await postUpdateStatus(transactionId);
+      }
       } else {
         toast.error("Id Transaction not found", {
           position: "bottom-right",
@@ -33,31 +59,7 @@ const PaymentFailed = () => {
     }, [searchParams]);
     
 
-    const postUpdateStatus = async (id:any) => {
 
-        try {
-          
-        await fetch(`/api/update-status-failed?order_id=${id}`,  {
-            
-            method: 'GET',
-            headers: { 'Content-Type': 'application/json' },
-
-          });
-
-
-
-        } catch (error : any) {
-          
-          toast.error(error || "server do not responded", {
-            position: "bottom-right",
-            duration: 5000,
-            iconTheme: { primary: "#604beb", secondary: "#fff" },
-            icon: "⚠️",
-            style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
-          });
-
-        }
-    }
 
 
     const handleOrderStatus = () => {
