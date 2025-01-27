@@ -10,6 +10,7 @@ import { RoomModels } from '@/models/roomModels';
 // State awal untuk packets
 interface RoomState {
   stateRooms: RoomModels[];
+  stateRoomsUnAvailable: RoomModels[];
 
   isError: boolean,
   isSuccess: boolean,
@@ -23,6 +24,7 @@ interface ErrorResponse {
 
 const initialState: RoomState = {
   stateRooms: [],
+  stateRoomsUnAvailable: [],
 
   isError: false,
   isSuccess: false,
@@ -80,7 +82,10 @@ const roomSlice = createSlice({
 
     // },
 
-
+    setRoomUnAvailable(state, action) {
+      state.stateRoomsUnAvailable = action.payload;
+      // console.log( action.payload, " In redux")
+    },
     
   },
   
@@ -117,6 +122,6 @@ const roomSlice = createSlice({
   },
 });
 
-export const {  } = roomSlice.actions;
+export const { setRoomUnAvailable } = roomSlice.actions;
 
 export default roomSlice.reducer;

@@ -1,38 +1,252 @@
+import { RoomModels } from '@/models/roomModels'
 import { homeFull } from '@/style/icons'
 import Image from 'next/image'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import ClouserImage from '../constant/clouserImage'
+import { convertToRupiah } from '@/constants'
+import { useAppSelector } from '@/lib/hooks/hooks'
 
-const SkeletonRoomsFull = () => {
+interface RoomUnAvailable {
+  RoomUnAvailable : RoomModels[]
+}
+
+const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
+
+  const chart = useAppSelector((state) => state.room.stateRoomsUnAvailable);
+    
+  const [ unVila, setUnVila ] = useState<RoomModels[]>()
+
+  useEffect (() => {
+
+      if(chart){
+        setUnVila(chart);
+        console.log(" data UnVila :", chart);
+      }
+
+  },[chart])
+
+  function handleDetailRoom(_id: any) {
+    throw new Error('Function not implemented.')
+  }
+
   return (
     
-    <div  className='flex h-full max-w-[100rem]  mx-[2.2rem] justify-around items-center gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
+    <div>
 
-        <div role="status" className=" w-full flex-center ">
-            
-        <div className=' '>
+      { unVila && unVila.length > 0 ? (
 
-          <Image
-              src={homeFull}
-              alt='image cookies'
-              width={200}
-              height={300}
-              className="w-[12rem] h-[12rem] max-w-[7rem] max-h-[7rem] object-cover "
-          />
+        <div>
+          { unVila.map((item : any, index :any) => (
 
-        </div  >
-        <div className='text-slate-600 font-semibold'>
-          
-          <h1 className='text-[12px] sm:text-[18px]'> 
-            Sorry, the rooms in that date range are all full 
-          </h1>
-          <h2 className='text-[10px] md:text-[15px]'> please use another date range </h2>
+            <div key={index} className=' flex h-full mx-[.5rem] md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
 
+                {/* Item */}
+
+                <div className=' w-full flex flex-col space-y-6 '>
+                
+
+                  {/* Name Vila */}
+                  <div className='relative text-left '>
+
+                    <div className='corner-ribbon absolute top-1 -right-6 bg-slate-800 rounded-md text-white'>FULL</div>
+
+                      <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
+                        {item.name}
+                      </h1>
+                  </div>
+
+                  <div className='flex flex-col hp4:flex-row gap-5'> 
+
+                    {/* Left */}
+
+                    <div className='flex flex-col gap-4 w-full h-full hp4:max-w-[18rem] md1:max-w-[22rem]'>
+                    
+                        <div className='w-full h-full'>
+                            <ClouserImage images={ item.image } />
+                          </div>
+
+                        <figure className='w-full flex justify-center hp4:justify-start'>
+
+                          <ul className='flex gap-4 text-[15px] text-slate-600 font-semibold'>
+                            <li className='flex-center gap-3'>
+                           
+                              <p></p>
+                            </li>
+                            <li className='flex-center gap-3'>
+                              <p></p>
+
+                            </li>
+                            <li className='flex-center gap-3'>
+                              <p> </p>
+
+                            </li>
+                          </ul>
+
+                        </figure>
+
+                        <button onClick={ () => { handleDetailRoom(item._id) }} className='text-slate-600 m-4'>
+                          <h1 className='text-[14px] hp1:text-[17px] font-semibold'> Rooms Detail </h1>
+                        </button>
+                    </div>
+
+                    {/* Right */}   
+
+                    <div className=' w-full flex flex-col justify-between text-slate-600'>
+
+
+                      <div className='w-full flex justify-between items-start p-2 md1:p-4'>
+                        
+                        <div className='w-1/2 h-full flex flex-col  items-start space-y-2 hp2:space-y-4'>
+
+                          <div className='space-y-2'>
+                            <h1 className=' text-[14px] hp4:text-[17px] font-semibold'> Basic Deal </h1>
+                            <ul className='flex flex-wrap text-[11px] hp4:text-sm gap-2 hp2:gap-4'>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>                    
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Without Breakfast
+                                </h1>
+                              </li>
+                            </ul>
+                          </div>
+
+
+                          <div className='space-y-2'>
+                            <h1 className='text-[12px] hp4:text-[17px] font-semibold'> Payment Option </h1>
+                            <ul className='flex flex-wrap text-[11px] hp4:text-sm gap-4'>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Pay now
+                                </h1>
+                              </li>
+                            </ul>
+                          </div>
+
+                        </div>
+
+                        <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
+                          <div className='h-10 '>
+
+                          </div>
+                          <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
+                            <p className='bg-red-100 text-slate-600 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
+                            <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR </p>
+                          </div>
+                          <h1 className='font-bold text-[18px] hp4:text-[21px] '>IDR {convertToRupiah(item.price)}</h1>
+                          <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
+
+                        </div>
+
+                      </div>
+
+
+                    {/*               
+                          <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
+                              <button onClick={()=> { handleAddChart (item._id)}} className='px-4 hp3:px-6 py-1 bg-color1 text-white font-semibold'>
+                                <h1>Select</h1>
+                              </button>
+                            </div>
+                  */}
+
+
+
+                    
+                    <div className='select-none'>
+                      <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
+                          <button  className='px-4 hp3:px-6 py-1 bg-gray-300 text-white font-semibold'>
+                          <h1>Select</h1>
+                          </button>
+                      </div>
+                    </div>
+       
+
+
+                    
+
+                    </div>
+
+                  </div>
+
+                </div>
+
+
+            </div>
+
+          ))}
         </div>
-        </div>
+      
+      ) : ( 
 
+      <div className='space-y-10'>
+SADAAAAAAAAAAAAA
+      </div>
+
+     )}
 
     </div>
   )
 }
 
 export default SkeletonRoomsFull
+
+
+
+// import { homeFull } from '@/style/icons'
+// import Image from 'next/image'
+// import React from 'react'
+
+// const SkeletonRoomsFull = () => {
+//   return (
+    
+//     <div  className='flex h-full max-w-[100rem]  mx-[2.2rem] justify-around items-center gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
+
+//         <div role="status" className=" w-full flex-center ">
+            
+//         <div className=' '>
+
+//           <Image
+//               src={homeFull}
+//               alt='image cookies'
+//               width={200}
+//               height={300}
+//               className="w-[12rem] h-[12rem] max-w-[7rem] max-h-[7rem] object-cover "
+//           />
+
+//         </div  >
+//         <div className='text-slate-600 font-semibold'>
+          
+//           <h1 className='text-[12px] sm:text-[18px]'> 
+//             Sorry, the rooms in that date range are all full 
+//           </h1>
+//           <h2 className='text-[10px] md:text-[15px]'> please use another date range </h2>
+
+//         </div>
+//         </div>
+
+
+//     </div>
+//   )
+// }
+
+// export default SkeletonRoomsFull

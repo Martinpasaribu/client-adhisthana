@@ -18,6 +18,7 @@ import toast from 'react-hot-toast';
 import SkeletonRoomsFull from '../Skeleton/skeletonItemRoomFull';
 import MainLoading from '@/component/mainLoading/loading';
 import { formatCheckInCheckOut, FormatNight, night } from '../constant/formatDate';
+import { setRoomUnAvailable } from '@/lib/slice/roomSlice';
 
 interface Params {
   checkin? :  Date | null;
@@ -93,10 +94,12 @@ const OffersItem = () => {
                 setVila(data.data);
                 setIsRoomsFull(false); 
                 setUnVila(data.dataUnAvailable)
+                dispatch(setRoomUnAvailable(data.dataUnAvailable)); 
 
               } else {
                 setVila([]);
                 setIsRoomsFull(true); 
+                dispatch(setRoomUnAvailable(data.dataUnAvailable)); 
                 toast.success("Rooms Full", {
                   position: "bottom-right",
                   duration: 4000,
@@ -126,7 +129,7 @@ const OffersItem = () => {
       };
     
       fetchVila();
-    }, [searchParams]);
+    }, [searchParams, dispatch]);
     
 
     const convertToRupiah = (number:any) => {
@@ -195,8 +198,9 @@ const OffersItem = () => {
 
     }, 700)
 
-    if (isRoomsFull) {
-      return <SkeletonRoomsFull />;
+
+    if (isRoomsFull ) {
+      return <SkeletonRoomsFull RoomUnAvailable={unVila }/>;
     }
     
   return (
