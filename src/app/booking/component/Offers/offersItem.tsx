@@ -10,7 +10,7 @@ import { RoomModels, UnAvailableRoomModels } from '@/models/roomModels'
 import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import { setAddChart, setIsProcessing } from '@/lib/slice/bookingSlice';
 import debounce from 'lodash-es/debounce';
-import { http } from '@/utils/http';
+import { http, UrlMain } from '@/utils/http';
 import ClouserImage from '../constant/clouserImage';
 import SelectButton from './selectButton';
 import SkeletonItemOffers from '../Skeleton/skeletonItemOffers';
@@ -59,6 +59,16 @@ const OffersItem = () => {
         setLoad(true);
 
         try {
+
+            // Jaga Jaga Kalo ada erorr pada saat Menghapus  session dan localstorage
+            const url = `${UrlMain}/session/remove-cart-in-session`;
+            navigator.sendBeacon(url);
+
+            // Hapus localStorage
+            localStorage.removeItem('cart_vila');
+            localStorage.removeItem('Params');
+            localStorage.removeItem('Night');
+
 
           const response = await fetch("/api/updateVila", {
             method: 'POST',

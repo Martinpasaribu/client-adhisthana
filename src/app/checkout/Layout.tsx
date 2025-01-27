@@ -18,6 +18,7 @@ import { handleMe } from '@/utils/me/getMe';
 import MainLoading from '@/component/mainLoading/loading';
 import { shopBag } from '@/style/icons';
 import MiniCheckoutBottom from './component/MiniCheckoutBottom/MiniCheckoutBottom';
+import accessTokens from '@/utils/accesToken';
 
 interface Params {
     checkin? :  Date | null;
@@ -37,7 +38,6 @@ const Layout = (  ) => {
   const chart = useAppSelector((state) => state.booking.stateChartRes);
   const [ nights, setNight ] = useState<number | 0>();
   const [ subtotal, setSubtotal ] = useState<number | 0>();
-  const [ tax, setTax ] = useState<number | 0>();
   const [ dateParams, setDate  ] = useState<Params>();
   const [ checkin, setCheckin  ] = useState< Date | null>();
   const [ checkout, setcheckout  ] = useState< Date | null>();
@@ -146,7 +146,7 @@ const Layout = (  ) => {
         email:'',
         phone: '',
         status: '',
-        userId: 'ID Martin',
+        userId: '',
         checkIn: '',
         checkOut: '',
         night:0,
@@ -162,92 +162,91 @@ const Layout = (  ) => {
       };
     
 
-    //   Submit Semua data untuk diCheckOut
-    const handleSubmit = async () => {
-      try {
-        // Validasi awal
-        if (!formData.title || !formData.name || !formData.email || !formData.phone) {
-          toast.error("Semua field wajib diisi!", { position: "bottom-right", duration: 5000 });
-          return;
+      // Mengirim Data Supaya Dibooking
+      const handleSubmit = async () => {
+        try {
+          // Validasi awal
+          if (!formData.name || !formData.email || !formData.phone) {
+            toast.error("Semua field wajib diisi!", { position: "bottom-right", duration: 5000 });
+            return;
+          }
+      
+          const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailRegex.test(formData.email)) {
+            toast.error("Format email tidak valid!", { position: "bottom-right", duration: 5000 });
+            return;
+          }
+      
+          // Set loading sebelum memulai proses
+          setLoad(true);
+      
+          // Proses auth sebelum booking berhasil
+          const userExists = await checkUser(formData.email);
+          if (userExists) {
+            await authLogin({ email: formData.email });
+          } else {
+            await authCheckout({
+              title: formData.title,
+              name: formData.name,
+              phone: formData.phone,
+              email: formData.email,
+            });
+      
+            await authLogin({ email: formData.email });
+          }
+      
+          // Proses booking
+          const response = await accessTokens.post('/booking/addBooking', { ...formData });
+      
+          if (response) {
+            const responseData = response.data;
+            const responseServer = responseData.data;
+      
+            toast.success(responseData.message || "Booking berhasil!", { position: "bottom-left", duration: 5000 });
+      
+            setSnapShow(true);
+            snapEmbed(responseServer.snap_token, "snap-container", {
+              onSuccess: function (result: any) {
+                console.log("Payment Success:", result);
+                router.replace(`/order-status?order_id=${responseServer.id}`);
+                setSnapShow(false);
+              },
+              onPending: function (result: any) {
+                console.log("Payment Pending:", result);
+                router.replace(`/order-status?order_id=${responseServer.id}`);
+                setSnapShow(false);
+              },
+              onClose: function () {
+                console.log("Payment Closed");
+                setSnapShow(false);
+              },
+            });
+      
+            // Bersihkan cart_vila di localStorage
+            localStorage.removeItem("cart_vila");
+            localStorage.removeItem("Params");
+            localStorage.removeItem("Night");
+            // await DeletedCart();
+          } else {
+            const errorMessage = "Gagal melakukan booking.";
+            throw new Error(errorMessage);
+          }
+        } catch (error: any) {
+          console.error("Error during handleSubmit:", error.message);
+      
+          // Tangkap error dari API, jika tersedia
+          const errorMessage =
+            error.response?.data?.message || // Pesan error dari response
+            error.message || // Pesan error dari catch
+            "Terjadi kesalahan, silakan coba lagi."; // Default pesan error
+      
+          toast.error(errorMessage, { position: "bottom-right", duration: 5000 });
+        } finally {
+          setTimeout(() => {
+            setLoad(false);
+          }, 2000);
         }
-    
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(formData.email)) {
-          toast.error("Invalid email format!", { position: "bottom-right", duration: 5000 });
-          return;
-        }
-    
-        // Set loading sebelum memulai proses
-        setLoad(true);
-    
-        // Proses booking
-        const response = await fetch("/api/booking", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(formData),
-        });
-    
-        if (response.ok) {
-          const responseData = await response.json();
-          const responseServer = responseData.data.data;
-    
-          toast.success(responseData.message || "Successful Booking", { position: "bottom-left", duration: 5000 });
-    
-          setSnapShow(true);
-          snapEmbed(responseServer.snap_token, "snap-container", {
-            onSuccess: function (result :any) {
-              console.log("Payment Success:", result);
-              router.replace(`/order-status?order_id=${responseServer.id}`);
-              setSnapShow(false);
-            },
-            onPending: function (result : any) {
-              console.log("Payment Pending:", result);
-              router.replace(`/order-status?order_id=${responseServer.id}`);
-              setSnapShow(false);
-            },
-            onClose: function () {
-              console.log("Payment Closed");
-              setSnapShow(false);
-            },
-          });
-    
-          // Bersihkan cart_vila di localStorage
-          localStorage.removeItem("cart_vila");
-          localStorage.removeItem('Params');
-          localStorage.removeItem('Night');
-          // await DeletedCart();
-
-        } else {
-          const errorMessage = (await response.json()).message || "Gagal melakukan booking.";
-          throw new Error(errorMessage);
-        }
-    
-        // Proses auth setelah booking berhasil
-        const userExists = await checkUser(formData.email);
-        if (userExists) {
-          await authLogin({ email: formData.email });
-          return;
-        } else {
-          await authCheckout({
-            title: formData.title,
-            name: formData.name,
-            phone: formData.phone,
-            email: formData.email,
-          });
-    
-          await authLogin({ email: formData.email });
-        }
-      } catch (error:any) {
-        console.error("Error during handleSubmit:", error.message);
-        toast.error(error.message || "Failed to checkout.", { position: "bottom-right", duration: 5000 });
-      } finally {
-
-        setTimeout(() => {
-          setLoad(false)
-        }, 2000);
-      }
-
-    };
+      };
     
       
 
@@ -291,21 +290,7 @@ const Layout = (  ) => {
       }, [checkin, checkout]);
       
 
-      // useEffect(() => {
 
-
-      //   if(chart && amountNight){
-            
-
-      //       const totalPrice = chart.reduce((total, item) => {
-      //           return total + item?.data[0]?.price * item.quantity * amountNight;
-      //       }, 0);
-
-      //       setSubtotal(totalPrice)
-      //       setTax(totalPrice * 0.12 )
-      //   }
-
-      // },[chart, amountNight])
 
       useEffect(() => {
 
@@ -318,7 +303,6 @@ const Layout = (  ) => {
             }, 0);
 
             setSubtotal(totalPrice)
-            setTax(totalPrice * 0.12 )
         }
 
       },[chart, amountNight])
@@ -487,8 +471,7 @@ const Layout = (  ) => {
                                         <h1 className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>{convertToRupiah(subtotal && subtotal ? subtotal : 0)}</h1>
                                     </div>
                                     <div className='text-[14px] sm:text-[20px] flex justify-between items-center'>
-                                        <h1 className='text-[13px] font-bold sm:text-[18px] sm:font-semibold'>Tax</h1>
-                                        <h1 className='flex gap-2 text-[15px] sm:text-[17px] font-semibold'>{convertToRupiah(tax && tax ? tax : 0) }</h1>
+              
                                     </div>
 
                                 </div>
@@ -497,7 +480,7 @@ const Layout = (  ) => {
 
                                     <div className='flex justify-between items-center w-full text-yellow-400 font-semibold'>
                                         <h1>Reservation Total</h1>
-                                        <h1 className='text-md md:text-lg'>IDR {convertToRupiah((subtotal && tax) && subtotal ? subtotal+tax : 0)}</h1>
+                                        <h1 className='text-md md:text-lg'>IDR {convertToRupiah((subtotal ) && subtotal ? subtotal : 0)}</h1>
                                     </div>
 
                                 </div>

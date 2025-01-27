@@ -81,7 +81,7 @@ export const Layout = () => {
                         <span className='text-color1'> Terms & Conditions.</span>
                     </p>
                     <p className='text-neutral-600 mt-3 group-open:animate-sidebar_top'>
-                        If you need to cancel your reservation or have specific questions about our policy, please contact us directly at [Your Email Address] or [Your Phone Number]. We are here to assist you with any cancellation requests and provide further details as needed.
+                        If you need to cancel your reservation or have specific questions about our policy, please contact us directly at <span className="text-color1">info@adhisthanavillas.com</span> or  <span className="text-color1" >+62 8111-1177-199</span>   We are here to assist you with any cancellation requests and provide further details as needed.
                     </p>
                 </details>
             </div>

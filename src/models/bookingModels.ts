@@ -26,6 +26,7 @@ interface roomModels {
 
     roomId : string;
     quantity: number;
+    price : number;
 
 }
 

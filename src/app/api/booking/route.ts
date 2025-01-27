@@ -1,6 +1,7 @@
 import { http } from '@/utils/http';
 import { NextResponse } from 'next/server';
 import { AxiosError } from 'axios';
+import accessTokens from '@/utils/accesToken';
 
 export async function POST(req: Request) {
   try {
@@ -10,6 +11,7 @@ export async function POST(req: Request) {
     const {
       name,
       email,
+      phone,
       bookingId,
       status,
       userId,
@@ -23,9 +25,9 @@ export async function POST(req: Request) {
 
     // Validasi data
     if (
-      !userId ||
       !night ||
       !checkIn ||
+      !phone ||
       !checkOut ||
       !grossAmount ||
       !room ||
@@ -38,9 +40,10 @@ export async function POST(req: Request) {
     }
 
     // Kirim data ke API eksternal
-    const response = await http.post('/booking/addBooking', {
+    const response = await accessTokens.post('/booking/addBooking', {
       name,
       email,
+      phone,
       night,
       bookingId,
       status,
@@ -52,6 +55,7 @@ export async function POST(req: Request) {
       room: room.map((r: any) => ({
         roomId: r.roomId,
         quantity: r.quantity,
+        price: r.price
       })),
     });
 

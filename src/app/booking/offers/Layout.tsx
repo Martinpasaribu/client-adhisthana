@@ -194,6 +194,7 @@ const Layout = () => {
       // }, [checkin, checkout]);
   
 
+      // Jika halaman di reload atau di keluarin  akan menghapus segalanya
       useEffect(() => {
           const handleUnload = () => {
               // Kirim data ke server menggunakan navigator.sendBeacon

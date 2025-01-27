@@ -47,48 +47,48 @@ const initialState: BookingState = {
 
 
 // // Action async untuk getPacket
-export const addBooking = createAsyncThunk<BookingModels,BookingModels,{ rejectValue: string }>('booking/addBooking', async (booking, thunkAPI) => {
+// export const addBooking = createAsyncThunk<BookingModels,BookingModels,{ rejectValue: string }>('booking/addBooking', async (booking, thunkAPI) => {
 
-    try {
+//     try {
 
-        const response = await http.post('/booking/addBooking', booking);
-        return response.data;
+//         const response = await http.post('/booking/addBooking', booking);
+//         return response.data;
 
-    } catch (error) {
+//     } catch (error) {
         
-        const axiosError = error as AxiosError<ErrorResponse>;
+//         const axiosError = error as AxiosError<ErrorResponse>;
 
-        if (axiosError.response && axiosError.response.data) {
-          const message = axiosError.response.data.msg; 
-          return thunkAPI.rejectWithValue(message); 
-        }
+//         if (axiosError.response && axiosError.response.data) {
+//           const message = axiosError.response.data.msg; 
+//           return thunkAPI.rejectWithValue(message); 
+//         }
   
-        // Jika error tidak sesuai dengan tipe yang diharapkan
-        return thunkAPI.rejectWithValue('An unexpected error occurred');
-    }
-});
+//         // Jika error tidak sesuai dengan tipe yang diharapkan
+//         return thunkAPI.rejectWithValue('An unexpected error occurred');
+//     }
+// });
 
 
-export const getOffers = createAsyncThunk<BookingModels,BookingModels,{ rejectValue: string }>('booking/getOffers', async (date, thunkAPI) => {
+// export const getOffers = createAsyncThunk<BookingModels,BookingModels,{ rejectValue: string }>('booking/getOffers', async (date, thunkAPI) => {
 
-    try {
+//     try {
 
-        const response = await http.post('/booking/getOffers', date);
-        return response.data;
+//         const response = await http.post('/booking/getOffers', date);
+//         return response.data;
 
-    } catch (error) {
+//     } catch (error) {
         
-        const axiosError = error as AxiosError<ErrorResponse>;
+//         const axiosError = error as AxiosError<ErrorResponse>;
 
-        if (axiosError.response && axiosError.response.data) {
-          const message = axiosError.response.data.msg; 
-          return thunkAPI.rejectWithValue(message); 
-        }
+//         if (axiosError.response && axiosError.response.data) {
+//           const message = axiosError.response.data.msg; 
+//           return thunkAPI.rejectWithValue(message); 
+//         }
   
-        // Jika error tidak sesuai dengan tipe yang diharapkan
-        return thunkAPI.rejectWithValue('An unexpected error occurred');
-    }
-});
+//         // Jika error tidak sesuai dengan tipe yang diharapkan
+//         return thunkAPI.rejectWithValue('An unexpected error occurred');
+//     }
+// });
 
 
 
@@ -233,29 +233,29 @@ const bookingSlice = createSlice({
     
   },
   
-  extraReducers: (builder) => {
+  // extraReducers: (builder) => {
     
-    builder
+  //   builder
 
-    .addCase(addBooking.pending, (state) => {
-      state.isLoading = true;
-    })
+  //   .addCase(addBooking.pending, (state) => {
+  //     state.isLoading = true;
+  //   })
 
-    .addCase(addBooking.fulfilled, (state, action) => {
-      state.stateBooking = action.payload;
-      state.isLoading = false;
-    })
+  //   .addCase(addBooking.fulfilled, (state, action) => {
+  //     state.stateBooking = action.payload;
+  //     state.isLoading = false;
+  //   })
 
-    .addCase(addBooking.rejected, (state, action) =>{
-      state.isLoading = false;
-      state.isError = true;
-      state.message = action.payload ?? 'Failed to add booking';
-    })
+  //   .addCase(addBooking.rejected, (state, action) =>{
+  //     state.isLoading = false;
+  //     state.isError = true;
+  //     state.message = action.payload ?? 'Failed to add booking';
+  //   })
 
-    //  Packet by Paramss 
+  //   //  Packet by Paramss 
 
 
-  },
+  // },
 });
 
 export const { setCheckIn, setCheckOut, setAddChart, setAddVila, setRemoveVila, setGetChart, setIsProcessing } = bookingSlice.actions;
