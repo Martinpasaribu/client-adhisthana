@@ -20,22 +20,13 @@ const PaymentFailed = () => {
       console.log("Transaction ID dari URL:", transactionId);
   
       if (transactionId) {
-
-        const postUpdateStatus = async (id:any) => {
-
+        const postUpdateStatus = async (id: any) => {
           try {
-            
-          await fetch(`/api/update-status-failed?order_id=${id}`,  {
-              
+            await fetch(`/api/update-status-failed?order_id=${id}`, {
               method: 'GET',
               headers: { 'Content-Type': 'application/json' },
-  
             });
-  
-  
-  
-          } catch (error : any) {
-            
+          } catch (error: any) {
             toast.error(error || "server do not responded", {
               position: "bottom-right",
               duration: 5000,
@@ -43,11 +34,13 @@ const PaymentFailed = () => {
               icon: "⚠️",
               style: { borderRadius: "10px", background: "#C0562F", color: "#fff" },
             });
-  
           }
-          await postUpdateStatus(transactionId);
+        };
+      
+        // Panggil fungsi setelah deklarasi
+        postUpdateStatus(transactionId);
       }
-      } else {
+       else {
         toast.error("Id Transaction not found", {
           position: "bottom-right",
           duration: 5000,
