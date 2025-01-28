@@ -149,12 +149,12 @@ const Navbar = () => {
 
   return (
       <header
-        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[6rem] md1:max-h-[6rem]  ${
+        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[5rem] md1:max-h-[6rem]  ${
             scrolled ? "bg-white/100" : getBackgroundColor()
           }`}
         >
 
-        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-3 sm:px-3 md:px-5 py-1 md1:py-4 h-hp4:py-4">
+        <nav className="max-w-[1740px] mx-auto flex justify-between items-center px-3 sm:px-3 md:px-5 py-1 md1:py-2 h-hp4:py-2">
             
         <label className=" hamburger w-full max-w-[28rem] h-[1.5rem] z-50 ">
           <input

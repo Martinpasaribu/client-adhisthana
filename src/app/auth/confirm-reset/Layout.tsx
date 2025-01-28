@@ -3,17 +3,22 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { http } from "@/utils/http";
+import MainLoading from "@/component/mainLoading/loading";
 
 export default function ResetPassword() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [load, setLoad] = useState(false);
 
   const handleSubmit = async (e: any) => {
     e.preventDefault();
+    
     setError("");
     setSuccess("");
+
+    setLoad(true);
 
     if (!email) {
       setError("Email fields cannot be empty.");
@@ -37,9 +42,17 @@ export default function ResetPassword() {
         setTimeout(() => {
           router.push("/auth/login");
         }, 3000);
+
       } catch (err: any) {
+
         setError(err.response?.data?.message || "An error occurred. Please try again.");
+
+      } finally {
+
+        setLoad(false);
+
       }
+
     } else {
       setError("reCAPTCHA is not loaded. Please try again later.");
     }
@@ -47,6 +60,9 @@ export default function ResetPassword() {
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+
+    { load && (<MainLoading/>)}
+
       <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
         <h2 className="text-xl font-semibold text-center">Reset Password</h2>
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}

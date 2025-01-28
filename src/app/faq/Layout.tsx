@@ -29,7 +29,7 @@ export const Layout = () => {
                     </summary>
                     <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <ul className="list-disc list-inside pl-4">
-                            <li><span className='text-color1'>Check-In</span>: From 2:00 PM</li>
+                            <li><span className='text-color1'>Check-In</span>: From 15:00 PM</li>
                             <li><span className='text-color1'>Check-Out</span>: By 12:00 PM</li>
                         </ul>
                         <p className=''>

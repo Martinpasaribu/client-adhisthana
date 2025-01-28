@@ -5,6 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useState } from "react";
 import axios from "axios";
 import { http } from '@/utils/http';
+import MainLoading from '@/component/mainLoading/loading';
 
 const Layout = () => {
     
@@ -16,11 +17,15 @@ const Layout = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [load, setLoad] = useState(false);
+
 
   const handleSubmit = async (e : any) => {
     e.preventDefault();
     setError("");
     setSuccess("");
+
+    setLoad(true);
 
     if (!password || !confirmPassword) {
       setError("Password fields cannot be empty.");
@@ -40,17 +45,27 @@ const Layout = () => {
       });
 
       setSuccess(response.data.message);
+      
       setTimeout(() => {
         router.push("/auth/login"); // Arahkan ke halaman login setelah sukses
       }, 3000);
     } catch (err : any) {
+
       setError(err.response?.data?.message || "An error occurred. Please try again.");
+
+    } finally {
+
+      setLoad(false);
+      
     }
   };
 
 
   return (
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+
+    { load && (<MainLoading/>)}
+
       <div className="w-full max-w-md p-6 bg-white rounded shadow-md">
         <h2 className="text-xl font-semibold text-center">Reset Password</h2>
         {error && <p className="mt-4 text-sm text-red-600">{error}</p>}

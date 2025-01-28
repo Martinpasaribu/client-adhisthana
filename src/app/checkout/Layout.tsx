@@ -330,7 +330,7 @@ const Layout = (  ) => {
 
                         <div className='select-none flex flex-col gap-4 space-y-2 sm:space-y-5 w-full xl:max-w-[30rem]'>
 
-                            <h1 className='text-md md:text-xl font-semibold text-gray-700'> Guest Information </h1>
+                            <h1 className='text-md md:text-xl font-semibold text-gray-700  pt-6 md:pt-5'> Guest Information </h1>
 
                             <div  className='flex flex-col gap-4 space-y-5 w-full xl:max-w-[30rem]' >
 

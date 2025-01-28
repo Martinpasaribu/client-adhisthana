@@ -504,7 +504,7 @@ const OffersItem = () => {
 
                             <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
                               <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'> &#62;10% OFF</p>
-                              <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
+                              <p className='line-through font-semibold text-[15px] hp4:text-[17px] text-slate-500'>IDR {convertToRupiah(item.price)}</p>
                             </div>
 
                             <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Total price for                   
@@ -523,7 +523,7 @@ const OffersItem = () => {
 
 
                             <h1 className='font-bold text-[18px] hp4:text-[21px]'>IDR {convertToRupiah(item.priceDateList)}</h1>
-                            <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
+                            <p className=' text-[12px] hp4:text-[15px] text-slate-600 font-normal'>Includes taxes & fees</p>
 
                           </div>
 
