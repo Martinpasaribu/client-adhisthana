@@ -2,10 +2,13 @@
 export interface TransactionModels {
     _id: string;
     name:string;
+    nameAdditional:string;
     email:string;
     bookingId: string;
     userId: string;
     status: string;
+    checkIn: string;
+    checkOut:string;
     grossAmount: number;
     isDeleted: boolean;
     createdAt: string;
@@ -21,6 +24,7 @@ export interface TransactionModels {
 
 interface Products {
     name: string;
+    nameAdditional: string;
     roomId: string;
     price: number; 
     quantity: number ;

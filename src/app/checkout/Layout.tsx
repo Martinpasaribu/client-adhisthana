@@ -414,7 +414,7 @@ const Layout = (  ) => {
                                         <div key={index} className='flex justify-between items-center w-full gap-5'>
 
                                         <div className='flex gap-2 sm:gap-4 w-full'>
-                                            <h1 className='text-[12px] font-bold hp2:text-[13px] sm:text-[18px] sm:font-semibold min-w-[6rem]'>  {item.data[0]?.name || "No Name"} </h1>
+                                            <h1 className='text-[12px] font-bold hp2:text-[13px] sm:text-[18px] sm:font-semibold min-w-[6rem]'>  {item.data[0]?.nameAdditional || "No Name"} </h1>
                                                                                       
                                             <div className='flex-center gap-1 font-semibold text-[10px] sm:text-[14px] text-slate-600'>
                                                 <div className='flex gap-1'>

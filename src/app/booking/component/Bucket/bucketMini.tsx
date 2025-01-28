@@ -191,7 +191,7 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
                     
                             <div className='w-full'>  
 
-                                <h1 className='text-sm hp3:text-lg font-semibold text-left w-full'>  {item.data[0]?.name || "No Name"} </h1>
+                                <h1 className='text-sm hp3:text-lg font-semibold text-left w-full'>  {item.data[0]?.nameAdditional || "No Name"} </h1>
 
                                 <div className='flex justify-between items-center w-full gap-4'>
 

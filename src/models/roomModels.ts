@@ -12,6 +12,7 @@ interface Room {
     quantity: number;
     price: number;
     name: string;
+    nameAdditional: string;
 }
 
 
@@ -23,6 +24,7 @@ interface Image {
 export  interface RoomModels {
     _id: string;
     name: string;
+    nameAdditional: string;
     image: Image [],
     imagePoster: string;
     imageShort: string;

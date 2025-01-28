@@ -72,7 +72,7 @@ const Vila = ({ InitialsVila }: VilaProps) => {
               <div className="text-slate-600 max-w-[30rem] sm:w-1/2 flex flex-col gap-10 text-left">
                 <div className="flex flex-col gap-8">
                   <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                    {vila[startIndex].name}
+                    {vila[startIndex].nameAdditional}
                   </h1>
                   <h2 className="text-slate-500 animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
                 </div>

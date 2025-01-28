@@ -54,7 +54,7 @@ import { http } from '@/utils/http';
 
             {/* Name Room */}
             <div className='text-[16px] md:text-[20px]'>
-                <h1>{ room[0].name}</h1>
+                <h1>{ room[0].nameAdditional}</h1>
             </div>
 
             {/* Poster */}

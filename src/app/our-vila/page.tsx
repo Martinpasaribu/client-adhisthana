@@ -100,7 +100,7 @@ const OurVila = () => {
 
                                 <div className="flex flex-col gap-8">
                                     <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                                        {vila && vila.length > 0 ? vila[0].name : '/assets/Image/imagenf.jpg'}
+                                        {vila && vila.length > 0 ? vila[0].nameAdditional : '/assets/Image/imagenf.jpg'}
                                     </h1>
                                     <h2 className="text-slate-500 animate-modal text-[12px] md:text-[16px]"> {vila && vila.length > 0 ? vila[0].shortDesc : ''}</h2>
                                 </div>
@@ -159,7 +159,7 @@ const OurVila = () => {
                                     {/* Nama dan Deskripsi */}
                                     <div className="flex flex-col gap-4 h-full">
                                         <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                                            {item.name}
+                                            {item.nameAdditional}
                                         </h1>
                                         <h2 className="text-slate-500 animate-modal h-full  max-h-[10rem] text-[12px] md:text-[16px]">
                                             {item.shortDesc}

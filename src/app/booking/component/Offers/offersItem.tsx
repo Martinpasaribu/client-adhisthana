@@ -227,7 +227,7 @@ const OffersItem = () => {
                     <div className='corner-ribbon absolute top-1 -right-6 bg-slate-800 rounded-md text-white'>FULL</div>
 
                       <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
-                        {item.name}
+                        {item.nameAdditional}
                       </h1>
                   </div>
 
@@ -321,16 +321,21 @@ const OffersItem = () => {
 
                         </div>
 
-                        <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
+                        <div className='w-1/2 h-full flex flex-col justify-start space-y-2 hp2:space-y-4'>
+
+                          <h1 className='text-[13px] hp4:text-[17px] font-semibold text-right'>Basic price for 1 night                 
+                          
+                          </h1>
+
+                          <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
+                            <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'> &#62;10% OFF</p>
+                            <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
+                          </div>
+
                           <div className='h-10 '>
 
                           </div>
-                          <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
-                            <p className='bg-red-100 text-slate-600 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
-                            <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR </p>
-                          </div>
-                          <h1 className='font-bold text-[18px] hp4:text-[21px] '>IDR {convertToRupiah(item.price)}</h1>
-                          <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
+
 
                         </div>
 
@@ -385,7 +390,7 @@ const OffersItem = () => {
 
     { vila && vila.length > 0 ? (
 
-          <div>
+          <div className='space-y-4 md:space-y-8'>
 
             { vila.map((item, index) => (
 
@@ -398,7 +403,7 @@ const OffersItem = () => {
                     {/* Name Vila */}
                     <div className='text-left'>
                         <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
-                          {item.name}
+                          {item.nameAdditional}
                         </h1>
                     </div>
 
@@ -492,6 +497,16 @@ const OffersItem = () => {
                           </div>
 
                           <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
+                            
+                            <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Basic price for 1 night                 
+           
+                            </h1>
+
+                            <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
+                              <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'> &#62;10% OFF</p>
+                              <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
+                            </div>
+
                             <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Total price for                   
                               <span className='mx-2'>
                                 {safecheckin && safecheckout
@@ -501,11 +516,12 @@ const OffersItem = () => {
                                 : " 0 "} 
                               </span>
                                               
-                                              night</h1>
-                            <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
-                              <p className='bg-red-100 text-red-900 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
-                              <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR {convertToRupiah(item.price)}</p>
-                            </div>
+                             night
+                             
+                            </h1>
+                            
+
+
                             <h1 className='font-bold text-[18px] hp4:text-[21px]'>IDR {convertToRupiah(item.priceDateList)}</h1>
                             <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
 

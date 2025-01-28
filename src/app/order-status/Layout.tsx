@@ -18,6 +18,7 @@ import PaymentUrl from "./component/Payment_URL";
 import Transaction from "./component/skeleton/transaction";
 import TransactionSkeleton from "./component/skeleton/transaction";
 import MainLoading from "@/component/mainLoading/loading";
+import { formatTanggal } from "./utils/FormatTangal";
 
 const Layout = () => {
   const router = useRouter();
@@ -121,11 +122,25 @@ const Layout = () => {
 
             <>
 
-            <div className="transaction-status">
+            <div className="transaction-status h-full">
 
-                <Item label="Transaction ID" value={transaction.bookingId} style="value" />
+                <div className="flex justify-between">
+                  <Item label="Transaction ID" value={transaction.bookingId} style="value" />
+                  <div className="flex flex-col gap-4 border-[1px] p-1 border-slate-700 rounded-md">
+                      <div className="text-left">
+                        <h1 className="text-[14px] font-semibold "> Check-In </h1>
+                        <h1 className="text-[13px]"> {formatTanggal(transaction.checkIn)} </h1>
+                      </div>
+                      <div className="text-left">
+                        <h1 className="text-[14px] font-semibold "> Check-Out </h1>
+                        <h1 className="text-[13px] "> {formatTanggal(transaction.checkOut)} </h1>
+                      </div>
+                  </div>
+                </div>
+
                 <Item label="Customer Name" value={transaction.name}  style="value" />
                 <Item label="Customer Email" value={transaction.email}  style="value"/>
+                
                 <div className="flex justify-between items-center">
                     
                     <Item label="Status" value={statusMapping(transaction.status)}  style="value"/>
@@ -153,6 +168,7 @@ const Layout = () => {
                     style="item-product-status "
                         key={product.roomId}
                         name={product.name}
+                        nameAdditional={product.nameAdditional}
                         price={product.price}
                         totalItem={product.quantity}
                 />
@@ -161,6 +177,7 @@ const Layout = () => {
                 <ProductItem
                     style=" text-color2 font-bold text-md md:text-xl flex justify-between"
                     name="Total"
+                    nameAdditional=""
                     price={transaction.grossAmount}
                     totalItem={0}
                 />
