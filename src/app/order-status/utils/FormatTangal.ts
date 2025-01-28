@@ -11,5 +11,5 @@ export const formatTanggal = (isoDate: string): string => {
       minute: '2-digit', // "numeric" atau "2-digit"
     };
   
-    return new Intl.DateTimeFormat('id-ID', options).format(tanggal);
+    return new Intl.DateTimeFormat('en-US', options).format(tanggal);
   };

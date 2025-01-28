@@ -18,6 +18,7 @@ export const Item = ({ label, value, style } : ItemProps) => {
                 { value === 'Pembayaran Berhasil' && <div> <MdDone size={23} className="text-green-700 flex-center"/> </div> }
                 { value === 'Menunggu Pembayaran' && <div> <GiSandsOfTime size={21} className="text-green-700 flex-center"/> </div> }
                 { value === 'Pesanan Dibatalkan' && <div> <RxCross2 size={23} className="text-red-700 flex-center"/> </div> }
+                { value === 'Pesanan kedaluwarsa' && <div> <RxCross2 size={23} className="text-red-700 flex-center"/> </div> }
             </div>
         </div>
     );

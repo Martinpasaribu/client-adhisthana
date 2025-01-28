@@ -12,7 +12,7 @@ import CalendarMini from '../component/Calender/calendarMini';
 import ModalPeople from '../component/Update/modalPeople';
 import { useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
-import { DeletedCart, DeletedCartInSession } from '../utils/deletedCart';
+import { DeletedSession, DeletedCartInSession } from '../utils/ManageSession';
 import { http, UrlMain } from '@/utils/http';
 import BucketMini from '../component/Bucket/bucketMini';
 import OffersItem from '../component/Offers/offersItem';
@@ -61,6 +61,7 @@ const Layout = () => {
     
 
     useEffect(() => {
+      
       if (!checkin || !checkout) {
         router.push('/booking'); 
       }

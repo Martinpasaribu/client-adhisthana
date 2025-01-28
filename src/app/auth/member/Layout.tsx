@@ -1,6 +1,8 @@
 "use client";
 
-import { useState } from "react";
+
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import Left from "./component/Left/Left";
 import MyBooking from "./component/Right/MyBooking";
 import ChangeProfile from "./component/Right/ChangeProfile";
@@ -10,11 +12,21 @@ import LeftMini from "./component/Left/LeftMini";
 export default function Login() {
 
   const [filter, setFilter] = useState<string>("Booking"); // State untuk filter
-
+  const router = useRouter();
   // Fungsi untuk memperbarui filter dari komponen Left
   const handleFilterChange = (newFilter: string) => {
     setFilter(newFilter);
   };
+
+  // Ini hanya digunakan oleh user yang checkout dengan user baru agar tetap ter-verification
+  useEffect(() => {
+    const shouldRedirect = localStorage.getItem("cek");
+    if (shouldRedirect) {
+      localStorage.removeItem("cek");
+
+      window.location.reload();
+    }
+  }, [router]);
 
   return (
     <div className="flex flex-col gap-2 items-center pt-[3rem] sm:pt-[7rem] min-h-screen overflow-hidden">

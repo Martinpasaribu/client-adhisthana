@@ -11,7 +11,7 @@ import { convertToRupiah } from '@/constants';
 import toast from 'react-hot-toast';
 import useSnap from './hooks/useSnap';
 import { useRouter } from 'next/navigation';
-import { DeletedCart } from '../booking/utils/deletedCart';
+import { DeletedSession } from '../booking/utils/ManageSession';
 import { authCheckout, authLogin, checkUser } from '../auth/authCeckout/authCheckout';
 import { NextResponse } from 'next/server';
 import { handleMe } from '@/utils/me/getMe';
@@ -132,6 +132,13 @@ const Layout = (  ) => {
             setLoad(false);
           }
         }
+
+        // if (snapShow) {
+        //     const data = await handleMe()
+        //     console.log(" Verify Me ", data ? " Me Verify " : " Me No Verify ")
+        // }
+
+
       };
   
       handleRedirectOrFetch();

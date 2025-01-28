@@ -7,7 +7,7 @@ import { RoomModels } from '@/models/roomModels';
 import { BucketModels } from '../../models';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { DeletedCart } from '../../utils/deletedCart';
+import { DeletedSession } from '../../utils/ManageSession';
 import toast from 'react-hot-toast';
 import { http } from '@/utils/http';
 import { AddNightToSession } from '../api/AddNightToSession';

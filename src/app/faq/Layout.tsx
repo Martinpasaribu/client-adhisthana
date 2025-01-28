@@ -6,7 +6,7 @@ export const Layout = () => {
     
     <div className=" mx-auto h-full">
             
-        <div className="flex-center flex-col gap-5 items-center h-[25rem]  max-h-[20rem]  md:max-h-[23rem]  bg-color3 w-full px-2">
+        <div className="flex-center bg-faq_bg bg-no-repeat bg-cover bg-center flex-col gap-5 items-center h-[25rem]  max-h-[20rem]  md:max-h-[23rem]  bg-color3 w-full px-2">
             <h2 className="font-bold text-lg md:text-xl xl:text-2xl mt-5 tracking-tight">
                 Frequently Asked Questions (FAQ)
             </h2>
@@ -16,11 +16,11 @@ export const Layout = () => {
             </p>
         </div>
 
-        <div className="textFaq styleFaq  divide-y divide-y-reverse divide-neutral-200 max-w-[70rem] h-full ">
+        <div className="textFaq styleFaq  divide-y divide-y-reverse divide-neutral-200 max-w-[90rem] h-full ">
 
             <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
                 <details className="group">
-                    <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
+                    <summary className="flex justify-between items-center font-normal cursor-pointer list-none select-none">
                         <h1> What are the check-in and check-out times at Adhisthana Villas?</h1>
                         <span className="transition group-open:rotate-180">
                             <svg fill="none" height="24" shapeRendering="geometricPrecision" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="1.5" viewBox="0 0 24 24" width="24"><path d="M6 9l6 6 6-6"></path>
@@ -39,7 +39,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> What payment methods are accepted?</h1>
@@ -67,7 +67,7 @@ export const Layout = () => {
             </div>
 
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> What is the cancellation policy?</h1>
@@ -86,7 +86,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> How do I reach Adhisthana Villas? </h1>
@@ -109,7 +109,7 @@ export const Layout = () => {
             </div>
 
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Are there any amenities or services provided at the villas? </h1>
@@ -135,7 +135,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> What is the policy for special requests or additional services? </h1>
@@ -150,7 +150,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> Can I try this platform for free?</h1>
@@ -166,7 +166,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> What should I do if I have a problem or need assistance during my stay? </h1>
@@ -183,7 +183,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> Are pets allowed at Adhisthana Villas? </h1>
@@ -200,7 +200,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> What is the policy regarding damages or loss? </h1>
@@ -223,7 +223,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2">
+            <div className="py-5 border-[1px] border-transparent border-b-slate-200 border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> How can I provide feedback about my stay? </h1>

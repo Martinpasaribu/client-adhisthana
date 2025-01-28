@@ -10,6 +10,7 @@ import Link from "next/link";
 import { checkField } from "@/constants";
 import toast from "react-hot-toast";
 import MainLoading from "@/component/mainLoading/loading";
+import { handleMe } from "@/utils/me/getMe";
 
 
 export default function Login() {
@@ -28,6 +29,36 @@ export default function Login() {
 
       router.push("/booking");
     }
+  }, [router]);
+
+  // Ini hanya digunakan oleh user yang checkout dengan user baru agar tetap ter-verification
+  useEffect(() => {
+
+    const handleRedirectOrFetch = async () => {
+
+      const data = await handleMe()
+      const shouldRedirect = localStorage.getItem("me");
+
+      if (data && !shouldRedirect) {
+
+        console.log(" Verify Me ", data ? " Me Verify " : " Me No Verify ")
+
+          
+        setTimeout(() => {
+          try {
+            
+            localStorage.setItem("cek", "true");
+            router.push("/auth/member");
+
+          } catch (error) {
+            console.error("Error to direct:", error);
+          }
+        }, 1000);
+      }
+    }
+
+  handleRedirectOrFetch();
+  
   }, [router]);
 
 
@@ -78,6 +109,7 @@ export default function Login() {
         });
 
         setLoad(false)
+
         setTimeout(() => {
           try {
             
@@ -106,7 +138,7 @@ export default function Login() {
           });
 
           setTimeout(() => {
-            router.push('/auth/reset-password')
+            router.push('/auth/confirm-reset')
           },1000)
 
         }

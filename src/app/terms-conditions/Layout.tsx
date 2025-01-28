@@ -6,7 +6,7 @@ export const Layout = () => {
     
     <div className=" mx-auto h-full">
             
-        <div className="flex-center flex-col gap-5 items-center h-[28rem] max-h-[20rem] md:max-h-[25rem]  bg-color3 w-full px-2">
+        <div className="flex-center bg-terms_bg bg-no-repeat bg-cover bg-bottom flex-col gap-5 items-center h-[28rem] max-h-[20rem] md:max-h-[25rem]  bg-color3 w-full px-2">
             <h2 className="font-bold text-lg md:text-xl xl:text-2xl mt-5 tracking-tight">
                 Terms & Conditions
             </h2>
@@ -19,7 +19,7 @@ export const Layout = () => {
         <div className="textFaq styleFaq  divide-y divide-y-reverse divide-neutral-200 max-w-[70rem] h-full ">
 
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Payment Methods</h1>
@@ -28,7 +28,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <p>
                             Adhisthana Villas accepts various payment methods for your convenience:  
                         </p>
@@ -47,7 +47,7 @@ export const Layout = () => {
             </div>
 
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Reservation and Booking </h1>
@@ -56,7 +56,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Booking Confirmation</span>: A reservation is only confirmed upon receipt of payment and issuance of a confirmation email.</li>
                             <li><span className='text-color1'>Cancellation Policy</span>: Cancellations must be made at least 24 hours before the scheduled check-in time. Late cancellations may incur a fee.</li>
@@ -67,7 +67,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Check-In and Check-Out </h1>
@@ -76,7 +76,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Check-In</span>: From 15:00 PM</li>
                             <li><span className='text-color1'>Check-Out</span>: By 12:00 PM</li>
@@ -89,7 +89,7 @@ export const Layout = () => {
             </div>
 
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Location and Access </h1>
@@ -98,7 +98,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Address </span>: Jl. Borobudur - Ngadiharjo No.Km 2.5 Borobudur, Magelang Central Java, Indonesia 56553</li>
                             <li><span className='text-color1'>Accessibility</span>: Our villas are easily reachable from major transport routes. If you require additional directions or assistance, please do not hesitate to contact our team.</li>
@@ -111,7 +111,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Amenities and Services </h1>
@@ -120,7 +120,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <p> Our villas are designed to offer a luxurious and comfortable stay. Please be aware of the following: </p>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Included Amenities </span>: Each villa is equipped with modern conveniences, including Wi-Fi, a private pool, and well-appointed living areas.</li>
@@ -134,7 +134,7 @@ export const Layout = () => {
             </div>
 
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Cancellation and Refunds </h1>
@@ -143,7 +143,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <p>To ensure a smooth process, please adhere to the following guidelines regarding cancellations:</p>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Cancellation Policy</span>: A reservation is only confirmed upon receipt of payment and issuance of a confirmation email.</li>
@@ -157,7 +157,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Liability and Responsibility </h1>
@@ -166,7 +166,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <p>While we strive to ensure a safe and enjoyable stay, Adhisthana Villas is not responsible for:</p>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Personal Property</span>: Loss or damage to personal belongings during your stay.</li>
@@ -179,7 +179,7 @@ export const Layout = () => {
                 </details>
             </div>
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-medium cursor-pointer list-none">
                         <h1> Changes to Terms </h1>
@@ -188,13 +188,13 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <p className="text-neutral-600 mt-3 group-open:animate-fadeIn">
+                    <p className="text-neutral-600 mt-3 group-open:animate-sidebar_top">
                         Adhisthana Villas reserves the right to update or modify these Terms & Conditions at any time. Any changes will be communicated through our website. Please check our Terms & Conditions regularly for any updates.
                     </p>
                 </details>
             </div>
 
-            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2">
+            <div className="py-5 bg- border-[1px] border-transparent border-b-slate-200   border-1 p-2 select-none">
                 <details className="group">
                     <summary className="flex justify-between items-center font-normal cursor-pointer list-none">
                         <h1> Contact Information </h1>
@@ -203,7 +203,7 @@ export const Layout = () => {
                             </svg>
                         </span>
                     </summary>
-                    <div className='text-neutral-600 mt-3 group-open:animate-fadeIn text-xs flex flex-col gap-2'>
+                    <div className='text-neutral-600 mt-3 group-open:animate-sidebar_top text-xs flex flex-col gap-2'>
                         <p>For any questions or concerns regarding these Terms & Conditions, or if you need assistance with your reservation, please contact us:</p>
                         <ul className="list-disc list-inside pl-4">
                             <li><span className='text-color1'>Phone</span>: +6281111177199</li>

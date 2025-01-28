@@ -4,7 +4,7 @@ import CustomButton from '../buttons/CustomButton'
 import ButtonNav from '../buttons/ButtonNav';
 import Image from 'next/image';
 import ButtonNavLink from '../buttons/ButtonViewNav';
-import { DeletedCart, DeletedCartInSession } from '@/app/booking/utils/deletedCart';
+import { DeletedSession, DeletedCartInSession } from '@/app/booking/utils/ManageSession';
 
 
 interface HamburgerProps {
@@ -51,7 +51,7 @@ interface HamburgerProps {
 
     const handleBooking = async() => {
   
-      await DeletedCart().catch((error) => console.error('Error during unload:', error));
+      await DeletedSession().catch((error) => console.error('Error during unload:', error));
       localStorage.removeItem('cart_vila');
       localStorage.removeItem('Params');
       localStorage.removeItem('Night');

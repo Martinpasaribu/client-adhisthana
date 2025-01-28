@@ -2,10 +2,10 @@
 
 import { http } from "@/utils/http";
 
-export const DeletedCart = async () => {
+export const DeletedSession = async () => {
     try {
 
-        const response = await http.post(`/session/remove-cart`, {
+        const response = await http.post(`/session/remove-session`, {
             headers: { 'Content-Type': 'application/json' },
         })
 

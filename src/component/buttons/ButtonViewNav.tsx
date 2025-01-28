@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useRouter } from "next/navigation";
-import { DeletedCart, DeletedCartInSession } from '@/app/booking/utils/deletedCart';
+import { DeletedSession, DeletedCartInSession } from '@/app/booking/utils/ManageSession';
 
 interface ButtonNavProps {
     index: number ;

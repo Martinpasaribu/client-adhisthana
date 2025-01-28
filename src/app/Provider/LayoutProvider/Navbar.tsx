@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/lib/hooks/hooks";
 import { MdDarkMode, MdLightMode } from "@/style/icons";
 import Hamburger from "@/component/modal/Hamburger";
-import { DeletedCart, DeletedCartInSession } from "@/app/booking/utils/deletedCart";
+import { DeletedSession, DeletedCartInSession } from "@/app/booking/utils/ManageSession";
 import { useRouter, useSearchParams, usePathname } from "next/navigation";
 import { http } from "@/utils/http";
 import toast from "react-hot-toast";
@@ -44,6 +44,13 @@ const Navbar = () => {
     console.log("Hamburger animation finished!");
   };
 
+  // Function ini untuk mengarahkan user yang checkout dengan user baru agar tetap ter-verification
+  const handleBack = () => {
+    handleBookingDeletedChartInSession(); 
+    router.push("/auth/login"); 
+    
+  };
+  
   const handleCloseHam = () => {
     setHamburger(false)
     setUpdateIndex(1)
@@ -51,7 +58,7 @@ const Navbar = () => {
 
   const handleBooking = () => {
 
-    DeletedCart().catch((error) => console.error('Error during unload:', error));
+    DeletedSession().catch((error) => console.error('Error during unload:', error));
     localStorage.removeItem('cart_vila');
     localStorage.removeItem('Params');
     localStorage.removeItem('Night');
@@ -244,13 +251,32 @@ const Navbar = () => {
 
                         ) : (
 
+                          <>
+                          
+                          { pathname === "/checkout" ? (
+
+                            <div onClick={handleBack} className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                              <CustomButton 
+                                  title="Login"
+                                  btnType="button"
+                                  containerStyles="text-white bg-color1 px-2 sm:px-2 md:px-4 lg:px-8 py-1.5 lg:py-3 "
+                              />
+                            </div>
+
+                          ) : (
+
                             <Link onClick={handleBooking} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
                               <CustomButton 
                                   title="Book Now"
                                   btnType="button"
                                   containerStyles="text-white bg-color1 px-2 sm:px-2 md:px-4 lg:px-8 py-1.5 lg:py-3 "
                               />
-                            </Link>
+                              </Link>
+                          )
+}
+                          </>
+
+                            
                         )
                       }
                 </>

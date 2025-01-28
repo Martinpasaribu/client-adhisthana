@@ -125,8 +125,11 @@ const Layout = () => {
             <div className="transaction-status h-full">
 
                 <div className="flex justify-between">
-                  <Item label="Transaction ID" value={transaction.bookingId} style="value" />
-                  <div className="flex flex-col gap-4 border-[1px] p-1 border-slate-700 rounded-md">
+                  <div className="flex flex-col justify-between">
+                    <Item label="Transaction ID" value={transaction.bookingId} style=" text-color1 font-bold" />
+                
+                  </div>
+                  <div className="flex flex-col gap-4 border-[1px] p-1 border-slate-300 rounded-md">
                       <div className="text-left">
                         <h1 className="text-[14px] font-semibold "> Check-In </h1>
                         <h1 className="text-[13px]"> {formatTanggal(transaction.checkIn)} </h1>
@@ -137,9 +140,9 @@ const Layout = () => {
                       </div>
                   </div>
                 </div>
-
+                <Item label="Date Transaction" value={formatTanggal(transaction.createdAt)} style="value" />
                 <Item label="Customer Name" value={transaction.name}  style="value" />
-                <Item label="Customer Email" value={transaction.email}  style="value"/>
+                <Item label="Customer Email" value={transaction.email}  style=""/>
                 
                 <div className="flex justify-between items-center">
                     
@@ -165,7 +168,7 @@ const Layout = () => {
 
                 <ProductItem
 
-                    style="item-product-status "
+                    style="item-product-status px-2"
                         key={product.roomId}
                         name={product.name}
                         nameAdditional={product.nameAdditional}
@@ -174,13 +177,19 @@ const Layout = () => {
                 />
                 ))}
 
-                <ProductItem
-                    style=" text-color2 font-bold text-md md:text-xl flex justify-between"
-                    name="Total"
-                    nameAdditional=""
-                    price={transaction.grossAmount}
-                    totalItem={0}
-                />
+                <div className="flex justify-between bg-color2 text-yellow-400 p-2 rounded-md">
+
+                  <h1 className="text-[18px] font-bold "> Total </h1>
+
+                  <ProductItem
+                      style="  font-bold text-md md:text-xl flex justify-between"
+                      name="Total"
+                      nameAdditional=""
+                      price={transaction.grossAmount}
+                      totalItem={0}
+                  />
+                </div>
+
             </div>
 
             </>

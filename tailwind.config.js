@@ -268,6 +268,10 @@ module.exports = {
         'room_bg': "url(/assets/background/rooms.jpeg)",
         'about_bg': "url(/assets/background/borobudur.jpeg)",
         'bottom_bg': "url(/assets/background/borobudur2.jpeg)",
+        'faq_bg': "url(/assets/background/bg_faq.jpg)",
+        'terms_bg': "url(/assets/background/bg_terms.jpg)",
+        'privacy_bg': "url(/assets/background/bg_privacy.jpg)",
+        'OurVila_bg': "url(/assets/background/rooms2.png)",
       },
       listStyleImage: {
         pens: 'url("/assets/icons/pen.png")',

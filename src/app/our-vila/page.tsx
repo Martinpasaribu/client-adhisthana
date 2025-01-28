@@ -5,7 +5,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation';
 import { RoomModels } from '@/models/roomModels';
 import Skelton from './component/Skelton';
-
+import Link from "next/link";
 
 const OurVila = () => {
 
@@ -47,8 +47,8 @@ const OurVila = () => {
     <div>
 
         {/* Image */}
-        <section className='w-full h-screen'>
-            <Image src={'/assets/background/rooms2.png'} alt='OurVila' width={800} height={400} className='w-full h-full object-cover'/>
+        <section className='w-full h-screen bg-OurVila_bg bg-no-repeat bg-cover'>
+
         </section>
 
 
@@ -91,7 +91,7 @@ const OurVila = () => {
 
                     <div  className='w-full h-full'>
 
-                        <div className=' w-full  h-full max-h-[30rem] p-4'>
+                        <div className=' w-full  h-full max-h-[35rem] p-4'>
                             <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={400} className='w-full h-full object-contain'/>
                         </div>
                         
@@ -109,9 +109,9 @@ const OurVila = () => {
                                     <button onClick={() => { handleDetailRoom(vila[0]._id) }} className="underline decoration-[#C0562F] text-color1">
                                         <h1>Vila Details</h1>
                                     </button>
-                                    <button className=" text-white bg-color1 px-5">
-                                        <h1>Book</h1>
-                                    </button>
+                                    <Link href="/booking" className=" text-white bg-color1 px-5" >
+                                            <h1>Book</h1>
+                                    </Link>
                                 </div>
                             </div>
                         </div>
@@ -174,9 +174,10 @@ const OurVila = () => {
                                         >
                                             <h1>Vila Details</h1>
                                         </button>
-                                        <button className=" text-white bg-color1 px-5">
+                                        
+                                        <Link href="/booking" className=" text-white bg-color1 px-5" >
                                                 <h1>Book</h1>
-                                        </button>
+                                        </Link>
                                     </div>
                                 </div>
 
