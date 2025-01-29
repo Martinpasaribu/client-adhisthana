@@ -447,6 +447,7 @@ const OffersItem = () => {
                         
                         <div className='w-full flex justify-between items-start p-2 md1:p-4'>
                           
+                          {/* Left */}
                           <div className='w-1/2 h-full flex flex-col  items-start space-y-2 hp2:space-y-4'>
 
                             <div className='space-y-2'>
@@ -457,7 +458,7 @@ const OffersItem = () => {
                                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                   </svg>
                                   <h1>
-                                    Without Breakfast
+                                    Private swimming area
                                   </h1>
                                 </li>
                                 <li className='flex-center gap-2'>
@@ -465,7 +466,7 @@ const OffersItem = () => {
                                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                   </svg>
                                   <h1>
-                                    Without Breakfast
+                                    Sitting area
                                   </h1>
                                 </li>                    
                                 <li className='flex-center gap-2'>
@@ -473,7 +474,31 @@ const OffersItem = () => {
                                       <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                   </svg>
                                   <h1>
-                                    Without Breakfast
+                                    Personal refigerator
+                                  </h1>
+                                </li>
+                                <li className='flex-center gap-2'>
+                                  <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                  </svg>
+                                  <h1>
+                                    King sized bed
+                                  </h1>
+                                </li>
+                                <li className='flex-center gap-2'>
+                                  <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                  </svg>
+                                  <h1>
+                                    Coffee maker
+                                  </h1>
+                                </li>
+                                <li className='flex-center gap-2'>
+                                  <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                      <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                  </svg>
+                                  <h1>
+                                    Bathtub
                                   </h1>
                                 </li>
                               </ul>
@@ -507,7 +532,7 @@ const OffersItem = () => {
                               <p className='line-through font-semibold text-[15px] hp4:text-[17px] text-slate-500'>IDR {convertToRupiah(item.price)}</p>
                             </div>
 
-                            <h1 className='text-[13px] hp4:text-[17px] font-semibold'>Total price for                   
+                            <h1 className='text-[13px] hp4:text-[17px] font-semibold pt-4'>Total price for                   
                               <span className='mx-2'>
                                 {safecheckin && safecheckout
                                 

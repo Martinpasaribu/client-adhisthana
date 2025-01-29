@@ -21,10 +21,14 @@ const Navbar = () => {
   const [hamburger, setHamburger] = useState(false);
   const [updateIndex, setUpdateIndex] = useState(0);
   const [dataMe, setDataMe] = useState<UserModels>();
+  const [isNotFound, setIsNotFound] = useState(false);
+
   const router = useRouter(); 
   const pathname = usePathname();
 
+  const isVilaPage = pathname.startsWith("/vila/") && pathname.split("/").length === 3;
 
+  console.log("Current pathname:", pathname);
 
   const openModal = () => {
     setHamburger((prev) => !prev); // Gunakan callback untuk memastikan nilai sebelumnya digunakan
@@ -38,6 +42,17 @@ const Navbar = () => {
 }, [updateIndex]);
 
 
+useEffect(() => {
+  fetch(window.location.href)
+    .then((res) => {
+      if (res.status === 404) {
+        setIsNotFound(true);
+      } else {
+        setIsNotFound(false);
+      }
+    })
+    .catch(() => setIsNotFound(true)); // Jika fetch error, anggap 404
+}, [pathname]);
 
   const handleAnimationEnd = () => {
     // Fungsi ini akan dipanggil setelah animasi selesai
@@ -95,8 +110,8 @@ const Navbar = () => {
 
 
   const getBackgroundColor = () => {
-    if (pathname === "/faq") return "bg"; // Contact
-    return "backdrop-blur-sm";
+    if (pathname === "/faq") return "bg"; 
+    if (isNotFound) return "bg-white"; // Warna untuk halaman Not Found
   };
 
   const getHoverColor = () => {
@@ -112,6 +127,8 @@ const Navbar = () => {
     if (pathname === "/privacy-policy") return "text-color2"; 
     if (pathname === "/terms-conditions") return "text-color2"; 
     if (pathname === "/faq") return "text-color2"; 
+    if (isVilaPage) return "text-color2";
+    if (isNotFound) return "text-color2"; 
     if (pathname === "/booking/offers") return "text-color2"; 
     if (pathname === "/auth/member") return "text-color2"; 
     if (pathname === "/booking") return "text-color2"; 
