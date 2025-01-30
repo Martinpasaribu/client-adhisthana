@@ -124,7 +124,7 @@ const Layout = () => {
 
             <div className="transaction-status h-full">
 
-                <div className="flex justify-between">
+                <div className="flex flex-col gap-4 md:flex-row justify-between">
                   <div className="flex flex-col justify-between">
                     <Item label="Transaction ID" value={transaction.bookingId} style=" text-color1 font-bold" />
                 

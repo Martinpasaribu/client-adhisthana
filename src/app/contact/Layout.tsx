@@ -80,7 +80,7 @@ export const Layout = () => {
     
     <div className=" w-full h-full">
              
-        <div className="flex-center flex-col gap-5 items-center w-full h-[30rem] bg-color3">
+        <div className="flex-center bg-contact_bg bg-no-repeat bg-cover bg-center flex-col gap-5 items-center w-full h-[30rem] bg-color3">
             <h2 className="font-normal text-xl mt-5 tracking-tight">
                 Get in Touch
             </h2>
