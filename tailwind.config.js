@@ -97,6 +97,7 @@ module.exports = {
       // Tinggi layar maksimum
       'h-max-sm': { raw: '(max-height: 600px)' },
       'h-max-md': { raw: '(max-height: 768px)' },
+      'h-max-md': { raw: '(max-height: 840px)' },
       'h-max-lg': { raw: '(max-height: 900px)' },
       'h-max-xl': { raw: '(max-height: 1080px)' },
 
