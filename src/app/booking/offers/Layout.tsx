@@ -16,7 +16,7 @@ import { DeletedSession, DeletedCartInSession } from '../utils/ManageSession';
 import { http, UrlMain } from '@/utils/http';
 import BucketMini from '../component/Bucket/bucketMini';
 import OffersItem from '../component/Offers/offersItem';
-import { formatLocalISOIn, formatLocalISOOut } from '../component/constant';
+import { formatBookingDate, formatLocalISOIn, formatLocalISOOut } from '../component/constant';
 import DatePickerUpdate from '../component/Calender/datePickerUpdate';
 
 
@@ -105,7 +105,7 @@ const Layout = () => {
         today1?.setHours(0, 0, 0, 0);
         today2?.setHours(0, 0, 0, 0);
 
-        console.log("date range1 :", safecheckin, safecheckout)
+        // console.log("date range1 :", safecheckin, safecheckout)
         console.log("date range2 :", today1, today2)
 
         if (today1?.getTime() === today2?.getTime()) {
@@ -119,6 +119,10 @@ const Layout = () => {
     }, [safecheckin, safecheckout]);
     
     
+    if (safecheckin && safecheckout && validate) { 
+      console.log("date range1 :", formatBookingDate(safecheckin, "checkIn"), formatBookingDate(safecheckout,"checkOut"))
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     // const datePar = JSON.parse(localStorage.getItem('Params') ?? '{}') || {};
     
@@ -140,8 +144,8 @@ const Layout = () => {
           localStorage.removeItem('cart_vila');
           localStorage.removeItem('Params');
           localStorage.removeItem('Night');
-
-          const newUrl =`/booking/offers?checkin=${formatLocalISOIn(safecheckin)}&checkout=${formatLocalISOOut(safecheckout)}&people=4`
+         
+          const newUrl =`/booking/offers?checkin=${formatBookingDate(safecheckin, "checkIn")}&checkout=${formatBookingDate(safecheckout,"checkOut")}&people=4`
           router.push(newUrl);
 
           setShouldReload(true);

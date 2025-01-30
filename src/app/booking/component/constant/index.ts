@@ -28,6 +28,12 @@ export const formatLocalISOIn = (date:any) => {
   // Format Utama yang digunakan untuk database server
 
   export const formatBookingDate = (date: Date, type: "checkIn" | "checkOut") => {
+
+    if (!(date instanceof Date) || isNaN(date.getTime())) {
+      console.error(`Invalid date for ${type}:`, date);
+      return null; // Menghindari error
+    }
+    
     // Tentukan jam berdasarkan tipe (checkIn atau checkOut)
     const hours = type === "checkIn" ? 15 : 12; // 12 siang untuk checkIn, 3 sore untuk checkOut
     date.setHours(hours, 0, 0, 0); // Atur jam, menit, detik, milidetik

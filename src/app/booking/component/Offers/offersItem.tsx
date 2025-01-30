@@ -1,9 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 "use client"
 
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation';
-import { Size, bad, people } from '@/style/icons'
+import { Size, bad, people, PiWarningOctagonBold } from '@/style/icons'
 
 import { RoomModels, UnAvailableRoomModels } from '@/models/roomModels'
 
@@ -19,6 +20,7 @@ import SkeletonRoomsFull from '../Skeleton/skeletonItemRoomFull';
 import MainLoading from '@/component/mainLoading/loading';
 import { formatCheckInCheckOut, FormatNight, night } from '../constant/formatDate';
 import { setRoomUnAvailable } from '@/lib/slice/roomSlice';
+import { formatBookingDate } from '../constant';
 
 interface Params {
   checkin? :  Date | null;
@@ -33,27 +35,57 @@ const OffersItem = () => {
     const [load, setLoad] = useState(false);
     const dispatch = useAppDispatch();
 
-    const [safecheckin, setSafecheckIn] = useState<Date | null>( );
+    const [safecheckin, setSafecheckIn] = useState<Date | string | null>( );
 
-    const [safecheckout, setSafecheckOut] = useState<Date | null>(
+    const [safecheckout, setSafecheckOut] = useState<Date | string | null>( );
 
-     );
+    const [prevCheckinValid, setPrevCheckinValid] = useState<boolean | null>(null);
+    const [prevCheckoutValid, setPrevCheckoutValid] = useState<boolean | null>(null);
+
+
     const [vila, setVila] = useState<RoomModels[]>([]);
     const [unVila, setUnVila] = useState<RoomModels[]>([]);
      
     const chart = useAppSelector((state) => state.booking.stateChartRes);
 
+
     useEffect(() => {
-      
-      const datePar = JSON.parse(localStorage.getItem('Params') ?? '{}') || {};
-    
-      // const setCheckin = datePar.checkin ? new Date(datePar.checkin).toISOString() : null;
-      // const setCheckout = datePar.checkout ? new Date(datePar.checkout).toISOString() : null;
-    
       const setCheckin = searchParams.get("checkin");
       const setCheckout = searchParams.get("checkout");
-      setSafecheckIn(setCheckin ? new Date(setCheckin) : null)
-      setSafecheckOut(setCheckout ? new Date(setCheckout) : null)
+    
+      const date1 = setCheckin ? new Date(setCheckin) : undefined;
+      const date2 = setCheckout ? new Date(setCheckout) : undefined;
+    
+      const isValidDate = (date: Date | undefined) => date instanceof Date && !isNaN(date.getTime());
+    
+      const checkinValid = isValidDate(date1);
+      const checkoutValid = isValidDate(date2);
+    
+      // Tampilkan error hanya jika status valid berubah
+      if (!checkinValid && prevCheckinValid !== false) {
+        toast.error("Invalid check-in date!", { position: "bottom-right", duration: 5000 });
+      }
+      if (!checkoutValid && prevCheckoutValid !== false) {
+        toast.error("Invalid check-out date!", { position: "bottom-right", duration: 5000 });
+      }
+    
+      setSafecheckIn(checkinValid ? formatBookingDate(date1!, "checkIn") : null);
+      setSafecheckOut(checkoutValid ? formatBookingDate(date2!, "checkOut") : null);
+    
+      // Simpan status validasi sebelumnya
+      setPrevCheckinValid(checkinValid);
+      setPrevCheckoutValid(checkoutValid);
+    }, [searchParams]);
+
+
+    // Jalankan fetchVila setelah safecheckin diperbarui
+    useEffect(() => {
+      if (safecheckin && safecheckout) {
+        fetchVila();
+      }
+    }, [safecheckin, safecheckout]);
+
+
       
       const fetchVila = async () => {
 
@@ -70,13 +102,12 @@ const OffersItem = () => {
             localStorage.removeItem('Params');
             localStorage.removeItem('Night');
 
-
           const response = await fetch("/api/updateVila", {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
-              checkIn: setCheckin,
-              checkOut: setCheckout,
+              checkIn: safecheckin,
+              checkOut: safecheckout,
             }),
           });
     
@@ -115,11 +146,7 @@ const OffersItem = () => {
 
         } catch (error : any) {
           
-
-
           console.log("error update available room : ", error.message);
-
-
           toast.error( error.message , { position: "bottom-right", duration: 5000 });
           
         } finally {
@@ -128,8 +155,8 @@ const OffersItem = () => {
         
       };
     
-      fetchVila();
-    }, [searchParams, dispatch]);
+
+
     
 
     const convertToRupiah = (number:any) => {
@@ -272,6 +299,7 @@ const OffersItem = () => {
 
                       <div className='w-full flex justify-between items-start p-2 md1:p-4'>
                         
+                        {/* Left */}
                         <div className='w-1/2 h-full flex flex-col  items-start space-y-2 hp2:space-y-4'>
 
                           <div className='space-y-2'>
@@ -282,7 +310,7 @@ const OffersItem = () => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Private swimming area
                                 </h1>
                               </li>
                               <li className='flex-center gap-2'>
@@ -290,7 +318,7 @@ const OffersItem = () => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Sitting area
                                 </h1>
                               </li>                    
                               <li className='flex-center gap-2'>
@@ -298,7 +326,31 @@ const OffersItem = () => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Personal refigerator
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  King sized bed
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Coffee maker
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Bathtub
                                 </h1>
                               </li>
                             </ul>
@@ -353,12 +405,14 @@ const OffersItem = () => {
 
 
                     
-                    <div className='select-none'>
-                      <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
-                          <button  className='px-4 hp3:px-6 py-1 bg-gray-300 text-white font-semibold'>
-                          <h1>Select</h1>
-                          </button>
+                    <div className='select-none flex items-end justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
+
+                      <div className='flex  justify-end items-center gap-1 text-[12px] bg-red-100 px-2 text-red-400 rounded-lg' >
+                        <PiWarningOctagonBold size={15} className='w-5 h-5'  />
+                        <h1>This room is unavailable for the selected date range</h1>
                       </div>
+
+
                     </div>
        
 

@@ -41,6 +41,7 @@ export { FaBasketShopping } from "react-icons/fa6";
 export { FaPhone } from "react-icons/fa6";
 export { IoIosMail } from "react-icons/io";
 export { FaRegEdit } from "react-icons/fa";
+export { PiWarningOctagonBold } from "react-icons/pi";
 
 
 

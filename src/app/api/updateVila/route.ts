@@ -53,17 +53,25 @@ export async function POST(req: Request) {
 
   } catch (error: any) {
 
+    console.error("Error fetching vila data:", error);
 
-  const errorMessage =  'The server is not responding';
-  console.log('Error fetching vila data:', errorMessage);
-  
+    // Periksa apakah error memiliki response dari API lain
+    if (error.response) {
+      return NextResponse.json(
+        error.response.data, // Mengirim langsung error response dari server API tujuan
+        { status: error.response.status }
+      );
+    }
 
-  return NextResponse.json(
-    
-    { error: errorMessage },
-    { status: error.response?.status || 500 }
-    
-  );
-
+    // Jika error bukan dari API tujuan (misalnya network error)
+    return NextResponse.json(
+      {
+        data: null,
+        message: error.message || "The server is not responding.",
+        success: false,
+      },
+      { status: 500 }
+    );
   }
+
 }

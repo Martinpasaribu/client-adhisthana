@@ -1,5 +1,5 @@
 import { RoomModels } from '@/models/roomModels'
-import { homeFull } from '@/style/icons'
+import { homeFull, PiWarningOctagonBold } from '@/style/icons'
 import Image from 'next/image'
 import React, { useEffect, useState } from 'react'
 import ClouserImage from '../constant/clouserImage'
@@ -96,6 +96,7 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
 
                       <div className='w-full flex justify-between items-start p-2 md1:p-4'>
                         
+                        {/* Left */}
                         <div className='w-1/2 h-full flex flex-col  items-start space-y-2 hp2:space-y-4'>
 
                           <div className='space-y-2'>
@@ -106,7 +107,7 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Private swimming area
                                 </h1>
                               </li>
                               <li className='flex-center gap-2'>
@@ -114,7 +115,7 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Sitting area
                                 </h1>
                               </li>                    
                               <li className='flex-center gap-2'>
@@ -122,7 +123,31 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
                                     <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
                                 </svg>
                                 <h1>
-                                  Without Breakfast
+                                  Personal refigerator
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  King sized bed
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Coffee maker
+                                </h1>
+                              </li>
+                              <li className='flex-center gap-2'>
+                                <svg className="flex-shrink-0 w-3.5 h-3.5 text-green-500 dark:text-green-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 16 12">
+                                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 5.917 5.724 10.5 15 1.5"/>
+                                </svg>
+                                <h1>
+                                  Bathtub
                                 </h1>
                               </li>
                             </ul>
@@ -146,16 +171,16 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
                         </div>
 
                         <div className='w-1/2 h-full flex flex-col items-end space-y-2 hp2:space-y-4'>
-                          <div className='h-10 '>
 
-                          </div>
                           <div className='flex justify-end hp1:justify-end items-end flex-col-reverse hp1:flex-row gap-2 w-full'>
                             <p className='bg-red-100 text-slate-600 px-1 text-[9px] hp4:text-[12px] font-bold rounded-3xl'>20% OFF</p>
                             <p className='line-through font-semibold text-[15px] hp4:text-[17px]'>IDR </p>
                           </div>
                           <h1 className='font-bold text-[18px] hp4:text-[21px] '>IDR {convertToRupiah(item.price)}</h1>
                           <p className=' text-[12px] hp4:text-[15px]'>Includes taxes & fees</p>
+                          <div className='h-10 '>
 
+                          </div>
                         </div>
 
                       </div>
@@ -172,12 +197,14 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
 
 
                     
-                    <div className='select-none'>
-                      <div className='w-full text-[16px] hp3:text-md flex justify-end p-1 hp2:p-4'>
-                          <button  className='px-4 hp3:px-6 py-1 bg-gray-300 text-white font-semibold'>
-                          <h1>Select</h1>
-                          </button>
+                    <div className='select-none flex items-end justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
+
+                      <div className='flex  justify-end items-center gap-1 text-[12px] bg-red-100 px-2 text-red-400 rounded-lg' >
+                        <PiWarningOctagonBold size={15} className='w-5 h-5'  />
+                        <h1>This room is unavailable for the selected date range</h1>
                       </div>
+
+
                     </div>
        
 
