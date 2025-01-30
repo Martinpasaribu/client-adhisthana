@@ -21,6 +21,7 @@ export default function ResetPassword() {
     setLoad(true);
 
     if (!email) {
+      setLoad(false);
       setError("Email fields cannot be empty.");
       return;
     }

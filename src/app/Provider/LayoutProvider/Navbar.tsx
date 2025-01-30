@@ -239,6 +239,7 @@ useEffect(() => {
             {/* Me Auth */}
             { !dataMe ? (
 
+              // Pada saat Sudah Logn
                 <>
 
                   {/* Tombol  { Booking dan Login } */}
@@ -270,7 +271,7 @@ useEffect(() => {
 
                           <>
                           
-                          { pathname === "/checkout" ? (
+                          { pathname === "/checkout" || pathname === "/order-status" ? (
 
                             <div onClick={handleBack} className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
                               <CustomButton 
@@ -303,6 +304,7 @@ useEffect(() => {
 
               ) : (
 
+                // Pada saat Sudah Login 
                 <>
                   { pathname === "/booking" || pathname === "/booking/offers" || pathname === "/checkout"  || pathname === "/order-status"  ? (
 

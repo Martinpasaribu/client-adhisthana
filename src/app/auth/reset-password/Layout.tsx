@@ -28,11 +28,13 @@ const Layout = () => {
     setLoad(true);
 
     if (!password || !confirmPassword) {
+      setLoad(false);
       setError("Password fields cannot be empty.");
       return;
     }
 
     if (password !== confirmPassword) {
+      setLoad(false);
       setError("Passwords do not match.");
       return;
     }
@@ -48,11 +50,12 @@ const Layout = () => {
       
       setTimeout(() => {
         router.push("/auth/login"); // Arahkan ke halaman login setelah sukses
-      }, 3000);
+      }, 1000);
+
     } catch (err : any) {
 
       setError(err.response?.data?.message || "An error occurred. Please try again.");
-
+      
     } finally {
 
       setLoad(false);

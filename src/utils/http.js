@@ -3,9 +3,9 @@ import axios from 'axios';
 // URL Main
 
 
-// export const UrlMain = 'http://localhost:5001/api/v1'
+export const UrlMain = 'http://localhost:5001/api/v1'
 
-export const UrlMain = 'https://adhistahan-serve.vercel.app/api/v1'
+// export const UrlMain = 'https://adhistahan-serve.vercel.app/api/v1'
 
 
 // Konfigurasi untuk server
