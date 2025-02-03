@@ -126,6 +126,7 @@ useEffect(() => {
     if (pathname === "/our-vila") return "text-color2"; 
     if (pathname === "/privacy-policy") return "text-color2"; 
     if (pathname === "/terms-conditions") return "text-color2"; 
+    if (pathname === "/order-status") return "text-color2"; 
     if (pathname === "/faq") return "text-color2"; 
     if (isVilaPage) return "text-color2";
     if (isNotFound) return "text-color2"; 
@@ -135,6 +136,7 @@ useEffect(() => {
     if (pathname === "/contact") return "text-color2"; 
     if (pathname === "/auth/login") return "text-color2"; 
     if (pathname === "/auth/register") return "text-color2"; 
+    if (pathname === "/auth/confirm-reset") return "text-color2"; 
     return "text-white";
   };
   

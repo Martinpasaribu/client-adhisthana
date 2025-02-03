@@ -155,7 +155,7 @@ interface HamburgerProps {
 
               </ul>
 
-              <div className={` ${currentIndexImage > 0 ? "block sm:hidden w-full flex-center":"hidden"}`}>
+              <div className={` ${currentIndexImage > 0 ? " sm:hidden w-full  flex justify-center items-center":"hidden"}`}>
                 <ButtonNavLink index={currentIndexImage} setClose={closeHamburgers}/>
               </div>
             </div>
@@ -200,7 +200,7 @@ interface HamburgerProps {
                         />
 
 
-                    <div className={` ${currentIndexImage > 0 ? "hidden sm:block  w-full max-w-[20rem] ":"hidden"}`}>
+                    <div className={` ${currentIndexImage > 0 ? "hidden sm:block justify-center items-center  w-full max-w-[20rem] ":"hidden"}`}>
                         
                         <ButtonNavLink index={currentIndexImage} setClose={closeHamburgers}/>
 

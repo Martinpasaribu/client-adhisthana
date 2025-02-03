@@ -109,6 +109,11 @@ const bookingSlice = createSlice({
       state.stateCheckOut = action.payload
       console.log("checkOut redux",state.stateCheckOut)
     },
+
+    clearChart(state) {
+      state.stateChartRes = []
+      console.log("Clear chart",state.stateChartRes)
+    },
     
     setAddChart(state, action) {
       // Ambil data cart_vila dari localStorage
@@ -258,6 +263,6 @@ const bookingSlice = createSlice({
   // },
 });
 
-export const { setCheckIn, setCheckOut, setAddChart, setAddVila, setRemoveVila, setGetChart, setIsProcessing } = bookingSlice.actions;
+export const { setCheckIn, setCheckOut, setAddChart, setAddVila, setRemoveVila, setGetChart, setIsProcessing , clearChart} = bookingSlice.actions;
 
 export default bookingSlice.reducer;

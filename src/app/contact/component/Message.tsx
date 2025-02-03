@@ -54,9 +54,9 @@ const Message = () => {
 
   return (
 
-        <div className='w-full h-full max-h-[30rem] flex-center p-2'>
+        <div className='w-full h-full max-h-[25rem] flex-center p-2 pt-[4rem] md:pt-[5rem]'>
 
-            <form onSubmit={handleSubmit} className=" w-full max-w-[60rem] h-full max-h-[30rem]  p-5 flex flex-col gap-10 ">
+            <form onSubmit={handleSubmit} className=" w-full max-w-[60rem] h-full max-h-[25rem]  p-5 flex flex-col gap-10 ">
 
                 <div className="grid md:grid-cols-2 md:gap-6">
                     <div className="relative z-0 w-full mb-5 group">

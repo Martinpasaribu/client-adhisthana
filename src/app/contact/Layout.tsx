@@ -93,7 +93,7 @@ export const Layout = () => {
 
         {/* Message */}
 
-        <div className='w-full h-screen md:max-h-[35rem]'>
+        <div className='w-full h-[45rem] md:max-h-[35rem] '>
             <Message />
         </div>
 

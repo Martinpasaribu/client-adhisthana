@@ -10,7 +10,7 @@ import { formatCheckInCheckOut, night } from '../component/constant/formatDate';
 import ButtonUpdate from '../component/Update/buttonUpdate';
 import CalendarMini from '../component/Calender/calendarMini';
 import ModalPeople from '../component/Update/modalPeople';
-import { useAppSelector } from '@/lib/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/lib/hooks/hooks';
 import toast from 'react-hot-toast';
 import { DeletedSession, DeletedCartInSession } from '../utils/ManageSession';
 import { http, UrlMain } from '@/utils/http';
@@ -18,6 +18,7 @@ import BucketMini from '../component/Bucket/bucketMini';
 import OffersItem from '../component/Offers/offersItem';
 import { formatBookingDate, formatLocalISOIn, formatLocalISOOut } from '../component/constant';
 import DatePickerUpdate from '../component/Calender/datePickerUpdate';
+import { clearChart } from '@/lib/slice/bookingSlice';
 
 
 const images = [
@@ -31,6 +32,7 @@ const Layout = () => {
 
     const router = useRouter();
     const searchParams = useSearchParams();
+    const dispatch = useAppDispatch();
     const pathname = usePathname();
     const [shouldReload, setShouldReload] = useState(false);
     // Ambil parameter checkin dan checkout
@@ -139,7 +141,7 @@ const Layout = () => {
       const PushUpdate = () => {
         if (safecheckin && safecheckout && validate) { 
           
-
+          dispatch(clearChart()); 
           DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
           localStorage.removeItem('cart_vila');
           localStorage.removeItem('Params');
@@ -149,7 +151,7 @@ const Layout = () => {
           router.push(newUrl);
 
           setShouldReload(true);
-         
+          
 
           toast.success("Offer updated", {
             position: "bottom-left",

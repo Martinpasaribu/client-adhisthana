@@ -147,7 +147,7 @@ const DatePicker = () => {
 
                 {/* Check-Out */}
                 <div className="w-full h-full max-w-[15rem] hp4:max-w-[20rem] max-h-[20rem] flex-col border-black border-2">
-                  <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
+                  <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white ">
                     <h1 className="text-md md:text-xl">Check-Out</h1>
                   </div>
                   <div className="w-full flex-center h-full max-h-[10rem]">
@@ -228,11 +228,11 @@ const DatePicker = () => {
               <div className=" hidden md3:flex justify-center items-center  w-full h-full ">
 
                 {/* Check-In */}
-                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 ">
+                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 p-2">
                   <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
                     <h1 className="text-md md:text-xl">Check-In</h1>
                   </div>
-                  <div className="w-full flex-center h-full max-h-[10rem]">
+                  <div className="w-full flex-center h-full max-h-[13rem]">
                       
                     <div className="text-md md:text-2xl flex-center gap-2  md3:flex-col p-4 md3:p-2">
                       <div> {checkInDate ? format(checkInDate, "dd ") : ""} </div>
@@ -243,11 +243,11 @@ const DatePicker = () => {
                 </div>
 
                 {/* Check-Out */}
-                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 ">
+                <div className="w-full h-full max-w-[20rem] max-h-[20rem] flex-col border-black border-2 p-2">
                   <div className="w-full h-full bg-color2 max-h-[2rem] flex-center text-white">
                     <h1 className="text-md md:text-xl">Check-Out</h1>
                   </div>
-                  <div className="w-full flex-center h-full max-h-[10rem]">
+                  <div className="w-full flex-center h-full max-h-[13rem]">
                     <div className="text-md md:text-2xl flex-center gap-2 md3:flex-col p-4 md3:p-2">
                       <div> {checkOutDate ? format(checkOutDate, "dd ") : ""} </div>
                       <div> {checkOutDate ? format(checkOutDate, "MMM ") : ""} </div>
