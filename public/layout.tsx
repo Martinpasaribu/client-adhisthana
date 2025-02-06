@@ -45,10 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.ico" />
         <title>Adhisthana</title>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <Toaster position="top-center" />
