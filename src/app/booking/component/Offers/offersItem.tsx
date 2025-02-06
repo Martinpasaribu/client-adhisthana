@@ -256,11 +256,11 @@ const OffersItem = () => {
 
 
 
-                      <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
+                      <h1 className=' text-[14px] hp4:text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
                         {item.nameAdditional}
                       </h1>
 
-                      <h1 className='bg-slate-700 text-white px-2 text-[14px] text-center  rounded-md w-full min-w-[8rem] max-w-[8rem]'>
+                      <h1 className='bg-slate-700 text-white px-2 text-[12px] text-center  rounded-md w-full min-w-[8rem] max-w-[8rem]'>
                         Room Unavailable 
                       </h1>
                       

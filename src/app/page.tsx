@@ -61,17 +61,17 @@ export default function Home() {
 
         <section className="relative w-full h-screen sm:h-full ">
 
-          <div className="absolute w-full h-full flex-center flex-col gap-5 text-white">
-              <h1 className="text-5xl"> A Harmonious Sanctuary in Nature </h1>
-              <h3 className="text-2xl"> Experience tranquil charm of Adhisthana Villas</h3>
+          <div className="absolute bottom-28 w-full md:bottom-0 md:h-full flex-center flex-col gap-5 text-white">
+              <h1 className="text-md hp4:text-5xl"> A Harmonious Sanctuary in Nature </h1>
+              <h3 className="text-sm hp4:text-2xl"> Experience tranquil charm of Adhisthana Villas</h3>
           </div>
 
           <video 
             autoPlay 
             muted 
             loop 
-            preload="none" 
-            className="w-full h-screen md2:h-full">
+            preload="auto" 
+            className="w-full h-screen md:h-screen object-cover">
             <source src="/video/AdhisthanaHD.mp4" type="video/mp4" />
             <track
               src="/Adhisthana.mp4"
@@ -81,6 +81,7 @@ export default function Home() {
             />
             Your browser does not support the video tag.
           </video>
+
 
           {/* <video 
             autoPlay 
@@ -101,7 +102,7 @@ export default function Home() {
 
           
           
-          <div className="max-width h-full max-h-[20rem] md:h-screen flex-center flex-col gap-8 px-4 text-center text-xs md:text-lg font-[family-name:var(--font-geist-sans)]">
+          <div className="max-width h-full max-h-[20rem] md:h-screen flex-center flex-col gap-8 px-4 text-center text-xs md:text-lg font-[family-name:var(--font-geist-sans)] mt-10">
             
               <h1 className=" text-slate-600 w-full max-w-[60rem]">
                 <span className="text-color2 font-semibold">Welcome to Adhisthana Villas</span> —where nature and tranquility converge in perfect harmony. Located near the iconic Borobudur temple, our retreat embodies a seamless blend of Javanese heritage and modern elegance, offering a sanctuary for those seeking solace and renewal. Set amidst lush rice fields and framed by mist-shrouded peaks, every corner of our villas invites you to unwind and reconnect with what truly matters. Whether it&apos;s the gentle rustle of leaves, the serene ambiance of your private pool, or the timeless beauty of traditional architecture, Adhisthana Villas promises a journey of balance, serenity, and timeless charm.
