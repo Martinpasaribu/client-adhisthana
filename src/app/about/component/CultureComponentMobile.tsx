@@ -35,7 +35,7 @@ export const CultureComponentMobile = () => {
                         <div
                             className={`underline decoration-[#C0562F] text-color1 h-full w-full ${
                                 selectedIndex === index
-                                    ? "scale-105 transition-transform duration-300 shadow-md"
+                                    ? "scale-105 transition-transform duration-300 shadow-md rounded-[5rem] py-2"
                                     : ""
                             }`}
                         >
@@ -44,7 +44,7 @@ export const CultureComponentMobile = () => {
                                 alt={`icon-${index}`}
                                 width={600}
                                 height={500}
-                                className="w-full h-full max-h-[3.7rem] md:max-h-22 md:w-max-h-22 object-contain"
+                                className="w-full h-full max-h-[3.7rem] md:max-h-22 md:w-max-h-22 object-contain "
                             />
                         </div>
                     </div>

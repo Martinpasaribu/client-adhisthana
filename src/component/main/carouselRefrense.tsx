@@ -4,21 +4,24 @@ import Closure2 from "@/component/main/clouser/clouser2";
 import React, { useState, useEffect } from "react";
 
 const CarouselReference = () => {
+
+
+  
   const slides = [
     {
-      image: "/assets/ImageNav/image1.png",
+      image: "/assets/Image/borobudur.png",
       title: "Peaceful Retreats in Nature",
       description:
         "With our proximity to local trails and rice paddies, explore the beauty of Central Java by foot or bike. Wander through paths bordered by verdant fields and rivers, or take a leisurely ride through the serene countryside, capturing the charm of local life.",
     },
     {
-      image: "/assets/ImageNav/image2.png",
+      image: "/assets/Image/food.png",
       title: "Discover Hidden Gems",
       description:
         "Uncover the hidden treasures of Central Java, from lush landscapes to vibrant local culture. Let us guide you to unforgettable experiences.",
     },
     {
-      image: "/assets/ImageNav/image3.png",
+      image: "/assets/Image/bike.png",
       title: "Unwind in Serenity",
       description:
         "Relax in the tranquil ambiance of our retreat. Surrounded by nature, it's the perfect place to rejuvenate your mind and soul.",

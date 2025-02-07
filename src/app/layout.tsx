@@ -6,7 +6,7 @@ import "@style/style.css";
 
 import { Toaster } from "react-hot-toast";
 import ClientProvider from "./Provider/ClientProvider/page";
-
+import Script from "next/script";
 
 
 
@@ -45,12 +45,27 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <title>Adhisthana</title>
+        <title>Adhisthana Villas</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
         <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+
+        {/* Google Analytics */}
+        <Script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-YGXWFC4JJN"
+        />
+        <Script id="google-analytics">
+          {`
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-YGXWFC4JJN');
+          `}
+        </Script>
+
         <Toaster position="top-center" />
 
         <ClientProvider>

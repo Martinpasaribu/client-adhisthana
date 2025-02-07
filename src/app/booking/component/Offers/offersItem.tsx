@@ -260,7 +260,7 @@ const OffersItem = () => {
                         {item.nameAdditional}
                       </h1>
 
-                      <h1 className='bg-slate-700 text-white px-2 text-[12px] text-center  rounded-md w-full min-w-[8rem] max-w-[8rem]'>
+                      <h1 className='bg-slate-700 text-white px-2 text-[12px] text-center  rounded-md w-full min-w-[7rem] max-w-[7rem]'>
                         Room Unavailable 
                       </h1>
                       
@@ -279,18 +279,29 @@ const OffersItem = () => {
                         <figure className='w-full flex justify-center hp4:justify-start'>
 
                           <ul className='flex gap-4 text-[15px] text-slate-600 font-semibold'>
+
                             <li className='flex-center gap-3'>
                            
-                              <p></p>
-                            </li>
-                            <li className='flex-center gap-3'>
-                              <p></p>
+                              <p>
+
+                              </p>
 
                             </li>
+
                             <li className='flex-center gap-3'>
+
+                              <p> 
+
+                              </p>
+
+                            </li>
+
+                            <li className='flex-center gap-3'>
+
                               <p> </p>
 
                             </li>
+
                           </ul>
 
                         </figure>
@@ -417,7 +428,11 @@ const OffersItem = () => {
 
                       <div className='flex  justify-end items-center gap-1 text-[12px] bg-red-100 px-2 text-red-400 rounded-lg' >
                         <PiWarningOctagonBold size={15} className='w-5 h-5'  />
-                        <h1>This room is unavailable for the selected date range</h1>
+
+                          <h1>
+                            This room is unavailable for the selected date range
+                          </h1>
+
                       </div>
 
 

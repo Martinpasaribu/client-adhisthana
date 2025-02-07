@@ -265,14 +265,14 @@ module.exports = {
       },
       backgroundImage: {
         
-        'sepeda_bg': "url(/assets/background/sepeda.jpeg)",
-        'room_bg': "url(/assets/background/rooms.jpeg)",
-        'about_bg': "url(/assets/background/borobudur.jpeg)",
-        'bottom_bg': "url(/assets/background/borobudur2.jpeg)",
+        'sepeda_bg': "url(/assets/background/sepeda.jpg)",
+        'room_bg': "url(/assets/background/rooms.jpg)",
+        'about_bg': "url(/assets/background/borobudur.jpg)",
+        'bottom_bg': "url(/assets/background/borobudur2.jpg)",
         'faq_bg': "url(/assets/background/bg_faq.jpg)",
         'terms_bg': "url(/assets/background/bg_terms.jpg)",
         'privacy_bg': "url(/assets/background/bg_privacy.jpg)",
-        'OurVila_bg': "url(/assets/background/rooms2.png)",
+        'OurVila_bg': "url(/assets/background/rooms2.jpg)",
         'contact_bg': "url(/assets/background/bg_contact.jpg)",
       },
       listStyleImage: {

@@ -50,11 +50,11 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
 
                     {/* <div className='corner-ribbon absolute top-1 -right-6 bg-slate-800 rounded-md text-white'>FULL</div> */}
 
-                      <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1'>
+                      <h1 className=' text-[16px]  md:text-xl md2:text-2xl font-bold text-color1 mb-2'>
                         {item.nameAdditional}
                       </h1>
 
-                      <h1 className='bg-slate-700 text-white px-2 text-[14px] rounded-md'>
+                      <h1 className='bg-slate-700 text-white px-2 text-[14px] rounded-md text-center'>
                         Room Unavailable 
                       </h1>
 

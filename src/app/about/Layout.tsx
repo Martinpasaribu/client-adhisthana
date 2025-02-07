@@ -4,7 +4,7 @@ import Image from 'next/image'
 import { AirIcons, TreeIcons, WayangIcons } from '@/style/icons'
 import { CultureComponentMobile } from './component/CultureComponentMobile'
 import { CultureComponent } from './component/CultureComponent'
-
+import Link from "next/link"
 
 
 const Layout = () => {
@@ -117,9 +117,14 @@ const Layout = () => {
     
                   <h1 className="text-color2 text-md md:text-3xl font-normal tracking-wide ">Plan Your Peaceful Escape Today</h1>
 
-                  <button className='bg-color1 px-8 py-2 text-white'>
-                    <h1>Explore Our Villas</h1>
-                  </button>
+                  <Link href="/our-vila">
+
+                    <button className='bg-color1 px-8 py-2 text-white'>
+                      <h1>Explore Our Villas</h1>
+                    </button>
+
+                  </Link>
+
                   
                 </div>
     
