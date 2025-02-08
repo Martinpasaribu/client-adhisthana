@@ -250,7 +250,7 @@ const OffersItem = () => {
                 
 
                   {/* Name Vila */}
-                  <div className='relative text-left flex justify-between items-center'>
+                  <div className='relative text-left flex flex-col md:flex-row gap-2 justify-start items-start md:justify-between md:items-center'>
 
                     {/* <div className='corner-ribbon absolute top-1 -right-6 bg-slate-800 rounded-md text-white'>UnAvailable</div> */}
 
@@ -424,13 +424,13 @@ const OffersItem = () => {
 
 
                     
-                    <div className='select-none flex items-end justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
+                    <div className='select-none flex justify-center items-center hp3:items-end hp3:justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
 
                       <div className='flex  justify-end items-center gap-1 text-[12px] bg-red-100 px-2 text-red-400 rounded-lg' >
                         <PiWarningOctagonBold size={15} className='w-5 h-5'  />
 
                           <h1>
-                            This room is unavailable for the selected date range
+                            This room is Unavailable for the selected date range
                           </h1>
 
                       </div>

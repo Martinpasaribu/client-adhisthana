@@ -113,9 +113,9 @@ const ButtonUpdate = ( { checkin, checkout, OpenCalendarMini, OpenModalPeople, p
 
         </div>
 
-        <div className='w-full border-[1px] shadow-md rounded-xl  hp4:max-w-[25rem]  xl2:max-w-[30rem] flex justify-between hp4:justify-center items-center gap-5  hp4:p-2 md2:p-1 xl2:gap-5'>
+        <div onClick={handleOpenDiscount} className=' cursor-pointer w-full border-[1px] shadow-md rounded-xl  hp4:max-w-[25rem]  xl2:max-w-[30rem] flex justify-between hp4:justify-center items-center gap-5  hp4:p-2 md2:p-1 xl2:gap-5'>
 
-          <div onClick={handleOpenDiscount}  className='cursor-pointer flex-center gap-2'>
+          <div   className=' flex-center gap-2'>
               <div className='p-3 rounded-full '>
                   <Image src={gift} alt={'gift'} className='hidden hp4:block w-5 h-5 md1:w-7 md1:h-7 object-contain'/>
                   <Image src={discount} alt={'discount'} className='block hp4:hidden w-7 h-7 md1:w-8 md1:h-8 object-contain'/>

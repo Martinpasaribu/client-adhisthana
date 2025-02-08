@@ -202,7 +202,7 @@ const SkeletonRoomsFull = ( { RoomUnAvailable } : RoomUnAvailable) => {
 
 
                     
-                    <div className='select-none flex items-end justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
+                    <div className='select-none flex justify-center items-center hp3:items-end hp3:justify-end w-full h-full max-h-[4rem] mt-6 mb-1'>
 
                       <div className='flex  justify-end items-center gap-1 text-[12px] bg-red-100 px-2 text-red-400 rounded-lg' >
                         <PiWarningOctagonBold size={15} className='w-5 h-5'  />

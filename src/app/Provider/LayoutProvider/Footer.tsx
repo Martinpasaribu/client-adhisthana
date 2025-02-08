@@ -60,10 +60,10 @@ const Footer = () => {
                 <Link href="/faq" className="">
                 FAQ
                 </Link>
-                <Link href="/" className="w-full max-w-[10rem]">
+                <Link href="/privacy-policy" className="w-full max-w-[10rem]">
                 Privacy & Policy
                 </Link>
-                <Link href="/" className="w-full max-w-[10rem]">
+                <Link href="/terms-conditions" className="w-full max-w-[10rem]">
                 Terms & Condition
                 </Link>
             </div>

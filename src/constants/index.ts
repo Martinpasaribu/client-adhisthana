@@ -20,8 +20,7 @@ export const footerLinks = [
     {
       title: "Socials",
       links: [
-        { title: "Discord", url: "/" },
-        { title: "Instagram", url: "/" },
+        { title: "Instagram", url: "https://www.instagram.com/p/DFT73ksOU-n/" },
         { title: "Twitter", url: "/" },
         { title: "Facebook", url: "/" },
       ],
