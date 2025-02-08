@@ -22,10 +22,10 @@ import { clearChart } from '@/lib/slice/bookingSlice';
 
 
 const images = [
-    "/assets/ImageNav/image1.png",
-    "/assets/ImageNav/image2.png",
-    "/assets/ImageNav/image3.png",
-    "/assets/ImageNav/image4.png",
+    "/assets/ImageOffers/01.jpg",
+    "/assets/ImageOffers/02.jpg",
+    "/assets/ImageOffers/03.jpg",
+    "/assets/ImageOffers/04.jpg",
   ];
 
 const Layout = () => {
@@ -234,7 +234,7 @@ const Layout = () => {
             <figure className='flex flex-col hp4:flex-row justify-center items-center hp4:p-5 w-full  max-h-[30rem] overflow-hidden'>
                 
                 <div className='w-full hp4:w-1/2 h-full max-h-[25rem] p-3'>
-                      <Image alt='image1ffers' src={'/assets/Image/Family.png'} width={600} height={400} className='w-full max-h-[23.5rem] object-cover  rounded-xl'/>
+                      <Image alt='image1ffers' src={'/assets/ImageOffers/05.jpg'} width={600} height={400} className='w-full max-h-[23.5rem] object-cover  rounded-xl'/>
                 </div>
   
   

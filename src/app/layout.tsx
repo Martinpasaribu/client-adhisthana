@@ -31,8 +31,8 @@ export const metadata: Metadata = {
   description: "Experience tranquility at Adhisthana Villas, a luxury retreat near Borobudur. Blending Javanese heritage with modern elegance, our villa offers a peaceful escape in nature.",
   icons: {
     icon: "/favicon.ico", // Favicon utama
-    shortcut: "/favicon.ico", // Shortcut icon
-    apple: "/favicon.ico", // Untuk Apple devices
+    shortcut: "/short.ico", // Shortcut icon
+    apple: "/short.ico", // Untuk Apple devices
   },
 };
 
@@ -47,8 +47,8 @@ export default function RootLayout({
       <head>
         <title>Adhisthana Villas</title>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
+        <link rel="shortcut icon" type="image/x-icon" href="/short.ico" />
+        <link rel="apple-touch-icon" href="/short.ico" />
       </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
 

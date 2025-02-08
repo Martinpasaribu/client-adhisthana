@@ -12,6 +12,7 @@ interface CookieProps {
 const EnableCookies = ({ active, closeModal }: CookieProps) => {
 
 
+  
     if (!active) return null; // Jangan pakai `false`, karena harus return React node
 
 
