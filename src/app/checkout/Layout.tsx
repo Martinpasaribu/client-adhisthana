@@ -519,8 +519,8 @@ const Layout = (  ) => {
 
                     {/* <MiniCheckoutBottom animate={animate} handleAnimateButton={handleAnimateButton}/> */}
 
-                    <div className='  text-white w-full flex justify-end items-end mt-3 '>
-                          <div className='w-full flex-center gap-2 px-2.5 py-2 max-w-[8rem] bg-color1 rounded-md'>
+                    <div className='sm:hidden flex justify-center items-center max-w-[30rem] p-2  z-30  text-white w-full mt-3 '>
+                          <button type="submit" className='w-full flex-center gap-2 px-2.5 py-2 max-w-[8rem] bg-color1 rounded-md'>
                             <h1>Checkout</h1>
                             <Image
                             src={shopBag}
@@ -529,7 +529,7 @@ const Layout = (  ) => {
                             height={200}
                             className={`w-[1.6rem] h-[1.6rem] hp2:w-[1.8rem] hp2:h-[1.8rem] max-w-[2rem] max-h-[2rem] object-cover  `}
                             />
-                          </div>
+                          </button>
                     </div>                
                 </form>
             
