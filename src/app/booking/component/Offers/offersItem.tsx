@@ -260,7 +260,7 @@ const OffersItem = () => {
                         {item.nameAdditional}
                       </h1>
 
-                      <h1 className='bg-green-700 text-white px-2 text-[12px] text-center  rounded-md w-full max-w-[10rem]'>
+                      <h1 className='bg-slate-700 text-white px-2 text-[12px] text-center  rounded-md w-full max-w-[9rem]'>
                         Room Unavailable 
                       </h1>
                       
