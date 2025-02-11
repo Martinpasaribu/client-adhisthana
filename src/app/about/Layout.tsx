@@ -7,6 +7,8 @@ import { CultureComponent } from './component/CultureComponent'
 import Link from "next/link"
 
 
+
+
 const Layout = () => {
   return (
     <div className='flex flex-col overflow-hidden font-sans bg-white  dark:bg-black'>
