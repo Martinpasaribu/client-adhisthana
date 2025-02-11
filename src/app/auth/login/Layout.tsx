@@ -11,6 +11,7 @@ import { checkField } from "@/constants";
 import toast from "react-hot-toast";
 import MainLoading from "@/component/mainLoading/loading";
 import { handleMe } from "@/utils/me/getMe";
+import { CekRefreshToken } from "@/utils/me/cekRefreshToken";
 
 
 export default function Login() {
@@ -37,9 +38,11 @@ export default function Login() {
     const handleRedirectOrFetch = async () => {
 
       const data = await handleMe()
+      const Token = await CekRefreshToken()
+
       const shouldRedirect = localStorage.getItem("me");
 
-      if (data && !shouldRedirect) {
+      if (data && !shouldRedirect && Token === true) {
 
         console.log(" Verify Me ", data ? " Me Verify " : " Me No Verify ")
 
