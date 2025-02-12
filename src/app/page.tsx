@@ -165,7 +165,7 @@ export default function Home() {
           </div>
 
 
-          
+            {/* Mode PC */}
              <div className="flex-center w-full "> 
                   <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-8 p-3 w-full max-w-[70rem]">
 
@@ -177,7 +177,8 @@ export default function Home() {
                   </div>
             </div>  
 
-              <CarouselReference />
+            {/* Mode Mobile */}
+            <CarouselReference />
 
 
 

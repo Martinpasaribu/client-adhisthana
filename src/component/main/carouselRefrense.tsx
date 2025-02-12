@@ -54,9 +54,9 @@ const CarouselReference = () => {
   }, [currentIndex]);
 
   return (
-    <div className="flex md:hidden justify-center items-center h-[30rem] ">
+    <div className="flex md:hidden justify-center items-center h-[30rem] pt-6">
       <div
-        className="relative w-full max-w-[40rem] h-full max-h-[25rem] p-4"
+        className="relative w-full max-w-[40rem] h-full max-h-[28rem] p-4"
         id="default-carousel"
       >
         {/* Carousel wrapper */}

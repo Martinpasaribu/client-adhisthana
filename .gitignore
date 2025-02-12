@@ -21,7 +21,7 @@
 # production
 /build
 /Backup
-/public/video
+# public/video
 
 # misc
 .DS_Store

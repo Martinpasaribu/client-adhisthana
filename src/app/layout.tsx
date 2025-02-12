@@ -22,8 +22,50 @@ const geistMono = localFont({
 export const metadata: Metadata = {
   title: "Adhisthana Villas",
   description:"Experience tranquility at Adhisthana Villas, a luxury retreat near Borobudur. Blending Javanese heritage with modern elegance, our villa offers a peaceful escape in nature.",
-  keywords: "Adhisthana Villas, Villa mewah di Yogyakarta, Penginapan eksklusif Yogyakarta, Resort terbaik di Yogyakarta, Sewa villa private"
+  icons: [
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
+      url: "https://adhisthanavillas.com/favicon-32x32.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "64x64",
+      url: "https://adhisthanavillas.com/favicon-64x64.png",
+    },
+    {
+      rel: "apple-touch-icon",
+      sizes: "180x180",
+      url: "/apple-touch-icon.png",
+    },
+  ],
+  keywords: "Adhisthana Villas, Villa mewah di Yogyakarta, Penginapan eksklusif Yogyakarta, Resort terbaik di Yogyakarta, Sewa villa private",
+  openGraph: {
+    title: "Adhisthana Villas",
+    description: "Nikmati pengalaman menginap terbaik di Adhisthana Villas.",
+    url: "https://adhisthanavillas.com",
+    siteName: "Adhisthana Villas",
+    images: [
+      {
+        url: "https://adhisthanavillas.com/og2-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Adhisthana Villas",
+      },
+    ],
+    locale: "id_ID",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Adhisthana Villas",
+    description: "Nikmati pengalaman menginap terbaik di Adhisthana Villas.",
+    images: ["https://adhisthanavillas.com/og2-image.jpg"],
+  },
 };
+
 
 export default function RootLayout({
   children,

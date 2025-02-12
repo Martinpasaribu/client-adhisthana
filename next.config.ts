@@ -36,6 +36,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'scontent-bom1-2.cdninstagram.com',
+
+      },
+      {
+        protocol: 'https',
         hostname: 'www.google.com'
 
       },

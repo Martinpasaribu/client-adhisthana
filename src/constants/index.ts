@@ -3,7 +3,7 @@ export const footerLinks = [
       title: "About",
       links: [
         { title: "How it works", url: "/" },
-        { title: "Our Vila", url: "/our-vila" },
+        { title: "Our Villas", url: "/our-vila" },
         { title: "Partnership", url: "/" },
         { title: "Bussiness Relation", url: "/" },
       ],
