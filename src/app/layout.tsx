@@ -27,6 +27,12 @@ export const metadata: Metadata = {
       rel: "icon",
       type: "image/png",
       sizes: "32x32",
+      url: "https://adhisthanavillas.com/favicon-24x24.png",
+    },
+    {
+      rel: "icon",
+      type: "image/png",
+      sizes: "32x32",
       url: "https://adhisthanavillas.com/favicon-32x32.png",
     },
     {
