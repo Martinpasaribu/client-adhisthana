@@ -30,7 +30,7 @@ const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
             <div className="flex flex-col items-center">
 
   
-            <div className='w-full   hp4:max-w-[25rem]  xl2:max-w-[30rem] flex justify-between hp4:justify-center items-center gap-5 px-2 hp4:p-2 md2:p-1 xl2:gap-5'>
+            <div className='w-full hp4:max-w-[25rem]  xl2:max-w-[30rem] flex justify-between hp4:justify-center items-center gap-5 px-2 hp4:p-2 md2:p-1 xl2:gap-5'>
 
               <div className='flex-center flex-col gap-2'>
                   <div className='p-3 rounded-full '>
@@ -49,7 +49,7 @@ const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
                       <ul className="list-disc">
 
                         <li className="text-justify text-sm font-normal text-color1"> 
-                            You can contact contact email and WA Adhisthana Villas to ask directly for booking information 
+                            You can contact Email and Whatsapp Adhisthana Villas to ask directly for booking information 
                         </li>
 
                       </ul>

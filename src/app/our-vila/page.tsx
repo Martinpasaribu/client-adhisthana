@@ -90,35 +90,41 @@ const OurVila = () => {
                        
                     { vila && vila.length > 0 ? (
 
-                    <div  className='w-full h-full'>
+                        <div className='w-full'>
 
-                        <div className=' w-full  h-full max-h-[35rem] p-4'>
-                            <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={400} className='w-full h-full object-contain'/>
-                        </div>
-                        
-                        <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-4">
-                            <div className='w-full flex flex-col gap-4'>
+                            <div  className='w-full max-w-[40rem] h-full'>
 
-                                <div className="flex flex-col gap-3">
-                                    <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                                        {vila && vila.length > 0 ? vila[0].nameAdditional : '/assets/Image/imagenf.jpg'}
-                                    </h1>
-                                    <h2 className="text-slate-500 animate-modal text-[12px] md:text-[16px]"> {vila && vila.length > 0 ? vila[0].shortDesc : ''}</h2>
-                                </div>
+                            <div className=' w-full  p-4'>
+                                <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={300} className='object-contain'/>
+                            </div>
 
-                                <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4">
-                                    <button onClick={() => { handleDetailRoom(vila[0]._id) }} className="underline decoration-[#C0562F] text-color1">
-                                        <h1>Vila Details</h1>
-                                    </button>
-                                    <Link href="/booking" className=" text-white bg-color1 px-5" >
-                                            <h1>Book</h1>
-                                    </Link>
+                            <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-4">
+                                <div className='w-full flex flex-col gap-4'>
+
+                                    <div className="flex flex-col gap-3">
+                                        <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
+                                            {vila && vila.length > 0 ? vila[0].nameAdditional : '/assets/Image/imagenf.jpg'}
+                                        </h1>
+                                        <h2 className="text-slate-500 animate-modal text-[12px] md:text-[16px]"> {vila && vila.length > 0 ? vila[0].shortDesc : ''}</h2>
+                                    </div>
+
+                                    <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4">
+                                        <button onClick={() => { handleDetailRoom(vila[0]._id) }} className="underline decoration-[#C0562F] text-color1">
+                                            <h1>Vila Details</h1>
+                                        </button>
+                                        <Link href="/booking" className=" text-white bg-color1 px-5" >
+                                                <h1>Book</h1>
+                                        </Link>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    
 
-                    </div>
+
+                            </div>
+
+                        </div>
+
+
 
                     ) : (
 
