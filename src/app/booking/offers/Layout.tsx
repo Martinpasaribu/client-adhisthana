@@ -19,6 +19,8 @@ import OffersItem from '../component/Offers/offersItem';
 import { formatBookingDate, formatLocalISOIn, formatLocalISOOut } from '../component/constant';
 import DatePickerUpdate from '../component/Calender/datePickerUpdate';
 import { clearChart } from '@/lib/slice/bookingSlice';
+import NoPayment from '@/component/PopUpNotifications';
+import Whatsapp from '@/utils/whatsapp/indext';
 
 
 const images = [
@@ -60,7 +62,9 @@ const Layout = () => {
       }
       return 4;
     });
-    
+
+    const [noPayment, setNoPayment] = useState<boolean>(false);
+
 
     useEffect(() => {
       
@@ -125,48 +129,43 @@ const Layout = () => {
       console.log("date range1 :", formatBookingDate(safecheckin, "checkIn"), formatBookingDate(safecheckout,"checkOut"))
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-    // const datePar = JSON.parse(localStorage.getItem('Params') ?? '{}') || {};
-    
-    // useEffect(() => {
-      
-    //   if(datePar){
+
+    const PushUpdate = () => {
+      if (safecheckin && safecheckout && validate) { 
         
-    //   }
-    //   const setCheckin = datePar.checkin ? new Date(datePar.checkin).toISOString() : null;
-    //   const setCheckout = datePar.checkout ? new Date(datePar.checkout).toISOString() : null;
-    
-    // },[datePar])
+        dispatch(clearChart()); 
+        DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
+        localStorage.removeItem('cart_vila');
+        localStorage.removeItem('Params');
+        localStorage.removeItem('Night');
+        
+        const newUrl =`/booking/offers?checkin=${formatBookingDate(safecheckin, "checkIn")}&checkout=${formatBookingDate(safecheckout,"checkOut")}&people=4`
+        router.push(newUrl);
 
-      const PushUpdate = () => {
-        if (safecheckin && safecheckout && validate) { 
-          
-          dispatch(clearChart()); 
-          DeletedCartInSession().catch((error) => console.error('Error during unload:', error));
-          localStorage.removeItem('cart_vila');
-          localStorage.removeItem('Params');
-          localStorage.removeItem('Night');
-         
-          const newUrl =`/booking/offers?checkin=${formatBookingDate(safecheckin, "checkIn")}&checkout=${formatBookingDate(safecheckout,"checkOut")}&people=4`
-          router.push(newUrl);
+        setShouldReload(true);
+        
 
-          setShouldReload(true);
-          
-
-          toast.success("Offer updated", {
-            position: "bottom-left",
-            duration: 6000,
-          });
-          
-        } else {
-          toast.error("Order date range is incorrect", {
-            position: "bottom-right",
-            duration: 5000,
-          });
-        }
-      };
+        toast.success("Offer updated", {
+          position: "bottom-left",
+          duration: 6000,
+        });
+        
+      } else {
+        toast.error("Order date range is incorrect", {
+          position: "bottom-right",
+          duration: 5000,
+        });
+      }
+    };
     
     
+    const handleCloseNoPayment = () => {
+      setNoPayment(false);
+    };
+    
+      const handleOpenNoPayment = () => {
+        setNoPayment(true);
+    };
 
     // function Modal calendar mini
     const [isModalOpen, setModalOpen] = useState(false);
@@ -255,7 +254,10 @@ const Layout = () => {
   
             </figure>
   
+            <NoPayment isOpen={noPayment} closeModal={handleCloseNoPayment}/>
 
+            <Whatsapp/>
+            
             {/* # Update Header  */}
 
             {/* Button Update */}
@@ -320,13 +322,13 @@ const Layout = () => {
   
               <div className='hidden w-full max-w-[30rem] xl2:block'>
   
-                <Bucket checkin={safecheckin || null } checkout={safecheckout || null} />
+                <Bucket checkin={safecheckin || null } checkout={safecheckout || null} openWarning={handleOpenNoPayment}/>
   
               </div>
 
-              <div className={`${activeBucket ? 'block w-full xl2:hidden fixed bottom-0 bg-white':'hidden'}`}>
+              <div className={`${activeBucket ? 'block w-full xl2:hidden fixed bottom-0 bg-white':'hidden'} z-40`}>
   
-                <BucketMini checkin={safecheckin || null } checkout={safecheckout || null} activeBucket={setActiveBucket} />
+                <BucketMini checkin={safecheckin || null } checkout={safecheckout || null} activeBucket={setActiveBucket} openWarning={handleOpenNoPayment}/>
   
               </div>
   

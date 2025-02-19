@@ -8,11 +8,11 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   
   title: "Booking - Adhisthana Villas",
-  description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Bali.",
+  description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Yogyakarta.",
   keywords: "villa, Reservasi vila online, Harga sewa vila eksklusif, Promo villa Yogyakarta, Booking villa Yogyakarta",
   openGraph: {
     title: "Adhisthana Villas",
-    description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Bali.",
+    description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Yogyakarta.",
     url: "https://adhisthanavillas.com",
     siteName: "Adhisthana Villas",
     images: [

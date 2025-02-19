@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   
   title: "Contact - Adhisthana Villas",
   description: "Hubungi Adhisthana Villas untuk pertanyaan, reservasi, atau informasi lebih lanjut tentang vila kami. Tim kami siap membantu Anda..",
-  keywords: "Kontak Adhisthana Villas, Reservasi villa Bali, Layanan pelanggan vila, Nomor telepon Adhisthana Villas, Booking villa Yogyakarta",
+  keywords: "Kontak Adhisthana Villas, Reservasi villa Yogyakarta, Layanan pelanggan vila, Nomor telepon Adhisthana Villas, Booking villa Yogyakarta",
   openGraph: {
     title: "Adhisthana Villas",
     description: "Hubungi Adhisthana Villas untuk pertanyaan, reservasi, atau informasi lebih lanjut tentang vila kami. Tim kami siap membantu Anda..",

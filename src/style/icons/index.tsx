@@ -62,12 +62,16 @@ import locked from "../../../public/assets/IconImage/locked.png";
 import appointment from "../../../public/assets/IconImage/appointment.png";
 import logout from "../../../public/assets/IconImage/logout.png";
 import shopBag from "../../../public/assets/IconImage/shopbag.png";
+import wa from "../../../public/assets/IconImage/wa.png";
+import Maintenance from "../../../public/assets/IconImage/maintenance.png";
 import mainLoading from "../../../public/assets/Logo/loading.png";
 
 
 export { profiles };
+export { Maintenance };
 export { shopBag };
 export { mainLoading };
+export { wa };
 export { appointment };
 export { logout };
 export { locked };

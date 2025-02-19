@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   keywords: "villa, Cek status pemesanan, Harga sewa vila eksklusif, Konfirmasi reservasi vila, Booking villa Yogyakarta, Status booking Adhisthana Villas",
   openGraph: {
     title: "Adhisthana Villas",
-    description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Bali.",
+    description: "Pesan vila impian Anda di Adhisthana Villas sekarang dan nikmati berbagai penawaran spesial untuk pengalaman menginap yang luar biasa di Yogyakarta.",
     url: "https://adhisthanavillas.com",
     siteName: "Adhisthana Villas",
     images: [

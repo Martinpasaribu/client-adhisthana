@@ -16,9 +16,10 @@ import { convertToRupiah } from '@/constants';
 interface BucketProps {
     checkin? :  Date | null;
     checkout? : Date | null;
+    openWarning : () => void;
 }
 
-const Bucket = ( {checkin, checkout} : BucketProps) => {
+const Bucket = ( {checkin, checkout, openWarning} : BucketProps) => {
 
   const [ nights, setNight ] = useState<number | 0>();
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
@@ -136,6 +137,7 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
 
     <div className='w-full mt-4 xl2:mt-10 sticky top-28 z-20 py-4'>
         
+
         
         <div className='flex flex-col h-full max-w-[70rem] mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-5 m-2 p-3 border-[1px] shadow-md rounded-xl'>
             
@@ -243,7 +245,8 @@ const Bucket = ( {checkin, checkout} : BucketProps) => {
                 
             
                 <button
-                    onClick={handleSetParams}
+                    onClick={openWarning}
+                    // onClick={handleSetParams}
                     className={`w-full rounded-md ${
                     isProcessing ? 'bg-gray-400 cursor-not-allowed' : 'bg-color1 text-white'
                     }`}

@@ -17,9 +17,10 @@ interface BucketProps {
     checkin? :  Date | null;
     checkout? : Date | null;
     activeBucket: (activeBucket: boolean) => void;
+    openWarning : () => void;
 }
 
-const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
+const BucketMini = ( {checkin, checkout, activeBucket, openWarning} : BucketProps) => {
 
   const [ nights, setNight ] = useState<number | 0>();
   const [ priceTotal, setPriceTotal] = useState<number | 0>();
@@ -275,7 +276,8 @@ const BucketMini = ( {checkin, checkout, activeBucket} : BucketProps) => {
                     
                 
                     <button
-                        onClick={handleSetParams}
+                     onClick={openWarning}
+                    // onClick={handleSetParams}
                         className={`w-full rounded-md ${
                         isProcessing ? 'bg-gray-400 cursor-not-allowed' : 'bg-color1 text-white'
                         }`}

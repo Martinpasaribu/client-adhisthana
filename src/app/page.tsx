@@ -15,6 +15,7 @@ import EnableCookies from "@/utils/CookiesSet";
 import { useEffect, useState } from "react";
 import MainLoading from "@/component/mainLoading/loading";
 import CarouselReference from "@/component/main/carouselRefrense";
+import Whatsapp from "@/utils/whatsapp/indext";
 
 export default function Home() {
 
@@ -66,14 +67,15 @@ export default function Home() {
 
   return (
     
-    <main className='flex flex-col font-sans bg-white  dark:bg-black'>
+    <main className=' relative flex flex-col font-sans bg-white  dark:bg-black'>
         
         <EnableCookies active={cookie} closeModal={() => handleClose(true)} />
+        {/* <Whatsapp/> */}
 
 
         {/* <MainLoading /> */}
 
-        <section className="relative w-full h-screen sm:h-full ">
+        <section className="  relative w-full h-screen sm:h-full ">
 
           <div className="absolute bottom-28 w-full md:bottom-0 md:h-full flex-center flex-col gap-5 text-white">
               <h1 className="text-md hp4:text-5xl"> A Harmonious Sanctuary in Nature </h1>

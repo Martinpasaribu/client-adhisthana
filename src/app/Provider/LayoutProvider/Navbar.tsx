@@ -198,10 +198,31 @@ useEffect(() => {
 
             
           <div className="">
-            <Link href="/" className="flex justify-center items-center w-[4.8rem] h-[3.5rem]  md:w-[6rem] md1:w-[8rem] md1:h-[5rem] h-hp4:w-[4rem] h-sm:w-[5.5rem] h-md:w-[6rem] h-md2:w-[8rem] ">
+            <Link href="/" className="flex justify-center items-center 
+              w-[4.8rem] h-[3.5rem]  
+              md:w-[6rem] 
+              md1:w-[8rem] md1:h-[5rem] 
+              h-hp4:w-[4rem] 
+              h-sm:w-[6rem] 
+              h-md:w-[6rem] 
+              h-md2:w-[8rem]
+              ">
+
                 <Image src="/assets/Logo/adhisthana.png" alt="logo adhisthana" width={400} height={100} className="object-contain  rounded-md"/>
+            
             </Link>
           </div>
+
+          {/* <div className="">
+            <Image
+              src="/assets/Logo/adhisthana.png"
+              alt="Wa"
+              layout="responsive" // Membuat gambar fleksibel
+              width={65} // Sesuai rasio asli
+              height={65} // Sesuai rasio asli
+              className="object-contain"
+            />
+          </div> */}
     
 
           <div className="flex justify-end md2:justify-center items-center w-full max-w-[30rem]">
@@ -222,14 +243,14 @@ useEffect(() => {
 
               <Link href="/our-vila">
                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
-                <h1>villas</h1>
+                <h1>Villas</h1>
                 </li>
               </Link>
               
 
               <Link href="/contact">
                <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `} `}>
-                  <h1>Contacts</h1>
+                  <h1>Contact</h1>
                 </li>
               </Link>
 

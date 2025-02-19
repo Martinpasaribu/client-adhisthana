@@ -69,12 +69,12 @@ const Vila = ({ InitialsVila }: VilaProps) => {
               key={vila[startIndex]._id}
               className="max-width md:h-screen flex-col-reverse flex-center sm:flex-row gap-8 px-4 text-center text-xs md:text-lg font-[family-name:var(--font-geist-sans)]"
             >
-              <div className="text-slate-600 max-w-[30rem] sm:w-1/2 flex flex-col gap-10 text-left">
+              <div className="text-slate-600 max-w-[35rem] sm:w-1/2 flex flex-col gap-10 text-left">
                 <div className="flex flex-col gap-8">
                   <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
                     {vila[startIndex].nameAdditional}
                   </h1>
-                  <h2 className="text-slate-500 animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
+                  <h2 className="text-slate-500 text-[14px] animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
                 </div>
 
                 <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4 animate-muncul">

@@ -23,8 +23,8 @@ const Closure = ( {images,title,describe}:ClosureProps ) => {
 
         <div className="flex flex-col gap-8 w-full max-w-[30rem] ">
 
-            <h1 className="text-color1 text-sm text-left ">{title}</h1>
-            <h2 className="text-slate-500 text-xs text-justify font-light">{describe}</h2>
+            <h1 className="text-color1 text-[15px] text-left ">{title}</h1>
+            <h2 className="text-slate-600 text-justify font-normal text-[13px]">{describe}</h2>
             
         </div>
     </div>

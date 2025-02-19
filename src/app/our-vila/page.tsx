@@ -96,10 +96,10 @@ const OurVila = () => {
                             <Image src={vila && vila.length > 0 ? vila[0].imageShort : `/assets/Image/imagenf.jpg`} alt='OurVila' width={800} height={400} className='w-full h-full object-contain'/>
                         </div>
                         
-                        <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-10">
-                            <div className='w-full max-w-[30rem] flex flex-col gap-4'>
+                        <div className="text-slate-600  flex flex-col gap-5 text-left p-2 px-4">
+                            <div className='w-full flex flex-col gap-4'>
 
-                                <div className="flex flex-col gap-8">
+                                <div className="flex flex-col gap-3">
                                     <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
                                         {vila && vila.length > 0 ? vila[0].nameAdditional : '/assets/Image/imagenf.jpg'}
                                     </h1>

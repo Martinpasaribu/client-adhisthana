@@ -8,7 +8,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
 
   title: "About Us - Adhisthana Villas",
-  description: "Kenali lebih dekat Adhisthana Villas, vila eksklusif dengan layanan berkualitas tinggi di Bali. Kami berkomitmen untuk memberikan pengalaman menginap terbaik bagi Anda..",
+  description: "Kenali lebih dekat Adhisthana Villas, vila eksklusif dengan layanan berkualitas tinggi di Yogyakarta. Kami berkomitmen untuk memberikan pengalaman menginap terbaik bagi Anda..",
   keywords: "Tentang Adhisthana Villas, Sejarah Adhisthana Villas, Layanan eksklusif vila, Penginapan mewah Yogyakarta, liburan",
   openGraph: {
     title: "Adhisthana Villas",
