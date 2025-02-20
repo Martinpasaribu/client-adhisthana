@@ -84,8 +84,9 @@ module.exports = {
       'h-hp7': { raw: '(min-height: 470px)' }, 
 
       'h-sm': { raw: '(min-height: 600px)' }, 
+      'h-sm1': { raw: '(min-height: 640px)' }, 
 
-      'h-md': { raw: '(min-height: 768px)' },
+      'h-md': { raw: '(min-height: 758px)' },
       'h-md1': { raw: '(min-height: 798px)' },
       'h-md2': { raw: '(min-height: 820px)' },
 

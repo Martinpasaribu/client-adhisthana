@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { RoomModels } from '@/models/roomModels';
 import Skelton from './component/Skelton';
 import Link from "next/link";
+import Vila from '../vila/room/Vila';
 
 
 const OurVila = () => {
@@ -80,15 +81,16 @@ const OurVila = () => {
                 <figure id='section-vila'  className='flex sm:flex sm:flex-row flex-col md:p-5 py-10 gap-8 md:gap-1'>
 
                     <div className='w-full flex-center flex-col text-center hp3:text-left px-4 md:px-1 '>
-                        <div className='w-full max-w-[34rem] flex flex-col gap-5 md:gap-10'>
-                            <h1 className='text-[20px]'>Our Villas</h1>
-                            <p className='text-slate-600 text-[13px] md:text-[17px]'>Experience the art of relaxation in our thoughtfully designed villas, where Javanese charm meets modern comfort to create a tranquil retreat for every traveler.</p>
+                        <div className='w-full max-w-[74rem] flex flex-col gap-5 md:gap-10 text-center'>
+                            <h1 className='text-[20px] '>Our Villas</h1>
+
+                            <p className='text-slate-600 text-[13px] md:text-[16px] '>Experience the art of relaxation in our thoughtfully designed villas, where Javanese charm meets modern comfort to create a tranquil retreat for every traveler.</p>
                         </div>
                     </div>
 
                     
                        
-                    { vila && vila.length > 0 ? (
+                    {/* { vila && vila.length > 0 ? (
 
                         <div className='w-full'>
 
@@ -132,7 +134,7 @@ const OurVila = () => {
                         <Skelton />
                     </div>
 
-                    )}
+                    )} */}
 
                     
 
@@ -143,55 +145,7 @@ const OurVila = () => {
 
                 { vila && vila.length > 0 ? (
                     
-                    <figure className='grid grid-cols-1 hp3:grid-cols-2 gap-8 hp3:gap-2 place-items-center p-5 py-10 bg-color4'>
-                    
-                        {vila && vila.slice(1).map((item) => (
-
-                            <div key={item._id} className="flex-center flex-col gap-6 w-full max-w-[35rem] h-full ">
-                            
-                                {/* Gambar */}
-
-                                <div className='w-full max-w-[30rem] h-full max-h-[20rem] '>
-                                    <Image 
-                                        src={item.image && item.imageShort ? item.imageShort : '/assets/Image/imagenf.jpg'}
-                                        alt={`Image of ${item.name}`} 
-                                        width={800} 
-                                        height={400} 
-                                        className="w-full h-full  object-contain" 
-                                    />
-                                </div>
-
-                                {/* Deskripsi Vila */}
-                                <div className="text-slate-600 w-full max-w-[28rem] h-full flex flex-col gap-5 text-left">
-                                    {/* Nama dan Deskripsi */}
-                                    <div className="flex flex-col gap-4 h-full">
-                                        <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
-                                            {item.nameAdditional}
-                                        </h1>
-                                        <h2 className="text-slate-500 animate-modal h-full  max-h-[10rem] text-[12px] md:text-[16px]">
-                                            {item.shortDesc}
-                                        </h2>
-                                    </div>
-
-                                    {/* Tombol Aksi */}
-                                    <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4">
-                                        <button 
-                                            onClick={() => handleDetailRoom(item._id)} 
-                                            className="underline decoration-[#C0562F] text-color1"
-                                        >
-                                            <h1>Vila Details</h1>
-                                        </button>
-                                        
-                                        <Link href="/booking" className=" text-white bg-color1 px-5" >
-                                                <h1>Book</h1>
-                                        </Link>
-                                    </div>
-                                </div>
-
-                            </div>
-                        ))}
-
-                    </figure>
+                    <Vila InitialsVila={[]}/>
 
                 ) :
                 (

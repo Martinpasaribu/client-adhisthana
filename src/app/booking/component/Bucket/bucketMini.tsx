@@ -154,7 +154,7 @@ const BucketMini = ( {checkin, checkout, activeBucket, openWarning} : BucketProp
   
   return (
 
-    <div className='w-full xl2:mt-8 '>
+    <div className='w-full xl2:mt-8 z-30'>
         
         
         <div className=' flex flex-col h-full  mx-[.5rem]  md1:mx-[1.8rem] justify-around items-center text-xl gap-2 md1:gap-2 m-2 p-3 border-[1px] shadow-md rounded-xl'>

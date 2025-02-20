@@ -326,7 +326,7 @@ const Layout = () => {
   
               </div>
 
-              <div className={`${activeBucket ? 'block w-full xl2:hidden fixed bottom-0 bg-white':'hidden'} z-40`}>
+              <div className={`${activeBucket ? 'block w-full xl2:hidden fixed bottom-0 bg-white':'hidden'} z-30`}>
   
                 <BucketMini checkin={safecheckin || null } checkout={safecheckout || null} activeBucket={setActiveBucket} openWarning={handleOpenNoPayment}/>
   

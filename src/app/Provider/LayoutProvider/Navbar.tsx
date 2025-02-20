@@ -175,7 +175,16 @@ useEffect(() => {
 
   return (
       <header
-        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 h-[30rem] max-h-[4rem] h-hp4:max-h-[5rem] md1:max-h-[6rem]  ${
+        className={`w-full fixed z-40 backdrop-blur-sm transition-colors duration-500 
+          
+          h-[10rem] max-h-[4rem] 
+          md:max-h-[4.rem] 
+          md1:max-h-[9rem]  
+          h-hp4:max-h-[3.5rem] 
+          h-sm:max-h-[4rem] 
+          h-sm1:max-h-[4.4rem] 
+          h-md:max-h-[4rem]
+          ${
             scrolled ? "bg-white/100" : getBackgroundColor()
           }`}
         >
@@ -198,17 +207,18 @@ useEffect(() => {
 
             
           <div className="">
-            <Link href="/" className="flex justify-center items-center 
+            <Link href="/" className="flex 
               w-[4.8rem] h-[3.5rem]  
               md:w-[6rem] 
-              md1:w-[8rem] md1:h-[5rem] 
+              md1:w-[10rem] md1:h-[4rem] 
               h-hp4:w-[4rem] 
               h-sm:w-[6rem] 
               h-md:w-[6rem] 
-              h-md2:w-[8rem]
+              h-md2:w-[7rem]
+              h-md2:h-[2.6rem]
               ">
 
-                <Image src="/assets/Logo/adhisthana.png" alt="logo adhisthana" width={400} height={100} className="object-contain  rounded-md"/>
+                <Image src="/assets/Logo/logoMain.png" alt="logo adhisthana" width={500} height={400} className="object-contain  rounded-md"/>
             
             </Link>
           </div>
@@ -227,7 +237,7 @@ useEffect(() => {
 
           <div className="flex justify-end md2:justify-center items-center w-full max-w-[30rem]">
 
-            <ul className={`hidden  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':getBackgroundColorUl()} `}>
+            <ul className={`hidden text-[13px]  md2:flex justify-center items-center gap-2 md:gap-4 lg:gap-6  w-full max-w-[20rem] ${scrolled ? 'text-color2':getBackgroundColorUl()} `}>
 
               <Link href="/">
                 <li className={`cursor-pointer transform transition-transform hover:scale-110 ${scrolled ? 'hover:text-black':`${getHoverColor()} `}`}>

@@ -142,7 +142,6 @@ export default function Home() {
           <Vila InitialsVila={[]}/>
 
 
-
           <div className="h-full md:h-screen flex justify-center items-center flex-col md:flex-row  gap-2 md:gap-8 md:px-4 text-center text-xs md:text-lg my-5 md:my-1 font-[family-name:var(--font-geist-sans)]">
                  
               
@@ -167,23 +166,20 @@ export default function Home() {
           </div>
 
 
-            {/* Mode PC */}
-             <div className="flex-center w-full "> 
-                  <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-8 p-3 w-full max-w-[70rem]">
+          {/* Mode PC */}
+            <div className="flex-center w-full "> 
+                <div className="hidden md:grid grid-cols-2 md:grid-cols-3 gap-8 p-3 w-full max-w-[70rem]">
 
-                      <Closure images={Images_Closure[0]} title={'Cultural Excursions & Borobudur Visits'} describe={'Located near the iconic Borobudur temple, our villas provide easy access for those looking to explore this UNESCO World Heritage site. Dive deeper into the local culture with guided tours of nearby temples, villages, and traditional markets.'}/>
-                      <Closure images={Images_Closure[1]} title={'Local Flavors at Sukkha Café'} describe={'Indulge in a culinary experience at Sukkha Café, where you can enjoy thoughtfully crafted dishes in a serene setting. Our cafe offers a peaceful retreat to savor delicious local flavors while soaking in the tranquil atmosphere of Adhisthana Villas.'}/>
-                      <Closure images={Images_Closure[2]} title={'Peaceful Retreats in Nature'} describe={'With our proximity to local trails and rice paddies, explore the beauty of Central Java by foot or bike. Wander through paths bordered by verdant fields and rivers, or take a leisurely ride through the serene countryside, capturing the charm of local life.'}/>
-
-
-                  </div>
-            </div>  
-
-            {/* Mode Mobile */}
-            <CarouselReference />
+                    <Closure images={Images_Closure[0]} title={'Cultural Excursions & Borobudur Visits'} describe={'Located near the iconic Borobudur temple, our villas provide easy access for those looking to explore this UNESCO World Heritage site. Dive deeper into the local culture with guided tours of nearby temples, villages, and traditional markets.'}/>
+                    <Closure images={Images_Closure[1]} title={'Local Flavors at Sukkha Café'} describe={'Indulge in a culinary experience at Sukkha Café, where you can enjoy thoughtfully crafted dishes in a serene setting. Our cafe offers a peaceful retreat to savor delicious local flavors while soaking in the tranquil atmosphere of Adhisthana Villas.'}/>
+                    <Closure images={Images_Closure[2]} title={'Peaceful Retreats in Nature'} describe={'With our proximity to local trails and rice paddies, explore the beauty of Central Java by foot or bike. Wander through paths bordered by verdant fields and rivers, or take a leisurely ride through the serene countryside, capturing the charm of local life.'}/>
 
 
+                </div>
+          </div>  
 
+          {/* Mode Mobile */}
+          <CarouselReference />
 
           {/* Instagram */}
           <div className="mt-[8rem] mb-[8rem]  max-width flex flex-col justify-center items-center gap-8 font-[family-name:var(--font-geist-sans)] p-2">

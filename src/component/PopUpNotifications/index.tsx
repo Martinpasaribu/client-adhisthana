@@ -23,7 +23,7 @@ const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
   if (!isOpen) return null;
 
   return (
-    <div className="bg-white fixed inset-0 z-30 flex-center">
+    <div className="bg-white fixed inset-0 z-40 flex-center">
       <div className="overflow-hidden bg-white">
         <div className="relative flex flex-col h-full w-full pt-[2rem]">
           <div className="flex flex-col w-full p-6 rounded-lg h-full">

@@ -29,7 +29,8 @@ const Footer = () => {
 
         <div  className="flex max-md:flex-col flex-wrap justify-between gap-5 sm:px-6 px-4 py-4">
             <div className="flex flex-col justify-center items-center  sm:items-start gap-6">
-                <Image src="/assets/Logo/adhisthanaFooter.png" alt="logo" width={908} height={800} className="object-contain  h-[10rem] w-[10rem] sm:h-[6rem] sm:w-[15rem]" />
+
+                <Image src="/assets/Logo/adhisthanaFooter.png" alt="logo" width={908} height={800} className="object-contain  h-[8rem] w-[8rem] sm:h-[4rem] sm:w-[12rem]" />
 
             </div>
 
@@ -37,12 +38,12 @@ const Footer = () => {
                 {footerLinks.map((item) => (
                 <div key={item.title} className="footer__link">
                     <h3 className="font-bold text-color1">{item.title}</h3>
-                    <div className="flex flex-col gap-5">
+                    <div className="flex flex-col gap-2">
                     {item.links.map((link) => (
                         <Link
                         key={link.title}
                         href={link.url}
-                        className="text-white"
+                        className="text-white text-[13px]"
                         >
                         {link.title}
                         </Link>

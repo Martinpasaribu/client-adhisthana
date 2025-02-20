@@ -135,7 +135,7 @@ const Bucket = ( {checkin, checkout, openWarning} : BucketProps) => {
   
   return (
 
-    <div className='w-full mt-4 xl2:mt-10 sticky top-28 z-20 py-4'>
+    <div className='w-full mt-4 xl2:mt-10 sticky top-28 z-30 py-4'>
         
 
         
