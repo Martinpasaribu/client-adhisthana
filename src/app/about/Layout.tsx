@@ -18,10 +18,10 @@ const Layout = () => {
              
              <div className="absolute w-full h-full py-8 px-4 sm:p-10 z-30 text-slate-600 flex justify-end  items-end   text-right">
                 
-                <div className="flex flex-col gap-8 w-full max-w-[60rem] p-1 sm:p-10 ">
+                <div className="flex flex-col gap-8 w-full max-w-[75rem] p-1 sm:p-10 ">
     
-                  <h1 className="text-white text-md md:text-2xl tracking-wide">A Serene Escape in the Heart of Nature</h1>
-                  <h2 className="text-slate-200 text-md">Where Javanese heritage meets modern tranquility, offering an unparalleled retreat near Borobudur.</h2>
+                  <h1 className="text-white text-md md:text-5xl tracking-wide">A Serene Escape in the Heart of Nature</h1>
+                  <h2 className="text-slate-200 text-md md:text-2xl ">Where Javanese heritage meets modern tranquility, offering an unparalleled retreat near Borobudur</h2>
                   
                 </div>
     
@@ -40,8 +40,8 @@ const Layout = () => {
                
                <div className="flex flex-col gap-8 w-full text-[10px] md:text-[17px] xl:text-[22px] max-w-[30rem] px-4 xl:px-0">
    
-                 <h1 className="text-color2 ">Experience Adhisthana Villas</h1>
-                 <h2 className="text-slate-500 ">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
+                 <h1 className="text-color2 text-[18px]">Experience Adhisthana Villas</h1>
+                 <h2 className="text-[12px] md:text-[16px] text-slate-600 ">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
                  
                </div>
    
@@ -51,7 +51,7 @@ const Layout = () => {
              <div className="underline decoration-[#C0562F] text-color1 h-full w-1/2">
                
                  <Image
-                   src='/assets/Image/someone.png'
+                   src='/assets/Image/kolam-renang.jpg'
                    alt='image sementara'
                    width={800}
                    height={800}
@@ -78,8 +78,8 @@ const Layout = () => {
                
                <div className="flex flex-col gap-8 w-full max-w-[30rem] text-[10px] md:text-[17px] xl:text-[22px] mt-10 px-4 xl:px-0 ">
    
-                 <h1 className="text-white text-xl font-normal tracking-wide text-center hp2:text-left">Rooted in Harmony with Nature</h1>
-                 <h2 className="text-slate-200 text-md tracking-wide font-normal">At Adhisthana Villas, we believe in creating spaces that resonate with nature. Every element of our design honors the rich cultural heritage of Java while embracing the beauty of our surroundings. Our commitment is to provide a tranquil and luxurious retreat for our guests, where relaxation and nature blend seamlessly.</h2>
+                 <h1 className="text-white text-[16px] md:text-[19px] font-normal tracking-wide text-center hp2:text-left">Rooted in Harmony with Nature</h1>
+                 <h2 className="text-slate-200 text-[12px] md:text-[16px] tracking-wide ">At Adhisthana Villas, we believe in creating spaces that resonate with nature. Every element of our design honors the rich cultural heritage of Java while embracing the beauty of our surroundings. Our commitment is to provide a tranquil and luxurious retreat for our guests, where relaxation and nature blend seamlessly.</h2>
                  
                </div>
    

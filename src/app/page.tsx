@@ -46,9 +46,9 @@ export default function Home() {
 
   
   const images = [
-    "/assets/ImageNav/image1.png",
-    "/assets/ImageNav/image2.png",
-    "/assets/ImageNav/image3.png",
+    "/assets/Image/FrontVillas.jpg",
+    "/assets/ImageNav/image2.jpg",
+    "/assets/Image/ImageTopVila.jpg",
   ]; // Masukkan URL gambar Anda di sini
 
   const Images_Closure = [
@@ -156,8 +156,8 @@ export default function Home() {
                 
                 <div className="flex flex-col px-2 gap-2 md:gap-8 w-full max-w-[35rem]  md:max-w-[30rem] mb-8 md:mb-2">
 
-                  <h1 className="text-color2">Moments of Serenity: A Visual Journey</h1>
-                  <h2 className="text-slate-500 "> Explore the beauty of Central Java through our curated photo gallery, showcasing the tranquil rice paddies, winding rivers, and serene countryside paths that surround Adhisthana Villas. Capture the charm of local life as you immerse yourself in nature’s embrace. </h2>
+                  <h1 className="text-color2 text-[14px] hp3:text-[17px] font-semibold mt-3 hp3:mt-2">Moments of Serenity: A Visual Journey</h1>
+                  <h2 className="text-slate-600 text-[10px] hp3:text-[14px]"> Explore the beauty of Central Java through our curated photo gallery, showcasing the tranquil rice paddies, winding rivers, and serene countryside paths that surround Adhisthana Villas. Capture the charm of local life as you immerse yourself in nature’s embrace. </h2>
                   
                 </div>
 

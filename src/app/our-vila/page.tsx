@@ -49,7 +49,7 @@ const OurVila = () => {
     <div>
 
         {/* Image */}
-        <section className='w-full h-screen bg-OurVila_bg bg-no-repeat bg-cover'>
+        <section className='w-full h-screen bg-OurVila_bg bg-no-repeat bg-cover bg-center'>
 
         </section>
 

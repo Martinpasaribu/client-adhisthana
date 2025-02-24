@@ -74,10 +74,10 @@ const Vila = ({ InitialsVila }: VilaProps) => {
                   <h1 className="text-color2 font-semibold text-center sm:text-left animate-source">
                     {vila[startIndex].nameAdditional}
                   </h1>
-                  <h2 className="text-slate-500 text-[14px] animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
+                  <h2 className="text-slate-600 text-[10px] hp3:text-[14px] animate-modal text-center sm:text-left">{vila[startIndex].describe}</h2>
                 </div>
 
-                <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4 animate-muncul text-[14px]">
+                <div className="flex flex-row sm:flex-col justify-around sm:justify-start items-start gap-4 animate-muncul text-[10px] hp3:text-[14px]">
                   <button onClick={() => { handleDetailRoom(vila[startIndex]._id) }} className="underline decoration-[#C0562F] text-color1">
                     <h1>Vila Details</h1>
                   </button>

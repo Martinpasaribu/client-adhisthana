@@ -25,9 +25,9 @@ interface HamburgerProps {
     const [isImageChanging, setIsImageChanging] = useState(false);
 
     const images = [
-        "/assets/ImageNav/image1.png",
-        "/assets/ImageNav/image2.png",
-        "/assets/ImageNav/image3.png",
+        "/assets/ImageNav/image1.jpg",
+        "/assets/ImageNav/image2.jpg",
+        "/assets/ImageNav/image3.jpg",
         "/assets/ImageNav/image4.png",
         "/assets/ImageNav/image5.png",
         "/assets/ImageNav/image6.png",
