@@ -40,8 +40,8 @@ const Layout = () => {
                
                <div className="flex flex-col gap-8 w-full text-[10px] md:text-[17px] xl:text-[22px] max-w-[30rem] px-4 xl:px-0">
    
-                 <h1 className="text-color2 text-[18px]">Experience Adhisthana Villas</h1>
-                 <h2 className="text-[12px] md:text-[16px] text-slate-600 ">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
+                 <h1 className="text-color2 text-md md:text-lg font-normal">Experience Adhisthana Villas</h1>
+                 <h2 className="text-[11px] md:text-[14px] font-normal">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
                  
                </div>
    
