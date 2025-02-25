@@ -7,6 +7,9 @@ export const Layout = () => {
     <div className=" mx-auto h-full">
             
         <div className="flex-center bg-privacy_bg bg-no-repeat bg-cover bg-center flex-col gap-5 items-center h-[28rem] max-h-[20rem] md:max-h-[25rem]  bg-color3 w-full px-2">
+            
+            <div className='absolute z-20 w-full h-[30rem] bg-opacity-5 bg-color1'></div>
+
             <h2 className="font-bold text-lg md:text-xl xl:text-2xl mt-5 tracking-tight">
                 Privacy Policy
             </h2>

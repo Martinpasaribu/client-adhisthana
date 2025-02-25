@@ -45,16 +45,16 @@ export default function Home() {
   };
 
   
-  const images = [
-    "/assets/Image/FrontVillas.jpg",
-    "/assets/ImageNav/image2.jpg",
-    "/assets/Image/ImageTopVila.jpg",
+  const ImageMoments = [
+    "/assets/ImageMoments/front-door.jpg",
+    "/assets/ImageMoments/wall-villa.jpg",
+    "/assets/ImageMoments/Top-View.jpg",
   ]; // Masukkan URL gambar Anda di sini
 
   const Images_Closure = [
-    "/assets/Image/borobudur.png",
-    "/assets/Image/food.png",
-    "/assets/Image/bike.png",
+    "/assets/Images_Closure/borobudur-home.jpg",
+    "/assets/Images_Closure/food-image.jpg",
+    "/assets/Images_Closure/sepeda.jpg",
   ]; // Masukkan URL gambar Anda di sini
 
   // const imagesClosure = [
@@ -147,7 +147,7 @@ export default function Home() {
               
                 <div className=" h-full p-2 md:p-8 md:w-1/2 max-w-[40rem] md:max-w-[50rem] flex flex-col justify-center ">
                   
-                  <ImageGallery images={images} />
+                  <ImageGallery images={ImageMoments} />
                   
                 </div>
            

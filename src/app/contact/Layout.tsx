@@ -38,6 +38,9 @@ export const Layout = () => {
     <div className=" w-full h-full">
              
         <div className="flex-center bg-contact_bg bg-no-repeat bg-cover bg-center flex-col gap-5 items-center w-full h-[30rem] bg-color3">
+            
+            <div className='absolute z-20 w-full h-[30rem] bg-opacity-5 bg-color1'></div>
+
             <h2 className="font-normal text-xl mt-5 tracking-tight">
                 Get in Touch
             </h2>
@@ -45,6 +48,7 @@ export const Layout = () => {
             <p className='text-center max-w-[50rem] text-slate-600 px-4 md:px-0 text-[13px] md:text-[17px]'>
                 We invite you to connect with us and begin your journey to tranquility at Adhisthana Villas. Whether you have inquiries, need assistance with your booking, or simply want more information about our offerings, we’re here to help. Set within the tranquil landscapes of Central Java, our villas offer a peaceful retreat enriched by the region’s cultural heritage.
             </p>
+
         </div>
 
 

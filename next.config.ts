@@ -10,6 +10,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'scontent-cgk1-1.xx.fbcdn.net',
+
+      },
+      {
+        protocol: 'https',
         hostname: 'scontent.cdninstagram.com',
 
       },
