@@ -20,8 +20,8 @@ const Layout = () => {
                 
                 <div className="flex flex-col gap-8 w-full max-w-[75rem] p-1 sm:p-10 ">
     
-                  <h1 className="text-white text-md md:text-5xl tracking-wide">A Serene Escape in the Heart of Nature</h1>
-                  <h2 className="text-slate-200 text-md md:text-2xl ">Where Javanese heritage meets modern tranquility, offering an unparalleled retreat near Borobudur</h2>
+                  <h1 className="text-white text-lg md:text-5xl tracking-wide">A Serene Escape in the Heart of Nature</h1>
+                  <h2 className="text-slate-200 text-xs hp3:text-md md:text-2xl ">Where Javanese heritage meets modern tranquility, offering an unparalleled retreat near Borobudur</h2>
                   
                 </div>
     
@@ -41,7 +41,7 @@ const Layout = () => {
                <div className="flex flex-col gap-8 w-full text-[10px] md:text-[17px] xl:text-[22px] max-w-[30rem] px-4 xl:px-0">
    
                  <h1 className="text-color2 text-md md:text-lg font-normal">Experience Adhisthana Villas</h1>
-                 <h2 className="text-[11px] md:text-[14px] font-normal">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
+                 <h2 className="text-[8px] md:text-[14px] font-normal">Adhisthana Villas offers a harmonious blend of nature, heritage, and luxury. Set amidst lush rice paddies and mountains, our villas provide the perfect escape for travelers seeking serenity and sophistication. Rooted in Javanese tradition, yet enhanced with modern comforts, every villa is designed to connect you with the surrounding landscape. </h2>
                  
                </div>
    

@@ -88,7 +88,7 @@ export default function Home() {
             loop 
             preload="auto" 
             className="w-full h-screen md:h-screen object-cover">
-            <source src="/video/AdhisthanaHD.mp4" type="video/mp4" />
+            <source src="/video/VillasHD.mp4" type="video/mp4" />
             <track
               src="/Adhisthana.mp4"
               kind="subtitles"
