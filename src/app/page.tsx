@@ -84,7 +84,6 @@ export default function Home() {
 
           <video 
             autoPlay 
-            muted 
             loop 
             preload="auto" 
             className="w-full h-screen md:h-screen object-cover">
