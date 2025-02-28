@@ -77,10 +77,10 @@ export default function Home() {
 
         <section className="  relative w-full h-screen sm:h-full ">
 
-          <div className="absolute bottom-28 w-full md:bottom-0 md:h-full flex-center flex-col gap-5 text-white">
+          {/* <div className="absolute bottom-28 w-full md:bottom-0 md:h-full flex-center flex-col gap-5 text-white">
               <h1 className="text-md hp4:text-5xl"> A Harmonious Sanctuary in Nature </h1>
               <h3 className="text-sm hp4:text-2xl"> Experience tranquil charm of Adhisthana Villas</h3>
-          </div>
+          </div> */}
 
           <video 
             autoPlay 
