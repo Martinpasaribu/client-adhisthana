@@ -5,12 +5,11 @@ const Video = () => {
 
     <video 
         autoPlay 
-        loop 
-        muted
+        loop
         playsInline
         preload="auto" 
         className="w-full h-screen md:h-screen object-cover">
-        <source src="/video/Adhisthana_Villas.mp4" type="video/mp4" />
+        <source src="/video/Adhisthana-Villas.mp4" type="video/mp4" />
         Your browser does not support the video tag.
     </video>
 
