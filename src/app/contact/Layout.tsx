@@ -75,8 +75,9 @@ export const Layout = () => {
                         </p>
 
                         <p className='text-[11px] md:text-[14px] text-slate-500 font-normal' >
-                            Adhisthana Villas is easily accessible from Yogyakarta and Magelang, with scenic routes that take you through lush rice paddies and peaceful villages. For those arriving from Yogyakarta International Airport (YIA), the journey takes approximately 90 minutes by car.
+                            Adhisthana Villas is easily accessible from Yogyakarta and Magelang, with scenic routes that take you through lush rice paddies and peaceful villages. For those arriving from Yogyakarta International Airport (YIA), the journey takes approximately 80 minutes by car.
                         </p>
+                        
                     </div>
 
                 </div>
