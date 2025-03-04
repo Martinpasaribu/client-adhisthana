@@ -274,6 +274,7 @@ module.exports = {
         'terms_bg': "url(/assets/background/bg_terms.jpg)",
         'privacy_bg': "url(/assets/background/bg_privacy.jpg)",
         'OurVila_bg': "url(/assets/background/kolam-burger.jpg)",
+        'Pool_swim': "url(/assets/background/Pool-swim.jpg)",
         'contact_bg': "url(/assets/background/bg_contact.jpg)",
       },
       listStyleImage: {

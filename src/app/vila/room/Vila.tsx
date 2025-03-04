@@ -39,16 +39,13 @@ const Vila = ({ InitialsVila }: VilaProps) => {
   }
 
   const handleNext = () => {
-    if (startIndex < vila.length - 1) {
-      setStartIndex(startIndex + 1);
-    }
+    setStartIndex((prevIndex) => (prevIndex + 1) % vila.length);
   };
-
+  
   const handlePrev = () => {
-    if (startIndex > 0) {
-      setStartIndex(startIndex - 1);
-    }
+    setStartIndex((prevIndex) => (prevIndex - 1 + vila.length) % vila.length);
   };
+  
 
   return (
     <div className="sm:my-10 my-8">
@@ -56,8 +53,8 @@ const Vila = ({ InitialsVila }: VilaProps) => {
         {/* Tombol Previous */}
         <button
           onClick={handlePrev}
-          disabled={startIndex === 0}
-          className="p-2 rounded-full backdrop-blur-sm bg-black/20 hover:bg-color1 text-white absolute left-3 z-10"
+          // disabled={startIndex === 0}
+          className="p-2 rounded-full backdrop-blur-sm bg-black/20 hover:bg-color1 text-white absolute left-16 z-10"
         >
           <GrFormPreviousLink size={20} />
         </button>
@@ -103,8 +100,8 @@ const Vila = ({ InitialsVila }: VilaProps) => {
         {/* Tombol Next */}
         <button
           onClick={handleNext}
-          disabled={startIndex >= vila.length - 1}
-          className="p-2 rounded-full absolute right-3 backdrop-blur-sm bg-black/20 hover:bg-color1 text-white z-10"
+          // disabled={startIndex >= vila.length - 1}
+          className="p-2 rounded-full  backdrop-blur-sm bg-black/20 hover:bg-color1 text-white absolute right-16 z-10"
         >
           <GrFormNextLink size={20} />
         </button>
