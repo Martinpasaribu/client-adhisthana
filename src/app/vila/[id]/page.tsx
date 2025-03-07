@@ -5,6 +5,7 @@ import Image from 'next/image'
 import { useParams } from 'next/navigation';
 import { ImageIn, RoomModels } from '@/models/roomModels';
 import { http } from '@/utils/http';
+import ImageCarousel from '../component/Image-Carousel';
 
 
 
@@ -59,11 +60,14 @@ import { http } from '@/utils/http';
 
             {/* Poster */}
             <div>
-                <Image src={room[0].imagePoster} alt='peopleIcons' width={800} height={400} className='w-full h-full object-cover'/>
+                {/* <Image src={room[0].imagePoster} alt='peopleIcons' width={800} height={400} className='w-full h-full object-cover'/> */}
+
+                <ImageCarousel imageData={room[0].image}/>
+                
             </div>
 
             {/* Detail Info */}
-            <section className='flex justify-center md:grid md:grid-cols-3 w-full max-w-[43rem] md2:max-w-[50rem] mx-auto gap-8 md:gap-4 md2:gap-10  md:pl-12 md2:pl-16'>
+            {/* <section className='flex justify-center md:grid md:grid-cols-3 w-full max-w-[43rem] md2:max-w-[50rem] mx-auto gap-8 md:gap-4 md2:gap-10  md:pl-12 md2:pl-16'>
                 <div className='flex flex-col gap-2 '>
                     <h1 className='text-left text-[12px] md:text-[1rem]'>Max Occupancy</h1>
                     <figure className='flex justify-start items-center gap-2'>
@@ -85,48 +89,66 @@ import { http } from '@/utils/http';
                         <h1 className='text-slate-600 text-[10px] md:text-[13px] md:font-normal'>{room[0].bedType}</h1>
                     </figure>
                 </div>
-            </section>
+            </section> */}
 
             {/* Description and Image */}
-            <div className='flex flex-col p-1 hp2:p-3 sm:p-10 md:p-1 md:flex-row overflow-hidden'>
+            <div className='flex flex-col justify-center p-1 hp2:p-3 sm:p-10 md:p-1 md:flex-row overflow-hidden '>
+
+
 
                 {/* Image */}
-                <div className='grid grid-cols-2 w-full  gap-2 p-4 md2:p-10'>
-                    {room && imageRoom.map((item, index) => (
-                        <div key={index}>
-                            <Image
-                                src={item.image} // Gunakan item.url jika `imageRoom` memiliki properti URL
-                                alt={`Room Image ${index + 1}`}
-                                width={600}
-                                height={400}
-                                className='h-full w-full object-cover'
-                            />
-                        </div>
-                    ))}
+                <div className='flex flex-col w-full max-w-[50rem] gap-5 p-4 md2:p-10 '>
+                    <p className='text-md hp3:text-xl md:text-xl text-center md:text-left'>{room[0].shortDesc}</p>
+                    <p className='text-[10px] sm:text-sm text-gray-500 font-light text-justify md:text-left ' >{room[0].describe}</p>
                 </div>
 
 
                 {/* Describe */}
-                <div className='w-full md:max-w-[20rem] md2:max-w-[30rem] text-[10px] sm:text-sm flex-center text-slate-500 text-justify p-4 md2:p-10'>
-                    <p>{room[0].describe}</p>
+                <div className='flex md:justify-end font-light  w-full md:max-w-[10rem] md2:max-w-[20rem] text-left md:text-left '>
+                    <ul className='flex list-disc  flex-col gap-2 text-[10px] sm:text-sm md:text-md text-slate-500 p-4 md2:p-10 pl-8 md:pl-0'>
+                        <li className='text-slate-600 text-[10px] md:text-[14px] xl:text-[15px] '>{room[0].size}  square meters</li>
+                        <li className='text-slate-600 text-[10px] md:text-[14px] xl:text-[15px] '>Max guests {room[0].maxCapacity} </li>
+                        <li className='text-slate-600 text-[10px] md:text-[14px] xl:text-[15px] '>1 Bedroom </li>
+                        <button className='pt-2 text-color1 text-left'>
+                            <p>Floorplan</p>
+                        </button>
+                    </ul>
                 </div>
 
+
+
+                {/* 1,160 sq. ft. / 108 sq. m */}
             </div>
 
 
             {/* Fasilitas */}
-            <div className='w-full h-full max-h-[32rem] bg-color3 flex-center flex-col p-2 md:p-10 gap-5'>
+            <div className='w-full h-full max-h-[45rem] md:max-h-[32rem] bg-color3 flex-center flex-col p-2 md:p-3 gap-4 md:gap-2'>
                 <h1 className='text-color1 h-[2rem] md2:h-[5rem] flex-center'>Room Amenities</h1>
 
-                <ul className=' grid grid-cols-2 sm:grid-rows-6 md:grid-rows-5 sm:grid-flow-col  place-items-center p-4 md:p-10 pl-4 md:pl-10 gap-4 w-full max-w-[70rem] list-disc list-inside text-slate-500'>
+
+                <ul className='grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 p-4 md:p-5 pl-4 md:pl-10 w-full max-w-[70rem] xl:max-w-[85rem] list-disc list-inside text-slate-500 mb-6'>
+                    {room && facility.map((item, index) => (
+                        <li
+                            key={index}
+                            className='text-left text-[10px] md:text-sm'
+                        >
+                            {item}
+                        </li>
+                    ))}
+                </ul>
+
+                {/* <ul className=' place-items-center grid grid-cols-2 sm:grid-rows-4 md:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 md:grid-rows-4  p-4 md:p-5 pl-4 md:pl-10 gap-4 w-full max-w-[70rem]  xl:max-w-[85rem] list-disc list-inside text-slate-500 mb-6'>
                     {room && facility.map((item, index) => (
                         <li
                          key={index} className='w-full text-left  md:text-sm'>{item}</li>
                     ))}
 
-                </ul>
+                </ul> */}
 
             </div>
+
+
+
 
         </div>
 
