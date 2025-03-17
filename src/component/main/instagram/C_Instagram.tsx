@@ -68,8 +68,9 @@ export default function InstagramProfile( { act, id } : InstagramProps) {
           <div className="flex-center px-1 gap-4">
             <div>
               <Image
-                src={profile?.profile_picture_url || '/placeholder-image.png'} // Nilai default
-                alt={'imageProfile'}
+                src={'/assets/Logo/LogoMain02.png'} // Nilai default
+                // src={profile?.profile_picture_url || '/placeholder-image.png'} // Nilai default
+                alt={'Profile'}
                 width={100}
                 height={100}
                 className="w-30 h-30 sm:w-50 sm:h-50 object-contain rounded-full"

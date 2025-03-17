@@ -28,6 +28,9 @@ const Navbar = () => {
 
   const isVilaPage = pathname.startsWith("/vila/") && pathname.split("/").length === 3;
 
+
+  const UrlAlaric = "http://booking.adhisthanavillas.com/en/offers?hotel=ADVB";
+
   console.log("Current pathname:", pathname);
 
   const openModal = () => {
@@ -319,7 +322,9 @@ useEffect(() => {
 
                           ) : (
 
-                            <Link onClick={handleBooking} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                            // <Link onClick={handleBooking} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                            <Link onClick={handleBooking} href={UrlAlaric}  className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                              
                               <CustomButton 
                                   title="Book Now"
                                   btnType="button"
@@ -342,7 +347,9 @@ useEffect(() => {
 
                 // Pada saat Sudah Login 
                 <>
+
                   { pathname === "/booking" || pathname === "/booking/offers" || pathname === "/checkout"  || pathname === "/order-status"  ? (
+
 
                     <Link onClick={handleBookingNonDeletedSession} href="/auth/member" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
                     <CustomButton 
@@ -355,7 +362,9 @@ useEffect(() => {
 
                     ) : (
 
-                      <Link onClick={handleBookingDeletedChartInSession} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                      // <Link onClick={handleBookingDeletedChartInSession} href="/booking" className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                      <Link onClick={handleBookingDeletedChartInSession} href={UrlAlaric}  className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+                        
                         <CustomButton 
                             title="Book Now"
                             btnType="button"

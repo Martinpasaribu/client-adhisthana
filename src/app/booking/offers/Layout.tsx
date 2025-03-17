@@ -19,7 +19,7 @@ import OffersItem from '../component/Offers/offersItem';
 import { formatBookingDate, formatLocalISOIn, formatLocalISOOut } from '../component/constant';
 import DatePickerUpdate from '../component/Calender/datePickerUpdate';
 import { clearChart } from '@/lib/slice/bookingSlice';
-import NoPayment from '@/component/PopUpNotifications';
+import NoPayment from '@/component/PopUpNotifications/PaymentMaintenance';
 import Whatsapp from '@/utils/whatsapp/indext';
 
 

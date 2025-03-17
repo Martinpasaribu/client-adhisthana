@@ -487,9 +487,9 @@ const OffersItem = () => {
                     <div className='flex flex-col hp4:flex-row gap-5'> 
 
                       {/* Left */}
-                      <div className='flex flex-col gap-4 w-full h-full hp4:max-w-[18rem] md1:max-w-[22rem]'>
+                      <div className='flex flex-col gap-4 w-full h-[25rem] hp4:max-w-[18rem] md1:max-w-[22rem]'>
 
-                          <div className='w-full h-full'>
+                          <div className='w-full h-full max-h-[18rem] '>
                             <ClouserImage images={ item.image } />
                           </div>
 

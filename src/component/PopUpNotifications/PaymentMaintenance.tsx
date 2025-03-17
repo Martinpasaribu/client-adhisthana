@@ -7,6 +7,7 @@ import "react-day-picker/dist/style.css";
 
 import toast from "react-hot-toast";
 import { discount, gift, Maintenance } from "@/style/icons";
+import Link from "next/link";
 
 
 interface NoPaymentProps {
@@ -15,6 +16,8 @@ interface NoPaymentProps {
   closeModal: () => void;
 
 }
+
+const UrlAlaric = "http://booking.adhisthanavillas.com/en/offers?hotel=ADVB";
 
 const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
 
@@ -49,7 +52,7 @@ const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
                       <ul className="list-disc">
 
                         <li className="text-justify text-sm font-normal text-color1"> 
-                            You can contact Email and Whatsapp Adhisthana Villas to ask directly for booking information 
+                            You can Use Site Backup, contact Email and Whatsapp Adhisthana Villas to ask directly for booking information 
                         </li>
 
                       </ul>
@@ -65,13 +68,23 @@ const NoPayment = ({ isOpen, closeModal }: NoPaymentProps) => {
 
             </div>
           </div>
-          <div className=" flex-center p-5">
+          <div className=" flex-center p-5 gap-2">
             <button
               onClick={closeModal}
               className=" w-full py-2 border-color2 border-2 rounded-md max-w-[10rem]"
             >
               OKE
             </button>
+
+            <button
+              className=" w-full py-2 border-color2 border-2 rounded-md max-w-[10rem] text-green-600">
+              <Link onClick={closeModal} href={UrlAlaric}  className={` flex justify-end sm:justify-center  items-center w-full max-w-[10rem]`}>
+            
+                Site Backup
+
+              </Link>
+            </button>
+
           </div>
         </div>
       </div>

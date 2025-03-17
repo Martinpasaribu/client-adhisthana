@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
 import { ContentModel } from "@/models/instagramModels";
-import { FaInstagram, GrFormNextLink, GrFormPreviousLink } from "@/style/icons";
+import { FaInstagram } from "@/style/icons";
+import { GrFormNextLink, GrFormPreviousLink } from "@/style/icons";
 
 interface ImageCarouselProps {
   content: ContentModel[];
@@ -9,28 +10,19 @@ interface ImageCarouselProps {
 
 const ImageCarousel = ({ content }: ImageCarouselProps) => {
   const [startIndex, setStartIndex] = useState(0);
-  const [itemsPerPage, setItemsPerPage] = useState(4); // Default to 4
+  const [itemsPerPage, setItemsPerPage] = useState(4); // Default 4 items per baris
   const [windowWidth, setWindowWidth] = useState(0);
+  const [imageError, setImageError] = useState(false);
 
-  // Fungsi untuk menyesuaikan itemsPerPage berdasarkan ukuran layar
   useEffect(() => {
     const handleResize = () => {
       setWindowWidth(window.innerWidth);
-
-      if (window.innerWidth >= 640) {
-        setItemsPerPage(4); // Untuk layar ukuran 'md' dan lebih besar
-      } else {
-        setItemsPerPage(2); // Untuk layar lebih kecil dari 'md'
-      }
+      setItemsPerPage(window.innerWidth >= 640 ? 4 : 2);
     };
 
-    // Menambahkan event listener untuk resize
     window.addEventListener("resize", handleResize);
-
-    // Panggil sekali pada pertama kali render
     handleResize();
 
-    // Membersihkan event listener saat komponen unmount
     return () => {
       window.removeEventListener("resize", handleResize);
     };
@@ -59,47 +51,54 @@ const ImageCarousel = ({ content }: ImageCarouselProps) => {
         <GrFormPreviousLink size={20} />
       </button>
 
-      {/* Kontainer Carousel yang Digeser */}
+      {/* Kontainer Carousel */}
       <div
         className="flex transition-transform duration-500 ease-in-out"
         style={{
           transform: `translateX(-${(startIndex * 100) / itemsPerPage}%)`,
         }}
       >
-        {content.map((item, index) => (
-          <div
-            key={index}
-            className="w-1/2 sm:w-1/4 flex-shrink-0 p-2" // 1/4 berarti 4 gambar per baris untuk layar 'md' ke atas
-          >
-            <a
-              href={item.permalink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="relative block w-full h-full rounded-md overflow-hidden"
-            >
-              <Image
-                src={item.media_url || "/placeholder-image.png"}
-                alt={`Image number ${index + 1}`}
-                width={800}
-                height={800}
-                className="w-full h-full object-cover rounded-md"
-                unoptimized
-              />
+        {content.map((item, index) => {
 
-              <FaInstagram size={25} className="absolute right-2 bottom-2 text-white"/>
-            </a>
-          </div>
-        ))}
+          return (
+            <div
+              key={index}
+              className="w-1/2 sm:w-1/4 flex-shrink-0 p-2"
+            >
+              <a
+                href={item.permalink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative block w-full h-full rounded-md overflow-hidden"
+              >
+                {/* Gambar utama dengan fallback */}
+                <Image
+                  src={imageError ? "/assets/ImageInstagram/LoadInstagram.png" : item.media_url}
+                  alt={`Adhs ${index + 1}`}
+                  width={800}
+                  height={800}
+                  className={`${imageError ? "w-full h-full max-w-[5rem] max-h-[5rem] object-cover rounded-md m-auto animate-pulse":'w-full h-full   object-cover rounded-md '} `}
+                  onError={() => setImageError(true)}
+                  unoptimized
+                />
+
+                <h1 className={`${imageError ? 'text-center mt-2 text-slate-400':'hidden' }`}> Load...</h1>
+
+                {/* Logo Instagram */}
+                <FaInstagram size={25} className="absolute right-2 bottom-2 text-white" />
+              </a>
+            </div>
+          );
+        })}
       </div>
 
       {/* Tombol Next */}
       <button
         onClick={handleNext}
         disabled={startIndex + itemsPerPage >= content.length}
-        className="p-2  rounded-full absolute right-3 backdrop-blur-sm bg-black/20 hover:bg-color1 text-white z-10"
+        className="p-2 rounded-full absolute right-3 backdrop-blur-sm bg-black/20 hover:bg-color1 text-white z-10"
       >
         <GrFormNextLink size={20} />
-        
       </button>
     </div>
   );
