@@ -3,7 +3,7 @@
 export interface BookingModels {
 
     _id: string;
-    oderId: string;
+    orderId: string;
     checkIn: string;
     checkOut: string;
 
